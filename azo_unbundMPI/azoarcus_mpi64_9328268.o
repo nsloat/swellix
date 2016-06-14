@@ -1,0 +1,203 @@
+/home/nsloat/swellix/bwbuild
+Sun Jun 12 21:52:55 CDT 2016
+LD_LIBRARY_PATH: /usr/mpi/intel/openmpi-1.4.3-qlc/lib64:/opt/intel/composer_xe_2011_sp1.6.233/compiler/lib/intel64/:/lsf/7.0/linux2.6-glibc2.3-x86_64/lib:
+_MPI defined
+rank 16 working on (48, 51)
+rank 18 working on (54, 57)
+rank 20 working on (60, 63)
+rank 21 working on (63, 66)
+rank 23 working on (69, 72)
+rank 24 working on (72, 75)
+rank 25 working on (75, 78)
+rank 17 working on (51, 54)
+rank 19 working on (57, 60)
+rank 49 working on (147, 150)
+rank 50 working on (150, 153)
+rank 51 working on (153, 156)
+rank 57 working on (171, 174)
+rank 63 working on (189, 197)
+rank 59 working on (177, 180)
+rank 60 working on (180, 183)
+rank 56 working on (168, 171)
+rank 61 working on (183, 186)
+rank 48 working on (144, 147)
+rank 62 working on (186, 189)
+rank 32 working on (96, 99)
+rank 22 working on (66, 69)
+rank 53 working on (159, 162)
+rank 33 working on (99, 102)
+rank 26 working on (78, 81)
+rank 34 working on (102, 105)
+rank 27 working on (81, 84)
+rank 35 working on (105, 108)
+rank 28 working on (84, 87)
+rank 54 working on (162, 165)
+rank 36 working on (108, 111)
+rank 29 working on (87, 90)
+rank 37 working on (111, 114)
+rank 30 working on (90, 93)
+rank 38 working on (114, 117)
+rank 31 working on (93, 96)
+rank 39 working on (117, 120)
+rank 40 working on (120, 123)
+rank 41 working on (123, 126)
+rank 42 working on (126, 129)
+rank 58 working on (174, 177)
+rank 43 working on (129, 132)
+rank 52 working on (156, 159)
+rank 55 working on (165, 168)
+rank 44 working on (132, 135)
+rank 45 working on (135, 138)
+rank 46 working on (138, 141)
+rank 47 working on (141, 144)
+rank 1 working on (3, 6)
+rank 2 working on (6, 9)
+rank 3 working on (9, 12)
+rank 4 working on (12, 15)
+rank 5 working on (15, 18)
+rank 6 working on (18, 21)
+rank 7 working on (21, 24)
+rank 8 working on (24, 27)
+rank 9 working on (27, 30)
+rank 10 working on (30, 33)
+rank 11 working on (33, 36)
+rank 12 working on (36, 39)
+rank 13 working on (39, 42)
+rank 14 working on (42, 45)
+rank 15 working on (45, 48)
+rank 0 working on (0, 3)
+GGCCGUGUGCCUUGCGCCGGGAAACCACGCAAGGGAUGGUGUCAAAUUCGGCGAAACCUAAGCGCCCGCCCGGGCGUAUGGCAACGCCGAGCCAAGCUUCGCAGCCAUUGCACUCCGGCUGCGAUGAAGGUGUAGAGACUAGACGGCACCCACCUAAGGCAAACGCUAUGGUGAAGGCAUAGUCCAGGGAGUGGCGA
+Total structures: 21224904468
+Job  /lsf/7.0/linux2.6-glibc2.3-x86_64/bin/openmpi_wrapper /home/nsloat/swellix/bwbuild/swellix-mpi.exe -i /home/nsloat/swellix/seq/azoarcus_197/azoarcus_197.seq -l 4
+
+TID   HOST_NAME   COMMAND_LINE            STATUS            TERMINATION_TIME
+===== ========== ================  =======================  ===================
+00000 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00001 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00002 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00003 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00004 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00005 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00006 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00007 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00008 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00009 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00010 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00011 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00012 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00013 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00014 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00015 c249       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00016 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00017 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00018 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00019 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00020 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00021 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00022 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00023 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00024 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00025 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00026 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00027 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00028 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00029 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00030 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00031 c172       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00032 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00033 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00034 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00035 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00036 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00037 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00038 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00039 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00040 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00041 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00042 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00043 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00044 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00045 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00046 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00047 c175       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00048 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00049 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00050 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00051 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00052 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00053 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00054 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00055 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00056 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00057 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00058 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00059 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00060 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00061 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00062 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+00063 c258       /home/nsloat/swe  Done                     06/12/2016 22:30:01
+Sun Jun 12 22:30:04 CDT 2016
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@c258>
+Subject: Job 9328268: <mpi_azoarcus_nonbund> Done
+
+Job <mpi_azoarcus_nonbund> was submitted from host <boomer1> by user <nsloat> in cluster <boomer>.
+Job was executed on host(s) <16*c258>, in queue <normal>, as user <nsloat> in cluster <boomer>.
+                            <16*c175>
+                            <16*c172>
+                            <16*c249>
+</home/nsloat> was used as the home directory.
+</home/nsloat/swellix/bwbuild> was used as the working directory.
+Started at Sun Jun 12 21:52:39 2016
+Results reported at Sun Jun 12 22:30:04 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/tcsh
+
+#BSUB -J "mpi_azoarcus_nonbund"
+#BSUB -R "span[ptile=16]"
+#BSUB -W 48:00
+#BSUB -a openmpi
+#BSUB -e /home/nsloat/swellix/bwbuild/azo_unbundMPI/azoarcus_mpi64_%J.e
+#BSUB -n 64
+#BSUB -o /home/nsloat/swellix/bwbuild/azo_unbundMPI/azoarcus_mpi64_%J.o
+#BSUB -q normal
+#BSUB -u nsloat@ou.edu
+
+
+cd /home/nsloat/swellix/bwbuild
+pwd
+setenv MPI_COMPILER intel # intel OR gnu OR pgi OR nag
+setenv MPI_HARDWARE ib # ib (Infiniband) OR gige (Gigabit Ethernet)
+setenv MPI_SOFTWARE openmpi # Only commment this if you compiled with it off.
+date
+mpirun.lsf   /home/nsloat/swellix/bwbuild/swellix-mpi.exe -i /home/nsloat/swellix/seq/azoarcus_197/azoarcus_197.seq -l 4
+
+date
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :   4122.37 sec.
+    Max Memory :      1437 MB
+    Max Swap   :     14959 MB
+
+    Max Processes  :        64
+    Max Threads    :       128
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </home/nsloat/swellix/bwbuild/azo_unbundMPI/azoarcus_mpi64_9328268.e> for stderr output of this job.
+

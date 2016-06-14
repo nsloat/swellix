@@ -1,0 +1,741 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#include "subopt.h"
+
+#if defined(_MPI)
+
+#include "mpi.h"
+#define MPI_RANK_MASTER (0)
+#define MPI_FIVE (6)
+int mpi_rank, mpi_size;
+
+#endif // _MPI
+
+// options, filters, etc. See usage and set_args.
+
+
+struct options {
+    int noLP;
+    int noGU;
+    int max_dist;
+    int count;
+    int constraints;
+    int noML;
+    int allpair;
+    FILE * infile;
+    FILE * outfile;
+    int helix_badnesses;
+    int helix_number;
+    int helix_size;
+    long statecount;
+};
+
+struct options OPTIONS;
+
+#define print(...) fprintf(OPTIONS.outfile, __VA_ARGS__)
+
+
+
+
+int main(int argc, char *argv[])
+{
+
+    set_args(argc, argv);
+    char seq[40000]; // More than this, and you'll blow the stack anyway.
+    fscanf(OPTIONS.infile, "%s", seq);
+
+    int i;
+    for(i=0; seq[i]; i++)
+        seq[i] = toupper(seq[i]);
+ 
+    int *constraints;
+    if (OPTIONS.constraints){
+        char consts[strlen(seq)];
+        fscanf(OPTIONS.infile, "%s", consts);
+        print( "%s\n", consts);
+        constraints = interpreted_constraints(consts);
+    } else {
+        constraints = NULL;
+    }
+
+#if defined(_MPI)
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &mpi_rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &mpi_size);
+
+    print( "%d: %s\n", mpi_rank, seq);
+    pstart(seq, constraints);
+
+    MPI_Finalize();
+#else
+    print( "%s\n", seq);
+    start(seq, constraints);
+#endif // _MPI
+
+    if (OPTIONS.count){
+        print( "%d\n", OPTIONS.count);
+    }
+
+    if (OPTIONS.infile != stdin) fclose(OPTIONS.infile);
+    if (OPTIONS.outfile != stdin) fclose(OPTIONS.outfile);
+
+    if (constraints) free(constraints);
+    return 0;
+}
+
+#if defined(_MPI)
+void pstart(char *seq, int *constraints)
+{
+    if (0 == mpi_rank) {
+        start(seq, constraints);
+    } else {
+        int *message = wait_for_state();
+        state *s = interpret_message(message);
+        free(message);
+
+        s->sequence = seq;
+        s->constraints = constraints;
+
+        refine_state(s);
+        while(s->intervals){
+            unmake_interval(s);
+        }
+        free(s);
+    }
+}
+#endif // _MPI
+
+void start(char *seq, int *constraints)
+{
+    int len = strlen(seq);
+    state base;
+
+    base.length = len;
+    int struc[len];
+    int i;
+
+    for(i=0; i<len; i++)
+        struc[i] = -1;
+
+    base.structure = &struc[0];
+    base.sequence = seq;
+    base.intervals = NULL;
+    make_interval(&base, 0, base.length, LOOP);
+    refine_state(&base);
+    unmake_interval(&base);
+}
+
+
+void refine_state(state *s){
+
+    if(!allow_state(s))
+        return;
+
+    // This is an optimization step, changing the order
+    // in which we walk the tree to improve pruning efficiency.
+    // rearrange_intervals(s);
+
+    OPTIONS.statecount ++;
+
+#if defined(_MPI)
+    // This is a poor condition. Be smarter.
+    if(MPI_RANK_MASTER==mpi_rank && OPTIONS.statecount-1 > 0 && OPTIONS.statecount-1 < mpi_size) {
+        // send state to process with mpi_rank equal to statecount
+        int * p = pack_state(s);
+        MPI_Ssend(p, p[0]+(3*p[1])+2, MPI_INT, OPTIONS.statecount-1, MPI_FIVE, MPI_COMM_WORLD);
+
+        free(p);
+    } else {
+        refine_state_locally(s);
+    }
+#else
+    refine_state_locally(s);
+#endif // _MPI
+}
+
+
+//------------------------------ BACKTRACKING --------------------------------//
+
+interval *make_interval(state *s, int ai, int aj, interval_flag aflag)
+{
+    interval *new = malloc(sizeof(interval));
+    new->i = ai;
+    new->j = aj;
+    new->flag = aflag;
+    new->next = s->intervals;
+    s->intervals = new;
+    return new;
+}
+
+void unmake_interval(state *s)
+{
+    interval *i = s->intervals->next;
+    free(s->intervals);
+    s->intervals = i;
+}
+
+void make_pair(state *s, int i, int j)
+{
+    s->structure[i] = j;
+    s->structure[j] = i;
+}
+
+void unmake_pair(state *s, int i, int j)
+{
+    s->structure[i] = -1;
+    s->structure[j] = -1;
+}
+
+void refine_state_locally(state *s)
+{
+    if (s->intervals == NULL){
+        print_soln(s);
+        return;
+    }
+
+    int i = s->intervals->i;
+    int j = s->intervals->j;
+    interval_flag flag = s->intervals->flag;
+    interval *temp = s->intervals;
+    s->intervals = s->intervals->next;
+
+    // There are only two options
+    // Either j pairs with something in the interval:
+
+    int k;
+
+    for (k = j-MIN_PAIR_DIST-2; k >= i; k--){
+
+        if (allow_pair(s, k, j-1)){
+            make_pair(s, k, j-1);
+
+            make_interval(s, k+1, j-1, LOOP);
+            make_interval(s, i, i, LOOP);
+
+            refine_state(s);
+
+            unmake_interval(s);
+            unmake_interval(s);
+
+            unmake_pair(s, k, j-1);
+        }
+    }
+
+    // Or j does not pair at all:
+      if (j - 1 >= i && j < s->length){
+          make_interval(s, i, j-1, flag);
+        
+          refine_state(s);
+        
+          unmake_interval(s);
+
+      } else {
+          refine_state(s);
+      }
+
+
+    s->intervals = temp;
+}
+
+//----------------------------- OPTIMIZATION ---------------------------------//
+
+/* void rearrange_intervals(state *s){ */
+/*     // this is a mildly unintuitive optimization */
+/*     // for no-lonely-pair filtering. NOT CURRENTLY IN USE */
+/*     if (!s->intervals) return; */
+/*     interval * curr = s->intervals; */
+/*     if (curr->flag == SECUNDO){ */
+/*         curr->flag = LOOP; */
+/*         interval *temp; */
+/*         temp = curr->next; */
+/*         curr->next = temp->next; */
+/*         temp->next = curr; */
+/*         s->intervals = temp; */
+/*     } */
+/* } */
+
+//---------------------------- FILTERING PAIRS -------------------------------//
+
+int allow_pair(state *s, int i, int j)
+// returns true if the pair is allowable.
+{
+    if (can_pair(s->sequence[i], s->sequence[j]) &&
+        //!constrained_to_not_pair(i, j) &&
+        (!OPTIONS.constraints || chemical_modification_ok(s, i, j)) &&
+        (OPTIONS.max_dist == 0 || j - i <= OPTIONS.max_dist)) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+
+int can_pair(char a, char b)
+{
+    if (OPTIONS.allpair) return TRUE;
+
+    if ((a == 'A' && b == 'U') ||
+        (a == 'U' && b == 'A') ||
+
+        (a == 'G' && b == 'C') ||
+        (a == 'C' && b == 'G')) {
+        return TRUE;
+    }
+    if (!OPTIONS.noGU &&
+        ((a == 'G' && b == 'U') ||
+         (a == 'U' && b == 'G'))) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+int death_triad(state *s, int i)
+{
+    // TODO Modify this to be a good little puppy about the following cases:
+    // )(( ))( and GU pairs
+    if(s->constraints[i] == MODIFIED_BASE &&
+       s->structure[i] > i &&
+       (i == s->length-1 || s->structure[i+1] > i) &&
+       (i == 0 || s->structure[i-1] > i))
+        return TRUE;
+    return FALSE;
+}
+
+int chemical_modification_ok(state *s, int i, int j)
+{
+    make_pair(s, i, j);
+    if (death_triad(s, i) ||
+        (i != s->length-1 && death_triad(s, i+1)) ||
+        (i != 0 && death_triad(s, i-1)) ||
+
+        death_triad(s, j) ||
+        (j != s->length-1 && death_triad(s, j+1)) ||
+        (j != 0 && death_triad(s, j-1))) {
+
+        unmake_pair(s, i, j);
+        return FALSE;
+    }
+
+    unmake_pair(s, i, j);
+    return TRUE;
+}
+
+
+
+//---------------------------- FILTERING STATES ------------------------------//
+
+int allow_state(state *s)
+// returns true if the state is allowable.
+{
+    if (!(OPTIONS.noLP && lonely_pair(s)) &&
+        (!OPTIONS.helix_number || room_for_helices(s)) &&
+        1){
+        return TRUE;
+    }
+    return FALSE;
+}
+
+
+int lonely_pair(state *s)
+{
+    // This can totes be optimized, dudes.
+    if (s->intervals == NULL) return FALSE;
+    interval* curr = s->intervals;
+    for(; curr; curr=curr->next){
+        int i = s->intervals->i;
+        int j = s->intervals->j;
+        //print( "%d, %d, ", i, j);
+        if (j-i < MIN_PAIR_DIST && i > 0){
+            int a = i-1;
+            int b = s->structure[i-1];
+            if ((a == 0 ||
+                 s->structure[a-1] < a ||
+                 s->structure[a-1] == -1 ) &&
+                (b == s->length-1 ||
+                 s->structure[b+1] > b ||
+                 s->structure[b+1] == -1) &&
+                s->structure[a+1] == -1 &&
+                s->structure[b-1] == -1) {
+                return TRUE;
+            }
+        }
+    }
+    //print( "\n");
+    return FALSE;
+}
+
+
+
+
+int room_for_helices(state *s) {
+    int badnesses, sizei, sizej, number = helix_count(s);
+    interval * inter;
+    int i, j;
+    //print( "\n\n");
+    //print_soln(s);
+
+    for(inter = s->intervals; inter; inter = inter->next){
+        badnesses = 0;
+        sizei = 0;
+        sizej = 0;
+        i = inter->i;
+        j = inter->j+1;
+
+        // First push out, 3' then 5'
+        while(badnesses < OPTIONS.helix_badnesses &&
+              sizej < OPTIONS.helix_size &&
+              j < s->length){
+            if(s->structure[j] == -1){
+                badnesses++;
+            } else if (s->structure[j] > j) {
+                break; // no rooooOOOm
+            } else {
+                sizej++;
+            }
+            j++;
+        }
+
+        // and again on the other side, to taste.
+        while(badnesses < OPTIONS.helix_badnesses &&
+              sizei < sizej &&
+              i < s->length){
+            if(s->structure[i] == -1){
+                badnesses++;
+            } else if (s->structure[i] < i) {
+                break;
+            } else {
+                sizei++;
+            }
+            i--;
+        }
+
+        sizei = sizei < sizej ? sizei : sizej;
+        if (sizei >= OPTIONS.helix_size &&
+            badnesses <= OPTIONS.helix_badnesses){
+            number++;
+        }
+
+        int rest = inter->j - inter->i - MIN_PAIR_DIST;
+        rest -= OPTIONS.helix_size - sizei;
+        if (rest >= 0) {
+            number++;
+            number += rest % ((OPTIONS.helix_size*2) + MIN_PAIR_DIST);
+        }
+    }
+
+    // print( "   %d possible helices of len 3", number);
+
+    if (number >= OPTIONS.helix_number){
+        //  print( " so I keep it!\n\n\n");
+        return TRUE;
+    }
+    return FALSE;
+}
+
+
+int helix_count(state *s){
+    int i = 0, nexti = 0, size, prej, number = 0, badnesses = 0;
+
+    while(nexti < s->length){
+        i = nexti;
+        do {
+            // Move forward to the next concentric possible-helix.
+            for(; i<s->length && s->structure[i]<i; i++);
+            if (i >= s->length) break;
+
+            prej = s->structure[i];
+            badnesses = 0;
+            size = 1;
+            nexti = i+1;
+
+            // look at the current helix
+            while(size < OPTIONS.helix_size && badnesses <= OPTIONS.helix_badnesses){
+                i++;
+
+                if (s->structure[i] > i){ // there's a pair
+                    size++;
+                    badnesses += prej - s->structure[i] - 1;
+                    prej = s->structure[i];
+                    nexti = prej;
+
+                } else if (s->structure[i] == -1) { // no pair
+                    badnesses++;
+                }
+            }
+
+            // Increase count when a helix was found
+            if (size >= OPTIONS.helix_size && badnesses <=  OPTIONS.helix_badnesses) {
+                number++;
+            }
+
+        } while(i < prej && i<s->length);
+
+        if (i >= s->length) break;
+    }
+    return number;
+}
+
+
+
+//-------------------------------- PRINTING ----------------------------------//
+
+void print_state(state *s){
+    // Prints a partial solution for debugging purposes.
+    int i;
+    print( "[");
+    for(i=0; i<(s->length); i++){
+        print( "%d, ", s->structure[i]);
+    }
+    print( "], ");
+    print( "%d, ", s->length);
+
+    char a[s->length+1];
+    a[s->length] = (char)0;
+    for(i=0; i<(s->length); i++){
+        if(s->structure[i] == -1){
+            a[i] = '.';
+        } else if (s->structure[i] > i) {
+            a[i] = '(';
+        } else if (s->structure[i] < i) {
+            a[i] = ')';
+        }
+    }
+
+    print( "%s, ", a);
+    interval *b = s->intervals;
+    while(b){
+        print( "(%d, %d, #%d), ", b->i, b->j, b->flag);
+        b = b->next;
+    }
+    print( "\n");
+}
+
+void print_soln(state *s){
+
+    if(OPTIONS.count){
+        OPTIONS.count++;
+        if (OPTIONS.count%10000 == 0) print( "%d \n", OPTIONS.count);
+        return;
+    }
+
+#if defined(_MPI)
+    print( "%d: ", mpi_rank);
+#endif // _MPI
+
+    int i;
+    char a[s->length+1];
+    a[s->length] = (char)0;
+    for(i=0; i<(s->length); i++){
+        if(s->structure[i] == -1){
+            a[i] = '.';
+        } else if (s->structure[i] > i) {
+            a[i] = '(';
+        } else if (s->structure[i] < i) {
+            a[i] = ')';
+        }
+    }
+    //    float en = energy_of_struct(s->sequence, a);
+    print( "%s\n", a);
+
+}
+
+
+//----------------------------- HANDLING INPUT -------------------------------//
+
+void print_usage()
+{
+    print( "\n\n    usage: \n"
+           "    subopt [-noLP] [-noGU] [-max-dist #] [-noML]\n"
+           "           [-count] [-i] [-o] [-help | -h]\n\n"
+
+           "    -noLP       : Restricts to only solutions with no lonely pairs. This\n"
+           "                  greatly reduces the number of solutions.\n"
+           "    -noGU       : Disallows G-U pairing.\n"
+           "    -noML       : Restricts to only solutions without multiloops.\n"
+           "    -count      : Does not print solutions --- only the number of total\n"
+           "                  solutions found.\n\n"
+
+           "    -max-dist # : Restricts to only solutions where all pairings\n"
+           "                  are between bases # or fewer bases apart.\n"
+           "    -e #        : Restricts to only solutions withing #kcal/mol of \n"
+           "                  the MFE.\n\n"
+           "    -i FILE     : Defines an input file, containing a sequence.\n\n"
+           "    -o FILE     : Defines an output file, to overwrite with solutions.\n\n"
+
+           "    -help | -h  : Prints this message and exits.\n"
+           "\n\n");
+    exit(0);
+}
+
+
+void set_args(int argc, char *argv[])
+{
+
+    OPTIONS.infile = stdin;
+    OPTIONS.outfile = stdout;
+    OPTIONS.noLP = 0;
+    OPTIONS.noGU = 0;
+    OPTIONS.max_dist = 0;
+    OPTIONS.count = 0;
+    OPTIONS.constraints = 0;
+    OPTIONS.noML = 0;
+    OPTIONS.allpair = 0;
+    OPTIONS.helix_badnesses = 0;
+    OPTIONS.helix_number = 0;
+    OPTIONS.helix_size = 0;
+    OPTIONS.statecount = 0;
+
+    int arg;
+    for (arg = 1; arg < argc; arg++){
+        if (!strcmp("-noLP", argv[arg]))
+            OPTIONS.noLP = TRUE;
+
+        else if (!strcmp("-C", argv[arg]))
+            OPTIONS.constraints = TRUE;
+
+        else if (!strcmp("-noGU", argv[arg]))
+            OPTIONS.noGU = TRUE;
+
+        else if (!strcmp("--max-dist", argv[arg]))
+            OPTIONS.max_dist = atoi(argv[++arg]);
+
+        else if (!strcmp("--helix-count", argv[arg]))
+            OPTIONS.helix_number = atoi(argv[++arg]);
+
+        else if (!strcmp("--helix-length", argv[arg]))
+            OPTIONS.helix_size = atoi(argv[++arg]);
+
+        else if (!strcmp("--helix-bulge", argv[arg]))
+            OPTIONS.helix_badnesses = atoi(argv[++arg]);
+
+        else if (!strcmp("-count", argv[arg]))
+            OPTIONS.count = 1;
+
+        else if (!strcmp("-i", argv[arg]))
+            OPTIONS.infile = fopen(argv[++arg], "r");
+
+        else if (!strcmp("-o", argv[arg]))
+            OPTIONS.outfile = fopen(argv[++arg], "w");
+
+        else if (!strcmp("-noML", argv[arg]))
+            OPTIONS.noML = TRUE;
+
+        else if (!strcmp("-help", argv[arg]) ||
+                 !strcmp("-h", argv[arg]))
+            print_usage();
+
+        else {
+            print("\n    Unknown option %s", argv[arg]);
+            print_usage();
+        }
+    }
+}
+
+
+int * interpreted_constraints(char *constraints)
+{
+    int i;
+    int len = strlen(constraints);
+    int *ret = calloc(sizeof(int), len);
+
+    for (i=0; i<len; i++){
+        if(constraints[i] == '.'){
+            ret[i] = -1;
+        } else if (constraints[i] == 'X') {
+            ret[i] = UNPAIRED_BASE;
+        } else if (constraints[i] == 'M') {
+            ret[i] = MODIFIED_BASE;
+        }
+    }
+    int start, end;
+    while(1){
+        end = 0;
+        while (constraints[end] != ')' && end < len){
+            end++;
+        }
+        if(end == len) break;
+        start = end;
+        while (constraints[start] != '('){
+            start--;
+        }
+        ret[start] = end;
+        ret[end] = start;
+        constraints[start] = '.';
+        constraints[end] = '.';
+    }
+
+    return ret;
+}
+
+//----------------------------- SERIALIZATION -------------------------------//
+
+// l, struct, n, intervals
+int * pack_state(state * S)
+{
+    int l, num_intervals;
+    int * out = calloc((sizeof *out), (2+(4*S->length)));
+    interval * i;
+
+    out[0] = S->length;
+
+    int j;
+    for (j=0; j<S->length; j++){
+        out[j+2] = S->structure[j];
+    }
+
+    l = S->length + 2;
+
+    for ( num_intervals = 0, i = S->intervals; i; i = i->next, num_intervals ++ ) {
+        out[l+(num_intervals*3)+0] = i->i;
+        out[l+(num_intervals*3)+1] = i->j;
+        out[l+(num_intervals*3)+2] = i->flag;
+    }
+
+    out[1] = num_intervals;
+
+    return out;
+}
+
+#if defined(_MPI)
+int *wait_for_state()
+{
+    int num_elements, * ints;
+    MPI_Status ms = {0}, out_ms = {0};
+
+    // get many ints, from MPI
+    MPI_Probe(MPI_RANK_MASTER, MPI_FIVE, MPI_COMM_WORLD, &ms);
+    MPI_Get_count(&ms, MPI_INT, &num_elements);
+    ints = malloc(sizeof(int)*num_elements);
+    MPI_Recv(ints, num_elements, MPI_INT, MPI_RANK_MASTER,
+             ms.MPI_TAG, MPI_COMM_WORLD, &out_ms);
+
+    return ints;
+}
+#endif
+
+state *interpret_message(int *ints)
+{
+    state * S = malloc(sizeof(state));
+    S->intervals = NULL;
+
+
+    S->length = ints[0];
+
+
+    S->structure = malloc((sizeof(S->structure)*S->length));
+    int i;
+    for (i=0; i<S->length; i++){
+        S->structure[i] = ints[i+2];
+    }
+
+    int num_ints = ints[1];
+
+    for (i = S->length+2+(3*(num_ints-1)); i >= S->length+2; i -= 3) {
+        make_interval(S, ints[i+0], ints[i+1], ints[i+2]);
+    }
+
+    return S;
+}
