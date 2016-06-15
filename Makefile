@@ -91,6 +91,10 @@ $(OBJDIR)/statistics.o: statistics.c statistics.h main.h
 $(OBJDIR)/unit_tests.o: unit_tests.c unit_tests.h main.h
 	$(CC) $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $<
 
+$(OBJDIR)/subopt.o: subopt.c subopt.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $<
+
+
 swellix-mpi.exe: $(OBJS)
 	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -o $@ $^ $(RNAFLAGS)
 
