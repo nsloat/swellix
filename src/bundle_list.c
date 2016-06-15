@@ -137,7 +137,6 @@ void remove_outer_pair(char* structure, int start, int end) {
 void add_dumi_node(config* seq, global* crik, char* filename) {
 	int begin, end;
 	filename_to_indices(filename, &begin, &end);
-
 	knob* dumi;
 	int16_t hlixLen = (end - begin + 1 - seq->minPairngDist) >> 1;
 
@@ -396,10 +395,9 @@ void run_sliding_windows(config* seq, global* crik) {
         for(index = 0; index < seq->strLen+1; index++) {
           int start = index-window-1;
           int stroffset = start+1 > 0 ? start+1 : 0;
-          int substrLen = window;//index-stroffset+1 > window ? window : index-stroffset+1;
+          int substrLen = index-stroffset > window ? window : index-stroffset;
           strncpy(subSeq, seq->ltr+stroffset, substrLen);
           strncpy(subMod, mods+stroffset, substrLen);
- printf("start: %i\nsubSeq: %s\nsubMod: %s\n", start, subSeq, subMod);
           slide_those_windows(subSeq, subMod, pid, start, seq->ltr, mods, window, seq->minLenOfHlix, tmm, asymmetry, seq->maxNumMismatch, _BUNDLE);
         }
 
@@ -408,7 +406,6 @@ void run_sliding_windows(config* seq, global* crik) {
 		fprintf(seq->dispFile, "Error changing to bundleDir: %s!\n", bundleDir);
 		exit(1);
 	}
-
 	system("ls > list.txt"); // get list of labeled files to read from
 
 
@@ -567,7 +564,7 @@ void make_bundles(config* seq, global* crik, char* filename) {
 
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL) {
-    printf("make_bundles infile: %s/%s\n", cwd, filename);
+    //printf("make_bundles infile: %s/%s\n", cwd, filename);
     infile = fopen(filename, "r");
   } else {
     fprintf(seq->dispFile, "Error getting current working directory while trying to open labeled files.");
