@@ -40,8 +40,8 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <time.h>
-#include "code--swellix-main.h"
-#include "code--swellix-make_bundle_list.h"
+#include "main.h"
+#include "bundle_list.h"
 #include "subopt.h"
 
 //*****************************************************************************

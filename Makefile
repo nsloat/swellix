@@ -55,7 +55,7 @@ swellix.exe: $(OBJS)
 $(OBJDIR)/main.o: main.c main.h init_general.h init_constraint.h paren_lookup_table.h component_list.h interval_lookup_table.h bundle_list.h jump_tree.h unit_tests.h close_up.h statistics.h
 	$(CC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
-$(OBJDIR)/bundle_list.o: bundle_list.c bundle_list.h main.h
+$(OBJDIR)/bundle_list.o: bundle_list.c bundle_list.h main.h subopt.h
 	$(CC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 $(OBJDIR)/close_up.o: close_up.c close_up.h main.h
