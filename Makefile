@@ -51,6 +51,7 @@ all:
 swellix.exe: $(OBJS)
 	echo objdir = $(OBJDIR)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$(CC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 $(OBJDIR)/main.o: main.c main.h init_general.h init_constraint.h paren_lookup_table.h component_list.h interval_lookup_table.h bundle_list.h jump_tree.h unit_tests.h close_up.h statistics.h
@@ -87,6 +88,42 @@ $(OBJDIR)/paren_lookup_table.o: paren_lookup_table.c paren_lookup_table.h main.h
 	$(CC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 =======
 	$(CC) $(CFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -o $@ $^ $(RNAFLAGS)
+=======
+	$(CC) $(CFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -o $@ $^ $(RNAFLAGS)
+
+$(OBJDIR)/main.o: main.c main.h init_general.h init_constraint.h paren_lookup_table.h component_list.h interval_lookup_table.h bundle_list.h jump_tree.h unit_tests.h close_up.h statistics.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS) 
+
+$(OBJDIR)/bundle_list.o: bundle_list.c bundle_list.h main.h subopt.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/close_up.o: close_up.c close_up.h main.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/component_list.o: component_list.c component_list.h main.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/init_constraint.o: init_constraint.c init_constraint.h main.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/init_general.o: init_general.c init_general.h main.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/interval_lookup_table.o: interval_lookup_table.c interval_lookup_table.h main.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/jump_tree.o: jump_tree.c jump_tree.h main.h close_up.h unit_tests.h statistics.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/main_common.o: main_common.c main.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/mpi_bundle_list.o: mpi_bundle_list.c mpi_bundle_list.h main.h bundle_list.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+
+$(OBJDIR)/paren_lookup_table.o: paren_lookup_table.c paren_lookup_table.h main.h
+	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+>>>>>>> master
 
 $(OBJDIR)/main.o: main.c main.h init_general.h init_constraint.h paren_lookup_table.h component_list.h interval_lookup_table.h bundle_list.h jump_tree.h unit_tests.h close_up.h statistics.h
 	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS) 
@@ -127,16 +164,22 @@ $(OBJDIR)/statistics.o: statistics.c statistics.h main.h
 
 $(OBJDIR)/unit_tests.o: unit_tests.c unit_tests.h main.h
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$(CC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 $(OBJDIR)/subopt.o: subopt.c subopt.h
 	$(CC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 =======
+=======
+>>>>>>> master
 	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
 
 #$(OBJDIR)/subopt.o: subopt.c subopt.h
 #	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 
 swellix-mpi.exe: $(OBJS)

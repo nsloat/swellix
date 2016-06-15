@@ -396,14 +396,20 @@ void run_sliding_windows(config* seq, global* crik) {
           int start = index-window-1;
           int stroffset = start+1 > 0 ? start+1 : 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
           int substrLen = index-stroffset > window ? window : index-stroffset;
           strncpy(subSeq, seq->ltr+stroffset, substrLen);
           strncpy(subMod, mods+stroffset, substrLen);
 =======
+=======
+>>>>>>> master
           int substrLen = window;//index-stroffset+1 > window ? window : index-stroffset+1;
           strncpy(subSeq, seq->ltr+stroffset, substrLen);
           strncpy(subMod, mods+stroffset, substrLen);
  printf("start: %i\nsubSeq: %s\nsubMod: %s\n", start, subSeq, subMod);
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
           slide_those_windows(subSeq, subMod, pid, start, seq->ltr, mods, window, seq->minLenOfHlix, tmm, asymmetry, seq->maxNumMismatch, _BUNDLE);
         }
@@ -572,7 +578,11 @@ void make_bundles(config* seq, global* crik, char* filename) {
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     //printf("make_bundles infile: %s/%s\n", cwd, filename);
+=======
+    printf("make_bundles infile: %s/%s\n", cwd, filename);
+>>>>>>> master
 =======
     printf("make_bundles infile: %s/%s\n", cwd, filename);
 >>>>>>> master
