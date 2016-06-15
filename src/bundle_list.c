@@ -330,7 +330,7 @@ void run_sliding_windows(config* seq, global* crik) {
 
 	int pidlength = sprintf(idstring, "%d", pid);
 
-	sprintf(idstring,"%s%d%s","/sliding_windows/", pid, "-seq.conf");
+	sprintf(idstring,"%s%d%s","/sliding_windows.tryingstuff/", pid, "-seq.conf");
 
 	FILE* outfile;                       // Write a .conf file for sliding windows to use
 	char outputFilename[1024];

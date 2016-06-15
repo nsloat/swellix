@@ -92,6 +92,7 @@ printf("START %i, WINDOW %i, LENGTH %i, TMMS %i, ASYMM %i, MMS %i\n", START, WIN
     if (OPTIONS.infile != stdin) fclose(OPTIONS.infile);
     if (OPTIONS.outfile != stdout) fclose(OPTIONS.outfile);
 
+    free(seq);
     if (constraints) free(constraints);
     return 0;
 }
