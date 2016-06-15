@@ -332,23 +332,6 @@ void run_sliding_windows(config* seq, global* crik) {
 
 	sprintf(idstring,"%s%d%s","/sliding_windows.tryingstuff/", pid, "-seq.conf");
 
-	FILE* outfile;                       // Write a .conf file for sliding windows to use
-	char outputFilename[1024];
-	if (getcwd(outputFilename, sizeof(outputFilename)) != NULL)
-		strcat(outputFilename, idstring);
-	else {
-		fprintf(seq->dispFile, "Error getting current working directory while trying to write file.");
-		exit(1);
-	}
-
-	outfile = fopen(outputFilename, "w");
-
-	if (outfile == NULL) {
-	  fprintf(stderr, "Can't open output file %s!\n",
-	          outputFilename);
-	  exit(1);
-	}
-
 	char mods[seq->strLen+1];
 	mods[seq->strLen] = '\0';
 
@@ -365,29 +348,12 @@ void run_sliding_windows(config* seq, global* crik) {
 	tmm = seq->maxNumMismatch;
 	asymmetry = 0;
 
-	fprintf(outfile, "SEQ = \"%s\"\nMODS = \"%s\"\nWINDOW = %d\nLENGTH = %d\nTERMINAL_MISMATCHES = %d\nASYMMETRY = %d\nMISMATCHES = %d\n", seq->ltr, mods, window, seq->minLenOfHlix, tmm, asymmetry, seq->maxNumMismatch);
-
-	fclose(outfile);
-
-	// Use system calls to run sliding windows
+	// Get ready to run sliding windows
 	char cwd[1024];
-/*	if (getcwd(cwd, sizeof(cwd)) != NULL) {
-		if (chdir(strcat(cwd, "/sliding_windows")) == -1) {
-			fprintf(seq->dispFile, "Error changing directory to %s!\n", cwd);
-			exit(1);
-		}
-	} else {
-		fprintf(seq->dispFile, "Error getting current working directory while trying to change directory to sliding_windows.");
-		exit(1);
-	}
-	char command[128];
-	sprintf(command, "%s %d%s %d %s", "./create_structures.sh", pid, "-seq.conf", pid, _BUNDLE);
-	system(command);
-*/  
 
 	char command[128];
 	sprintf(command, "mkdir %slabeled/%i", _BUNDLE, pid);
- system(command);
+        system(command);
 
         int index;
         char* subSeq = calloc(window+1, sizeof(char));
@@ -400,6 +366,9 @@ void run_sliding_windows(config* seq, global* crik) {
           strncpy(subMod, mods+stroffset, substrLen);
           slide_those_windows(subSeq, subMod, pid, start, seq->ltr, mods, window, seq->minLenOfHlix, tmm, asymmetry, seq->maxNumMismatch, _BUNDLE);
         }
+
+        free(subSeq);
+        free(subMod);
 
 	sprintf(bundleDir, "%s%s%d", _BUNDLE, "labeled/", pid);
 	if (chdir(bundleDir) == -1) {
@@ -418,10 +387,7 @@ void run_sliding_windows(config* seq, global* crik) {
 	}
 
 	bundleDir[strlen(bundleDir)-9-pidlength] = '\0';
-//	if (chdir(cwd) == -1) {
-//		fprintf(seq->dispFile, "Error changing directory to %s!\n", cwd);
-//		exit(1);
-//	}
+
 	char filename[50];
 	while (fscanf(infile, "%s", filename) != EOF) {
 		if (isalpha(filename[0]) || filename == NULL) // not a labeled file
@@ -436,14 +402,7 @@ void run_sliding_windows(config* seq, global* crik) {
 		// is a labeled file, so open it and convert text to structures
 		make_bundles(seq, crik, filename);
 	}
-//	strcat(cwd, "/");
-//	if (chdir(cwd) == -1) {
-//		fprintf(seq->dispFile, "Error changing to cwd: %s!\n", cwd);
-//		exit(1);
-//	}
-	
-//	sprintf(command, "%s%d%s", "rm ", pid, "-seq.conf");
-//	system(command);
+
 	fclose(infile);
 
 	sprintf(command, "rm -r %s%d", bundleDir, pid);
