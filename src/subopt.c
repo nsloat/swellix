@@ -5,7 +5,8 @@
 #include <ctype.h>
 #include "subopt.h"
 
-
+#if 0
+{
 #ifdef _MPI
 
 #include "mpi.h"
@@ -14,6 +15,8 @@
 int mpi_rank, mpi_size;
 
 #endif // _MPI
+}
+#endif
 
 options OPTIONS;
 char saveto[128];
