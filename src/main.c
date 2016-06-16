@@ -53,6 +53,8 @@
 //#include "mpi_make_bundle_list.h"
 #endif
 
+int rank, wsize;
+
 //*****************************************************************************
 // Function : Main
 // Caller   : none
@@ -67,9 +69,9 @@
 //          : 1. initialize_sequence_by_getting_argument() from command line
 //          : 2. initialize_sequence_by_getting_constraints() from conf file
 //*****************************************************************************
-int main(int argc, char** argv)
-{
-  int rank, wsize, start, end, span, rem;
+int main(int argc, char** argv) {
+
+  int start, end, span, rem;
 #ifdef _MPI
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
@@ -177,54 +179,6 @@ int main(int argc, char** argv)
 #endif
 
   return 0;
-/*#else // _MPI defined
-  //testing
-  MPI_Init(NULL, NULL);
-  // num processes
-  int world_size;
-  MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-  
-  // ranks of processes
-  int world_rank;
-  MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-
-  int i;
-  int window = 4;
-  int length = 14;
-  char* mpidata = NULL;//calloc(length*window+1, sizeof(char));
-  char* recvdata = calloc(window+1, sizeof(char));
-  char* gathered = NULL;//calloc(length*window+1, sizeof(char));
-  char sequence[] = "GCUCUAAAAGAGAG";
-  if(world_rank == 0) {
-    mpidata = "G   GC  GCU GCUCCUCUUCUACUAAUAAAAAAAAAAGAAGAAGAGGAGAAGAG";
-//    mpidata[0] = "G\0\0\0"; mpidata[1] = "GC\0\0"; mpidata[2] = "GCU\0"; mpidata[3] = "GCUC";
-//    mpidata[4] = "CUCU"; mpidata[5] = "UCUA"; mpidata[6] = "CUAA"; mpidata[7] = "UAAA";
-//    mpidata[8] = "AAAA"; mpidata[9] = "AAAG"; mpidata[10] = "AAGA"; mpidata[11] = "AGAG";
-//    mpidata[12] = "GAGA"; mpidata[13] = "AGAG";
-  }
-
-//  MPI_Scatter(sequence, 1, MPI_CHAR, recvdata, 1, MPI_CHAR, 0, MPI_COMM_WORLD);
-  MPI_Scatter(mpidata, window, MPI_CHAR, recvdata, window, MPI_CHAR, 0, MPI_COMM_WORLD);
-  
-  // test operation
-  
-  printf("Scatter sent %s to processor %d out of %d\n", recvdata, world_rank, world_size-1);
-
-  if(world_rank == 0) gathered = calloc(length*window + 1, sizeof(char));
-
-  MPI_Gather(recvdata, 4, MPI_CHAR, gathered, 4, MPI_CHAR, 0, MPI_COMM_WORLD);
-
-  if(world_rank == 0)
-    printf("Gather brought back %s to root %d\n", gathered, world_rank);
-
-  if(world_rank==0){
-    free(gathered);
-  }
-  free(recvdata);
-  MPI_Barrier(MPI_COMM_WORLD);
-  MPI_Finalize();
-  return 0;
-#endif // _MPI*/
 }  // end main
 
 //*****************************************************************************
@@ -236,8 +190,8 @@ int main(int argc, char** argv)
 // Return   : seq
 // Display  : error message, if any
 //*****************************************************************************
-config* initialize_sequence_by_getting_argument(int argc, char** argv)
-{
+config* initialize_sequence_by_getting_argument(int argc, char** argv) {
+
   config* seq = malloc(sizeof(config));
   int8_t arg;                                                                                                 // the index counter refering to the address of the argv[]
                                                                                                               // used to constantly check with argc
@@ -298,7 +252,9 @@ config* initialize_sequence_by_getting_argument(int argc, char** argv)
     }  // end if
   }    // end for
 
-  if(seq->maxNumMismatch >= seq->minLenOfHlix){                                                               fprintf(stderr, "Mismatch too huge. Minimum helix length '-l'  has to be larger than maximum mismatch counts '-mm'\n");
+  if(seq->maxNumMismatch >= seq->minLenOfHlix) {
+    fprintf(stderr, "Mismatch too huge. Minimum helix length '-l' "
+                    "has to be larger than maximum mismatch counts '-mm'\n");
     exit(1);
   }  // end if
 
@@ -535,9 +491,13 @@ int make_bundle_list(config* seq, global* crik)
 //          : 2nd dimension - colJ : column j, upper              "                        "
 //          : 3rd dimension - hgtK : height k, number of cmpnt types which may fit into the interval
 //*****************************************************************************
-int make_jump_tree(config* seq, global* crik, int start, int end)
-{                                                                            disp(seq,DISP_ALL,"################################################################################################  Entering 'make_jump_tree'\n");
-  local* todd = init_todd(crik);                                         disp(seq,DISP_ALL,"Recursion level starts at zero from here\n");
+int make_jump_tree(config* seq, global* crik, int start, int end) {
+  if(rank==0) {
+    disp(seq,DISP_ALL,"################################################################################################  Entering 'make_jump_tree'\n");
+    disp(seq,DISP_ALL,"Recursion level starts at zero from here\n");
+  }
+
+  local* todd = init_todd(crik);
   int16_t    i;
   int16_t    hlixBranchngIndx1 = 0;                                          // all branches of hlix are rooted (numbered) from make_jump_tree()
 
@@ -595,10 +555,11 @@ int make_jump_tree(config* seq, global* crik, int start, int end)
         }
       }
     }
-    display_components(seq, crik, 1);
+    if(rank==0) {
+      display_components(seq, crik, 1);
 //	  printf("# of components in cmpntList after adding bundles: %d\n", (int)crik->numCmpnt);
-    disp(seq,DISP_LV1,"# of components after adding bundles: %d\n",(int)crik->numCmpnt);
-//	  printf("main line 472 crik->numCmpntTypOcupid = %d\n", crik->numCmpntTypOcupid);
+      disp(seq,DISP_LV1,"# of components after adding bundles: %d\n",(int)crik->numCmpnt);
+    }
     // reset the component list occupied type list
     crik->numCmpntTypOcupid = 0;
     for (j = 0; j < seq->strLen; j++) {
@@ -607,35 +568,31 @@ int make_jump_tree(config* seq, global* crik, int start, int end)
         crik->numCmpntTypOcupid++;
       }
     }
-//	  printf("main line 481 crik->numCmpntTypOcupid = %d\n", crik->numCmpntTypOcupid);
   }
 
   int keepgoing;
 
-  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++){                            // scan thru the whole cmpnt list
-    todd->cmpntLLCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;  // grab one component on the component type indicated by crik->cmpntListOcupidTyp[i]
+  // scan thru the whole cmpnt list
+  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
+    // grab one component on the component type indicated by crik->cmpntListOcupidTyp[i]
+    todd->cmpntLLCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
     keepgoing = 1;
 
-    if(time_to_quit(seq, todd))                                        // check if it's worth it to go thru the rest of the components
+    // check if it's worth it to go thru the rest of the components
+    if(time_to_quit(seq, todd))
       keepgoing = 0;
     else if(keepgoing)
-      while(todd->cmpntLLCursr){                                             disp(seq,DISP_ALL,"at 'make_jump_tree' while loop, lvl 0 hlix selected\n");
-        hlixBranchngIndx1++;                                                 disp(seq,DISP_ALL,"{%2d-%-2d{    }%2d-%-2d}\n", todd->cmpntLLCursr->opnBrsOutIndx, todd->cmpntLLCursr->opnBrsInnIndx, todd->cmpntLLCursr->closeBrsInnIndx, todd->cmpntLLCursr->closeBrsOutIndx);
+      while(todd->cmpntLLCursr) {
+        disp(seq,DISP_ALL,"at 'make_jump_tree' while loop, lvl 0 hlix selected\n");
+        disp(seq,DISP_ALL,"{%2d-%-2d{    }%2d-%-2d}\n", todd->cmpntLLCursr->opnBrsOutIndx, 
+                                                        todd->cmpntLLCursr->opnBrsInnIndx, 
+                                                        todd->cmpntLLCursr->closeBrsInnIndx, 
+                                                        todd->cmpntLLCursr->closeBrsOutIndx);
+        hlixBranchngIndx1++;
         clear_old_hlix_link(crik);
 
-      	  /*
-          // If bundling is on, check to see if component length is < max bundle len and skip if it is
-          if (seq->bundle) {
-        	  int len = todd->cmpntLLCursr->closeBrsOutIndx - todd->cmpntLLCursr->opnBrsOutIndx + 1;
-        	  int maxBundleLen = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 4) - 1;
-        	  if (len <= maxBundleLen && !bundle_is_available(seq, crik, todd)) {
-        		  todd->cmpntLLCursr = todd->cmpntLLCursr->cmpntListNext;
-        		  continue;
-        	  }
-          }
-          */
-
-        take_cmpnt_list_normal_path(seq, crik, todd, hlixBranchngIndx1);    // from here, a complex series of recursion starts here    <----- CORE OF SWELLIX
+        // from here, a complex series of recursion starts here    <----- CORE OF SWELLIX
+        take_cmpnt_list_normal_path(seq, crik, todd, hlixBranchngIndx1);
 
         todd->RSTO = NULL;
 
