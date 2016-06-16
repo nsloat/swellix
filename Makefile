@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-CC = /usr/lib64/openmpi/bin/mpi#mpicc
+myCC = mpicc
 
 EXECUTABLE=swellix.exe
 
@@ -22,20 +22,23 @@ OBJS = $(FILES:.c=.o)
 
 OBJDIR=$(EXECDIR)src
 
-export MPICC  = mpicc
-MPIFLAGS = -D_MPI
+#export MPICC  = mpicc
+MPIFLAGS =
+ifeq (mpicc, $(myCC))
+MPIFLAGS += -D_MPI
+endif
 #MPIRUN = /usr/mpi/gcc/mvapich2-2.1/bin/mpirun_rsh
 #CC = GNU
-export MPI_HARDWARE=ib
-export MPI_SOFTWARE=openmpi
-export MPI_COMPILER=intel
-CFLAGS=-g -fPIC
+#export MPI_HARDWARE=ib
+#export MPI_SOFTWARE=openmpi
+#export MPI_COMPILER=intel
+CFLAGS= #-g -fPIC# -fopenmp
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
 
 
-RNAFLAGS=-L$(LIBDIR) -lRNA -lgomp -lm -I$(INCLUDEDIR) -I$(INCLUDEDIR)ViennaRNA -D_PARAM='"$(PARAMFILE)"'
+RNAFLAGS=-L$(LIBDIR) -lRNA -lm -I$(INCLUDEDIR) -I$(INCLUDEDIR)ViennaRNA -D_PARAM='"$(PARAMFILE)"'
 
 BUNDLINGFLAG=-D_BUNDLE='"$(BUNDLINGDIRECTORY)"'
 
@@ -46,56 +49,56 @@ all:
 	./configure $(RNACONF); \
 	make; \
 	make install
-	$(CC) -g -o exe--swellix $(CFILES) $(RNAFLAGS) -W -Wall -g3 -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
+	$(myCC) -g -o exe--swellix $(CFILES) $(RNAFLAGS) -W -Wall -g3 -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 swellix.exe: $(OBJS)
 	echo objdir = $(OBJDIR)
-	$(CC) $(CFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -o $@ $^ $(RNAFLAGS)
+	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 $(OBJDIR)/main.o: main.c main.h init_general.h init_constraint.h paren_lookup_table.h component_list.h interval_lookup_table.h bundle_list.h jump_tree.h unit_tests.h close_up.h statistics.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS) 
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/bundle_list.o: bundle_list.c bundle_list.h main.h subopt.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/close_up.o: close_up.c close_up.h main.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/component_list.o: component_list.c component_list.h main.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/init_constraint.o: init_constraint.c init_constraint.h main.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/init_general.o: init_general.c init_general.h main.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/interval_lookup_table.o: interval_lookup_table.c interval_lookup_table.h main.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/jump_tree.o: jump_tree.c jump_tree.h main.h close_up.h unit_tests.h statistics.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/main_common.o: main_common.c main.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/mpi_bundle_list.o: mpi_bundle_list.c mpi_bundle_list.h main.h bundle_list.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/paren_lookup_table.o: paren_lookup_table.c paren_lookup_table.h main.h
-	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 $(OBJDIR)/statistics.o: statistics.c statistics.h main.h
-	$(CC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) 
 
 $(OBJDIR)/unit_tests.o: unit_tests.c unit_tests.h main.h
-	$(CC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 $(OBJDIR)/subopt.o: subopt.c subopt.h
-	$(CC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
+	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 swellix-mpi.exe: $(OBJS)
-	$(CC) -o $@ $^ $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) $(RNAFLAGS)
+	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 vienna:
 #	cd viennabuild; \
