@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-myCC = gcc
+myCC = gcc#mpicc
 
 EXECUTABLE=swellix.exe
 
@@ -25,7 +25,7 @@ OBJDIR=$(EXECDIR)src
 export MPICC  = mpicc
 MPIFLAGS = #-D_MPI
 #MPIRUN = /usr/mpi/gcc/mvapich2-2.1/bin/mpirun_rsh
-CC = intel
+#CC = intel
 export MPI_HARDWARE=ib
 export MPI_SOFTWARE=openmpi
 export MPI_COMPILER=intel

@@ -99,7 +99,7 @@ int slide_those_windows(char* subSeq,
     if (constraints) free(constraints);
     return 0;
 }
-
+#if 0
 #ifdef _MPI
 void pstart(char *seq, int *constraints)
 {
@@ -121,7 +121,7 @@ void pstart(char *seq, int *constraints)
     }
 }
 #endif // _MPI
-
+#endif
 void start(char *seq, int *constraints)
 {
     int len = strlen(seq);
@@ -679,7 +679,7 @@ int * pack_state(state * S)
 
     return out;
 }
-
+#if 0
 #if defined(_MPI)
 int *wait_for_state()
 {
@@ -696,7 +696,7 @@ int *wait_for_state()
     return ints;
 }
 #endif
-
+#endif
 state *interpret_message(int *ints)
 {
     state * S = malloc(sizeof(state));

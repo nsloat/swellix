@@ -53,7 +53,7 @@
 //#include "mpi_make_bundle_list.h"
 #endif
 
-int rank, wsize;
+//int rank, wsize;
 
 //*****************************************************************************
 // Function : Main
@@ -71,7 +71,7 @@ int rank, wsize;
 //*****************************************************************************
 int main(int argc, char** argv) {
 
-  int start, end, span, rem;
+  int rank, wsize, start, end, span, rem;
 #ifdef _MPI
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
@@ -492,10 +492,10 @@ int make_bundle_list(config* seq, global* crik)
 //          : 3rd dimension - hgtK : height k, number of cmpnt types which may fit into the interval
 //*****************************************************************************
 int make_jump_tree(config* seq, global* crik, int start, int end) {
-  if(rank==0) {
+//  if(rank==0) {
     disp(seq,DISP_ALL,"################################################################################################  Entering 'make_jump_tree'\n");
     disp(seq,DISP_ALL,"Recursion level starts at zero from here\n");
-  }
+//  }
 
   local* todd = init_todd(crik);
   int16_t    i;
@@ -555,11 +555,11 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
         }
       }
     }
-    if(rank==0) {
+//    if(rank==0) {
       display_components(seq, crik, 1);
 //	  printf("# of components in cmpntList after adding bundles: %d\n", (int)crik->numCmpnt);
       disp(seq,DISP_LV1,"# of components after adding bundles: %d\n",(int)crik->numCmpnt);
-    }
+//   }
     // reset the component list occupied type list
     crik->numCmpntTypOcupid = 0;
     for (j = 0; j < seq->strLen; j++) {
