@@ -8,10 +8,7 @@
 
 #ifdef _MPI
 
-#include "mpi.h"
-#define MPI_RANK_MASTER (0)
-#define MPI_FIVE (6)
-int mpi_rank, mpi_size;
+#include <mpi.h>
 
 #endif // _MPI
 
@@ -29,8 +26,18 @@ int ASYMMETRY;
 int MISMATCHES;
 
 
-int slide_those_windows(char* subSeq, char* subMod, int pid, int startindex, char* sequence, char* mods, int window, int minHelixLEN, int tmms, int asymm, int maxNumMMs, char* bundledir)
-{
+int slide_those_windows(char* subSeq, 
+                        char* subMod, 
+                        int pid, 
+                        int startindex, 
+                        char* sequence, 
+                        char* mods, 
+                        int window, 
+                        int minHelixLEN, 
+                        int tmms, 
+                        int asymm, 
+                        int maxNumMMs, 
+                        char* bundledir) {
     // This series of assigments is guaranteed input, and the order in which these parameters are passed to the program 
     // is a fixed one. Therefore, hardcoded access of the program argv input is acceptable. 
     // These parameters are a direct result of copying the label.c code into this file, so they could be more efficiently integrated
@@ -66,7 +73,7 @@ int slide_those_windows(char* subSeq, char* subMod, int pid, int startindex, cha
     } else {
         constraints = NULL;
     }
-
+#if 0
 #ifdef _MPI
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &mpi_rank);
@@ -80,7 +87,7 @@ int slide_those_windows(char* subSeq, char* subMod, int pid, int startindex, cha
     //print( "%s\n", seq);
     start(seq, constraints);
 #endif // _MPI
-
+#endif
     if (OPTIONS.count){
         //print( "%d\n", OPTIONS.count);
     }
@@ -147,7 +154,7 @@ void refine_state(state *s){
     // rearrange_intervals(s);
 
     OPTIONS.statecount ++;
-
+#if 0
 #if defined(_MPI)
     // This is a poor condition. Be smarter.
     if(MPI_RANK_MASTER==mpi_rank && OPTIONS.statecount-1 > 0 && OPTIONS.statecount-1 < mpi_size) {
@@ -160,8 +167,10 @@ void refine_state(state *s){
         refine_state_locally(s);
     }
 #else
+#endif
+#endif
     refine_state_locally(s);
-#endif // _MPI
+//#endif // _MPI
 }
 
 
@@ -535,10 +544,11 @@ void print_soln(state *s){
         if (OPTIONS.count%10000 == 0) print( "%d \n", OPTIONS.count);
         return;
     }
-
+#if 0
 #if defined(_MPI)
     print( "%d: ", mpi_rank);
 #endif // _MPI
+#endif
 
     int i;
     char a[s->length+1];

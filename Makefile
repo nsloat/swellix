@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-CC = gcc #mpicc
+CC = mpicc
 
 EXECUTABLE=swellix.exe
 
@@ -23,13 +23,13 @@ OBJS = $(FILES:.c=.o)
 OBJDIR=$(EXECDIR)src
 
 export MPICC  = mpicc
-MPIFLAGS = #-D_MPI
+MPIFLAGS = -D_MPI
 #MPIRUN = /usr/mpi/gcc/mvapich2-2.1/bin/mpirun_rsh
 #CC = GNU
 export MPI_HARDWARE=ib
 export MPI_SOFTWARE=openmpi
 export MPI_COMPILER=intel
-CFLAGS=-g -fPIC -fopenmp
+CFLAGS=-W#-g -fPIC -fopenmp
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
@@ -41,12 +41,11 @@ BUNDLINGFLAG=-D_BUNDLE='"$(BUNDLINGDIRECTORY)"'
 
 VIENNADIRS=`ls -I rna\_turner2004\.par $(EXECDIR)viennabuild`
 
-all:
+vienna:
 	cd ViennaRNA-2.2.5; \
 	./configure $(RNACONF); \
 	make; \
 	make install
-	$(CC) -g -o exe--swellix $(CFILES) $(RNAFLAGS) -W -Wall -g3 -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 swellix.exe: $(OBJS)
 	echo objdir = $(OBJDIR)
@@ -97,16 +96,16 @@ $(OBJDIR)/subopt.o: subopt.c subopt.h
 swellix-mpi.exe: $(OBJS)
 	$(CC) -o $@ $^ $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) $(RNAFLAGS)
 
-vienna:
+#vienna:
 #	cd viennabuild; \
 #	rm -r $(VIENNADIRS)
 #	cd ViennaRNA-2.2.5; \
 #	make clean; \
 #	make distclean
-	cd ViennaRNA-2.2.5; \
-	./configure $(RNACONF); \
-	make; \
-	make install
+#	cd ViennaRNA-2.2.5; \
+#	./configure $(RNACONF); \
+#	make; \
+#	make install
 
 clean:
 	rm -f exe--swellix exe--swellix.mpi exe--swellix-tests
