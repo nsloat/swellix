@@ -1,5 +1,5 @@
 /*****************************************************************************************************************************************************
- *****************************************************************************************************************************************************
+*****************************************************************************************************************************************************
  *****************************************************************************************************************************************************
       Program : Swellix (Make Bundle List2 - created by Isaac) - c file
       Purpose : Ryan's RNA Sequence Folding Algorithm (modified Crumple)
@@ -330,8 +330,6 @@ void run_sliding_windows(config* seq, global* crik) {
 
 	int pidlength = sprintf(idstring, "%d", pid);
 
-	sprintf(idstring,"%s%d%s","/sliding_windows.tryingstuff/", pid, "-seq.conf");
-
 	char mods[seq->strLen+1];
 	mods[seq->strLen] = '\0';
 
@@ -358,6 +356,7 @@ void run_sliding_windows(config* seq, global* crik) {
         int index;
         char* subSeq = calloc(window+1, sizeof(char));
         char* subMod = calloc(window+1, sizeof(char));
+#pragma omp parallel for private(subSeq, subMod)
         for(index = 0; index < seq->strLen+1; index++) {
           int start = index-window-1;
           int stroffset = start+1 > 0 ? start+1 : 0;
@@ -370,7 +369,7 @@ void run_sliding_windows(config* seq, global* crik) {
         free(subSeq);
         free(subMod);
 
-	sprintf(bundleDir, "%s%s%d", _BUNDLE, "labeled/", pid);
+	sprintf(bundleDir, "%slabeled/%d", _BUNDLE, pid);
 	if (chdir(bundleDir) == -1) {
 		fprintf(seq->dispFile, "Error changing to bundleDir: %s!\n", bundleDir);
 		exit(1);

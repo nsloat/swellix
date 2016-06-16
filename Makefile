@@ -29,7 +29,7 @@ MPIFLAGS = #-D_MPI
 export MPI_HARDWARE=ib
 export MPI_SOFTWARE=openmpi
 export MPI_COMPILER=intel
-CFLAGS=-g -fPIC
+CFLAGS=-g -fPIC -fopenmp
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
