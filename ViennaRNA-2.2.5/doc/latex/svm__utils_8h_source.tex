@@ -1,0 +1,40 @@
+\hypertarget{svm__utils_8h_source}{}\section{svm\+\_\+utils.\+h}
+\label{svm__utils_8h_source}\index{Vienna\+R\+N\+A/svm\+\_\+utils.\+h@{Vienna\+R\+N\+A/svm\+\_\+utils.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_SUBOPT\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_SUBOPT\_H}
+00003 
+00004 \textcolor{preprocessor}{#include "svm.h"}
+00005 
+00006 \textcolor{keyword}{extern}  \textcolor{keywordtype}{char} *avg\_model\_string;
+00007 \textcolor{keyword}{extern}  \textcolor{keywordtype}{char} *sd\_model\_string;
+00008 
+00009 \textcolor{keywordtype}{float}     get\_z(\textcolor{keywordtype}{char} *sequence,
+00010                 \textcolor{keywordtype}{double} energy);
+00011 \textcolor{keywordtype}{double}    avg\_regression (\textcolor{keywordtype}{int} N,
+00012                           \textcolor{keywordtype}{int} A,
+00013                           \textcolor{keywordtype}{int} C,
+00014                           \textcolor{keywordtype}{int} G,
+00015                           \textcolor{keywordtype}{int} T,
+00016                           \textcolor{keyword}{struct} svm\_model *avg\_model,
+00017                           \textcolor{keywordtype}{int} *info );
+00018 \textcolor{keywordtype}{double}    sd\_regression  (\textcolor{keywordtype}{int} N,
+00019                           \textcolor{keywordtype}{int} A,
+00020                           \textcolor{keywordtype}{int} C,
+00021                           \textcolor{keywordtype}{int} G,
+00022                           \textcolor{keywordtype}{int} T,
+00023                           \textcolor{keyword}{struct} svm\_model  *sd\_model);
+00024 \textcolor{keywordtype}{double}    minimal\_sd     (\textcolor{keywordtype}{int} N,
+00025                           \textcolor{keywordtype}{int} A,
+00026                           \textcolor{keywordtype}{int} C,
+00027                           \textcolor{keywordtype}{int} G,
+00028                           \textcolor{keywordtype}{int} T);
+00029 \textcolor{keyword}{struct }svm\_model *svm\_load\_model\_string(\textcolor{keywordtype}{char} *modelString);
+00030 \textcolor{keywordtype}{int}       *get\_seq\_composition( \textcolor{keywordtype}{short} *S,
+00031                                 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} start,
+00032                                 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} stop,
+00033                                 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} length);
+00034 
+00035 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

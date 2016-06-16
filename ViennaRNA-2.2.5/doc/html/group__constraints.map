@@ -1,0 +1,7 @@
+<map id="Constraining the Secondary Structure Predictions and Evaluations" name="Constraining the Secondary Structure Predictions and Evaluations">
+<area shape="rect" id="node1" href="$group__perturbation.html" title="Find a vector of perturbation energies that minimizes the discripancies between predicted and observe..." alt="" coords="240,5,409,47"/>
+<area shape="rect" id="node3" href="$group__SHAPE__reactivities.html" title="Incorporate SHAPE reactivity structure probing data into the folding recursions by means of soft cons..." alt="" coords="251,71,398,112"/>
+<area shape="rect" id="node4" href="$group__ligands.html" title="This module covers functions that enable the incorporation of ligand binding free energies to specifi..." alt="" coords="236,137,413,193"/>
+<area shape="rect" id="node5" href="$group__soft__constraints.html" title="Functions and data structures for secondary structure soft constraints. " alt="" coords="266,217,383,243"/>
+<area shape="rect" id="node6" href="$group__hard__constraints.html" title="This module covers all functionality for hard constraints in secondary structure prediction. " alt="" coords="264,267,385,294"/>
+</map>

@@ -1,0 +1,120 @@
+\hypertarget{alphabet_8h}{}\section{Vienna\+R\+N\+A/alphabet.h File Reference}
+\label{alphabet_8h}\index{Vienna\+R\+N\+A/alphabet.\+h@{Vienna\+R\+N\+A/alphabet.\+h}}
+
+
+Functions to process, convert, and generally handle different nucleotide and/or base pair alphabets.  
+
+
+Include dependency graph for alphabet.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{alphabet_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{alphabet_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{alphabet_8h_a51a9e86a5f731f5f2f5584ee67cee4a8}{vrna\+\_\+ptypes} (const short $\ast$S, \hyperlink{group__model__details_ga1f8a10e12a0a1915f2a4eff0b28ea17c}{vrna\+\_\+md\+\_\+t} $\ast$md)
+\begin{DoxyCompactList}\small\item\em Get an array of the numerical encoding for each possible base pair (i,j) \end{DoxyCompactList}\item 
+\hypertarget{alphabet_8h_a636e7d6f888fd639587296a5eddea660}{}short $\ast$ \hyperlink{alphabet_8h_a636e7d6f888fd639587296a5eddea660}{vrna\+\_\+seq\+\_\+encode} (const char $\ast$sequence, \hyperlink{group__model__details_ga1f8a10e12a0a1915f2a4eff0b28ea17c}{vrna\+\_\+md\+\_\+t} $\ast$md)\label{alphabet_8h_a636e7d6f888fd639587296a5eddea660}
+
+\begin{DoxyCompactList}\small\item\em Get a numerical representation of the nucleotide sequence. \end{DoxyCompactList}\item 
+\hypertarget{alphabet_8h_a3cd79d21d53248ad2634c1c0d43e97d7}{}short $\ast$ \hyperlink{alphabet_8h_a3cd79d21d53248ad2634c1c0d43e97d7}{vrna\+\_\+seq\+\_\+encode\+\_\+simple} (const char $\ast$sequence, \hyperlink{group__model__details_ga1f8a10e12a0a1915f2a4eff0b28ea17c}{vrna\+\_\+md\+\_\+t} $\ast$md)\label{alphabet_8h_a3cd79d21d53248ad2634c1c0d43e97d7}
+
+\begin{DoxyCompactList}\small\item\em Get a numerical representation of the nucleotide sequence (simple version) \end{DoxyCompactList}\item 
+int \hyperlink{alphabet_8h_ac12bf00123f88621c9be847b0879c1fb}{vrna\+\_\+nucleotide\+\_\+encode} (char c, \hyperlink{group__model__details_ga1f8a10e12a0a1915f2a4eff0b28ea17c}{vrna\+\_\+md\+\_\+t} $\ast$md)
+\begin{DoxyCompactList}\small\item\em Encode a nucleotide character to numerical value. \end{DoxyCompactList}\item 
+char \hyperlink{alphabet_8h_a48ef585e697be9c8a08ed68c655e29b6}{vrna\+\_\+nucleotide\+\_\+decode} (int enc, \hyperlink{group__model__details_ga1f8a10e12a0a1915f2a4eff0b28ea17c}{vrna\+\_\+md\+\_\+t} $\ast$md)
+\begin{DoxyCompactList}\small\item\em Decode a numerical representation of a nucleotide back into nucleotide alphabet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+
+\subsection{Detailed Description}
+Functions to process, convert, and generally handle different nucleotide and/or base pair alphabets. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{alphabet_8h_a51a9e86a5f731f5f2f5584ee67cee4a8}{}\index{alphabet.\+h@{alphabet.\+h}!vrna\+\_\+ptypes@{vrna\+\_\+ptypes}}
+\index{vrna\+\_\+ptypes@{vrna\+\_\+ptypes}!alphabet.\+h@{alphabet.\+h}}
+\subsubsection[{vrna\+\_\+ptypes}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ vrna\+\_\+ptypes (
+\begin{DoxyParamCaption}
+\item[{const short $\ast$}]{S, }
+\item[{{\bf vrna\+\_\+md\+\_\+t} $\ast$}]{md}
+\end{DoxyParamCaption}
+)}\label{alphabet_8h_a51a9e86a5f731f5f2f5584ee67cee4a8}
+
+
+Get an array of the numerical encoding for each possible base pair (i,j) 
+
+\begin{DoxyNote}{Note}
+This array is always indexed in column-\/wise order, in contrast to previously different indexing between mfe and pf variants!
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__utils_ga89ebc69c52fa0c78c9e1974b0017746b}{vrna\+\_\+idx\+\_\+col\+\_\+wise()}, \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} 
+\end{DoxySeeAlso}
+\hypertarget{alphabet_8h_ac12bf00123f88621c9be847b0879c1fb}{}\index{alphabet.\+h@{alphabet.\+h}!vrna\+\_\+nucleotide\+\_\+encode@{vrna\+\_\+nucleotide\+\_\+encode}}
+\index{vrna\+\_\+nucleotide\+\_\+encode@{vrna\+\_\+nucleotide\+\_\+encode}!alphabet.\+h@{alphabet.\+h}}
+\subsubsection[{vrna\+\_\+nucleotide\+\_\+encode}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+nucleotide\+\_\+encode (
+\begin{DoxyParamCaption}
+\item[{char}]{c, }
+\item[{{\bf vrna\+\_\+md\+\_\+t} $\ast$}]{md}
+\end{DoxyParamCaption}
+)}\label{alphabet_8h_ac12bf00123f88621c9be847b0879c1fb}
+
+
+Encode a nucleotide character to numerical value. 
+
+This function encodes a nucleotide character to its numerical representation as required by many functions in R\+N\+Alib.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{alphabet_8h_a48ef585e697be9c8a08ed68c655e29b6}{vrna\+\_\+nucleotide\+\_\+decode()}, \hyperlink{alphabet_8h_a636e7d6f888fd639587296a5eddea660}{vrna\+\_\+seq\+\_\+encode()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The nucleotide character to encode \\
+\hline
+{\em md} & The model details that determine the kind of encoding \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The encoded nucleotide 
+\end{DoxyReturn}
+\hypertarget{alphabet_8h_a48ef585e697be9c8a08ed68c655e29b6}{}\index{alphabet.\+h@{alphabet.\+h}!vrna\+\_\+nucleotide\+\_\+decode@{vrna\+\_\+nucleotide\+\_\+decode}}
+\index{vrna\+\_\+nucleotide\+\_\+decode@{vrna\+\_\+nucleotide\+\_\+decode}!alphabet.\+h@{alphabet.\+h}}
+\subsubsection[{vrna\+\_\+nucleotide\+\_\+decode}]{\setlength{\rightskip}{0pt plus 5cm}char vrna\+\_\+nucleotide\+\_\+decode (
+\begin{DoxyParamCaption}
+\item[{int}]{enc, }
+\item[{{\bf vrna\+\_\+md\+\_\+t} $\ast$}]{md}
+\end{DoxyParamCaption}
+)}\label{alphabet_8h_a48ef585e697be9c8a08ed68c655e29b6}
+
+
+Decode a numerical representation of a nucleotide back into nucleotide alphabet. 
+
+This function decodes a numerical representation of a nucleotide character back into nucleotide alphabet
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{alphabet_8h_ac12bf00123f88621c9be847b0879c1fb}{vrna\+\_\+nucleotide\+\_\+encode()}, \hyperlink{alphabet_8h_a636e7d6f888fd639587296a5eddea660}{vrna\+\_\+seq\+\_\+encode()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em enc} & The encoded nucleotide \\
+\hline
+{\em md} & The model details that determine the kind of decoding \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The decoded nucleotide character 
+\end{DoxyReturn}

@@ -1,0 +1,27 @@
+\hypertarget{duplex_8h_source}{}\section{duplex.\+h}
+\label{duplex_8h_source}\index{Vienna\+R\+N\+A/duplex.\+h@{Vienna\+R\+N\+A/duplex.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_DUPLEX\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_DUPLEX\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <\hyperlink{data__structures_8h}{ViennaRNA/data\_structures.h}>}
+00005 
+00012 \hyperlink{group__data__structures_structduplexT}{duplexT} duplexfold( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *s1,
+00013                     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *s2);
+00014 
+00015 \hyperlink{group__data__structures_structduplexT}{duplexT} *duplex\_subopt( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *s1,
+00016                         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *s2,
+00017                         \textcolor{keywordtype}{int} delta,
+00018                         \textcolor{keywordtype}{int} w);
+00019 
+00020 \hyperlink{group__data__structures_structduplexT}{duplexT} aliduplexfold(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *s1[],
+00021                       \textcolor{keyword}{const} \textcolor{keywordtype}{char} *s2[]);
+00022 
+00023 \hyperlink{group__data__structures_structduplexT}{duplexT} *aliduplex\_subopt(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *s1[],
+00024                           \textcolor{keyword}{const} \textcolor{keywordtype}{char} *s2[],
+00025                           \textcolor{keywordtype}{int} delta,
+00026                           \textcolor{keywordtype}{int} w);
+00027 
+00028 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

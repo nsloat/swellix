@@ -1,0 +1,14 @@
+<map id="ViennaRNA/cofold.h" name="ViennaRNA/cofold.h">
+<area shape="rect" id="node2" href="$data__structures_8h.html" title="ViennaRNA/data_structures.h" alt="" coords="435,155,631,181"/>
+<area shape="rect" id="node6" href="$params_8h.html" title="ViennaRNA/params.h" alt="" coords="68,229,217,256"/>
+<area shape="rect" id="node14" href="$mfe_8h.html" title="MFE calculations for single RNA sequences. " alt="" coords="520,80,648,107"/>
+<area shape="rect" id="node3" href="$energy__const_8h.html" title="ViennaRNA/energy_const.h" alt="" coords="171,311,355,338"/>
+<area shape="rect" id="node5" href="$model_8h.html" title="The model details data structure and its corresponding modifiers. " alt="" coords="5,311,147,338"/>
+<area shape="rect" id="node7" href="$dp__matrices_8h.html" title="ViennaRNA/dp_matrices.h" alt="" coords="293,229,470,256"/>
+<area shape="rect" id="node8" href="$constraints_8h.html" title="Functions and data structures for constraining secondary structure predictions and evaluation..." alt="" coords="647,229,817,256"/>
+<area shape="rect" id="node9" href="$constraints__hard_8h.html" title="Functions and data structures for handling of secondary structure hard constraints. " alt="" coords="379,304,538,345"/>
+<area shape="rect" id="node10" href="$constraints__soft_8h.html" title="Functions and data structures for secondary structure soft constraints. " alt="" coords="562,304,721,345"/>
+<area shape="rect" id="node11" href="$constraints__SHAPE_8h.html" title="This module provides function to incorporate SHAPE reactivity data into the folding recursions by mea..." alt="" coords="745,304,903,345"/>
+<area shape="rect" id="node12" href="$perturbation__fold_8h.html" title="Find a vector of perturbation energies that minimizes the discripancies between predicted and observe..." alt="" coords="928,304,1091,345"/>
+<area shape="rect" id="node13" href="$ligand_8h.html" title="Functions for incorporation of ligands binding to haipirn and interior loop motifs. " alt="" coords="1115,311,1255,338"/>
+</map>

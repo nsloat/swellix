@@ -1,0 +1,1030 @@
+\hypertarget{group__eval}{}\section{Free Energy Evaluation for given Sequence / Structure Pairs}
+\label{group__eval}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+
+
+This module contains all functions and variables related to energy evaluation of sequence/structure pairs.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, const char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_ga6cea75c0eb9857fb59172be54cab09e0}{vrna\+\_\+eval\+\_\+covar\+\_\+structure} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, const char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Calculate the pseudo energy derived by the covariance scores of a set of aligned sequences. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_gab6930f446d04761454d033680fbf7909}{vrna\+\_\+eval\+\_\+structure\+\_\+simple} (const char $\ast$string, const char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, const char $\ast$structure, F\+I\+L\+E $\ast$file)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A and print contributions on a per-\/loop base. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_ga4c2895a7dcd756ef2dc7f76db7c4c53e}{vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose} (const char $\ast$string, const char $\ast$structure, F\+I\+L\+E $\ast$file)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A and print contributions per loop. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, const short $\ast$pt)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga0bba59b4d6e53461088666ff4aece7b0}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple} (const char $\ast$string, const short $\ast$pt)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, const short $\ast$pt, F\+I\+L\+E $\ast$file)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga76e152ee9a02be23da14cdddf52b4e44}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose} (const char $\ast$string, const short $\ast$pt, F\+I\+L\+E $\ast$file)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga730ba4df55c02fd530a0cddd49faf760}{vrna\+\_\+eval\+\_\+loop\+\_\+pt} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, int i, const short $\ast$pt)
+\begin{DoxyCompactList}\small\item\em Calculate energy of a loop. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_gaff1b9e4f4d17b434b0a822fe783672c1}{vrna\+\_\+eval\+\_\+move} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, const char $\ast$structure, int m1, int m2)
+\begin{DoxyCompactList}\small\item\em Calculate energy of a move (closing or opening of a base pair) \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga123dabc119ea98c968a5e903cc46f0fb}{vrna\+\_\+eval\+\_\+move\+\_\+pt} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, short $\ast$pt, int m1, int m2)
+\begin{DoxyCompactList}\small\item\em Calculate energy of a move (closing or opening of a base pair) \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_gaf93986cb3cb29770ec9cca69c9fab8cf}{energy\+\_\+of\+\_\+structure} (const char $\ast$string, const char $\ast$structure, int verbosity\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A using global model detail settings. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_gaf9d064d3c496de42eca6734a96fd2090}{energy\+\_\+of\+\_\+struct\+\_\+par} (const char $\ast$string, const char $\ast$structure, \hyperlink{group__energy__parameters_ga8a69ca7d787e4fd6079914f5343a1f35}{vrna\+\_\+param\+\_\+t} $\ast$parameters, int verbosity\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_gaeb14f3664aec67fc03268ac75253f0f8}{energy\+\_\+of\+\_\+circ\+\_\+structure} (const char $\ast$string, const char $\ast$structure, int verbosity\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded circular R\+N\+A. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_ga3f01f9744ba6a40555eb4d81fc77f6df}{energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par} (const char $\ast$string, const char $\ast$structure, \hyperlink{group__energy__parameters_ga8a69ca7d787e4fd6079914f5343a1f35}{vrna\+\_\+param\+\_\+t} $\ast$parameters, int verbosity\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded circular R\+N\+A. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga8831445966b761417e713360791299d8}{energy\+\_\+of\+\_\+structure\+\_\+pt} (const char $\ast$string, short $\ast$ptable, short $\ast$s, short $\ast$s1, int verbosity\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga49acb3d5627dc6823a7ce12d116d4c69}{energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par} (const char $\ast$string, short $\ast$ptable, short $\ast$s, short $\ast$s1, \hyperlink{group__energy__parameters_ga8a69ca7d787e4fd6079914f5343a1f35}{vrna\+\_\+param\+\_\+t} $\ast$parameters, int verbosity\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of an already folded R\+N\+A. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_ga539ecaed89730f7644c202f304d7529b}{energy\+\_\+of\+\_\+move} (const char $\ast$string, const char $\ast$structure, int m1, int m2)
+\begin{DoxyCompactList}\small\item\em Calculate energy of a move (closing or opening of a base pair) \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga49e0ee561be69faf0568213546f6a53f}{energy\+\_\+of\+\_\+move\+\_\+pt} (short $\ast$pt, short $\ast$s, short $\ast$s1, int m1, int m2)
+\begin{DoxyCompactList}\small\item\em Calculate energy of a move (closing or opening of a base pair) \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_ga507d4fd93f4b398d793ba2402731388d}{loop\+\_\+energy} (short $\ast$ptable, short $\ast$s, short $\ast$s1, int i)
+\begin{DoxyCompactList}\small\item\em Calculate energy of a loop. \end{DoxyCompactList}\item 
+float \hyperlink{group__eval_gac2b37fea2145c94d925a3f33378ef87b}{energy\+\_\+of\+\_\+struct} (const char $\ast$string, const char $\ast$structure)
+\item 
+int \hyperlink{group__eval_ga27ce6f68512d43bf1fe14a06c9d76d5c}{energy\+\_\+of\+\_\+struct\+\_\+pt} (const char $\ast$string, short $\ast$ptable, short $\ast$s, short $\ast$s1)
+\item 
+float \hyperlink{group__eval_ga657222e2758c46bf13b416ef3032e417}{energy\+\_\+of\+\_\+circ\+\_\+struct} (const char $\ast$string, const char $\ast$structure)
+\item 
+\hypertarget{group__eval_gad3b92453a6b501856eec8fae39f3235d}{}int \hyperlink{group__eval_gad3b92453a6b501856eec8fae39f3235d}{vrna\+\_\+eval\+\_\+ext\+\_\+hp\+\_\+loop} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, int i, int j)\label{group__eval_gad3b92453a6b501856eec8fae39f3235d}
+
+\begin{DoxyCompactList}\small\item\em Evaluate free energy of an exterior hairpin loop. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_gab3eb4651dc26dc2b653a57dd340d7e68}{vrna\+\_\+eval\+\_\+hp\+\_\+loop} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, int i, int j)
+\begin{DoxyCompactList}\small\item\em Evaluate free energy of a hairpin loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__eval_gab9b2c3a37a5516614c06d0ab54b97cda}{}int \hyperlink{group__eval_gab9b2c3a37a5516614c06d0ab54b97cda}{cut\+\_\+point}\label{group__eval_gab9b2c3a37a5516614c06d0ab54b97cda}
+
+\begin{DoxyCompactList}\small\item\em set to first pos of second seq for cofolding \end{DoxyCompactList}\item 
+\hypertarget{group__eval_ga567530678f6260a1a649a5beca5da4c5}{}int \hyperlink{group__eval_ga567530678f6260a1a649a5beca5da4c5}{eos\+\_\+debug}\label{group__eval_ga567530678f6260a1a649a5beca5da4c5}
+
+\begin{DoxyCompactList}\small\item\em verbose info from energy\+\_\+of\+\_\+struct \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module contains all functions and variables related to energy evaluation of sequence/structure pairs. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+structure@{vrna\+\_\+eval\+\_\+structure}}
+\index{vrna\+\_\+eval\+\_\+structure@{vrna\+\_\+eval\+\_\+structure}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+structure}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+eval\+\_\+structure (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{const char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga58f199f1438d794a265f3b27fc8ea631}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+This function allows for energy evaluation of a given pair of structure and sequence (alignment). Model details, energy parameters, and possibly soft constraints are used as provided via the parameter \textquotesingle{}vc\textquotesingle{}. The \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} does not need to contain any D\+P matrices, but requires all most basic init values as one would get from a call like this\+: 
+\begin{DoxyCode}
+vc = \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\_fold\_compound}(sequence, NULL, \hyperlink{group__fold__compound_ga61469c423131552c8483229f8b6c7e0e}{VRNA\_OPTION\_EVAL\_ONLY});
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Accepts vrna\+\_\+fold\+\_\+compound\+\_\+t of type \hyperlink{group__fold__compound_gga01a4ff86fa71deaaa5d1abbd95a1447da1608d3aa78905fc39e0d25a624ac9512}{V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+I\+N\+G\+L\+E} and \hyperlink{group__fold__compound_gga01a4ff86fa71deaaa5d1abbd95a1447da056345f1bcfe7cd595d1fd437c05246d}{V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+L\+I\+G\+N\+M\+E\+N\+T}
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()}, \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()}, \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()}, \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\+\_\+fold\+\_\+compound()}, \hyperlink{group__fold__compound_gad6bacc816af274922b13d947f708aa0c}{vrna\+\_\+fold\+\_\+compound\+\_\+comparative()}, \hyperlink{group__eval_ga6cea75c0eb9857fb59172be54cab09e0}{vrna\+\_\+eval\+\_\+covar\+\_\+structure()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & A vrna\+\_\+fold\+\_\+compound\+\_\+t containing the energy parameters and model details \\
+\hline
+{\em structure} & Secondary structure in dot-\/bracket notation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga6cea75c0eb9857fb59172be54cab09e0}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+covar\+\_\+structure@{vrna\+\_\+eval\+\_\+covar\+\_\+structure}}
+\index{vrna\+\_\+eval\+\_\+covar\+\_\+structure@{vrna\+\_\+eval\+\_\+covar\+\_\+structure}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+covar\+\_\+structure}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+eval\+\_\+covar\+\_\+structure (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{const char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga6cea75c0eb9857fb59172be54cab09e0}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the pseudo energy derived by the covariance scores of a set of aligned sequences. 
+
+Consensus structure prediction is driven by covariance scores of base pairs in rows of the provided alignment. This function allows to retrieve the total amount of this covariance pseudo energy scores. The \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} does not need to contain any D\+P matrices, but requires all most basic init values as one would get from a call like this\+: 
+\begin{DoxyCode}
+vc = \hyperlink{group__fold__compound_gad6bacc816af274922b13d947f708aa0c}{vrna\_fold\_compound\_comparative}(alignment, NULL, 
+      \hyperlink{group__fold__compound_ga61469c423131552c8483229f8b6c7e0e}{VRNA\_OPTION\_EVAL\_ONLY});
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+Accepts vrna\+\_\+fold\+\_\+compound\+\_\+t of type \hyperlink{group__fold__compound_gga01a4ff86fa71deaaa5d1abbd95a1447da056345f1bcfe7cd595d1fd437c05246d}{V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+L\+I\+G\+N\+M\+E\+N\+T} only!
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__fold__compound_gad6bacc816af274922b13d947f708aa0c}{vrna\+\_\+fold\+\_\+compound\+\_\+comparative()}, \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & A vrna\+\_\+fold\+\_\+compound\+\_\+t containing the energy parameters and model details \\
+\hline
+{\em structure} & Secondary (consensus) structure in dot-\/bracket notation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The covariance pseudo energy score of the input structure given the input sequence alignment in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_gab6930f446d04761454d033680fbf7909}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+structure\+\_\+simple@{vrna\+\_\+eval\+\_\+structure\+\_\+simple}}
+\index{vrna\+\_\+eval\+\_\+structure\+\_\+simple@{vrna\+\_\+eval\+\_\+structure\+\_\+simple}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+structure\+\_\+simple}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+eval\+\_\+structure\+\_\+simple (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__eval_gab6930f446d04761454d033680fbf7909}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+This function allows for energy evaluation of a given sequence/structure pair. In contrast to \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()} this function assumes default model details and default energy parameters in order to evaluate the free energy of the secondary structure. Therefore, it serves as a simple interface function for energy evaluation for situations where no changes on the energy model are required.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()}, \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()}, \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()}, \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()},
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence in uppercase letters \\
+\hline
+{\em structure} & Secondary structure in dot-\/bracket notation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga0928d699d310178f84ee2351034e5cb5}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+structure\+\_\+verbose@{vrna\+\_\+eval\+\_\+structure\+\_\+verbose}}
+\index{vrna\+\_\+eval\+\_\+structure\+\_\+verbose@{vrna\+\_\+eval\+\_\+structure\+\_\+verbose}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+structure\+\_\+verbose}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+eval\+\_\+structure\+\_\+verbose (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{const char $\ast$}]{structure, }
+\item[{F\+I\+L\+E $\ast$}]{file}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga0928d699d310178f84ee2351034e5cb5}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A and print contributions on a per-\/loop base. 
+
+This function allows for detailed energy evaluation of a given sequence/structure pair. In contrast to \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()} this function prints detailed energy contributions based on individual loops to a file handle. If N\+U\+L\+L is passed as file handle, this function defaults to print to stdout. Model details, energy parameters, and possibly soft constraints are used as provided via the parameter \textquotesingle{}vc\textquotesingle{}. The fold\+\_\+compound does not need to contain any D\+P matrices, but all the most basic init values as one would get from a call like this\+: 
+\begin{DoxyCode}
+vc = \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\_fold\_compound}(sequence, NULL, \hyperlink{group__fold__compound_ga61469c423131552c8483229f8b6c7e0e}{VRNA\_OPTION\_EVAL\_ONLY});
+\end{DoxyCode}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()}, \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()}, \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()},
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & A vrna\+\_\+fold\+\_\+compound\+\_\+t containing the energy parameters and model details \\
+\hline
+{\em structure} & Secondary structure in dot-\/bracket notation \\
+\hline
+{\em file} & A file handle where this function should print to (may be N\+U\+L\+L). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga4c2895a7dcd756ef2dc7f76db7c4c53e}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose@{vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose}}
+\index{vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose@{vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure, }
+\item[{F\+I\+L\+E $\ast$}]{file}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga4c2895a7dcd756ef2dc7f76db7c4c53e}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A and print contributions per loop. 
+
+This function allows for detailed energy evaluation of a given sequence/structure pair. In contrast to \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()} this function prints detailed energy contributions based on individual loops to a file handle. If N\+U\+L\+L is passed as file handle, this function defaults to print to stdout. In contrast to \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()} this function assumes default model details and default energy parameters in order to evaluate the free energy of the secondary structure. Threefore, it serves as a simple interface function for energy evaluation for situations where no changes on the energy model are required.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()}, \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()}, \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()}, \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()},
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence in uppercase letters \\
+\hline
+{\em structure} & Secondary structure in dot-\/bracket notation \\
+\hline
+{\em file} & A file handle where this function should print to (may be N\+U\+L\+L). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+structure\+\_\+pt@{vrna\+\_\+eval\+\_\+structure\+\_\+pt}}
+\index{vrna\+\_\+eval\+\_\+structure\+\_\+pt@{vrna\+\_\+eval\+\_\+structure\+\_\+pt}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+structure\+\_\+pt}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+eval\+\_\+structure\+\_\+pt (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{const short $\ast$}]{pt}
+\end{DoxyParamCaption}
+)}\label{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+This function allows for energy evaluation of a given sequence/structure pair where the structure is provided in pair\+\_\+table format as obtained from \hyperlink{group__struct__utils_gae829fb8bb7f694c12a9c0bbc34c77c60}{vrna\+\_\+ptable()}. Model details, energy parameters, and possibly soft constraints are used as provided via the parameter \textquotesingle{}vc\textquotesingle{}. The fold\+\_\+compound does not need to contain any D\+P matrices, but all the most basic init values as one would get from a call like this\+: 
+\begin{DoxyCode}
+vc = \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\_fold\_compound}(sequence, NULL, \hyperlink{group__fold__compound_ga61469c423131552c8483229f8b6c7e0e}{VRNA\_OPTION\_EVAL\_ONLY});
+\end{DoxyCode}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__struct__utils_gae829fb8bb7f694c12a9c0bbc34c77c60}{vrna\+\_\+ptable()}, \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()}, \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & A vrna\+\_\+fold\+\_\+compound\+\_\+t containing the energy parameters and model details \\
+\hline
+{\em pt} & Secondary structure as pair\+\_\+table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in 10cal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga0bba59b4d6e53461088666ff4aece7b0}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple@{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple}}
+\index{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple@{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const short $\ast$}]{pt}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga0bba59b4d6e53461088666ff4aece7b0}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+In contrast to \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()} this function assumes default model details and default energy parameters in order to evaluate the free energy of the secondary structure. Threefore, it serves as a simple interface function for energy evaluation for situations where no changes on the energy model are required.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__struct__utils_gae829fb8bb7f694c12a9c0bbc34c77c60}{vrna\+\_\+ptable()}, \hyperlink{group__eval_gab6930f446d04761454d033680fbf7909}{vrna\+\_\+eval\+\_\+structure\+\_\+simple()}, \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence in uppercase letters \\
+\hline
+{\em pt} & Secondary structure as pair\+\_\+table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in 10cal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose@{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose}}
+\index{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose@{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{const short $\ast$}]{pt, }
+\item[{F\+I\+L\+E $\ast$}]{file}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+This function allows for energy evaluation of a given sequence/structure pair where the structure is provided in pair\+\_\+table format as obtained from \hyperlink{group__struct__utils_gae829fb8bb7f694c12a9c0bbc34c77c60}{vrna\+\_\+ptable()}. Model details, energy parameters, and possibly soft constraints are used as provided via the parameter \textquotesingle{}vc\textquotesingle{}. The fold\+\_\+compound does not need to contain any D\+P matrices, but all the most basic init values as one would get from a call like this\+: 
+\begin{DoxyCode}
+vc = \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\_fold\_compound}(sequence, NULL, \hyperlink{group__fold__compound_ga61469c423131552c8483229f8b6c7e0e}{VRNA\_OPTION\_EVAL\_ONLY});
+\end{DoxyCode}
+ In contrast to \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()} this function prints detailed energy contributions based on individual loops to a file handle. If N\+U\+L\+L is passed as file handle, this function defaults to print to stdout.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__struct__utils_gae829fb8bb7f694c12a9c0bbc34c77c60}{vrna\+\_\+ptable()}, \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()}, \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & A vrna\+\_\+fold\+\_\+compound\+\_\+t containing the energy parameters and model details \\
+\hline
+{\em pt} & Secondary structure as pair\+\_\+table \\
+\hline
+{\em file} & A file handle where this function should print to (may be N\+U\+L\+L). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in 10cal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga76e152ee9a02be23da14cdddf52b4e44}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose@{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose}}
+\index{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose@{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const short $\ast$}]{pt, }
+\item[{F\+I\+L\+E $\ast$}]{file}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga76e152ee9a02be23da14cdddf52b4e44}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+This function allows for energy evaluation of a given sequence/structure pair where the structure is provided in pair\+\_\+table format as obtained from \hyperlink{group__struct__utils_gae829fb8bb7f694c12a9c0bbc34c77c60}{vrna\+\_\+ptable()}. Model details, energy parameters, and possibly soft constraints are used as provided via the parameter \textquotesingle{}vc\textquotesingle{}. The fold\+\_\+compound does not need to contain any D\+P matrices, but all the most basic init values as one would get from a call like this\+: 
+\begin{DoxyCode}
+vc = \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\_fold\_compound}(sequence, NULL, \hyperlink{group__fold__compound_ga61469c423131552c8483229f8b6c7e0e}{VRNA\_OPTION\_EVAL\_ONLY});
+\end{DoxyCode}
+ In contrast to \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()} this function assumes default model details and default energy parameters in order to evaluate the free energy of the secondary structure. Threefore, it serves as a simple interface function for energy evaluation for situations where no changes on the energy model are required.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__struct__utils_gae829fb8bb7f694c12a9c0bbc34c77c60}{vrna\+\_\+ptable()}, \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()}, \hyperlink{group__eval_gab6930f446d04761454d033680fbf7909}{vrna\+\_\+eval\+\_\+structure\+\_\+simple()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence in uppercase letters \\
+\hline
+{\em pt} & Secondary structure as pair\+\_\+table \\
+\hline
+{\em file} & A file handle where this function should print to (may be N\+U\+L\+L). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in 10cal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga730ba4df55c02fd530a0cddd49faf760}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+loop\+\_\+pt@{vrna\+\_\+eval\+\_\+loop\+\_\+pt}}
+\index{vrna\+\_\+eval\+\_\+loop\+\_\+pt@{vrna\+\_\+eval\+\_\+loop\+\_\+pt}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+loop\+\_\+pt}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+eval\+\_\+loop\+\_\+pt (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{int}]{i, }
+\item[{const short $\ast$}]{pt}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga730ba4df55c02fd530a0cddd49faf760}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate energy of a loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & A vrna\+\_\+fold\+\_\+compound\+\_\+t containing the energy parameters and model details \\
+\hline
+{\em i} & position of covering base pair \\
+\hline
+{\em pt} & the pair table of the secondary structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+free energy of the loop in 10cal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_gaff1b9e4f4d17b434b0a822fe783672c1}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+move@{vrna\+\_\+eval\+\_\+move}}
+\index{vrna\+\_\+eval\+\_\+move@{vrna\+\_\+eval\+\_\+move}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+move}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+eval\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{const char $\ast$}]{structure, }
+\item[{int}]{m1, }
+\item[{int}]{m2}
+\end{DoxyParamCaption}
+)}\label{group__eval_gaff1b9e4f4d17b434b0a822fe783672c1}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate energy of a move (closing or opening of a base pair) 
+
+If the parameters m1 and m2 are negative, it is deletion (opening) of a base pair, otherwise it is insertion (opening).
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga123dabc119ea98c968a5e903cc46f0fb}{vrna\+\_\+eval\+\_\+move\+\_\+pt()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & A vrna\+\_\+fold\+\_\+compound\+\_\+t containing the energy parameters and model details \\
+\hline
+{\em structure} & secondary structure in dot-\/bracket notation \\
+\hline
+{\em m1} & first coordinate of base pair \\
+\hline
+{\em m2} & second coordinate of base pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+energy change of the move in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga123dabc119ea98c968a5e903cc46f0fb}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+move\+\_\+pt@{vrna\+\_\+eval\+\_\+move\+\_\+pt}}
+\index{vrna\+\_\+eval\+\_\+move\+\_\+pt@{vrna\+\_\+eval\+\_\+move\+\_\+pt}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+move\+\_\+pt}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+eval\+\_\+move\+\_\+pt (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{short $\ast$}]{pt, }
+\item[{int}]{m1, }
+\item[{int}]{m2}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga123dabc119ea98c968a5e903cc46f0fb}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate energy of a move (closing or opening of a base pair) 
+
+If the parameters m1 and m2 are negative, it is deletion (opening) of a base pair, otherwise it is insertion (opening).
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_gaff1b9e4f4d17b434b0a822fe783672c1}{vrna\+\_\+eval\+\_\+move()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & A vrna\+\_\+fold\+\_\+compound\+\_\+t containing the energy parameters and model details \\
+\hline
+{\em pt} & the pair table of the secondary structure \\
+\hline
+{\em m1} & first coordinate of base pair \\
+\hline
+{\em m2} & second coordinate of base pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+energy change of the move in 10cal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_gaf93986cb3cb29770ec9cca69c9fab8cf}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+structure@{energy\+\_\+of\+\_\+structure}}
+\index{energy\+\_\+of\+\_\+structure@{energy\+\_\+of\+\_\+structure}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+structure}]{\setlength{\rightskip}{0pt plus 5cm}float energy\+\_\+of\+\_\+structure (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure, }
+\item[{int}]{verbosity\+\_\+level}
+\end{DoxyParamCaption}
+)}\label{group__eval_gaf93986cb3cb29770ec9cca69c9fab8cf}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A using global model detail settings. 
+
+If verbosity level is set to a value $>$0, energies of structure elements are printed to stdout
+
+\begin{DoxyNote}{Note}
+Open\+M\+P\+: This function relies on several global model settings variables and thus is not to be considered threadsafe. See \hyperlink{group__eval_gaf9d064d3c496de42eca6734a96fd2090}{energy\+\_\+of\+\_\+struct\+\_\+par()} for a completely threadsafe implementation.
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000053}{Deprecated}]Use \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()} or \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence \\
+\hline
+{\em structure} & secondary structure in dot-\/bracket notation \\
+\hline
+{\em verbosity\+\_\+level} & a flag to turn verbose output on/off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_gaf9d064d3c496de42eca6734a96fd2090}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+struct\+\_\+par@{energy\+\_\+of\+\_\+struct\+\_\+par}}
+\index{energy\+\_\+of\+\_\+struct\+\_\+par@{energy\+\_\+of\+\_\+struct\+\_\+par}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+struct\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}float energy\+\_\+of\+\_\+struct\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+param\+\_\+t} $\ast$}]{parameters, }
+\item[{int}]{verbosity\+\_\+level}
+\end{DoxyParamCaption}
+)}\label{group__eval_gaf9d064d3c496de42eca6734a96fd2090}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+If verbosity level is set to a value $>$0, energies of structure elements are printed to stdout
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000054}{Deprecated}]Use \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()} or \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence in uppercase letters \\
+\hline
+{\em structure} & Secondary structure in dot-\/bracket notation \\
+\hline
+{\em parameters} & A data structure containing the prescaled energy contributions and the model details. \\
+\hline
+{\em verbosity\+\_\+level} & A flag to turn verbose output on/off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_gaeb14f3664aec67fc03268ac75253f0f8}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+circ\+\_\+structure@{energy\+\_\+of\+\_\+circ\+\_\+structure}}
+\index{energy\+\_\+of\+\_\+circ\+\_\+structure@{energy\+\_\+of\+\_\+circ\+\_\+structure}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+circ\+\_\+structure}]{\setlength{\rightskip}{0pt plus 5cm}float energy\+\_\+of\+\_\+circ\+\_\+structure (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure, }
+\item[{int}]{verbosity\+\_\+level}
+\end{DoxyParamCaption}
+)}\label{group__eval_gaeb14f3664aec67fc03268ac75253f0f8}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded circular R\+N\+A. 
+
+\begin{DoxyNote}{Note}
+Open\+M\+P\+: This function relies on several global model settings variables and thus is not to be considered threadsafe. See \hyperlink{group__eval_ga3f01f9744ba6a40555eb4d81fc77f6df}{energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par()} for a completely threadsafe implementation.
+\end{DoxyNote}
+If verbosity level is set to a value $>$0, energies of structure elements are printed to stdout
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000055}{Deprecated}]Use \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()} or \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence \\
+\hline
+{\em structure} & Secondary structure in dot-\/bracket notation \\
+\hline
+{\em verbosity\+\_\+level} & A flag to turn verbose output on/off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga3f01f9744ba6a40555eb4d81fc77f6df}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par@{energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par}}
+\index{energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par@{energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}float energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+param\+\_\+t} $\ast$}]{parameters, }
+\item[{int}]{verbosity\+\_\+level}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga3f01f9744ba6a40555eb4d81fc77f6df}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded circular R\+N\+A. 
+
+If verbosity level is set to a value $>$0, energies of structure elements are printed to stdout
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000056}{Deprecated}]Use \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()} or \hyperlink{group__eval_ga0928d699d310178f84ee2351034e5cb5}{vrna\+\_\+eval\+\_\+structure\+\_\+verbose()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence \\
+\hline
+{\em structure} & Secondary structure in dot-\/bracket notation \\
+\hline
+{\em parameters} & A data structure containing the prescaled energy contributions and the model details. \\
+\hline
+{\em verbosity\+\_\+level} & A flag to turn verbose output on/off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga8831445966b761417e713360791299d8}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+structure\+\_\+pt@{energy\+\_\+of\+\_\+structure\+\_\+pt}}
+\index{energy\+\_\+of\+\_\+structure\+\_\+pt@{energy\+\_\+of\+\_\+structure\+\_\+pt}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+structure\+\_\+pt}]{\setlength{\rightskip}{0pt plus 5cm}int energy\+\_\+of\+\_\+structure\+\_\+pt (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{short $\ast$}]{ptable, }
+\item[{short $\ast$}]{s, }
+\item[{short $\ast$}]{s1, }
+\item[{int}]{verbosity\+\_\+level}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga8831445966b761417e713360791299d8}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+If verbosity level is set to a value $>$0, energies of structure elements are printed to stdout
+
+\begin{DoxyNote}{Note}
+Open\+M\+P\+: This function relies on several global model settings variables and thus is not to be considered threadsafe. See \hyperlink{group__eval_ga49acb3d5627dc6823a7ce12d116d4c69}{energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par()} for a completely threadsafe implementation.
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000057}{Deprecated}]Use \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()} or \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence \\
+\hline
+{\em ptable} & the pair table of the secondary structure \\
+\hline
+{\em s} & encoded R\+N\+A sequence \\
+\hline
+{\em s1} & encoded R\+N\+A sequence \\
+\hline
+{\em verbosity\+\_\+level} & a flag to turn verbose output on/off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the free energy of the input structure given the input sequence in 10kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga49acb3d5627dc6823a7ce12d116d4c69}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par@{energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par}}
+\index{energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par@{energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}int energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{short $\ast$}]{ptable, }
+\item[{short $\ast$}]{s, }
+\item[{short $\ast$}]{s1, }
+\item[{{\bf vrna\+\_\+param\+\_\+t} $\ast$}]{parameters, }
+\item[{int}]{verbosity\+\_\+level}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga49acb3d5627dc6823a7ce12d116d4c69}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate the free energy of an already folded R\+N\+A. 
+
+If verbosity level is set to a value $>$0, energies of structure elements are printed to stdout
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000058}{Deprecated}]Use \hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()} or \hyperlink{group__eval_ga8a517cfeeae8c376ae7b1e0c401d38b4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_gadbd09372ddfd7a450bbd590c96a6bfe4}{vrna\+\_\+eval\+\_\+structure\+\_\+pt()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence in uppercase letters \\
+\hline
+{\em ptable} & The pair table of the secondary structure \\
+\hline
+{\em s} & Encoded R\+N\+A sequence \\
+\hline
+{\em s1} & Encoded R\+N\+A sequence \\
+\hline
+{\em parameters} & A data structure containing the prescaled energy contributions and the model details. \\
+\hline
+{\em verbosity\+\_\+level} & A flag to turn verbose output on/off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy of the input structure given the input sequence in 10kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga539ecaed89730f7644c202f304d7529b}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+move@{energy\+\_\+of\+\_\+move}}
+\index{energy\+\_\+of\+\_\+move@{energy\+\_\+of\+\_\+move}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+move}]{\setlength{\rightskip}{0pt plus 5cm}float energy\+\_\+of\+\_\+move (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure, }
+\item[{int}]{m1, }
+\item[{int}]{m2}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga539ecaed89730f7644c202f304d7529b}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate energy of a move (closing or opening of a base pair) 
+
+If the parameters m1 and m2 are negative, it is deletion (opening) of a base pair, otherwise it is insertion (opening).
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000059}{Deprecated}]Use \hyperlink{group__eval_gaff1b9e4f4d17b434b0a822fe783672c1}{vrna\+\_\+eval\+\_\+move()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_gaff1b9e4f4d17b434b0a822fe783672c1}{vrna\+\_\+eval\+\_\+move()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence \\
+\hline
+{\em structure} & secondary structure in dot-\/bracket notation \\
+\hline
+{\em m1} & first coordinate of base pair \\
+\hline
+{\em m2} & second coordinate of base pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+energy change of the move in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga49e0ee561be69faf0568213546f6a53f}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+move\+\_\+pt@{energy\+\_\+of\+\_\+move\+\_\+pt}}
+\index{energy\+\_\+of\+\_\+move\+\_\+pt@{energy\+\_\+of\+\_\+move\+\_\+pt}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+move\+\_\+pt}]{\setlength{\rightskip}{0pt plus 5cm}int energy\+\_\+of\+\_\+move\+\_\+pt (
+\begin{DoxyParamCaption}
+\item[{short $\ast$}]{pt, }
+\item[{short $\ast$}]{s, }
+\item[{short $\ast$}]{s1, }
+\item[{int}]{m1, }
+\item[{int}]{m2}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga49e0ee561be69faf0568213546f6a53f}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate energy of a move (closing or opening of a base pair) 
+
+If the parameters m1 and m2 are negative, it is deletion (opening) of a base pair, otherwise it is insertion (opening).
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000060}{Deprecated}]Use \hyperlink{group__eval_ga123dabc119ea98c968a5e903cc46f0fb}{vrna\+\_\+eval\+\_\+move\+\_\+pt()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga123dabc119ea98c968a5e903cc46f0fb}{vrna\+\_\+eval\+\_\+move\+\_\+pt()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em pt} & the pair table of the secondary structure \\
+\hline
+{\em s} & encoded R\+N\+A sequence \\
+\hline
+{\em s1} & encoded R\+N\+A sequence \\
+\hline
+{\em m1} & first coordinate of base pair \\
+\hline
+{\em m2} & second coordinate of base pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+energy change of the move in 10cal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga507d4fd93f4b398d793ba2402731388d}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!loop\+\_\+energy@{loop\+\_\+energy}}
+\index{loop\+\_\+energy@{loop\+\_\+energy}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{loop\+\_\+energy}]{\setlength{\rightskip}{0pt plus 5cm}int loop\+\_\+energy (
+\begin{DoxyParamCaption}
+\item[{short $\ast$}]{ptable, }
+\item[{short $\ast$}]{s, }
+\item[{short $\ast$}]{s1, }
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga507d4fd93f4b398d793ba2402731388d}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+
+
+Calculate energy of a loop. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000061}{Deprecated}]Use \hyperlink{group__eval_ga730ba4df55c02fd530a0cddd49faf760}{vrna\+\_\+eval\+\_\+loop\+\_\+pt()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_ga730ba4df55c02fd530a0cddd49faf760}{vrna\+\_\+eval\+\_\+loop\+\_\+pt()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em ptable} & the pair table of the secondary structure \\
+\hline
+{\em s} & encoded R\+N\+A sequence \\
+\hline
+{\em s1} & encoded R\+N\+A sequence \\
+\hline
+{\em i} & position of covering base pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+free energy of the loop in 10cal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_gac2b37fea2145c94d925a3f33378ef87b}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+struct@{energy\+\_\+of\+\_\+struct}}
+\index{energy\+\_\+of\+\_\+struct@{energy\+\_\+of\+\_\+struct}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+struct}]{\setlength{\rightskip}{0pt plus 5cm}float energy\+\_\+of\+\_\+struct (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__eval_gac2b37fea2145c94d925a3f33378ef87b}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+Calculate the free energy of an already folded R\+N\+A
+
+\begin{DoxyNote}{Note}
+This function is not entirely threadsafe! Depending on the state of the global variable \hyperlink{group__eval_ga567530678f6260a1a649a5beca5da4c5}{eos\+\_\+debug} it prints energy information to stdout or not...~\newline
+ 
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000062}{Deprecated}]This function is deprecated and should not be used in future programs! Use \hyperlink{group__eval_gaf93986cb3cb29770ec9cca69c9fab8cf}{energy\+\_\+of\+\_\+structure()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_gaf93986cb3cb29770ec9cca69c9fab8cf}{energy\+\_\+of\+\_\+structure}, \hyperlink{group__eval_ga657222e2758c46bf13b416ef3032e417}{energy\+\_\+of\+\_\+circ\+\_\+struct()}, \hyperlink{group__eval_ga27ce6f68512d43bf1fe14a06c9d76d5c}{energy\+\_\+of\+\_\+struct\+\_\+pt()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence \\
+\hline
+{\em structure} & secondary structure in dot-\/bracket notation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga27ce6f68512d43bf1fe14a06c9d76d5c}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+struct\+\_\+pt@{energy\+\_\+of\+\_\+struct\+\_\+pt}}
+\index{energy\+\_\+of\+\_\+struct\+\_\+pt@{energy\+\_\+of\+\_\+struct\+\_\+pt}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+struct\+\_\+pt}]{\setlength{\rightskip}{0pt plus 5cm}int energy\+\_\+of\+\_\+struct\+\_\+pt (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{short $\ast$}]{ptable, }
+\item[{short $\ast$}]{s, }
+\item[{short $\ast$}]{s1}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga27ce6f68512d43bf1fe14a06c9d76d5c}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+Calculate the free energy of an already folded R\+N\+A
+
+\begin{DoxyNote}{Note}
+This function is not entirely threadsafe! Depending on the state of the global variable \hyperlink{group__eval_ga567530678f6260a1a649a5beca5da4c5}{eos\+\_\+debug} it prints energy information to stdout or not...~\newline
+ 
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000063}{Deprecated}]This function is deprecated and should not be used in future programs! Use \hyperlink{group__eval_ga8831445966b761417e713360791299d8}{energy\+\_\+of\+\_\+structure\+\_\+pt()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__struct__utils_ga89c32307ee50a0026f4a3131fac0845a}{make\+\_\+pair\+\_\+table()}, \hyperlink{group__eval_gaf93986cb3cb29770ec9cca69c9fab8cf}{energy\+\_\+of\+\_\+structure()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence \\
+\hline
+{\em ptable} & the pair table of the secondary structure \\
+\hline
+{\em s} & encoded R\+N\+A sequence \\
+\hline
+{\em s1} & encoded R\+N\+A sequence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the free energy of the input structure given the input sequence in 10kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_ga657222e2758c46bf13b416ef3032e417}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!energy\+\_\+of\+\_\+circ\+\_\+struct@{energy\+\_\+of\+\_\+circ\+\_\+struct}}
+\index{energy\+\_\+of\+\_\+circ\+\_\+struct@{energy\+\_\+of\+\_\+circ\+\_\+struct}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{energy\+\_\+of\+\_\+circ\+\_\+struct}]{\setlength{\rightskip}{0pt plus 5cm}float energy\+\_\+of\+\_\+circ\+\_\+struct (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{const char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__eval_ga657222e2758c46bf13b416ef3032e417}
+
+
+{\ttfamily \#include $<$\hyperlink{eval_8h}{Vienna\+R\+N\+A/eval.\+h}$>$}
+
+Calculate the free energy of an already folded circular R\+N\+A
+
+\begin{DoxyNote}{Note}
+This function is not entirely threadsafe! Depending on the state of the global variable \hyperlink{group__eval_ga567530678f6260a1a649a5beca5da4c5}{eos\+\_\+debug} it prints energy information to stdout or not...~\newline
+ 
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000064}{Deprecated}]This function is deprecated and should not be used in future programs Use \hyperlink{group__eval_gaeb14f3664aec67fc03268ac75253f0f8}{energy\+\_\+of\+\_\+circ\+\_\+structure()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__eval_gaeb14f3664aec67fc03268ac75253f0f8}{energy\+\_\+of\+\_\+circ\+\_\+structure()}, \hyperlink{group__eval_gac2b37fea2145c94d925a3f33378ef87b}{energy\+\_\+of\+\_\+struct()}, \hyperlink{group__eval_ga27ce6f68512d43bf1fe14a06c9d76d5c}{energy\+\_\+of\+\_\+struct\+\_\+pt()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & R\+N\+A sequence \\
+\hline
+{\em structure} & secondary structure in dot-\/bracket notation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the free energy of the input structure given the input sequence in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__eval_gab3eb4651dc26dc2b653a57dd340d7e68}{}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+hp\+\_\+loop@{vrna\+\_\+eval\+\_\+hp\+\_\+loop}}
+\index{vrna\+\_\+eval\+\_\+hp\+\_\+loop@{vrna\+\_\+eval\+\_\+hp\+\_\+loop}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{vrna\+\_\+eval\+\_\+hp\+\_\+loop}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+eval\+\_\+hp\+\_\+loop (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)}\label{group__eval_gab3eb4651dc26dc2b653a57dd340d7e68}
+
+
+{\ttfamily \#include $<$\hyperlink{hairpin__loops_8h}{Vienna\+R\+N\+A/hairpin\+\_\+loops.\+h}$>$}
+
+
+
+Evaluate free energy of a hairpin loop. 
+
+\begin{DoxyNote}{Note}
+This function is polymorphic! The provided \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} may be of type \hyperlink{group__fold__compound_gga01a4ff86fa71deaaa5d1abbd95a1447da1608d3aa78905fc39e0d25a624ac9512}{V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+I\+N\+G\+L\+E} or \hyperlink{group__fold__compound_gga01a4ff86fa71deaaa5d1abbd95a1447da056345f1bcfe7cd595d1fd437c05246d}{V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+L\+I\+G\+N\+M\+E\+N\+T}
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & The \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} for the particular energy evaluation \\
+\hline
+{\em i} & 5\textquotesingle{}-\/position of the base pair \\
+\hline
+{\em j} & 3\textquotesingle{}-\/position of the base pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Free energy of the hairpin loop closed by $ (i,j) $ in deka-\/kal/mol 
+\end{DoxyReturn}
