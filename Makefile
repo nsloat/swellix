@@ -16,9 +16,9 @@ VPATH=$(EXECDIR)src/:$(INCLUDEDIR):$(LIBDIR)
 # capacity. This is used to facilitate the bundling mechanism within Swellix if you choose to activate it.
 BUNDLINGDIRECTORY=/scratch/nsloat/
 
-FILES = $(wildcard $(EXECDIR)src/*.c)
+CFILES = $(wildcard $(EXECDIR)src/*.c)
 
-OBJS = $(FILES:.c=.o)
+OBJS = $(CFILES:.c=.o)
 
 OBJDIR=$(EXECDIR)src
 
@@ -44,12 +44,11 @@ BUNDLINGFLAG=-D_BUNDLE='"$(BUNDLINGDIRECTORY)"'
 
 VIENNADIRS=`ls -I rna\_turner2004\.par $(EXECDIR)viennabuild`
 
-all:
+vienna:
 	cd ViennaRNA-2.2.5; \
 	./configure $(RNACONF); \
 	make; \
 	make install
-	$(myCC) -g -o exe--swellix $(CFILES) $(RNAFLAGS) -W -Wall -g3 -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 swellix.exe: $(OBJS)
 	echo objdir = $(OBJDIR)
@@ -100,16 +99,16 @@ $(OBJDIR)/subopt.o: subopt.c subopt.h
 swellix-mpi.exe: $(OBJS)
 	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
-vienna:
+#vienna:
 #	cd viennabuild; \
 #	rm -r $(VIENNADIRS)
 #	cd ViennaRNA-2.2.5; \
 #	make clean; \
 #	make distclean
-	cd ViennaRNA-2.2.5; \
-	./configure $(RNACONF); \
-	make; \
-	make install
+#	cd ViennaRNA-2.2.5; \
+#	./configure $(RNACONF); \
+#	make; \
+#	make install
 
 clean:
 	rm -f exe--swellix exe--swellix.mpi exe--swellix-tests
@@ -124,7 +123,8 @@ dispOn:
 	-D _display -D _test $(BUNDLINGFLAG)
 
 mpi_disp:
-	$(MPICC) $(CFLAGS) -o exe--swellix.mpi $(CFILES) $(RNAFLAGS) -W -Wall -g3 \
+	echo $(CFILES)
+	$(MPICC) -o swellix-mpi.exe $(CFILES) $(RNAFLAGS) -W -Wall -g3 \
 	-D_MPI -D_display -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -lX11 -lm
 
 #mpi_prof:
