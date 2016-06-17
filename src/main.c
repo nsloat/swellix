@@ -177,54 +177,6 @@ int main(int argc, char** argv)
 #endif
 
   return 0;
-/*#else // _MPI defined
-  //testing
-  MPI_Init(NULL, NULL);
-  // num processes
-  int world_size;
-  MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-  
-  // ranks of processes
-  int world_rank;
-  MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-
-  int i;
-  int window = 4;
-  int length = 14;
-  char* mpidata = NULL;//calloc(length*window+1, sizeof(char));
-  char* recvdata = calloc(window+1, sizeof(char));
-  char* gathered = NULL;//calloc(length*window+1, sizeof(char));
-  char sequence[] = "GCUCUAAAAGAGAG";
-  if(world_rank == 0) {
-    mpidata = "G   GC  GCU GCUCCUCUUCUACUAAUAAAAAAAAAAGAAGAAGAGGAGAAGAG";
-//    mpidata[0] = "G\0\0\0"; mpidata[1] = "GC\0\0"; mpidata[2] = "GCU\0"; mpidata[3] = "GCUC";
-//    mpidata[4] = "CUCU"; mpidata[5] = "UCUA"; mpidata[6] = "CUAA"; mpidata[7] = "UAAA";
-//    mpidata[8] = "AAAA"; mpidata[9] = "AAAG"; mpidata[10] = "AAGA"; mpidata[11] = "AGAG";
-//    mpidata[12] = "GAGA"; mpidata[13] = "AGAG";
-  }
-
-//  MPI_Scatter(sequence, 1, MPI_CHAR, recvdata, 1, MPI_CHAR, 0, MPI_COMM_WORLD);
-  MPI_Scatter(mpidata, window, MPI_CHAR, recvdata, window, MPI_CHAR, 0, MPI_COMM_WORLD);
-  
-  // test operation
-  
-  printf("Scatter sent %s to processor %d out of %d\n", recvdata, world_rank, world_size-1);
-
-  if(world_rank == 0) gathered = calloc(length*window + 1, sizeof(char));
-
-  MPI_Gather(recvdata, 4, MPI_CHAR, gathered, 4, MPI_CHAR, 0, MPI_COMM_WORLD);
-
-  if(world_rank == 0)
-    printf("Gather brought back %s to root %d\n", gathered, world_rank);
-
-  if(world_rank==0){
-    free(gathered);
-  }
-  free(recvdata);
-  MPI_Barrier(MPI_COMM_WORLD);
-  MPI_Finalize();
-  return 0;
-#endif // _MPI*/
 }  // end main
 
 //*****************************************************************************
