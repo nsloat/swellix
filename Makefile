@@ -27,11 +27,11 @@ MPIFLAGS =
 ifeq (mpicc, $(myCC))
 MPIFLAGS += -D_MPI
 endif
-#MPIRUN = /usr/mpi/gcc/mvapich2-2.1/bin/mpirun_rsh
+
 #CC = GNU
-#export MPI_HARDWARE=ib
-#export MPI_SOFTWARE=openmpi
-#export MPI_COMPILER=intel
+export MPI_HARDWARE=ib
+export MPI_SOFTWARE=openmpi
+export MPI_COMPILER=intel
 CFLAGS= #-g -fPIC# -fopenmp
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \

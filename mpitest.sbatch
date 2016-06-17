@@ -113,8 +113,6 @@ module load mpi/openmpi/1.10.1/intel
 # those submitted by other users) don't run on the same compute nodes
 # as this batch job, and therefore don't interfere with it.
 #
-#SBATCH --exclusive
-#
 # Use 32 MPI processes at 16 MPI processes per node, which is to
 # say 2 nodes.
 #
@@ -132,27 +130,13 @@ module load mpi/openmpi/1.10.1/intel
 # NOTE: You are encouraged to change these to numbers that are
 # appropriate for you.
 #
+# S B A T C H -N 1
+# S B A T C H --exclusive
 #SBATCH -n 8
-#SBATCH --tasks-per-node=8
+#SBATCH --ntasks-per-node=8
 #
-# STDOUT is the output that normally would go to the terminal screen.
-# STDERR is like STDOUT, except that it contains error messages instead
-# of regular output.
-#
-# The SBATCH directive below says, send STDOUT and STDERR to the filenames
-# listed below.
-#
-# Note that, in these filenames, %J will be replaced by the batch job ID
-# number (for example, 2146 as above).
-#
-# Everywhere throughout this batch script file:
-# * CHANGE yourusername to your username;
-# * CHANGE youremailaddress@yourinstitution.edu to your e-mail address;
-# * CHANGE directory_to_run_in to the directory you want to run in;
-# * CHANGE jobname to your preferred name for this batch job.
-#
-#SBATCH -o /home/nsloat/swellix/current_build/mpitestslurm/test_%J_stdout.txt
-#SBATCH -e /home/nsloat/swellix/current_build/mpitestslurm/test_%J_stderr.txt
+#SBATCH -o /home/nsloat/swellix/swellix/mpitest/test_%J.o
+#SBATCH -e /home/nsloat/swellix/swellix/mpitest/test_%J.e
 #
 # The SBATCH directive below says to run for up to 12 hours (and zero
 # minutes) of "wall clock" time (time experienced in real life).
@@ -188,7 +172,7 @@ module load mpi/openmpi/1.10.1/intel
 # * CHANGE directory_to_run_in to the directory you want to run in;
 # * CHANGE jobname to your preferred name for this batch job.
 
-cd /home/nsloat/swellix/current_build
+cd /home/nsloat/swellix/swellix
 
 # Make sure that you're in the correct directory.
 
@@ -202,7 +186,7 @@ pwd
 #   http://www.oscer.ou.edu/boomer_quick_and_dirty.php
 #
 
-setenv MPI_COMPILER gnu # intel OR gnu OR pgi OR nag
+#setenv MPI_COMPILER intel # intel OR gnu OR pgi OR nag
 
 # Set the environment variable for the interconnection network that
 # you used to compile your executable. This *MUST EXACTLY MATCH*
@@ -212,7 +196,7 @@ setenv MPI_COMPILER gnu # intel OR gnu OR pgi OR nag
 #   http://www.oscer.ou.edu/boomer_quick_and_dirty.php
 #
 
-setenv MPI_HARDWARE ib # ib (Infiniband) OR gige (Gigabit Ethernet)
+#setenv MPI_HARDWARE ib # ib (Infiniband) OR gige (Gigabit Ethernet)
 
 # Set the environment variable for the specific subset of the
 # interconnection network that you used to compile your
@@ -227,7 +211,7 @@ setenv MPI_HARDWARE ib # ib (Infiniband) OR gige (Gigabit Ethernet)
 #   http://www.oscer.ou.edu/boomer_quick_and_dirty.php
 #
 
-setenv MPI_SOFTWARE mvapich2# openmpi # Only commment this if you compiled with it off.
+#setenv MPI_SOFTWARE openmpi # Only commment this if you compiled with it off.
 
 # Run the executable, redirecting input from the given file.
 # The date commands and the time command help track runtime
@@ -262,8 +246,6 @@ setenv MPI_SOFTWARE mvapich2# openmpi # Only commment this if you compiled with 
 #   ***DON'T*** USE A RELATIVE PATH OR LEAVE OUT THE PATH!!!
 
 date
-#mpirun.lsf
-/home/nsloat/swellix/current_build/exe--swellix.mpi #\
-#    < /home/yourusername/input_directory/input_filename
+mpirun /home/nsloat/swellix/swellix/swellix-mpi.exe -i /home/nsloat/swellix/swellix/14.seq -b 
 date
 
