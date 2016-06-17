@@ -26,10 +26,17 @@ export MPICC  = mpicc
 MPIFLAGS = #-D_MPI
 #MPIRUN = /usr/mpi/gcc/mvapich2-2.1/bin/mpirun_rsh
 #CC = GNU
+<<<<<<< HEAD
 export MPI_HARDWARE=ib
 export MPI_SOFTWARE=openmpi
 export MPI_COMPILER=intel
 CFLAGS=-g -fPIC# -fopenmp
+=======
+#export MPI_HARDWARE=ib
+#export MPI_SOFTWARE=openmpi
+#export MPI_COMPILER=intel
+CFLAGS=-g -fPIC -fopenmp
+>>>>>>> origin/master
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
@@ -50,7 +57,7 @@ all:
 
 swellix.exe: $(OBJS)
 	echo objdir = $(OBJDIR)
-	$(CC) $(CFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -o $@ $^ $(RNAFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) $(RNAFLAGS)
 
 $(OBJDIR)/main.o: main.c main.h init_general.h init_constraint.h paren_lookup_table.h component_list.h interval_lookup_table.h bundle_list.h jump_tree.h unit_tests.h close_up.h statistics.h
 	$(CC) $(CFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -c -o $@ $< $(RNAFLAGS) 
