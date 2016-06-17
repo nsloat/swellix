@@ -100,6 +100,7 @@ int slide_those_windows(char* subSeq,
     return 0;
 }
 #if 0
+{
 #ifdef _MPI
 void pstart(char *seq, int *constraints)
 {
@@ -121,6 +122,7 @@ void pstart(char *seq, int *constraints)
     }
 }
 #endif // _MPI
+}
 #endif
 void start(char *seq, int *constraints)
 {
@@ -155,6 +157,7 @@ void refine_state(state *s){
 
     OPTIONS.statecount ++;
 #if 0
+{
 #if defined(_MPI)
     // This is a poor condition. Be smarter.
     if(MPI_RANK_MASTER==mpi_rank && OPTIONS.statecount-1 > 0 && OPTIONS.statecount-1 < mpi_size) {
@@ -168,6 +171,7 @@ void refine_state(state *s){
     }
 #else
 #endif
+}
 #endif
     refine_state_locally(s);
 //#endif // _MPI
@@ -545,9 +549,11 @@ void print_soln(state *s){
         return;
     }
 #if 0
+{
 #if defined(_MPI)
     print( "%d: ", mpi_rank);
 #endif // _MPI
+}
 #endif
 
     int i;
@@ -680,6 +686,7 @@ int * pack_state(state * S)
     return out;
 }
 #if 0
+{
 #if defined(_MPI)
 int *wait_for_state()
 {
@@ -696,6 +703,7 @@ int *wait_for_state()
     return ints;
 }
 #endif
+}
 #endif
 state *interpret_message(int *ints)
 {
