@@ -1,0 +1,40 @@
+\hypertarget{mfe_8h}{}\section{Vienna\+R\+N\+A/mfe.h File Reference}
+\label{mfe_8h}\index{Vienna\+R\+N\+A/mfe.\+h@{Vienna\+R\+N\+A/mfe.\+h}}
+
+
+M\+F\+E calculations for single R\+N\+A sequences.  
+
+
+Include dependency graph for mfe.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mfe_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mfe_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute minimum free energy and an appropriate secondary structure of an R\+N\+A sequence, or R\+N\+A sequence alignment. \end{DoxyCompactList}\item 
+float \hyperlink{group__mfe__cofold_gaab22d10c1190f205f16a77cab9d5d3ee}{vrna\+\_\+mfe\+\_\+dimer} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute the minimum free energy of two interacting R\+N\+A molecules. \end{DoxyCompactList}\item 
+float \hyperlink{group__local__mfe__fold_ga689df235a1915a1ad56e377383c044ce}{vrna\+\_\+mfe\+\_\+window} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, F\+I\+L\+E $\ast$file)
+\begin{DoxyCompactList}\small\item\em Local M\+F\+E prediction using a sliding window approach. \end{DoxyCompactList}\item 
+float \hyperlink{group__local__mfe__fold_gaa4f67ae94efd08d800c17f9b53423fd6}{vrna\+\_\+mfe\+\_\+window\+\_\+zscore} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, double min\+\_\+z, F\+I\+L\+E $\ast$file)
+\begin{DoxyCompactList}\small\item\em Local M\+F\+E prediction using a sliding window approach (with z-\/score cut-\/off) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+M\+F\+E calculations for single R\+N\+A sequences. 
+
+This file includes (almost) all function declarations within the R\+N\+Alib that are related to M\+F\+E folding... 

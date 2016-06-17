@@ -1,0 +1,191 @@
+\hypertarget{group__consensus__mfe__fold}{}\section{M\+F\+E Consensus Structures for Sequence Alignment(s)}
+\label{group__consensus__mfe__fold}\index{M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}}
+Collaboration diagram for M\+F\+E Consensus Structures for Sequence Alignment(s)\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__consensus__mfe__fold}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{group__consensus__mfe__fold_ga02098d0c8790f9a37fbef6ad0cfc705c}{vrna\+\_\+alifold} (const char $\ast$$\ast$ssequences, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute Minimum Free Energy (M\+F\+E), and a corresponding consensus secondary structure for an R\+N\+A sequence alignment using a comparative method. \end{DoxyCompactList}\item 
+float \hyperlink{group__consensus__mfe__fold_ga01ce2cff93ea44c4f4254760ca2bd16c}{vrna\+\_\+circalifold} (const char $\ast$$\ast$ssequences, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute Minimum Free Energy (M\+F\+E), and a corresponding consensus secondary structure for a sequence alignment of circular R\+N\+As using a comparative method. \end{DoxyCompactList}\item 
+float \hyperlink{group__consensus__mfe__fold_ga4cf00f0659e5f0480335d69e797f05b1}{alifold} (const char $\ast$$\ast$strings, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute M\+F\+E and according consensus structure of an alignment of sequences. \end{DoxyCompactList}\item 
+float \hyperlink{group__consensus__mfe__fold_gadbd3b0b1c144cbfb4efe704b2b260f96}{circalifold} (const char $\ast$$\ast$strings, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute M\+F\+E and according structure of an alignment of sequences assuming the sequences are circular instead of linear. \end{DoxyCompactList}\item 
+void \hyperlink{group__consensus__mfe__fold_ga72095e4554b5d577250ea14c42acc49e}{free\+\_\+alifold\+\_\+arrays} (void)
+\begin{DoxyCompactList}\small\item\em Free the memory occupied by M\+F\+E alifold functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__consensus__mfe__fold_ga02098d0c8790f9a37fbef6ad0cfc705c}{}\index{M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}!vrna\+\_\+alifold@{vrna\+\_\+alifold}}
+\index{vrna\+\_\+alifold@{vrna\+\_\+alifold}!M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}}
+\subsubsection[{vrna\+\_\+alifold}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+alifold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{ssequences, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__consensus__mfe__fold_ga02098d0c8790f9a37fbef6ad0cfc705c}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Compute Minimum Free Energy (M\+F\+E), and a corresponding consensus secondary structure for an R\+N\+A sequence alignment using a comparative method. 
+
+This simplified interface to \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} computes the M\+F\+E and, if required, a consensus secondary structure for an R\+N\+A sequence alignment using default options. Memory required for dynamic programming (D\+P) matrices will be allocated and free\textquotesingle{}d on-\/the-\/fly. Hence, after return of this function, the recursively filled matrices are not available any more for any post-\/processing, e.\+g. suboptimal backtracking, etc.
+
+\begin{DoxyNote}{Note}
+In case you want to use the filled D\+P matrices for any subsequent post-\/processing step, or you require other conditions than specified by the default model details, use \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, and the data structure \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} instead.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__consensus__mfe__fold_ga01ce2cff93ea44c4f4254760ca2bd16c}{vrna\+\_\+circalifold()}, \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\+\_\+fold\+\_\+compound()}, \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & R\+N\+A sequence alignment \\
+\hline
+{\em structure} & A pointer to the character array where the secondary structure in dot-\/bracket notation will be written to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the minimum free energy (M\+F\+E) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__consensus__mfe__fold_ga01ce2cff93ea44c4f4254760ca2bd16c}{}\index{M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}!vrna\+\_\+circalifold@{vrna\+\_\+circalifold}}
+\index{vrna\+\_\+circalifold@{vrna\+\_\+circalifold}!M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}}
+\subsubsection[{vrna\+\_\+circalifold}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+circalifold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{ssequences, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__consensus__mfe__fold_ga01ce2cff93ea44c4f4254760ca2bd16c}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Compute Minimum Free Energy (M\+F\+E), and a corresponding consensus secondary structure for a sequence alignment of circular R\+N\+As using a comparative method. 
+
+This simplified interface to \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} computes the M\+F\+E and, if required, a consensus secondary structure for an R\+N\+A sequence alignment using default options. Memory required for dynamic programming (D\+P) matrices will be allocated and free\textquotesingle{}d on-\/the-\/fly. Hence, after return of this function, the recursively filled matrices are not available any more for any post-\/processing, e.\+g. suboptimal backtracking, etc.
+
+Folding of circular R\+N\+A sequences is handled as a post-\/processing step of the forward recursions. See \cite{hofacker:2006} for further details.
+
+\begin{DoxyNote}{Note}
+In case you want to use the filled D\+P matrices for any subsequent post-\/processing step, or you require other conditions than specified by the default model details, use \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, and the data structure \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} instead.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__consensus__mfe__fold_ga02098d0c8790f9a37fbef6ad0cfc705c}{vrna\+\_\+alifold()}, \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\+\_\+fold\+\_\+compound()}, \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & Sequence alignment of circular R\+N\+As \\
+\hline
+{\em structure} & A pointer to the character array where the secondary structure in dot-\/bracket notation will be written to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the minimum free energy (M\+F\+E) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__consensus__mfe__fold_ga4cf00f0659e5f0480335d69e797f05b1}{}\index{M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}!alifold@{alifold}}
+\index{alifold@{alifold}!M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}}
+\subsubsection[{alifold}]{\setlength{\rightskip}{0pt plus 5cm}float alifold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{strings, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__consensus__mfe__fold_ga4cf00f0659e5f0480335d69e797f05b1}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Compute M\+F\+E and according consensus structure of an alignment of sequences. 
+
+This function predicts the consensus structure for the aligned \textquotesingle{}sequences\textquotesingle{} and returns the minimum free energy; the mfe structure in bracket notation is returned in \textquotesingle{}structure\textquotesingle{}.
+
+Sufficient space must be allocated for \textquotesingle{}structure\textquotesingle{} before calling \hyperlink{group__consensus__mfe__fold_ga4cf00f0659e5f0480335d69e797f05b1}{alifold()}.
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000012}{Deprecated}]Usage of this function is discouraged! Use \hyperlink{group__consensus__mfe__fold_ga02098d0c8790f9a37fbef6ad0cfc705c}{vrna\+\_\+alifold()}, or \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} instead! \begin{DoxySeeAlso}{See also}
+\hyperlink{group__consensus__mfe__fold_ga02098d0c8790f9a37fbef6ad0cfc705c}{vrna\+\_\+alifold()}, \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}
+\end{DoxySeeAlso}
+\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em strings} & A pointer to a N\+U\+L\+L terminated array of character arrays \\
+\hline
+{\em structure} & A pointer to a character array that may contain a constraining consensus structure (will be overwritten by a consensus structure that exhibits the M\+F\+E) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy score in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__consensus__mfe__fold_gadbd3b0b1c144cbfb4efe704b2b260f96}{}\index{M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}!circalifold@{circalifold}}
+\index{circalifold@{circalifold}!M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}}
+\subsubsection[{circalifold}]{\setlength{\rightskip}{0pt plus 5cm}float circalifold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{strings, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__consensus__mfe__fold_gadbd3b0b1c144cbfb4efe704b2b260f96}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Compute M\+F\+E and according structure of an alignment of sequences assuming the sequences are circular instead of linear. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000013}{Deprecated}]Usage of this function is discouraged! Use vrna\+\_\+alicircfold(), and \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} instead! \begin{DoxySeeAlso}{See also}
+vrna\+\_\+alicircfold(), \hyperlink{group__consensus__mfe__fold_ga02098d0c8790f9a37fbef6ad0cfc705c}{vrna\+\_\+alifold()}, \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}
+\end{DoxySeeAlso}
+\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em strings} & A pointer to a N\+U\+L\+L terminated array of character arrays \\
+\hline
+{\em structure} & A pointer to a character array that may contain a constraining consensus structure (will be overwritten by a consensus structure that exhibits the M\+F\+E) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The free energy score in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__consensus__mfe__fold_ga72095e4554b5d577250ea14c42acc49e}{}\index{M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}!free\+\_\+alifold\+\_\+arrays@{free\+\_\+alifold\+\_\+arrays}}
+\index{free\+\_\+alifold\+\_\+arrays@{free\+\_\+alifold\+\_\+arrays}!M\+F\+E Consensus Structures for Sequence Alignment(s)@{M\+F\+E Consensus Structures for Sequence Alignment(s)}}
+\subsubsection[{free\+\_\+alifold\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+alifold\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__consensus__mfe__fold_ga72095e4554b5d577250ea14c42acc49e}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Free the memory occupied by M\+F\+E alifold functions. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000014}{Deprecated}]Usage of this function is discouraged! It only affects memory being free\textquotesingle{}d that was allocated by an old A\+P\+I function before. Release of memory occupied by the newly introduced \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} is handled by vrna\+\_\+vrna\+\_\+fold\+\_\+compound\+\_\+free()\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+vrna\+\_\+vrna\+\_\+fold\+\_\+compound\+\_\+free() 
+\end{DoxySeeAlso}

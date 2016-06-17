@@ -1,0 +1,36 @@
+\hypertarget{plot__aln_8h_source}{}\section{plot\+\_\+aln.\+h}
+\label{plot__aln_8h_source}\index{Vienna\+R\+N\+A/plot\+\_\+aln.\+h@{Vienna\+R\+N\+A/plot\+\_\+aln.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_PLOT\_ALN\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_PLOT\_ALN\_H}
+00003 
+00004 \textcolor{preprocessor}{#ifdef DEPRECATION\_WARNINGS}
+00005 \textcolor{preprocessor}{# ifdef \_\_GNUC\_\_}
+00006 \textcolor{preprocessor}{#  define DEPRECATED(func) func \_\_attribute\_\_ ((deprecated))}
+00007 \textcolor{preprocessor}{# else}
+00008 \textcolor{preprocessor}{#  define DEPRECATED(func) func}
+00009 \textcolor{preprocessor}{# endif}
+00010 \textcolor{preprocessor}{#else}
+00011 \textcolor{preprocessor}{# define DEPRECATED(func) func}
+00012 \textcolor{preprocessor}{#endif}
+00013 
+00014 \textcolor{comment}{/* make this interface backward compatible with RNAlib < 2.2.0 */}
+00015 \textcolor{preprocessor}{#define VRNA\_BACKWARD\_COMPAT}
+00016 
+00030 \textcolor{keywordtype}{int} \hyperlink{group__plotting__utils_ga821802c3685e37e15182341f6217470d}{PS\_color\_aln}( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *structure,
+00031                   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,
+00032                   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *seqs[],
+00033                   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *names[]);
+00034 
+00038 \textcolor{keywordtype}{int} \hyperlink{group__plotting__utils_gaab48d4dac655d688abe921389ac2847c}{aliPS\_color\_aln}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *structure,
+00039                     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename, 
+00040                     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *seqs[],
+00041                     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *names[]); 
+00042 
+00043 \textcolor{preprocessor}{#ifdef VRNA\_BACKWARD\_COMPAT}
+00044 
+00045 \textcolor{preprocessor}{#endif}
+00046 
+00051 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

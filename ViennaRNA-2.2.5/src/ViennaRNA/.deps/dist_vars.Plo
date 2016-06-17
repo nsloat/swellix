@@ -1,0 +1,1 @@
+dist_vars.lo: dist_vars.c

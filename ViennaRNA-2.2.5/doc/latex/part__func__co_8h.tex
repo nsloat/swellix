@@ -1,0 +1,338 @@
+\hypertarget{part__func__co_8h}{}\section{Vienna\+R\+N\+A/part\+\_\+func\+\_\+co.h File Reference}
+\label{part__func__co_8h}\index{Vienna\+R\+N\+A/part\+\_\+func\+\_\+co.\+h@{Vienna\+R\+N\+A/part\+\_\+func\+\_\+co.\+h}}
+
+
+Partition function for two R\+N\+A sequences.  
+
+
+Include dependency graph for part\+\_\+func\+\_\+co.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{part__func__co_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{group__pf__cofold_structvrna__dimer__pf__s}{vrna\+\_\+dimer\+\_\+pf\+\_\+s}
+\item 
+struct \hyperlink{group__pf__cofold_structvrna__dimer__conc__s}{vrna\+\_\+dimer\+\_\+conc\+\_\+s}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__pf__cofold_ga444df1587c9a2ca15b8eb25188f629c3}{}typedef struct \hyperlink{group__pf__cofold_structvrna__dimer__pf__s}{vrna\+\_\+dimer\+\_\+pf\+\_\+s} \hyperlink{group__pf__cofold_ga444df1587c9a2ca15b8eb25188f629c3}{vrna\+\_\+dimer\+\_\+pf\+\_\+t}\label{group__pf__cofold_ga444df1587c9a2ca15b8eb25188f629c3}
+
+\begin{DoxyCompactList}\small\item\em Typename for the data structure that stores the dimer partition functions, \hyperlink{group__pf__cofold_structvrna__dimer__pf__s}{vrna\+\_\+dimer\+\_\+pf\+\_\+s}, as returned by \hyperlink{group__pf__cofold_ga4e5c7d06c302a7c59fc0d64dc142ca63}{vrna\+\_\+pf\+\_\+dimer()} \end{DoxyCompactList}\item 
+\hypertarget{group__pf__cofold_gac48c2723444ecfdceafcfd525ca98322}{}typedef struct \hyperlink{group__pf__cofold_structvrna__dimer__conc__s}{vrna\+\_\+dimer\+\_\+conc\+\_\+s} \hyperlink{group__pf__cofold_gac48c2723444ecfdceafcfd525ca98322}{vrna\+\_\+dimer\+\_\+conc\+\_\+t}\label{group__pf__cofold_gac48c2723444ecfdceafcfd525ca98322}
+
+\begin{DoxyCompactList}\small\item\em Typename for the data structure that stores the dimer concentrations, \hyperlink{group__pf__cofold_structvrna__dimer__conc__s}{vrna\+\_\+dimer\+\_\+conc\+\_\+s}, as required by vrna\+\_\+pf\+\_\+dimer\+\_\+concentration() \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__pf__cofold_ga444df1587c9a2ca15b8eb25188f629c3}{vrna\+\_\+dimer\+\_\+pf\+\_\+t} \hyperlink{group__pf__cofold_ga4e5c7d06c302a7c59fc0d64dc142ca63}{vrna\+\_\+pf\+\_\+dimer} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Calculate partition function and base pair probabilities of nucleic acid/nucleic acid dimers. \end{DoxyCompactList}\item 
+void \hyperlink{group__pf__cofold_gaf04708a63d2385d5959db9f886741479}{vrna\+\_\+pf\+\_\+dimer\+\_\+probs} (double F\+A\+B, double F\+A, double F\+B, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$pr\+A\+B, const \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$pr\+A, const \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$pr\+B, int Alength, const \hyperlink{group__energy__parameters_ga01d8b92fe734df8d79a6169482c7d8d8}{vrna\+\_\+exp\+\_\+param\+\_\+t} $\ast$exp\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Compute Boltzmann probabilities of dimerization without homodimers. \end{DoxyCompactList}\item 
+\hyperlink{group__pf__cofold_gac48c2723444ecfdceafcfd525ca98322}{vrna\+\_\+dimer\+\_\+conc\+\_\+t} $\ast$ \hyperlink{group__pf__cofold_ga83b8d5d0f7875d6d5013b208f23e3356}{vrna\+\_\+pf\+\_\+dimer\+\_\+concentrations} (double Fc\+A\+B, double Fc\+A\+A, double Fc\+B\+B, double F\+E\+A, double F\+E\+B, const double $\ast$startconc, const \hyperlink{group__energy__parameters_ga01d8b92fe734df8d79a6169482c7d8d8}{vrna\+\_\+exp\+\_\+param\+\_\+t} $\ast$exp\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Given two start monomer concentrations a and b, compute the concentrations in thermodynamic equilibrium of all dimers and the monomers. \end{DoxyCompactList}\item 
+\hyperlink{group__pf__cofold_ga444df1587c9a2ca15b8eb25188f629c3}{vrna\+\_\+dimer\+\_\+pf\+\_\+t} \hyperlink{part__func__co_8h_ae5c1e7331718669bdae7a86de2be6184}{co\+\_\+pf\+\_\+fold} (char $\ast$sequence, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Calculate partition function and base pair probabilities. \end{DoxyCompactList}\item 
+\hyperlink{group__pf__cofold_ga444df1587c9a2ca15b8eb25188f629c3}{vrna\+\_\+dimer\+\_\+pf\+\_\+t} \hyperlink{part__func__co_8h_aabfc6cb6d02b8f08ac4c92f4f5b125d9}{co\+\_\+pf\+\_\+fold\+\_\+par} (char $\ast$sequence, char $\ast$structure, \hyperlink{group__energy__parameters_ga01d8b92fe734df8d79a6169482c7d8d8}{vrna\+\_\+exp\+\_\+param\+\_\+t} $\ast$parameters, int calculate\+\_\+bppm, int is\+\_\+constrained)
+\begin{DoxyCompactList}\small\item\em Calculate partition function and base pair probabilities. \end{DoxyCompactList}\item 
+\hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$ \hyperlink{part__func__co_8h_a162b6177b14a4156172105a34c09f278}{get\+\_\+plist} (\hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$pl, int length, double cut\+\_\+off)
+\item 
+void \hyperlink{part__func__co_8h_a21f8f4a97f904d5d805d571081b2f5f9}{compute\+\_\+probabilities} (double F\+A\+B, double F\+E\+A, double F\+E\+B, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$pr\+A\+B, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$pr\+A, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$pr\+B, int Alength)
+\begin{DoxyCompactList}\small\item\em Compute Boltzmann probabilities of dimerization without homodimers. \end{DoxyCompactList}\item 
+\hyperlink{group__pf__cofold_gac48c2723444ecfdceafcfd525ca98322}{vrna\+\_\+dimer\+\_\+conc\+\_\+t} $\ast$ \hyperlink{part__func__co_8h_a163159722a422ba90335a601fc34b8fb}{get\+\_\+concentrations} (double F\+E\+A\+B, double F\+E\+A\+A, double F\+E\+B\+B, double F\+E\+A, double F\+E\+B, double $\ast$startconc)
+\begin{DoxyCompactList}\small\item\em Given two start monomer concentrations a and b, compute the concentrations in thermodynamic equilibrium of all dimers and the monomers. \end{DoxyCompactList}\item 
+void \hyperlink{part__func__co_8h_aa12dda9dd6179cdd22bcce87c0682c07}{init\+\_\+co\+\_\+pf\+\_\+fold} (int length)
+\item 
+\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$ \hyperlink{part__func__co_8h_ad94c0133157bed6912fe7fe866e0039e}{export\+\_\+co\+\_\+bppm} (void)
+\begin{DoxyCompactList}\small\item\em Get a pointer to the base pair probability array. \end{DoxyCompactList}\item 
+void \hyperlink{part__func__co_8h_ade3ce34ae8214811374b1d28a40dc247}{free\+\_\+co\+\_\+pf\+\_\+arrays} (void)
+\begin{DoxyCompactList}\small\item\em Free the memory occupied by \hyperlink{part__func__co_8h_ae5c1e7331718669bdae7a86de2be6184}{co\+\_\+pf\+\_\+fold()} \end{DoxyCompactList}\item 
+void \hyperlink{part__func__co_8h_a6e0f36c1f9b7d9dd4bfbad914c1119e5}{update\+\_\+co\+\_\+pf\+\_\+params} (int length)
+\begin{DoxyCompactList}\small\item\em Recalculate energy parameters. \end{DoxyCompactList}\item 
+void \hyperlink{part__func__co_8h_a75465d7e8793db68a434d83df9a2e794}{update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par} (int length, \hyperlink{group__energy__parameters_ga01d8b92fe734df8d79a6169482c7d8d8}{vrna\+\_\+exp\+\_\+param\+\_\+t} $\ast$parameters)
+\begin{DoxyCompactList}\small\item\em Recalculate energy parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__pf__cofold_gaff27888c4088cc1f60fd59cbd589474c}{}int \hyperlink{group__pf__cofold_gaff27888c4088cc1f60fd59cbd589474c}{mirnatog}\label{group__pf__cofold_gaff27888c4088cc1f60fd59cbd589474c}
+
+\begin{DoxyCompactList}\small\item\em Toggles no intrabp in 2nd mol. \end{DoxyCompactList}\item 
+\hypertarget{group__pf__cofold_gac2d1851a710a8561390861155ca988fe}{}double \hyperlink{group__pf__cofold_gac2d1851a710a8561390861155ca988fe}{F\+\_\+monomer} \mbox{[}2\mbox{]}\label{group__pf__cofold_gac2d1851a710a8561390861155ca988fe}
+
+\begin{DoxyCompactList}\small\item\em Free energies of the two monomers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Partition function for two R\+N\+A sequences. 
+
+As for folding one R\+N\+A molecule, this computes the partition function of all possible structures and the base pair probabilities. Uses the same global \hyperlink{group__model__details_gad3b22044065acc6dee0af68931b52cfd}{pf\+\_\+scale} variable to avoid overflows.
+
+To simplify the implementation the partition function computation is done internally in a null model that does not include the duplex initiation energy, i.\+e. the entropic penalty for producing a dimer from two monomers). The resulting free energies and pair probabilities are initially relative to that null model. In a second step the free energies can be corrected to include the dimerization penalty, and the pair probabilities can be divided into the conditional pair probabilities given that a re dimer is formed or not formed.
+
+After computing the partition functions of all possible dimeres one can compute the probabilities of base pairs, the concentrations out of start concentrations and sofar and soaway.
+
+Dimer formation is inherently concentration dependent. Given the free energies of the monomers A and B and dimers A\+B, A\+A, and B\+B one can compute the equilibrium concentrations, given input concentrations of A and B, see e.\+g. Dimitrov \& Zuker (2004) 
+
+\subsection{Function Documentation}
+\hypertarget{part__func__co_8h_ae5c1e7331718669bdae7a86de2be6184}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!co\+\_\+pf\+\_\+fold@{co\+\_\+pf\+\_\+fold}}
+\index{co\+\_\+pf\+\_\+fold@{co\+\_\+pf\+\_\+fold}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{co\+\_\+pf\+\_\+fold}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vrna\+\_\+dimer\+\_\+pf\+\_\+t} co\+\_\+pf\+\_\+fold (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{sequence, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_ae5c1e7331718669bdae7a86de2be6184}
+
+
+Calculate partition function and base pair probabilities. 
+
+This is the cofold partition function folding. The second molecule starts at the \hyperlink{fold__vars_8h_ab9b2c3a37a5516614c06d0ab54b97cda}{cut\+\_\+point} nucleotide.
+
+\begin{DoxyNote}{Note}
+Open\+M\+P\+: Since this function relies on the global parameters \hyperlink{group__model__details_gad512b5dd4dbec60faccfe137bb474489}{do\+\_\+backtrack}, \hyperlink{group__model__details_ga72b511ed1201f7e23ec437e468790d74}{dangles}, \hyperlink{group__model__details_gab4b11c8d9c758430960896bc3fe82ead}{temperature} and \hyperlink{group__model__details_gad3b22044065acc6dee0af68931b52cfd}{pf\+\_\+scale} it is not threadsafe according to concurrent changes in these variables! Use \hyperlink{part__func__co_8h_aabfc6cb6d02b8f08ac4c92f4f5b125d9}{co\+\_\+pf\+\_\+fold\+\_\+par()} instead to circumvent this issue.
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000116}{Deprecated}]\{Use \hyperlink{group__pf__cofold_ga4e5c7d06c302a7c59fc0d64dc142ca63}{vrna\+\_\+pf\+\_\+dimer()} instead!\}\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & Concatenated R\+N\+A sequences \\
+\hline
+{\em structure} & Will hold the structure or constraints \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vrna\+\_\+dimer\+\_\+pf\+\_\+t structure containing a set of energies needed for concentration computations. 
+\end{DoxyReturn}
+\hypertarget{part__func__co_8h_aabfc6cb6d02b8f08ac4c92f4f5b125d9}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!co\+\_\+pf\+\_\+fold\+\_\+par@{co\+\_\+pf\+\_\+fold\+\_\+par}}
+\index{co\+\_\+pf\+\_\+fold\+\_\+par@{co\+\_\+pf\+\_\+fold\+\_\+par}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{co\+\_\+pf\+\_\+fold\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vrna\+\_\+dimer\+\_\+pf\+\_\+t} co\+\_\+pf\+\_\+fold\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{sequence, }
+\item[{char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+exp\+\_\+param\+\_\+t} $\ast$}]{parameters, }
+\item[{int}]{calculate\+\_\+bppm, }
+\item[{int}]{is\+\_\+constrained}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_aabfc6cb6d02b8f08ac4c92f4f5b125d9}
+
+
+Calculate partition function and base pair probabilities. 
+
+This is the cofold partition function folding. The second molecule starts at the \hyperlink{fold__vars_8h_ab9b2c3a37a5516614c06d0ab54b97cda}{cut\+\_\+point} nucleotide.
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000117}{Deprecated}]Use \hyperlink{group__pf__cofold_ga4e5c7d06c302a7c59fc0d64dc142ca63}{vrna\+\_\+pf\+\_\+dimer()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__energy__parameters_gaef2b931c7e9d4ffb0a5c33df50ec2068}{get\+\_\+boltzmann\+\_\+factors()}, \hyperlink{part__func__co_8h_ae5c1e7331718669bdae7a86de2be6184}{co\+\_\+pf\+\_\+fold()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & Concatenated R\+N\+A sequences \\
+\hline
+{\em structure} & Pointer to the structure constraint \\
+\hline
+{\em parameters} & Data structure containing the precalculated Boltzmann factors \\
+\hline
+{\em calculate\+\_\+bppm} & Switch to turn Base pair probability calculations on/off (0==off) \\
+\hline
+{\em is\+\_\+constrained} & Switch to indicate that a structure contraint is passed via the structure argument (0==off) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vrna\+\_\+dimer\+\_\+pf\+\_\+t structure containing a set of energies needed for concentration computations. 
+\end{DoxyReturn}
+\hypertarget{part__func__co_8h_a162b6177b14a4156172105a34c09f278}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!get\+\_\+plist@{get\+\_\+plist}}
+\index{get\+\_\+plist@{get\+\_\+plist}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{get\+\_\+plist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vrna\+\_\+plist\+\_\+t}$\ast$ get\+\_\+plist (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$}]{pl, }
+\item[{int}]{length, }
+\item[{double}]{cut\+\_\+off}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_a162b6177b14a4156172105a34c09f278}
+D\+O N\+O\+T U\+S\+E T\+H\+I\+S F\+U\+N\+C\+T\+I\+O\+N A\+N\+Y\+M\+O\+R\+E \begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000118}{Deprecated}]\{ This function is deprecated and will be removed soon!\} use \hyperlink{group__pf__fold_gacfdacc119b749bccf939de445afea07b}{assign\+\_\+plist\+\_\+from\+\_\+pr()} instead! \end{DoxyRefDesc}
+\hypertarget{part__func__co_8h_a21f8f4a97f904d5d805d571081b2f5f9}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!compute\+\_\+probabilities@{compute\+\_\+probabilities}}
+\index{compute\+\_\+probabilities@{compute\+\_\+probabilities}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{compute\+\_\+probabilities}]{\setlength{\rightskip}{0pt plus 5cm}void compute\+\_\+probabilities (
+\begin{DoxyParamCaption}
+\item[{double}]{F\+A\+B, }
+\item[{double}]{F\+E\+A, }
+\item[{double}]{F\+E\+B, }
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$}]{pr\+A\+B, }
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$}]{pr\+A, }
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$}]{pr\+B, }
+\item[{int}]{Alength}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_a21f8f4a97f904d5d805d571081b2f5f9}
+
+
+Compute Boltzmann probabilities of dimerization without homodimers. 
+
+Given the pair probabilities and free energies (in the null model) for a dimer A\+B and the two constituent monomers A and B, compute the conditional pair probabilities given that a dimer A\+B actually forms. Null model pair probabilities are given as a list as produced by \hyperlink{group__pf__fold_gacfdacc119b749bccf939de445afea07b}{assign\+\_\+plist\+\_\+from\+\_\+pr()}, the dimer probabilities \textquotesingle{}pr\+A\+B\textquotesingle{} are modified in place.
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000119}{Deprecated}]\{ Use \hyperlink{group__pf__cofold_gaf04708a63d2385d5959db9f886741479}{vrna\+\_\+pf\+\_\+dimer\+\_\+probs()} instead!\}\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+A\+B} & free energy of dimer A\+B \\
+\hline
+{\em F\+E\+A} & free energy of monomer A \\
+\hline
+{\em F\+E\+B} & free energy of monomer B \\
+\hline
+{\em pr\+A\+B} & pair probabilities for dimer \\
+\hline
+{\em pr\+A} & pair probabilities monomer \\
+\hline
+{\em pr\+B} & pair probabilities monomer \\
+\hline
+{\em Alength} & Length of molecule A \\
+\hline
+\end{DoxyParams}
+\hypertarget{part__func__co_8h_a163159722a422ba90335a601fc34b8fb}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!get\+\_\+concentrations@{get\+\_\+concentrations}}
+\index{get\+\_\+concentrations@{get\+\_\+concentrations}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{get\+\_\+concentrations}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vrna\+\_\+dimer\+\_\+conc\+\_\+t}$\ast$ get\+\_\+concentrations (
+\begin{DoxyParamCaption}
+\item[{double}]{F\+E\+A\+B, }
+\item[{double}]{F\+E\+A\+A, }
+\item[{double}]{F\+E\+B\+B, }
+\item[{double}]{F\+E\+A, }
+\item[{double}]{F\+E\+B, }
+\item[{double $\ast$}]{startconc}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_a163159722a422ba90335a601fc34b8fb}
+
+
+Given two start monomer concentrations a and b, compute the concentrations in thermodynamic equilibrium of all dimers and the monomers. 
+
+This function takes an array \textquotesingle{}startconc\textquotesingle{} of input concentrations with alternating entries for the initial concentrations of molecules A and B (terminated by two zeroes), then computes the resulting equilibrium concentrations from the free energies for the dimers. Dimer free energies should be the dimer-\/only free energies, i.\+e. the Fc\+A\+B entries from the \hyperlink{group__pf__cofold_ga444df1587c9a2ca15b8eb25188f629c3}{vrna\+\_\+dimer\+\_\+pf\+\_\+t} struct.
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000120}{Deprecated}]\{ Use \hyperlink{group__pf__cofold_ga83b8d5d0f7875d6d5013b208f23e3356}{vrna\+\_\+pf\+\_\+dimer\+\_\+concentrations()} instead!\}\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+E\+A\+B} & Free energy of A\+B dimer (Fc\+A\+B entry) \\
+\hline
+{\em F\+E\+A\+A} & Free energy of A\+A dimer (Fc\+A\+B entry) \\
+\hline
+{\em F\+E\+B\+B} & Free energy of B\+B dimer (Fc\+A\+B entry) \\
+\hline
+{\em F\+E\+A} & Free energy of monomer A \\
+\hline
+{\em F\+E\+B} & Free energy of monomer B \\
+\hline
+{\em startconc} & List of start concentrations \mbox{[}a0\mbox{]},\mbox{[}b0\mbox{]},\mbox{[}a1\mbox{]},\mbox{[}b1\mbox{]},...,\mbox{[}an\mbox{]}\mbox{[}bn\mbox{]},\mbox{[}0\mbox{]},\mbox{[}0\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vrna\+\_\+dimer\+\_\+conc\+\_\+t array containing the equilibrium energies and start concentrations 
+\end{DoxyReturn}
+\hypertarget{part__func__co_8h_aa12dda9dd6179cdd22bcce87c0682c07}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!init\+\_\+co\+\_\+pf\+\_\+fold@{init\+\_\+co\+\_\+pf\+\_\+fold}}
+\index{init\+\_\+co\+\_\+pf\+\_\+fold@{init\+\_\+co\+\_\+pf\+\_\+fold}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{init\+\_\+co\+\_\+pf\+\_\+fold}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+co\+\_\+pf\+\_\+fold (
+\begin{DoxyParamCaption}
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_aa12dda9dd6179cdd22bcce87c0682c07}
+D\+O N\+O\+T U\+S\+E T\+H\+I\+S F\+U\+N\+C\+T\+I\+O\+N A\+N\+Y\+M\+O\+R\+E \begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000121}{Deprecated}]\{ This function is deprecated and will be removed soon!\} \end{DoxyRefDesc}
+\hypertarget{part__func__co_8h_ad94c0133157bed6912fe7fe866e0039e}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!export\+\_\+co\+\_\+bppm@{export\+\_\+co\+\_\+bppm}}
+\index{export\+\_\+co\+\_\+bppm@{export\+\_\+co\+\_\+bppm}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{export\+\_\+co\+\_\+bppm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L}$\ast$ export\+\_\+co\+\_\+bppm (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_ad94c0133157bed6912fe7fe866e0039e}
+
+
+Get a pointer to the base pair probability array. 
+
+Accessing the base pair probabilities for a pair (i,j) is achieved by \begin{DoxyVerb}FLT_OR_DBL *pr = export_bppm(); pr_ij = pr[iindx[i]-j]; \end{DoxyVerb}
+
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000122}{Deprecated}]This function is deprecated and will be removed soon! The base pair probability array is available through the \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} data structure, and its associated \hyperlink{group__dp__matrices_ga68729ab3fed26bdd1806fa814f172fc1}{vrna\+\_\+mx\+\_\+pf\+\_\+t} member.\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__utils_ga70b180e9ea764218a82647a1cd347445}{vrna\+\_\+idx\+\_\+row\+\_\+wise()} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+A pointer to the base pair probability array 
+\end{DoxyReturn}
+\hypertarget{part__func__co_8h_ade3ce34ae8214811374b1d28a40dc247}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!free\+\_\+co\+\_\+pf\+\_\+arrays@{free\+\_\+co\+\_\+pf\+\_\+arrays}}
+\index{free\+\_\+co\+\_\+pf\+\_\+arrays@{free\+\_\+co\+\_\+pf\+\_\+arrays}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{free\+\_\+co\+\_\+pf\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+co\+\_\+pf\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_ade3ce34ae8214811374b1d28a40dc247}
+
+
+Free the memory occupied by \hyperlink{part__func__co_8h_ae5c1e7331718669bdae7a86de2be6184}{co\+\_\+pf\+\_\+fold()} 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000123}{Deprecated}]This function will be removed for the new A\+P\+I soon! See \hyperlink{group__pf__cofold_ga4e5c7d06c302a7c59fc0d64dc142ca63}{vrna\+\_\+pf\+\_\+dimer()}, \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\+\_\+fold\+\_\+compound()}, and \hyperlink{group__fold__compound_gadded6039d63f5d6509836e20321534ad}{vrna\+\_\+fold\+\_\+compound\+\_\+free()} for an alternative \end{DoxyRefDesc}
+\hypertarget{part__func__co_8h_a6e0f36c1f9b7d9dd4bfbad914c1119e5}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!update\+\_\+co\+\_\+pf\+\_\+params@{update\+\_\+co\+\_\+pf\+\_\+params}}
+\index{update\+\_\+co\+\_\+pf\+\_\+params@{update\+\_\+co\+\_\+pf\+\_\+params}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{update\+\_\+co\+\_\+pf\+\_\+params}]{\setlength{\rightskip}{0pt plus 5cm}void update\+\_\+co\+\_\+pf\+\_\+params (
+\begin{DoxyParamCaption}
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_a6e0f36c1f9b7d9dd4bfbad914c1119e5}
+
+
+Recalculate energy parameters. 
+
+This function recalculates all energy parameters given the current model settings.
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000124}{Deprecated}]Use \hyperlink{group__energy__parameters_ga8e7ac4fab3b0cc03afbc134eaafb3525}{vrna\+\_\+exp\+\_\+params\+\_\+subst()} instead!\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & Length of the current R\+N\+A sequence \\
+\hline
+\end{DoxyParams}
+\hypertarget{part__func__co_8h_a75465d7e8793db68a434d83df9a2e794}{}\index{part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}!update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par@{update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par}}
+\index{update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par@{update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par}!part\+\_\+func\+\_\+co.\+h@{part\+\_\+func\+\_\+co.\+h}}
+\subsubsection[{update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}void update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{int}]{length, }
+\item[{{\bf vrna\+\_\+exp\+\_\+param\+\_\+t} $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}\label{part__func__co_8h_a75465d7e8793db68a434d83df9a2e794}
+
+
+Recalculate energy parameters. 
+
+This function recalculates all energy parameters given the current model settings. It\textquotesingle{}s second argument can either be N\+U\+L\+L or a data structure containing the precomputed Boltzmann factors. In the first scenario, the necessary data structure will be created automatically according to the current global model settings, i.\+e. this mode might not be threadsafe. However, if the provided data structure is not N\+U\+L\+L, threadsafety for the model parameters \hyperlink{group__model__details_ga72b511ed1201f7e23ec437e468790d74}{dangles}, \hyperlink{group__model__details_gad3b22044065acc6dee0af68931b52cfd}{pf\+\_\+scale} and \hyperlink{group__model__details_gab4b11c8d9c758430960896bc3fe82ead}{temperature} is regained, since their values are taken from this data structure during subsequent calculations.
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000125}{Deprecated}]Use \hyperlink{group__energy__parameters_ga8e7ac4fab3b0cc03afbc134eaafb3525}{vrna\+\_\+exp\+\_\+params\+\_\+subst()} instead!\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & Length of the current R\+N\+A sequence \\
+\hline
+{\em parameters} & data structure containing the precomputed Boltzmann factors \\
+\hline
+\end{DoxyParams}

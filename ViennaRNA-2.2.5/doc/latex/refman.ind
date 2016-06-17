@@ -1,0 +1,2502 @@
+\begin{theindex}
+
+  \item {\+\_\+struct\+\_\+en}, \hyperpage{303}
+  \item {2\+Dpfold.\+h}
+    \subitem {destroy\+\_\+\+Two\+Dpfold\+\_\+variables}, 
+		\hyperpage{310}
+    \subitem {get\+\_\+\+Two\+Dpfold\+\_\+variables}, \hyperpage{310}
+    \subitem {Two\+Dpfold\+\_\+pbacktrack}, \hyperpage{311}
+    \subitem {Two\+Dpfold\+\_\+pbacktrack5}, \hyperpage{311}
+    \subitem {Two\+Dpfold\+List}, \hyperpage{310}
+
+  \indexspace
+
+  \item {add\+\_\+root}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{276}
+  \item {ali\+Lfold}
+    \subitem {Local M\+F\+E consensus structures for Sequence Alignments}, 
+		\hyperpage{196}
+  \item {ali\+P\+S\+\_\+color\+\_\+aln}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{296}
+  \item {alifold}
+    \subitem {M\+F\+E Consensus Structures for Sequence Alignment(s)}, 
+		\hyperpage{181}
+  \item {alimake\+\_\+pair\+\_\+table}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{283}
+  \item {alipbacktrack}
+    \subitem {Stochastic Backtracking of Consensus Structures from Sequence Alignment(s)}, 
+		\hyperpage{187}
+  \item {alipf\+\_\+circ\+\_\+fold}
+    \subitem {Partition Function and Base Pair Probabilities for Sequence Alignment(s)}, 
+		\hyperpage{185}
+  \item {alipf\+\_\+fold}
+    \subitem {Partition Function and Base Pair Probabilities for Sequence Alignment(s)}, 
+		\hyperpage{185}
+  \item {alipf\+\_\+fold\+\_\+par}
+    \subitem {Partition Function and Base Pair Probabilities for Sequence Alignment(s)}, 
+		\hyperpage{184}
+  \item {alloc\+\_\+sequence\+\_\+arrays}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{178}
+  \item {alpha}
+    \subitem {vrna\+\_\+exp\+\_\+param\+\_\+s}, \hyperpage{75}
+  \item {alphabet.\+h}
+    \subitem {vrna\+\_\+nucleotide\+\_\+decode}, \hyperpage{316}
+    \subitem {vrna\+\_\+nucleotide\+\_\+encode}, \hyperpage{316}
+    \subitem {vrna\+\_\+ptypes}, \hyperpage{316}
+  \item {assign\+\_\+plist\+\_\+from\+\_\+db}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{281}
+  \item {assign\+\_\+plist\+\_\+from\+\_\+pr}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{144}
+  \item {auxdata}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{248}
+
+  \indexspace
+
+  \item {b2\+C}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{275}
+  \item {b2\+H\+I\+T}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{275}
+  \item {b2\+Shapiro}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{276}
+  \item {B\+O\+N\+U\+S}
+    \subitem {energy\+\_\+const.\+h}, \hyperpage{334}
+  \item {backtrack\+\_\+\+G\+Quad\+\_\+\+Int\+Loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{65}
+  \item {backtrack\+\_\+\+G\+Quad\+\_\+\+Int\+Loop\+\_\+\+L}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{66}
+  \item {backtrack\+\_\+type}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{106}
+  \item {base\+\_\+pair}
+    \subitem {fold\+\_\+vars.\+h}, \hyperpage{342}
+  \item {bond\+T}
+    \subitem {Data Structures and Preprocessor Macros}, \hyperpage{125}
+  \item {bp\+\_\+distance}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{283}
+  \item {bppm\+\_\+symbol}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{284}
+  \item {bppm\+\_\+to\+\_\+structure}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{284}
+  \item {bt}
+    \subitem {vrna\+\_\+sc\+\_\+s}, \hyperpage{229}
+
+  \indexspace
+
+  \item {C\+O\+O\+R\+D\+I\+N\+A\+T\+E}, \hyperpage{295}
+  \item {Calculate Partition Functions of a Distance Based Partitioning}, 
+		\hyperpage{213}
+    \subitem {vrna\+\_\+pf\+\_\+\+Two\+D}, \hyperpage{214}
+    \subitem {vrna\+\_\+sol\+\_\+\+Two\+D\+\_\+pf\+\_\+t}, 
+		\hyperpage{214}
+  \item {Calculate Secondary Structures of two R\+N\+As upon Dimerization}, 
+		\hyperpage{157}
+  \item {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{206}
+    \subitem {destroy\+\_\+\+Two\+Dfold\+\_\+variables}, 
+		\hyperpage{210}
+    \subitem {get\+\_\+\+Two\+Dfold\+\_\+variables}, \hyperpage{210}
+    \subitem {Two\+Dfold\+\_\+backtrack\+\_\+f5}, \hyperpage{211}
+    \subitem {Two\+Dfold\+\_\+vars}, \hyperpage{209}
+    \subitem {Two\+Dfold\+List}, \hyperpage{211}
+    \subitem {vrna\+\_\+backtrack5\+\_\+\+Two\+D}, \hyperpage{209}
+    \subitem {vrna\+\_\+mfe\+\_\+\+Two\+D}, \hyperpage{209}
+    \subitem {vrna\+\_\+sol\+\_\+\+Two\+D\+\_\+t}, \hyperpage{208}
+  \item {canonical\+B\+Ponly}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{106}
+  \item {centroid}
+    \subitem {part\+\_\+func.\+h}, \hyperpage{361}
+  \item {centroid.\+h}
+    \subitem {get\+\_\+centroid\+\_\+struct\+\_\+pl}, \hyperpage{319}
+    \subitem {get\+\_\+centroid\+\_\+struct\+\_\+pr}, \hyperpage{319}
+  \item {circalifold}
+    \subitem {M\+F\+E Consensus Structures for Sequence Alignment(s)}, 
+		\hyperpage{182}
+  \item {circfold}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{161}
+  \item {Classified Dynamic Programming}, \hyperpage{204}
+  \item {co\+\_\+pf\+\_\+fold}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{363}
+  \item {co\+\_\+pf\+\_\+fold\+\_\+par}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{364}
+  \item {cofold}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{165}
+  \item {cofold\+\_\+par}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{165}
+  \item {Compute the centroid structure}, \hyperpage{147}
+    \subitem {vrna\+\_\+centroid}, \hyperpage{147}
+    \subitem {vrna\+\_\+centroid\+\_\+from\+\_\+plist}, \hyperpage{147}
+    \subitem {vrna\+\_\+centroid\+\_\+from\+\_\+probs}, \hyperpage{148}
+  \item {Compute the Density of States}, \hyperpage{218}
+    \subitem {density\+\_\+of\+\_\+states}, \hyperpage{218}
+  \item {Compute the structure with maximum expected accuracy (\+M\+E\+A)}, 
+		\hyperpage{146}
+  \item {compute\+\_\+\+B\+Pdifferences}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{284}
+  \item {compute\+\_\+probabilities}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{364}
+  \item {Computing Minimum Free Energy (\+M\+F\+E) Structures}, 
+		\hyperpage{133}
+    \subitem {vrna\+\_\+mfe}, \hyperpage{134}
+  \item {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{135}
+    \subitem {assign\+\_\+plist\+\_\+from\+\_\+pr}, \hyperpage{144}
+    \subitem {export\+\_\+bppm}, \hyperpage{142}
+    \subitem {free\+\_\+pf\+\_\+arrays}, \hyperpage{142}
+    \subitem {get\+\_\+pf\+\_\+arrays}, \hyperpage{143}
+    \subitem {mean\+\_\+bp\+\_\+distance}, \hyperpage{143}
+    \subitem {mean\+\_\+bp\+\_\+distance\+\_\+pr}, \hyperpage{144}
+    \subitem {pf\+\_\+circ\+\_\+fold}, \hyperpage{141}
+    \subitem {pf\+\_\+fold}, \hyperpage{140}
+    \subitem {pf\+\_\+fold\+\_\+par}, \hyperpage{139}
+    \subitem {update\+\_\+pf\+\_\+params}, \hyperpage{142}
+    \subitem {update\+\_\+pf\+\_\+params\+\_\+par}, \hyperpage{142}
+    \subitem {vrna\+\_\+mean\+\_\+bp\+\_\+distance}, \hyperpage{139}
+    \subitem {vrna\+\_\+mean\+\_\+bp\+\_\+distance\+\_\+pr}, 
+		\hyperpage{138}
+    \subitem {vrna\+\_\+pf}, \hyperpage{137}
+    \subitem {vrna\+\_\+pf\+\_\+circfold}, \hyperpage{138}
+    \subitem {vrna\+\_\+pf\+\_\+fold}, \hyperpage{137}
+    \subitem {vrna\+\_\+plist\+\_\+from\+\_\+probs}, \hyperpage{144}
+    \subitem {vrna\+\_\+stack\+\_\+prob}, \hyperpage{139}
+  \item {cons\+\_\+seq}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{250}
+  \item {constrain}, \hyperpage{124}
+  \item {constrain\+\_\+ptypes}
+    \subitem {constraints\+\_\+hard.\+h}, \hyperpage{324}
+  \item {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{108}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+F\+I\+L\+E}, 
+		\hyperpage{111}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+S\+O\+F\+T\+\_\+\+M\+F\+E}, 
+		\hyperpage{111}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+S\+O\+F\+T\+\_\+\+P\+F}, 
+		\hyperpage{112}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T}, 
+		\hyperpage{116}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T}, 
+		\hyperpage{117}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T\+\_\+\+S\+T\+E\+M}, 
+		\hyperpage{117}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T\+\_\+\+S\+T\+E\+M1}, 
+		\hyperpage{118}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+S\+T\+E\+M}, 
+		\hyperpage{116}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+S\+T\+E\+M\+\_\+\+E\+X\+T}, 
+		\hyperpage{117}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+U\+P}, 
+		\hyperpage{116}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+C\+O\+A\+X\+I\+A\+L}, 
+		\hyperpage{115}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+M\+L}, 
+		\hyperpage{114}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+M\+L\+\_\+\+M\+L}, 
+		\hyperpage{113}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+M\+L\+\_\+\+S\+T\+E\+M}, 
+		\hyperpage{115}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+S\+T\+E\+M}, 
+		\hyperpage{114}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+U\+P}, 
+		\hyperpage{115}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+P\+A\+I\+R\+\_\+\+H\+P}, 
+		\hyperpage{112}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+P\+A\+I\+R\+\_\+\+I\+L}, 
+		\hyperpage{112}
+    \subitem {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+P\+A\+I\+R\+\_\+\+M\+L}, 
+		\hyperpage{113}
+    \subitem {vrna\+\_\+constraints\+\_\+add}, \hyperpage{118}
+    \subitem {vrna\+\_\+message\+\_\+constraint\+\_\+options}, 
+		\hyperpage{119}
+    \subitem {vrna\+\_\+message\+\_\+constraint\+\_\+options\+\_\+all}, 
+		\hyperpage{120}
+  \item {constraints\+\_\+\+S\+H\+A\+P\+E.\+h}
+    \subitem {vrna\+\_\+sc\+\_\+\+S\+H\+A\+P\+E\+\_\+parse\+\_\+method}, 
+		\hyperpage{326}
+  \item {constraints\+\_\+hard.\+h}
+    \subitem {constrain\+\_\+ptypes}, \hyperpage{324}
+    \subitem {print\+\_\+tty\+\_\+constraint}, \hyperpage{324}
+    \subitem {print\+\_\+tty\+\_\+constraint\+\_\+full}, 
+		\hyperpage{324}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+A\+N\+G\+\_\+\+B\+R\+A\+C\+K}, 
+		\hyperpage{324}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+N\+O\+\_\+\+H\+E\+A\+D\+E\+R}, 
+		\hyperpage{324}
+  \item {convert\+\_\+parameter\+\_\+file}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{202}
+  \item {Converting Energy Parameter Files}, \hyperpage{199}
+    \subitem {convert\+\_\+parameter\+\_\+file}, \hyperpage{202}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+A\+L\+L}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+B\+U\+L\+G\+E}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+A\+N\+G\+L\+E3}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+A\+N\+G\+L\+E5}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+U\+M\+P}, 
+		\hyperpage{202}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+H\+P}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+I\+N\+T}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+I\+N\+T\+\_\+11}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+I\+N\+T\+\_\+21}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+I\+N\+T\+\_\+22}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+I\+S\+C}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+L}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+E\+X\+T}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+H\+P}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+I\+N\+T}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+I\+N\+T\+\_\+1\+N}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+I\+N\+T\+\_\+23}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+M\+U\+L\+T\+I}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+N\+I\+N\+I\+O}, 
+		\hyperpage{202}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+S\+P\+E\+C\+I\+A\+L\+\_\+\+H\+P}, 
+		\hyperpage{201}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+S\+T\+A\+C\+K}, 
+		\hyperpage{200}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+V\+A\+N\+I\+L\+L\+A}, 
+		\hyperpage{202}
+  \item {copy\+\_\+pair\+\_\+table}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{282}
+  \item {cost\+\_\+matrix}
+    \subitem {dist\+\_\+vars.\+h}, \hyperpage{331}
+  \item {cpair}
+    \subitem {Data Structures and Preprocessor Macros}, \hyperpage{125}
+  \item {cut\+\_\+point}
+    \subitem {fold\+\_\+vars.\+h}, \hyperpage{342}
+  \item {cv\+\_\+fact}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{179}
+
+  \indexspace
+
+  \item {dangles}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{105}
+    \subitem {vrna\+\_\+md\+\_\+s}, \hyperpage{87}
+  \item {Data Structures and Preprocessor Macros}, \hyperpage{121}
+    \subitem {bond\+T}, \hyperpage{125}
+    \subitem {cpair}, \hyperpage{125}
+    \subitem {P\+A\+I\+R}, \hyperpage{124}
+    \subitem {plist}, \hyperpage{124}
+    \subitem {sect}, \hyperpage{125}
+  \item {density\+\_\+of\+\_\+states}
+    \subitem {Compute the Density of States}, \hyperpage{218}
+  \item {destroy\+\_\+\+Two\+Dfold\+\_\+variables}
+    \subitem {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{210}
+  \item {destroy\+\_\+\+Two\+Dpfold\+\_\+variables}
+    \subitem {2\+Dpfold.\+h}, \hyperpage{310}
+  \item {Direct refolding paths between two secondary structures}, 
+		\hyperpage{264}
+    \subitem {find\+\_\+saddle}, \hyperpage{266}
+    \subitem {free\+\_\+path}, \hyperpage{266}
+    \subitem {get\+\_\+path}, \hyperpage{267}
+    \subitem {path\+\_\+t}, \hyperpage{265}
+    \subitem {vrna\+\_\+path\+\_\+findpath}, \hyperpage{265}
+    \subitem {vrna\+\_\+path\+\_\+findpath\+\_\+saddle}, 
+		\hyperpage{265}
+  \item {dist\+\_\+vars.\+h}
+    \subitem {cost\+\_\+matrix}, \hyperpage{331}
+    \subitem {edit\+\_\+backtrack}, \hyperpage{331}
+  \item {Distance based partitioning of the Secondary Structure Space}, 
+		\hyperpage{205}
+  \item {do\+\_\+backtrack}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{106}
+  \item {dup\+Var}, \hyperpage{124}
+  \item {duplex\+T}, \hyperpage{124}
+
+  \indexspace
+
+  \item {E\+\_\+\+Ext\+Loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{63}
+  \item {E\+\_\+\+Hairpin}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{66}
+  \item {E\+\_\+\+Int\+Loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{69}
+  \item {E\+\_\+\+Stem}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{63}
+  \item {E\+\_\+mb\+\_\+loop\+\_\+stack}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{70}
+  \item {edit\+\_\+backtrack}
+    \subitem {dist\+\_\+vars.\+h}, \hyperpage{331}
+  \item {encode\+\_\+ali\+\_\+sequence}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{178}
+  \item {Energy Parameter Sets and Boltzmann Factors}, \hyperpage{72}
+    \subitem {get\+\_\+boltzmann\+\_\+factor\+\_\+copy}, \hyperpage{80}
+    \subitem {get\+\_\+boltzmann\+\_\+factors}, \hyperpage{79}
+    \subitem {get\+\_\+boltzmann\+\_\+factors\+\_\+ali}, \hyperpage{80}
+    \subitem {get\+\_\+scaled\+\_\+alipf\+\_\+parameters}, 
+		\hyperpage{80}
+    \subitem {get\+\_\+scaled\+\_\+parameters}, \hyperpage{81}
+    \subitem {get\+\_\+scaled\+\_\+pf\+\_\+parameters}, \hyperpage{79}
+    \subitem {param\+T}, \hyperpage{75}
+    \subitem {pf\+\_\+param\+T}, \hyperpage{75}
+    \subitem {scale\+\_\+parameters}, \hyperpage{81}
+    \subitem {vrna\+\_\+exp\+\_\+params}, \hyperpage{76}
+    \subitem {vrna\+\_\+exp\+\_\+params\+\_\+comparative}, 
+		\hyperpage{76}
+    \subitem {vrna\+\_\+exp\+\_\+params\+\_\+copy}, \hyperpage{77}
+    \subitem {vrna\+\_\+exp\+\_\+params\+\_\+rescale}, \hyperpage{78}
+    \subitem {vrna\+\_\+exp\+\_\+params\+\_\+reset}, \hyperpage{79}
+    \subitem {vrna\+\_\+exp\+\_\+params\+\_\+subst}, \hyperpage{78}
+    \subitem {vrna\+\_\+params}, \hyperpage{75}
+    \subitem {vrna\+\_\+params\+\_\+copy}, \hyperpage{76}
+    \subitem {vrna\+\_\+params\+\_\+reset}, \hyperpage{79}
+    \subitem {vrna\+\_\+params\+\_\+subst}, \hyperpage{77}
+  \item {energy\+\_\+const.\+h}
+    \subitem {B\+O\+N\+U\+S}, \hyperpage{334}
+    \subitem {F\+O\+R\+B\+I\+D\+D\+E\+N}, \hyperpage{334}
+    \subitem {G\+A\+S\+C\+O\+N\+S\+T}, \hyperpage{334}
+    \subitem {I\+N\+F}, \hyperpage{334}
+    \subitem {K0}, \hyperpage{334}
+    \subitem {M\+A\+X\+L\+O\+O\+P}, \hyperpage{334}
+    \subitem {N\+B\+P\+A\+I\+R\+S}, \hyperpage{334}
+    \subitem {T\+U\+R\+N}, \hyperpage{334}
+  \item {energy\+\_\+of\+\_\+alistruct}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{176}
+  \item {energy\+\_\+of\+\_\+circ\+\_\+struct}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{60}
+  \item {energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{56}
+  \item {energy\+\_\+of\+\_\+circ\+\_\+structure}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{55}
+  \item {energy\+\_\+of\+\_\+move}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{58}
+  \item {energy\+\_\+of\+\_\+move\+\_\+pt}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{58}
+  \item {energy\+\_\+of\+\_\+struct}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{59}
+  \item {energy\+\_\+of\+\_\+struct\+\_\+par}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{55}
+  \item {energy\+\_\+of\+\_\+struct\+\_\+pt}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{60}
+  \item {energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{57}
+  \item {energy\+\_\+of\+\_\+structure}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{54}
+  \item {energy\+\_\+of\+\_\+structure\+\_\+pt}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{56}
+  \item {energy\+\_\+set}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{106}
+  \item {Enumerating Suboptimal Structures}, \hyperpage{149}
+  \item {exp\+\_\+\+E\+\_\+\+Ext\+Loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{63}
+  \item {exp\+\_\+\+E\+\_\+\+Hairpin}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{67}
+  \item {exp\+\_\+\+E\+\_\+\+Int\+Loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{70}
+  \item {exp\+\_\+\+E\+\_\+\+Stem}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{64}
+  \item {exp\+\_\+f}
+    \subitem {vrna\+\_\+sc\+\_\+s}, \hyperpage{230}
+  \item {exp\+Hairpin\+Energy}
+    \subitem {part\+\_\+func.\+h}, \hyperpage{361}
+  \item {exp\+Loop\+Energy}
+    \subitem {part\+\_\+func.\+h}, \hyperpage{361}
+  \item {expand\+\_\+\+Full}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{276}
+  \item {expand\+\_\+\+Shapiro}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{276}
+  \item {export\+\_\+ali\+\_\+bppm}
+    \subitem {Partition Function and Base Pair Probabilities for Sequence Alignment(s)}, 
+		\hyperpage{186}
+  \item {export\+\_\+bppm}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{142}
+  \item {export\+\_\+circfold\+\_\+arrays}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{162}
+  \item {export\+\_\+circfold\+\_\+arrays\+\_\+par}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{162}
+  \item {export\+\_\+co\+\_\+bppm}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{365}
+  \item {export\+\_\+cofold\+\_\+arrays}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{167}
+  \item {export\+\_\+cofold\+\_\+arrays\+\_\+gq}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{166}
+  \item {export\+\_\+fold\+\_\+arrays}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{162}
+  \item {export\+\_\+fold\+\_\+arrays\+\_\+par}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{162}
+
+  \indexspace
+
+  \item {f}
+    \subitem {vrna\+\_\+sc\+\_\+s}, \hyperpage{229}
+  \item {F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+I\+D\+\_\+\+L\+E\+N\+G\+T\+H}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{269}
+  \item {F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+T\+H}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{269}
+  \item {F\+O\+R\+B\+I\+D\+D\+E\+N}
+    \subitem {energy\+\_\+const.\+h}, \hyperpage{334}
+  \item {filecopy}
+    \subitem {utils.\+h}, \hyperpage{388}
+  \item {final\+\_\+cost}
+    \subitem {Inverse Secondary Structure Prediction}, \hyperpage{46}
+  \item {find\+\_\+saddle}
+    \subitem {Direct refolding paths between two secondary structures}, 
+		\hyperpage{266}
+  \item {fold}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{161}
+  \item {fold\+\_\+par}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{160}
+  \item {fold\+\_\+vars.\+h}
+    \subitem {base\+\_\+pair}, \hyperpage{342}
+    \subitem {cut\+\_\+point}, \hyperpage{342}
+    \subitem {iindx}, \hyperpage{342}
+    \subitem {james\+\_\+rule}, \hyperpage{342}
+    \subitem {log\+M\+L}, \hyperpage{342}
+    \subitem {pr}, \hyperpage{342}
+    \subitem {Ribosum\+File}, \hyperpage{342}
+  \item {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{48}
+    \subitem {energy\+\_\+of\+\_\+circ\+\_\+struct}, \hyperpage{60}
+    \subitem {energy\+\_\+of\+\_\+circ\+\_\+struct\+\_\+par}, 
+		\hyperpage{56}
+    \subitem {energy\+\_\+of\+\_\+circ\+\_\+structure}, \hyperpage{55}
+    \subitem {energy\+\_\+of\+\_\+move}, \hyperpage{58}
+    \subitem {energy\+\_\+of\+\_\+move\+\_\+pt}, \hyperpage{58}
+    \subitem {energy\+\_\+of\+\_\+struct}, \hyperpage{59}
+    \subitem {energy\+\_\+of\+\_\+struct\+\_\+par}, \hyperpage{55}
+    \subitem {energy\+\_\+of\+\_\+struct\+\_\+pt}, \hyperpage{60}
+    \subitem {energy\+\_\+of\+\_\+struct\+\_\+pt\+\_\+par}, 
+		\hyperpage{57}
+    \subitem {energy\+\_\+of\+\_\+structure}, \hyperpage{54}
+    \subitem {energy\+\_\+of\+\_\+structure\+\_\+pt}, \hyperpage{56}
+    \subitem {loop\+\_\+energy}, \hyperpage{59}
+    \subitem {vrna\+\_\+eval\+\_\+covar\+\_\+structure}, \hyperpage{49}
+    \subitem {vrna\+\_\+eval\+\_\+hp\+\_\+loop}, \hyperpage{61}
+    \subitem {vrna\+\_\+eval\+\_\+loop\+\_\+pt}, \hyperpage{53}
+    \subitem {vrna\+\_\+eval\+\_\+move}, \hyperpage{54}
+    \subitem {vrna\+\_\+eval\+\_\+move\+\_\+pt}, \hyperpage{54}
+    \subitem {vrna\+\_\+eval\+\_\+structure}, \hyperpage{49}
+    \subitem {vrna\+\_\+eval\+\_\+structure\+\_\+pt}, \hyperpage{51}
+    \subitem {vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple}, 
+		\hyperpage{52}
+    \subitem {vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose}, 
+		\hyperpage{53}
+    \subitem {vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose}, 
+		\hyperpage{52}
+    \subitem {vrna\+\_\+eval\+\_\+structure\+\_\+simple}, 
+		\hyperpage{50}
+    \subitem {vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose}, 
+		\hyperpage{51}
+    \subitem {vrna\+\_\+eval\+\_\+structure\+\_\+verbose}, 
+		\hyperpage{50}
+  \item {free\+\_\+alifold\+\_\+arrays}
+    \subitem {M\+F\+E Consensus Structures for Sequence Alignment(s)}, 
+		\hyperpage{182}
+  \item {free\+\_\+alipf\+\_\+arrays}
+    \subitem {Partition Function and Base Pair Probabilities for Sequence Alignment(s)}, 
+		\hyperpage{186}
+  \item {free\+\_\+arrays}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{162}
+  \item {free\+\_\+auxdata}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{248}
+  \item {free\+\_\+co\+\_\+arrays}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{166}
+  \item {free\+\_\+co\+\_\+pf\+\_\+arrays}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{366}
+  \item {free\+\_\+data}
+    \subitem {vrna\+\_\+hc\+\_\+s}, \hyperpage{221}
+  \item {free\+\_\+path}
+    \subitem {Direct refolding paths between two secondary structures}, 
+		\hyperpage{266}
+  \item {free\+\_\+pf\+\_\+arrays}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{142}
+  \item {free\+\_\+profile}
+    \subitem {profiledist.\+h}, \hyperpage{373}
+  \item {free\+\_\+sequence\+\_\+arrays}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{179}
+  \item {free\+\_\+tree}
+    \subitem {treedist.\+h}, \hyperpage{384}
+  \item {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{294}
+    \subitem {ali\+P\+S\+\_\+color\+\_\+aln}, \hyperpage{296}
+    \subitem {gml\+R\+N\+A}, \hyperpage{298}
+    \subitem {P\+S\+\_\+dot\+\_\+plot}, \hyperpage{300}
+    \subitem {P\+S\+\_\+dot\+\_\+plot\+\_\+list}, \hyperpage{299}
+    \subitem {P\+S\+\_\+rna\+\_\+plot}, \hyperpage{299}
+    \subitem {P\+S\+\_\+rna\+\_\+plot\+\_\+a}, \hyperpage{299}
+    \subitem {P\+S\+\_\+rna\+\_\+plot\+\_\+a\+\_\+gquad}, 
+		\hyperpage{299}
+    \subitem {rna\+\_\+plot\+\_\+type}, \hyperpage{300}
+    \subitem {simple\+\_\+circplot\+\_\+coordinates}, \hyperpage{296}
+    \subitem {simple\+\_\+xy\+\_\+coordinates}, \hyperpage{296}
+    \subitem {ssv\+\_\+rna\+\_\+plot}, \hyperpage{298}
+    \subitem {svg\+\_\+rna\+\_\+plot}, \hyperpage{298}
+    \subitem {V\+R\+N\+A\+\_\+\+P\+L\+O\+T\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+I\+R\+C\+U\+L\+A\+R}, 
+		\hyperpage{296}
+    \subitem {V\+R\+N\+A\+\_\+\+P\+L\+O\+T\+\_\+\+T\+Y\+P\+E\+\_\+\+N\+A\+V\+I\+E\+W}, 
+		\hyperpage{295}
+    \subitem {V\+R\+N\+A\+\_\+\+P\+L\+O\+T\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+I\+M\+P\+L\+E}, 
+		\hyperpage{295}
+    \subitem {vrna\+\_\+file\+\_\+\+P\+S\+\_\+rnaplot}, \hyperpage{297}
+    \subitem {vrna\+\_\+file\+\_\+\+P\+S\+\_\+rnaplot\+\_\+a}, 
+		\hyperpage{297}
+    \subitem {xrna\+\_\+plot}, \hyperpage{299}
+  \item {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{288}
+    \subitem {read\+\_\+record}, \hyperpage{293}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+M\+U\+L\+T\+I\+L\+I\+N\+E}, 
+		\hyperpage{289}
+    \subitem {V\+R\+N\+A\+\_\+\+O\+P\+T\+I\+O\+N\+\_\+\+M\+U\+L\+T\+I\+L\+I\+N\+E}, 
+		\hyperpage{289}
+    \subitem {vrna\+\_\+extract\+\_\+record\+\_\+rest\+\_\+constraint}, 
+		\hyperpage{293}
+    \subitem {vrna\+\_\+extract\+\_\+record\+\_\+rest\+\_\+structure}, 
+		\hyperpage{292}
+    \subitem {vrna\+\_\+file\+\_\+\+S\+H\+A\+P\+E\+\_\+read}, 
+		\hyperpage{292}
+    \subitem {vrna\+\_\+file\+\_\+bpseq}, \hyperpage{290}
+    \subitem {vrna\+\_\+file\+\_\+connect}, \hyperpage{289}
+    \subitem {vrna\+\_\+file\+\_\+constraints\+\_\+read}, 
+		\hyperpage{292}
+    \subitem {vrna\+\_\+file\+\_\+fasta\+\_\+read\+\_\+record}, 
+		\hyperpage{290}
+    \subitem {vrna\+\_\+file\+\_\+helixlist}, \hyperpage{289}
+    \subitem {vrna\+\_\+file\+\_\+json}, \hyperpage{290}
+
+  \indexspace
+
+  \item {G\+A\+S\+C\+O\+N\+S\+T}
+    \subitem {energy\+\_\+const.\+h}, \hyperpage{334}
+  \item {Generate soft constraints from data}, \hyperpage{240}
+    \subitem {progress\+\_\+callback}, \hyperpage{242}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+C\+O\+N\+J\+U\+G\+A\+T\+E\+\_\+\+F\+R}, 
+		\hyperpage{241}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+C\+O\+N\+J\+U\+G\+A\+T\+E\+\_\+\+P\+R}, 
+		\hyperpage{241}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+S\+T\+E\+E\+P\+E\+S\+T\+\_\+\+D\+E\+S\+C\+E\+N\+T}, 
+		\hyperpage{242}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+V\+E\+C\+T\+O\+R\+\_\+\+B\+F\+G\+S}, 
+		\hyperpage{241}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+V\+E\+C\+T\+O\+R\+\_\+\+B\+F\+G\+S2}, 
+		\hyperpage{241}
+    \subitem {V\+R\+N\+A\+\_\+\+O\+B\+J\+E\+C\+T\+I\+V\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+A\+B\+S\+O\+L\+U\+T\+E}, 
+		\hyperpage{241}
+    \subitem {V\+R\+N\+A\+\_\+\+O\+B\+J\+E\+C\+T\+I\+V\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+Q\+U\+A\+D\+R\+A\+T\+I\+C}, 
+		\hyperpage{241}
+    \subitem {vrna\+\_\+sc\+\_\+minimize\+\_\+pertubation}, 
+		\hyperpage{242}
+  \item {get\+\_\+\+Two\+Dfold\+\_\+variables}
+    \subitem {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{210}
+  \item {get\+\_\+\+Two\+Dpfold\+\_\+variables}
+    \subitem {2\+Dpfold.\+h}, \hyperpage{310}
+  \item {get\+\_\+alipf\+\_\+arrays}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{176}
+  \item {get\+\_\+boltzmann\+\_\+factor\+\_\+copy}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{80}
+  \item {get\+\_\+boltzmann\+\_\+factors}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{79}
+  \item {get\+\_\+boltzmann\+\_\+factors\+\_\+ali}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{80}
+  \item {get\+\_\+centroid\+\_\+struct\+\_\+gquad\+\_\+pr}
+    \subitem {part\+\_\+func.\+h}, \hyperpage{361}
+  \item {get\+\_\+centroid\+\_\+struct\+\_\+pl}
+    \subitem {centroid.\+h}, \hyperpage{319}
+  \item {get\+\_\+centroid\+\_\+struct\+\_\+pr}
+    \subitem {centroid.\+h}, \hyperpage{319}
+  \item {get\+\_\+concentrations}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{365}
+  \item {get\+\_\+gquad\+\_\+matrix}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{65}
+  \item {get\+\_\+input\+\_\+line}
+    \subitem {Utilities}, \hyperpage{130}
+  \item {get\+\_\+line}
+    \subitem {Utilities}, \hyperpage{130}
+  \item {get\+\_\+monomere\+\_\+mfes}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{167}
+  \item {get\+\_\+mpi}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{178}
+  \item {get\+\_\+path}
+    \subitem {Direct refolding paths between two secondary structures}, 
+		\hyperpage{267}
+  \item {get\+\_\+pf\+\_\+arrays}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{143}
+  \item {get\+\_\+plist}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{364}
+  \item {get\+\_\+scaled\+\_\+alipf\+\_\+parameters}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{80}
+  \item {get\+\_\+scaled\+\_\+parameters}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{81}
+  \item {get\+\_\+scaled\+\_\+pf\+\_\+parameters}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{79}
+  \item {give\+\_\+up}
+    \subitem {Inverse Secondary Structure Prediction}, \hyperpage{46}
+  \item {gml\+R\+N\+A}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{298}
+
+  \indexspace
+
+  \item {Hairpin\+E}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{163}
+  \item {hamming}
+    \subitem {string\+\_\+utils.\+h}, \hyperpage{377}
+  \item {hamming\+\_\+bound}
+    \subitem {string\+\_\+utils.\+h}, \hyperpage{377}
+  \item {Hard Constraints}, \hyperpage{219}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B}, 
+		\hyperpage{222}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+D\+E\+F\+A\+U\+L\+T}, 
+		\hyperpage{224}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+D\+O\+T}, 
+		\hyperpage{222}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+E\+N\+F\+O\+R\+C\+E\+\_\+\+B\+P}, 
+		\hyperpage{222}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+G\+Q\+U\+A\+D}, 
+		\hyperpage{223}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+I\+N\+T\+E\+R\+M\+O\+L}, 
+		\hyperpage{223}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+I\+N\+T\+R\+A\+M\+O\+L}, 
+		\hyperpage{223}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+P\+I\+P\+E}, 
+		\hyperpage{222}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+R\+N\+D\+\_\+\+B\+R\+A\+C\+K}, 
+		\hyperpage{223}
+    \subitem {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+X}, 
+		\hyperpage{223}
+    \subitem {vrna\+\_\+callback\+\_\+hc\+\_\+evaluate}, 
+		\hyperpage{224}
+    \subitem {vrna\+\_\+hc\+\_\+add\+\_\+bp}, \hyperpage{226}
+    \subitem {vrna\+\_\+hc\+\_\+add\+\_\+bp\+\_\+nonspecific}, 
+		\hyperpage{226}
+    \subitem {vrna\+\_\+hc\+\_\+add\+\_\+from\+\_\+db}, \hyperpage{226}
+    \subitem {vrna\+\_\+hc\+\_\+add\+\_\+up}, \hyperpage{225}
+    \subitem {vrna\+\_\+hc\+\_\+add\+\_\+up\+\_\+batch}, 
+		\hyperpage{225}
+    \subitem {vrna\+\_\+hc\+\_\+free}, \hyperpage{226}
+    \subitem {vrna\+\_\+hc\+\_\+init}, \hyperpage{225}
+
+  \indexspace
+
+  \item {I\+N\+F}
+    \subitem {energy\+\_\+const.\+h}, \hyperpage{334}
+  \item {id}
+    \subitem {vrna\+\_\+exp\+\_\+param\+\_\+s}, \hyperpage{75}
+  \item {iindx}
+    \subitem {fold\+\_\+vars.\+h}, \hyperpage{342}
+  \item {Incorporating ligands binding to specific sequence/structure motifs}, 
+		\hyperpage{238}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+hi\+\_\+motif}, 
+		\hyperpage{238}
+  \item {Incorporating S\+H\+A\+P\+E reactivity data}, \hyperpage{235}
+    \subitem {vrna\+\_\+sc\+\_\+\+S\+H\+A\+P\+E\+\_\+to\+\_\+pr}, 
+		\hyperpage{237}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+\+S\+H\+A\+P\+E\+\_\+deigan}, 
+		\hyperpage{235}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+\+S\+H\+A\+P\+E\+\_\+deigan\+\_\+ali}, 
+		\hyperpage{236}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+\+S\+H\+A\+P\+E\+\_\+zarringhalam}, 
+		\hyperpage{236}
+  \item {init\+\_\+co\+\_\+pf\+\_\+fold}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{365}
+  \item {init\+\_\+pf\+\_\+fold}
+    \subitem {part\+\_\+func.\+h}, \hyperpage{361}
+  \item {init\+\_\+pf\+\_\+fold\+L\+P}
+    \subitem {L\+Pfold.\+h}, \hyperpage{349}
+  \item {init\+\_\+rand}
+    \subitem {utils.\+h}, \hyperpage{388}
+  \item {initialize\+\_\+cofold}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{168}
+  \item {initialize\+\_\+fold}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{163}
+  \item {int\+\_\+urn}
+    \subitem {utils.\+h}, \hyperpage{388}
+  \item {interact}, \hyperpage{123}
+  \item {inv\+\_\+verbose}
+    \subitem {Inverse Secondary Structure Prediction}, \hyperpage{46}
+  \item {Inverse Secondary Structure Prediction}, \hyperpage{45}
+    \subitem {final\+\_\+cost}, \hyperpage{46}
+    \subitem {give\+\_\+up}, \hyperpage{46}
+    \subitem {inv\+\_\+verbose}, \hyperpage{46}
+    \subitem {inverse\+\_\+fold}, \hyperpage{45}
+    \subitem {inverse\+\_\+pf\+\_\+fold}, \hyperpage{45}
+  \item {inverse\+\_\+fold}
+    \subitem {Inverse Secondary Structure Prediction}, \hyperpage{45}
+  \item {inverse\+\_\+pf\+\_\+fold}
+    \subitem {Inverse Secondary Structure Prediction}, \hyperpage{45}
+
+  \indexspace
+
+  \item {james\+\_\+rule}
+    \subitem {fold\+\_\+vars.\+h}, \hyperpage{342}
+
+  \indexspace
+
+  \item {K0}
+    \subitem {energy\+\_\+const.\+h}, \hyperpage{334}
+
+  \indexspace
+
+  \item {L\+I\+S\+T}, \hyperpage{303}
+  \item {L\+Pfold.\+h}
+    \subitem {init\+\_\+pf\+\_\+fold\+L\+P}, \hyperpage{349}
+  \item {L\+S\+T\+\_\+\+B\+U\+C\+K\+E\+T}, \hyperpage{304}
+  \item {Lfold}
+    \subitem {Local M\+F\+E structure Prediction and Z-\/scores}, 
+		\hyperpage{190}
+  \item {Lfoldz}
+    \subitem {Local M\+F\+E structure Prediction and Z-\/scores}, 
+		\hyperpage{190}
+  \item {Local M\+F\+E consensus structures for Sequence Alignments}, 
+		\hyperpage{196}
+    \subitem {ali\+Lfold}, \hyperpage{196}
+  \item {Local M\+F\+E structure Prediction and Z-\/scores}, 
+		\hyperpage{189}
+    \subitem {Lfold}, \hyperpage{190}
+    \subitem {Lfoldz}, \hyperpage{190}
+    \subitem {vrna\+\_\+\+Lfold}, \hyperpage{189}
+    \subitem {vrna\+\_\+\+Lfoldz}, \hyperpage{190}
+    \subitem {vrna\+\_\+mfe\+\_\+window}, \hyperpage{190}
+    \subitem {vrna\+\_\+mfe\+\_\+window\+\_\+zscore}, \hyperpage{191}
+  \item {log\+M\+L}
+    \subitem {fold\+\_\+vars.\+h}, \hyperpage{342}
+  \item {loop\+\_\+energy}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{59}
+  \item {Loop\+Energy}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{163}
+
+  \indexspace
+
+  \item {M\+A\+X\+L\+O\+O\+P}
+    \subitem {energy\+\_\+const.\+h}, \hyperpage{334}
+  \item {M\+E\+A}
+    \subitem {M\+E\+A.\+h}, \hyperpage{349}
+  \item {M\+E\+A.\+h}
+    \subitem {M\+E\+A}, \hyperpage{349}
+  \item {M\+F\+E Consensus Structures for Sequence Alignment(s)}, 
+		\hyperpage{180}
+    \subitem {alifold}, \hyperpage{181}
+    \subitem {circalifold}, \hyperpage{182}
+    \subitem {free\+\_\+alifold\+\_\+arrays}, \hyperpage{182}
+    \subitem {vrna\+\_\+alifold}, \hyperpage{180}
+    \subitem {vrna\+\_\+circalifold}, \hyperpage{181}
+  \item {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{158}
+    \subitem {circfold}, \hyperpage{161}
+    \subitem {export\+\_\+circfold\+\_\+arrays}, \hyperpage{162}
+    \subitem {export\+\_\+circfold\+\_\+arrays\+\_\+par}, 
+		\hyperpage{162}
+    \subitem {export\+\_\+fold\+\_\+arrays}, \hyperpage{162}
+    \subitem {export\+\_\+fold\+\_\+arrays\+\_\+par}, \hyperpage{162}
+    \subitem {fold}, \hyperpage{161}
+    \subitem {fold\+\_\+par}, \hyperpage{160}
+    \subitem {free\+\_\+arrays}, \hyperpage{162}
+    \subitem {Hairpin\+E}, \hyperpage{163}
+    \subitem {initialize\+\_\+fold}, \hyperpage{163}
+    \subitem {Loop\+Energy}, \hyperpage{163}
+    \subitem {update\+\_\+fold\+\_\+params}, \hyperpage{162}
+    \subitem {update\+\_\+fold\+\_\+params\+\_\+par}, \hyperpage{162}
+    \subitem {vrna\+\_\+circfold}, \hyperpage{159}
+    \subitem {vrna\+\_\+fold}, \hyperpage{159}
+  \item {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{164}
+    \subitem {cofold}, \hyperpage{165}
+    \subitem {cofold\+\_\+par}, \hyperpage{165}
+    \subitem {export\+\_\+cofold\+\_\+arrays}, \hyperpage{167}
+    \subitem {export\+\_\+cofold\+\_\+arrays\+\_\+gq}, \hyperpage{166}
+    \subitem {free\+\_\+co\+\_\+arrays}, \hyperpage{166}
+    \subitem {get\+\_\+monomere\+\_\+mfes}, \hyperpage{167}
+    \subitem {initialize\+\_\+cofold}, \hyperpage{168}
+    \subitem {update\+\_\+cofold\+\_\+params}, \hyperpage{166}
+    \subitem {update\+\_\+cofold\+\_\+params\+\_\+par}, \hyperpage{166}
+    \subitem {vrna\+\_\+cofold}, \hyperpage{165}
+    \subitem {vrna\+\_\+mfe\+\_\+dimer}, \hyperpage{168}
+  \item {Make\+\_\+bp\+\_\+profile}
+    \subitem {profiledist.\+h}, \hyperpage{373}
+  \item {Make\+\_\+bp\+\_\+profile\+\_\+bppm}
+    \subitem {profiledist.\+h}, \hyperpage{372}
+  \item {make\+\_\+pair\+\_\+table}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{282}
+  \item {make\+\_\+pair\+\_\+table\+\_\+snoop}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{283}
+  \item {make\+\_\+reference\+B\+P\+\_\+array}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{283}
+  \item {Make\+\_\+sw\+String}
+    \subitem {stringdist.\+h}, \hyperpage{378}
+  \item {make\+\_\+tree}
+    \subitem {treedist.\+h}, \hyperpage{384}
+  \item {Manipulation of the Prediction Models}, \hyperpage{82}
+    \subitem {backtrack\+\_\+type}, \hyperpage{106}
+    \subitem {canonical\+B\+Ponly}, \hyperpage{106}
+    \subitem {dangles}, \hyperpage{105}
+    \subitem {do\+\_\+backtrack}, \hyperpage{106}
+    \subitem {energy\+\_\+set}, \hyperpage{106}
+    \subitem {max\+\_\+bp\+\_\+span}, \hyperpage{106}
+    \subitem {no\+Lonely\+Pairs}, \hyperpage{106}
+    \subitem {nonstandards}, \hyperpage{106}
+    \subitem {pf\+\_\+scale}, \hyperpage{105}
+    \subitem {set\+\_\+model\+\_\+details}, \hyperpage{104}
+    \subitem {temperature}, \hyperpage{105}
+    \subitem {tetra\+\_\+loop}, \hyperpage{105}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+I\+\_\+\+C\+V\+\_\+\+F\+A\+C\+T}, 
+		\hyperpage{91}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+I\+\_\+\+N\+C\+\_\+\+F\+A\+C\+T}, 
+		\hyperpage{91}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+I\+\_\+\+O\+L\+D\+\_\+\+E\+N}, 
+		\hyperpage{91}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+I\+\_\+\+R\+I\+B\+O}, 
+		\hyperpage{91}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+A\+C\+K\+T\+R\+A\+C\+K}, 
+		\hyperpage{90}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+A\+C\+K\+T\+R\+A\+C\+K\+\_\+\+T\+Y\+P\+E}, 
+		\hyperpage{90}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+E\+T\+A\+\_\+\+S\+C\+A\+L\+E}, 
+		\hyperpage{88}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+I\+R\+C}, 
+		\hyperpage{89}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+M\+P\+U\+T\+E\+\_\+\+B\+P\+P}, 
+		\hyperpage{90}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+A\+N\+G\+L\+E\+S}, 
+		\hyperpage{88}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+E\+R\+G\+Y\+\_\+\+S\+E\+T}, 
+		\hyperpage{89}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+G\+Q\+U\+A\+D}, 
+		\hyperpage{89}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+O\+G\+\_\+\+M\+L}, 
+		\hyperpage{90}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+A\+X\+\_\+\+B\+P\+\_\+\+S\+P\+A\+N}, 
+		\hyperpage{90}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+O\+\_\+\+G\+U}, 
+		\hyperpage{89}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+O\+\_\+\+G\+U\+\_\+\+C\+L\+O\+S\+U\+R\+E}, 
+		\hyperpage{89}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+O\+\_\+\+L\+P}, 
+		\hyperpage{88}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+F\+\_\+\+S\+C\+A\+L\+E}, 
+		\hyperpage{88}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+P\+E\+C\+I\+A\+L\+\_\+\+H\+P}, 
+		\hyperpage{88}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E}, 
+		\hyperpage{88}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+U\+N\+I\+Q\+\_\+\+M\+L}, 
+		\hyperpage{89}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+Z\+E}, 
+		\hyperpage{90}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+backtrack}, 
+		\hyperpage{99}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+get}, 
+		\hyperpage{99}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+type}, 
+		\hyperpage{99}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+type\+\_\+get}, 
+		\hyperpage{100}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+beta\+Scale}, 
+		\hyperpage{93}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+beta\+Scale\+\_\+get}, 
+		\hyperpage{93}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+circ}, \hyperpage{97}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+circ\+\_\+get}, 
+		\hyperpage{97}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+compute\+\_\+bpp}, 
+		\hyperpage{100}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+compute\+\_\+bpp\+\_\+get}, 
+		\hyperpage{100}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+cv\+\_\+fact}, 
+		\hyperpage{103}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+cv\+\_\+fact\+\_\+get}, 
+		\hyperpage{103}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+dangles}, \hyperpage{94}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+dangles\+\_\+get}, 
+		\hyperpage{94}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+energy\+\_\+set}, 
+		\hyperpage{98}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+energy\+\_\+set\+\_\+get}, 
+		\hyperpage{99}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+gquad}, \hyperpage{97}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+gquad\+\_\+get}, 
+		\hyperpage{98}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+log\+M\+L}, 
+		\hyperpage{96}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+log\+M\+L\+\_\+get}, 
+		\hyperpage{97}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+max\+\_\+bp\+\_\+span}, 
+		\hyperpage{100}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+max\+\_\+bp\+\_\+span\+\_\+get}, 
+		\hyperpage{101}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+min\+\_\+loop\+\_\+size}, 
+		\hyperpage{101}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+min\+\_\+loop\+\_\+size\+\_\+get}, 
+		\hyperpage{101}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+nc\+\_\+fact}, 
+		\hyperpage{104}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+nc\+\_\+fact\+\_\+get}, 
+		\hyperpage{104}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+U}, \hyperpage{95}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+U\+\_\+get}, 
+		\hyperpage{96}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+Uclosure}, 
+		\hyperpage{96}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+Uclosure\+\_\+get}, 
+		\hyperpage{96}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+no\+L\+P}, \hyperpage{95}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+no\+L\+P\+\_\+get}, 
+		\hyperpage{95}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+old\+Ali\+En}, 
+		\hyperpage{102}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+old\+Ali\+En\+\_\+get}, 
+		\hyperpage{102}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+reset}, \hyperpage{92}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+ribo}, \hyperpage{103}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+ribo\+\_\+get}, 
+		\hyperpage{103}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+sfact}, \hyperpage{104}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+sfact\+\_\+get}, 
+		\hyperpage{104}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+special\+\_\+hp}, 
+		\hyperpage{94}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+special\+\_\+hp\+\_\+get}, 
+		\hyperpage{94}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+temperature}, 
+		\hyperpage{93}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+temperature\+\_\+get}, 
+		\hyperpage{93}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+uniq\+\_\+\+M\+L}, 
+		\hyperpage{98}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+uniq\+\_\+\+M\+L\+\_\+get}, 
+		\hyperpage{98}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+window\+\_\+size}, 
+		\hyperpage{101}
+    \subitem {vrna\+\_\+md\+\_\+defaults\+\_\+window\+\_\+size\+\_\+get}, 
+		\hyperpage{102}
+    \subitem {vrna\+\_\+md\+\_\+option\+\_\+string}, \hyperpage{92}
+    \subitem {vrna\+\_\+md\+\_\+set\+\_\+default}, \hyperpage{91}
+    \subitem {vrna\+\_\+md\+\_\+update}, \hyperpage{92}
+  \item {max\+\_\+bp\+\_\+span}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{106}
+  \item {mean\+\_\+bp\+\_\+dist}
+    \subitem {part\+\_\+func.\+h}, \hyperpage{361}
+  \item {mean\+\_\+bp\+\_\+distance}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{143}
+  \item {mean\+\_\+bp\+\_\+distance\+\_\+pr}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{144}
+  \item {min\+\_\+loop\+\_\+size}
+    \subitem {vrna\+\_\+md\+\_\+s}, \hyperpage{87}
+
+  \indexspace
+
+  \item {n\+\_\+seq}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{250}
+  \item {N\+B\+P\+A\+I\+R\+S}
+    \subitem {energy\+\_\+const.\+h}, \hyperpage{334}
+  \item {nc\+\_\+fact}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{179}
+  \item {no\+Lonely\+Pairs}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{106}
+  \item {node}, \hyperpage{124}
+  \item {nonstandards}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{106}
+  \item {nrerror}
+    \subitem {utils.\+h}, \hyperpage{387}
+
+  \indexspace
+
+  \item {P\+A\+I\+R}
+    \subitem {Data Structures and Preprocessor Macros}, \hyperpage{124}
+  \item {P\+S\+\_\+dot\+\_\+plot}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{300}
+  \item {P\+S\+\_\+dot\+\_\+plot\+\_\+list}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{299}
+  \item {P\+S\+\_\+rna\+\_\+plot}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{299}
+  \item {P\+S\+\_\+rna\+\_\+plot\+\_\+a}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{299}
+  \item {P\+S\+\_\+rna\+\_\+plot\+\_\+a\+\_\+gquad}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{299}
+  \item {pack\+\_\+structure}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{282}
+  \item {pair\+\_\+info}
+    \subitem {Various utilities for Sequence Alignments, and Comparative Structure Prediction}, 
+		\hyperpage{287}
+  \item {param\+T}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{75}
+  \item {parenthesis\+\_\+structure}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{284}
+  \item {parenthesis\+\_\+zuker}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{284}
+  \item {parse\+\_\+gquad}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{65}
+  \item {parse\+\_\+structure}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{277}
+  \item {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{273}
+    \subitem {add\+\_\+root}, \hyperpage{276}
+    \subitem {alimake\+\_\+pair\+\_\+table}, \hyperpage{283}
+    \subitem {assign\+\_\+plist\+\_\+from\+\_\+db}, \hyperpage{281}
+    \subitem {b2\+C}, \hyperpage{275}
+    \subitem {b2\+H\+I\+T}, \hyperpage{275}
+    \subitem {b2\+Shapiro}, \hyperpage{276}
+    \subitem {bp\+\_\+distance}, \hyperpage{283}
+    \subitem {bppm\+\_\+symbol}, \hyperpage{284}
+    \subitem {bppm\+\_\+to\+\_\+structure}, \hyperpage{284}
+    \subitem {compute\+\_\+\+B\+Pdifferences}, \hyperpage{284}
+    \subitem {copy\+\_\+pair\+\_\+table}, \hyperpage{282}
+    \subitem {expand\+\_\+\+Full}, \hyperpage{276}
+    \subitem {expand\+\_\+\+Shapiro}, \hyperpage{276}
+    \subitem {make\+\_\+pair\+\_\+table}, \hyperpage{282}
+    \subitem {make\+\_\+pair\+\_\+table\+\_\+snoop}, \hyperpage{283}
+    \subitem {make\+\_\+reference\+B\+P\+\_\+array}, \hyperpage{283}
+    \subitem {pack\+\_\+structure}, \hyperpage{282}
+    \subitem {parenthesis\+\_\+structure}, \hyperpage{284}
+    \subitem {parenthesis\+\_\+zuker}, \hyperpage{284}
+    \subitem {parse\+\_\+structure}, \hyperpage{277}
+    \subitem {unexpand\+\_\+\+Full}, \hyperpage{277}
+    \subitem {unexpand\+\_\+aligned\+\_\+\+F}, \hyperpage{277}
+    \subitem {unpack\+\_\+structure}, \hyperpage{282}
+    \subitem {unweight}, \hyperpage{277}
+    \subitem {vrna\+\_\+bp\+\_\+distance}, \hyperpage{280}
+    \subitem {vrna\+\_\+db\+\_\+from\+\_\+bp\+\_\+stack}, 
+		\hyperpage{280}
+    \subitem {vrna\+\_\+db\+\_\+from\+\_\+plist}, \hyperpage{281}
+    \subitem {vrna\+\_\+db\+\_\+from\+\_\+ptable}, \hyperpage{279}
+    \subitem {vrna\+\_\+db\+\_\+pack}, \hyperpage{278}
+    \subitem {vrna\+\_\+db\+\_\+unpack}, \hyperpage{278}
+    \subitem {vrna\+\_\+plist}, \hyperpage{280}
+    \subitem {vrna\+\_\+pt\+\_\+pk\+\_\+get}, \hyperpage{279}
+    \subitem {vrna\+\_\+pt\+\_\+snoop\+\_\+get}, \hyperpage{279}
+    \subitem {vrna\+\_\+ptable}, \hyperpage{278}
+    \subitem {vrna\+\_\+ptable\+\_\+copy}, \hyperpage{279}
+    \subitem {vrna\+\_\+ref\+B\+Pcnt\+\_\+matrix}, \hyperpage{280}
+    \subitem {vrna\+\_\+ref\+B\+Pdist\+\_\+matrix}, \hyperpage{280}
+  \item {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{268}
+    \subitem {F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+I\+D\+\_\+\+L\+E\+N\+G\+T\+H}, 
+		\hyperpage{269}
+    \subitem {F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+T\+H}, 
+		\hyperpage{269}
+    \subitem {vrna\+\_\+cut\+\_\+point\+\_\+insert}, \hyperpage{271}
+    \subitem {vrna\+\_\+cut\+\_\+point\+\_\+remove}, \hyperpage{271}
+    \subitem {vrna\+\_\+hamming\+\_\+distance}, \hyperpage{269}
+    \subitem {vrna\+\_\+hamming\+\_\+distance\+\_\+bound}, 
+		\hyperpage{269}
+    \subitem {vrna\+\_\+random\+\_\+string}, \hyperpage{269}
+    \subitem {vrna\+\_\+seq\+\_\+to\+R\+N\+A}, \hyperpage{271}
+    \subitem {vrna\+\_\+seq\+\_\+toupper}, \hyperpage{271}
+  \item {part\+\_\+func.\+h}
+    \subitem {centroid}, \hyperpage{361}
+    \subitem {exp\+Hairpin\+Energy}, \hyperpage{361}
+    \subitem {exp\+Loop\+Energy}, \hyperpage{361}
+    \subitem {get\+\_\+centroid\+\_\+struct\+\_\+gquad\+\_\+pr}, 
+		\hyperpage{361}
+    \subitem {init\+\_\+pf\+\_\+fold}, \hyperpage{361}
+    \subitem {mean\+\_\+bp\+\_\+dist}, \hyperpage{361}
+    \subitem {stack\+Prob}, \hyperpage{361}
+    \subitem {vrna\+\_\+pf\+\_\+float\+\_\+precision}, \hyperpage{361}
+  \item {part\+\_\+func\+\_\+co.\+h}
+    \subitem {co\+\_\+pf\+\_\+fold}, \hyperpage{363}
+    \subitem {co\+\_\+pf\+\_\+fold\+\_\+par}, \hyperpage{364}
+    \subitem {compute\+\_\+probabilities}, \hyperpage{364}
+    \subitem {export\+\_\+co\+\_\+bppm}, \hyperpage{365}
+    \subitem {free\+\_\+co\+\_\+pf\+\_\+arrays}, \hyperpage{366}
+    \subitem {get\+\_\+concentrations}, \hyperpage{365}
+    \subitem {get\+\_\+plist}, \hyperpage{364}
+    \subitem {init\+\_\+co\+\_\+pf\+\_\+fold}, \hyperpage{365}
+    \subitem {update\+\_\+co\+\_\+pf\+\_\+params}, \hyperpage{366}
+    \subitem {update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par}, 
+		\hyperpage{366}
+  \item {Partition Function and Base Pair Probabilities for Sequence Alignment(s)}, 
+		\hyperpage{183}
+    \subitem {alipf\+\_\+circ\+\_\+fold}, \hyperpage{185}
+    \subitem {alipf\+\_\+fold}, \hyperpage{185}
+    \subitem {alipf\+\_\+fold\+\_\+par}, \hyperpage{184}
+    \subitem {export\+\_\+ali\+\_\+bppm}, \hyperpage{186}
+    \subitem {free\+\_\+alipf\+\_\+arrays}, \hyperpage{186}
+    \subitem {vrna\+\_\+pf\+\_\+alifold}, \hyperpage{183}
+    \subitem {vrna\+\_\+pf\+\_\+circalifold}, \hyperpage{184}
+  \item {Partition Function for two hybridized Sequences}, 
+		\hyperpage{169}
+    \subitem {vrna\+\_\+pf\+\_\+dimer}, \hyperpage{170}
+    \subitem {vrna\+\_\+pf\+\_\+dimer\+\_\+concentrations}, 
+		\hyperpage{171}
+    \subitem {vrna\+\_\+pf\+\_\+dimer\+\_\+probs}, \hyperpage{171}
+  \item {Partition Function for two hybridized Sequences as a stepwise Process}, 
+		\hyperpage{173}
+    \subitem {pf\+\_\+interact}, \hyperpage{174}
+    \subitem {pf\+\_\+unstru}, \hyperpage{173}
+  \item {Partition functions for locally stable secondary structures}, 
+		\hyperpage{192}
+    \subitem {pfl\+\_\+fold}, \hyperpage{193}
+    \subitem {putoutp\+U\+\_\+prob}, \hyperpage{193}
+    \subitem {putoutp\+U\+\_\+prob\+\_\+bin}, \hyperpage{193}
+    \subitem {update\+\_\+pf\+\_\+params\+L\+P}, \hyperpage{192}
+  \item {path\+\_\+t}
+    \subitem {Direct refolding paths between two secondary structures}, 
+		\hyperpage{265}
+  \item {pbacktrack}
+    \subitem {Stochastic backtracking in the Ensemble}, \hyperpage{155}
+  \item {pbacktrack\+\_\+circ}
+    \subitem {Stochastic backtracking in the Ensemble}, \hyperpage{155}
+  \item {pf\+\_\+circ\+\_\+fold}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{141}
+  \item {pf\+\_\+fold}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{140}
+  \item {pf\+\_\+fold\+\_\+par}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{139}
+  \item {pf\+\_\+interact}
+    \subitem {Partition Function for two hybridized Sequences as a stepwise Process}, 
+		\hyperpage{174}
+  \item {pf\+\_\+param\+T}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{75}
+  \item {pf\+\_\+scale}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{105}
+  \item {pf\+\_\+unstru}
+    \subitem {Partition Function for two hybridized Sequences as a stepwise Process}, 
+		\hyperpage{173}
+  \item {pfl\+\_\+fold}
+    \subitem {Partition functions for locally stable secondary structures}, 
+		\hyperpage{193}
+  \item {plist}
+    \subitem {Data Structures and Preprocessor Macros}, \hyperpage{124}
+  \item {Postorder\+\_\+list}, \hyperpage{304}
+  \item {pr}
+    \subitem {fold\+\_\+vars.\+h}, \hyperpage{342}
+  \item {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{175}
+    \subitem {alloc\+\_\+sequence\+\_\+arrays}, \hyperpage{178}
+    \subitem {cv\+\_\+fact}, \hyperpage{179}
+    \subitem {encode\+\_\+ali\+\_\+sequence}, \hyperpage{178}
+    \subitem {energy\+\_\+of\+\_\+alistruct}, \hyperpage{176}
+    \subitem {free\+\_\+sequence\+\_\+arrays}, \hyperpage{179}
+    \subitem {get\+\_\+alipf\+\_\+arrays}, \hyperpage{176}
+    \subitem {get\+\_\+mpi}, \hyperpage{178}
+    \subitem {nc\+\_\+fact}, \hyperpage{179}
+    \subitem {update\+\_\+alifold\+\_\+params}, \hyperpage{177}
+    \subitem {vrna\+\_\+aln\+\_\+mpi}, \hyperpage{177}
+  \item {Predicting Locally stable structures of large sequences}, 
+		\hyperpage{188}
+  \item {print\+\_\+tty\+\_\+constraint}
+    \subitem {constraints\+\_\+hard.\+h}, \hyperpage{324}
+  \item {print\+\_\+tty\+\_\+constraint\+\_\+full}
+    \subitem {constraints\+\_\+hard.\+h}, \hyperpage{324}
+  \item {print\+\_\+tty\+\_\+input\+\_\+seq}
+    \subitem {utils.\+h}, \hyperpage{387}
+  \item {print\+\_\+tty\+\_\+input\+\_\+seq\+\_\+str}
+    \subitem {utils.\+h}, \hyperpage{387}
+  \item {Processing and Evaluating Decomposed Loops}, \hyperpage{62}
+    \subitem {backtrack\+\_\+\+G\+Quad\+\_\+\+Int\+Loop}, 
+		\hyperpage{65}
+    \subitem {backtrack\+\_\+\+G\+Quad\+\_\+\+Int\+Loop\+\_\+\+L}, 
+		\hyperpage{66}
+    \subitem {E\+\_\+\+Ext\+Loop}, \hyperpage{63}
+    \subitem {E\+\_\+\+Hairpin}, \hyperpage{66}
+    \subitem {E\+\_\+\+Int\+Loop}, \hyperpage{69}
+    \subitem {E\+\_\+\+Stem}, \hyperpage{63}
+    \subitem {E\+\_\+mb\+\_\+loop\+\_\+stack}, \hyperpage{70}
+    \subitem {exp\+\_\+\+E\+\_\+\+Ext\+Loop}, \hyperpage{63}
+    \subitem {exp\+\_\+\+E\+\_\+\+Hairpin}, \hyperpage{67}
+    \subitem {exp\+\_\+\+E\+\_\+\+Int\+Loop}, \hyperpage{70}
+    \subitem {exp\+\_\+\+E\+\_\+\+Stem}, \hyperpage{64}
+    \subitem {get\+\_\+gquad\+\_\+matrix}, \hyperpage{65}
+    \subitem {parse\+\_\+gquad}, \hyperpage{65}
+    \subitem {vrna\+\_\+\+B\+T\+\_\+hp\+\_\+loop}, \hyperpage{68}
+    \subitem {vrna\+\_\+\+B\+T\+\_\+mb\+\_\+loop}, \hyperpage{70}
+    \subitem {vrna\+\_\+\+E\+\_\+ext\+\_\+hp\+\_\+loop}, \hyperpage{68}
+    \subitem {vrna\+\_\+\+E\+\_\+hp\+\_\+loop}, \hyperpage{68}
+    \subitem {vrna\+\_\+exp\+\_\+\+E\+\_\+hp\+\_\+loop}, \hyperpage{68}
+  \item {profile\+\_\+edit\+\_\+distance}
+    \subitem {profiledist.\+h}, \hyperpage{372}
+  \item {profiledist.\+h}
+    \subitem {free\+\_\+profile}, \hyperpage{373}
+    \subitem {Make\+\_\+bp\+\_\+profile}, \hyperpage{373}
+    \subitem {Make\+\_\+bp\+\_\+profile\+\_\+bppm}, \hyperpage{372}
+    \subitem {profile\+\_\+edit\+\_\+distance}, \hyperpage{372}
+  \item {progress\+\_\+callback}
+    \subitem {Generate soft constraints from data}, \hyperpage{242}
+  \item {pscore}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{251}
+  \item {pscore\+\_\+pf\+\_\+compat}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{251}
+  \item {ptype}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{249}
+  \item {ptype\+\_\+pf\+\_\+compat}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{249}
+  \item {pu\+\_\+contrib}, \hyperpage{123}
+  \item {pu\+\_\+out}, \hyperpage{123}
+  \item {putoutp\+U\+\_\+prob}
+    \subitem {Partition functions for locally stable secondary structures}, 
+		\hyperpage{193}
+  \item {putoutp\+U\+\_\+prob\+\_\+bin}
+    \subitem {Partition functions for locally stable secondary structures}, 
+		\hyperpage{193}
+
+  \indexspace
+
+  \item {R\+N\+A Secondary Structure Prediction}, \hyperpage{43}
+  \item {random\+\_\+string}
+    \subitem {string\+\_\+utils.\+h}, \hyperpage{377}
+  \item {read\+\_\+parameter\+\_\+file}
+    \subitem {Reading/\+Writing Energy Parameter Sets from/to File}, 
+		\hyperpage{197}
+  \item {read\+\_\+record}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{293}
+  \item {Reading/\+Writing Energy Parameter Sets from/to File}, 
+		\hyperpage{197}
+    \subitem {read\+\_\+parameter\+\_\+file}, \hyperpage{197}
+    \subitem {write\+\_\+parameter\+\_\+file}, \hyperpage{197}
+  \item {Refolding paths between secondary structues}, \hyperpage{47}
+  \item {Ribosum\+File}
+    \subitem {fold\+\_\+vars.\+h}, \hyperpage{342}
+  \item {rna\+\_\+plot\+\_\+type}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{300}
+
+  \indexspace
+
+  \item {S}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{250}
+  \item {S3}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{250}
+  \item {S5}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{250}
+  \item {S\+\_\+cons}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{250}
+  \item {sc}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{249}
+  \item {scale\+\_\+parameters}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{81}
+  \item {scs}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{251}
+  \item {sect}
+    \subitem {Data Structures and Preprocessor Macros}, \hyperpage{125}
+  \item {sequence}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{248}
+  \item {sequence\+\_\+encoding}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{248}
+  \item {sequences}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{249}
+  \item {set\+\_\+model\+\_\+details}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{104}
+  \item {simple\+\_\+circplot\+\_\+coordinates}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{296}
+  \item {simple\+\_\+xy\+\_\+coordinates}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{296}
+  \item {snoop\+T}, \hyperpage{124}
+  \item {Soft Constraints}, \hyperpage{228}
+    \subitem {vrna\+\_\+callback\+\_\+sc\+\_\+backtrack}, 
+		\hyperpage{231}
+    \subitem {vrna\+\_\+callback\+\_\+sc\+\_\+energy}, \hyperpage{230}
+    \subitem {vrna\+\_\+callback\+\_\+sc\+\_\+exp\+\_\+energy}, 
+		\hyperpage{230}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+bp}, \hyperpage{232}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+bt}, \hyperpage{233}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+data}, \hyperpage{233}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+exp\+\_\+f}, \hyperpage{234}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+f}, \hyperpage{233}
+    \subitem {vrna\+\_\+sc\+\_\+add\+\_\+up}, \hyperpage{232}
+    \subitem {vrna\+\_\+sc\+\_\+free}, \hyperpage{233}
+    \subitem {vrna\+\_\+sc\+\_\+init}, \hyperpage{231}
+    \subitem {vrna\+\_\+sc\+\_\+remove}, \hyperpage{232}
+  \item {space}
+    \subitem {utils.\+h}, \hyperpage{388}
+  \item {ssv\+\_\+rna\+\_\+plot}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{298}
+  \item {st\+\_\+back}
+    \subitem {Stochastic backtracking in the Ensemble}, \hyperpage{156}
+  \item {stack\+Prob}
+    \subitem {part\+\_\+func.\+h}, \hyperpage{361}
+  \item {stat\+\_\+cb}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{248}
+  \item {Stochastic backtracking in the Ensemble}, \hyperpage{154}
+    \subitem {pbacktrack}, \hyperpage{155}
+    \subitem {pbacktrack\+\_\+circ}, \hyperpage{155}
+    \subitem {st\+\_\+back}, \hyperpage{156}
+    \subitem {vrna\+\_\+pbacktrack}, \hyperpage{155}
+    \subitem {vrna\+\_\+pbacktrack5}, \hyperpage{154}
+  \item {Stochastic Backtracking of Consensus Structures from Sequence Alignment(s)}, 
+		\hyperpage{187}
+    \subitem {alipbacktrack}, \hyperpage{187}
+  \item {Stochastic Backtracking of Structures from Distance Based Partitioning}, 
+		\hyperpage{216}
+    \subitem {vrna\+\_\+pbacktrack5\+\_\+\+Two\+D}, \hyperpage{217}
+    \subitem {vrna\+\_\+pbacktrack\+\_\+\+Two\+D}, \hyperpage{216}
+  \item {str\+\_\+\+D\+N\+A2\+R\+N\+A}
+    \subitem {string\+\_\+utils.\+h}, \hyperpage{377}
+  \item {str\+\_\+uppercase}
+    \subitem {string\+\_\+utils.\+h}, \hyperpage{377}
+  \item {string\+\_\+edit\+\_\+distance}
+    \subitem {stringdist.\+h}, \hyperpage{378}
+  \item {string\+\_\+utils.\+h}
+    \subitem {hamming}, \hyperpage{377}
+    \subitem {hamming\+\_\+bound}, \hyperpage{377}
+    \subitem {random\+\_\+string}, \hyperpage{377}
+    \subitem {str\+\_\+\+D\+N\+A2\+R\+N\+A}, \hyperpage{377}
+    \subitem {str\+\_\+uppercase}, \hyperpage{377}
+  \item {stringdist.\+h}
+    \subitem {Make\+\_\+sw\+String}, \hyperpage{378}
+    \subitem {string\+\_\+edit\+\_\+distance}, \hyperpage{378}
+  \item {subopt}
+    \subitem {Suboptimal structures within an energy band arround the M\+F\+E}, 
+		\hyperpage{153}
+  \item {subopt\+\_\+circ}
+    \subitem {Suboptimal structures within an energy band arround the M\+F\+E}, 
+		\hyperpage{153}
+  \item {Suboptimal structures according to Zuker et al. 1989}, 
+		\hyperpage{150}
+    \subitem {vrna\+\_\+subopt\+\_\+zuker}, \hyperpage{150}
+    \subitem {zukersubopt}, \hyperpage{151}
+    \subitem {zukersubopt\+\_\+par}, \hyperpage{151}
+  \item {Suboptimal structures within an energy band arround the M\+F\+E}, 
+		\hyperpage{152}
+    \subitem {subopt}, \hyperpage{153}
+    \subitem {subopt\+\_\+circ}, \hyperpage{153}
+    \subitem {vrna\+\_\+subopt}, \hyperpage{152}
+  \item {svg\+\_\+rna\+\_\+plot}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{298}
+  \item {sw\+String}, \hyperpage{304}
+
+  \indexspace
+
+  \item {T\+U\+R\+N}
+    \subitem {energy\+\_\+const.\+h}, \hyperpage{334}
+  \item {temperature}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{105}
+  \item {tetra\+\_\+loop}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{105}
+  \item {The Dynamic Programming Matrices}, \hyperpage{257}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+X\+\_\+2\+D\+F\+O\+L\+D}, 
+		\hyperpage{261}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+X\+\_\+\+D\+E\+F\+A\+U\+L\+T}, 
+		\hyperpage{261}
+    \subitem {V\+R\+N\+A\+\_\+\+M\+X\+\_\+\+W\+I\+N\+D\+O\+W}, 
+		\hyperpage{261}
+    \subitem {vrna\+\_\+mx\+\_\+add}, \hyperpage{262}
+    \subitem {vrna\+\_\+mx\+\_\+mfe\+\_\+free}, \hyperpage{262}
+    \subitem {vrna\+\_\+mx\+\_\+pf\+\_\+free}, \hyperpage{262}
+    \subitem {vrna\+\_\+mx\+\_\+type\+\_\+e}, \hyperpage{261}
+  \item {The Fold Compound}, \hyperpage{244}
+    \subitem {V\+R\+N\+A\+\_\+\+O\+P\+T\+I\+O\+N\+\_\+\+E\+V\+A\+L\+\_\+\+O\+N\+L\+Y}, 
+		\hyperpage{252}
+    \subitem {V\+R\+N\+A\+\_\+\+O\+P\+T\+I\+O\+N\+\_\+\+M\+F\+E}, 
+		\hyperpage{252}
+    \subitem {V\+R\+N\+A\+\_\+\+O\+P\+T\+I\+O\+N\+\_\+\+P\+F}, 
+		\hyperpage{252}
+    \subitem {V\+R\+N\+A\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+M\+F\+E\+\_\+\+P\+O\+S\+T}, 
+		\hyperpage{251}
+    \subitem {V\+R\+N\+A\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+M\+F\+E\+\_\+\+P\+R\+E}, 
+		\hyperpage{251}
+    \subitem {V\+R\+N\+A\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+F\+\_\+\+P\+O\+S\+T}, 
+		\hyperpage{252}
+    \subitem {V\+R\+N\+A\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+F\+\_\+\+P\+R\+E}, 
+		\hyperpage{252}
+    \subitem {V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+L\+I\+G\+N\+M\+E\+N\+T}, 
+		\hyperpage{253}
+    \subitem {V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+I\+N\+G\+L\+E}, 
+		\hyperpage{253}
+    \subitem {vrna\+\_\+callback\+\_\+free\+\_\+auxdata}, 
+		\hyperpage{253}
+    \subitem {vrna\+\_\+callback\+\_\+recursion\+\_\+status}, 
+		\hyperpage{253}
+    \subitem {vrna\+\_\+fc\+\_\+type\+\_\+e}, \hyperpage{253}
+    \subitem {vrna\+\_\+fold\+\_\+compound}, \hyperpage{253}
+    \subitem {vrna\+\_\+fold\+\_\+compound\+\_\+add\+\_\+auxdata}, 
+		\hyperpage{255}
+    \subitem {vrna\+\_\+fold\+\_\+compound\+\_\+add\+\_\+callback}, 
+		\hyperpage{256}
+    \subitem {vrna\+\_\+fold\+\_\+compound\+\_\+comparative}, 
+		\hyperpage{254}
+    \subitem {vrna\+\_\+fold\+\_\+compound\+\_\+free}, \hyperpage{255}
+  \item {time\+\_\+stamp}
+    \subitem {utils.\+h}, \hyperpage{388}
+  \item {Tree}, \hyperpage{304}
+  \item {tree\+\_\+edit\+\_\+distance}
+    \subitem {treedist.\+h}, \hyperpage{384}
+  \item {treedist.\+h}
+    \subitem {free\+\_\+tree}, \hyperpage{384}
+    \subitem {make\+\_\+tree}, \hyperpage{384}
+    \subitem {tree\+\_\+edit\+\_\+distance}, \hyperpage{384}
+  \item {Two\+Dfold\+\_\+backtrack\+\_\+f5}
+    \subitem {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{211}
+  \item {Two\+Dfold\+\_\+vars}, \hyperpage{207}
+    \subitem {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{209}
+  \item {Two\+Dfold\+List}
+    \subitem {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{211}
+  \item {Two\+Dpfold\+\_\+pbacktrack}
+    \subitem {2\+Dpfold.\+h}, \hyperpage{311}
+  \item {Two\+Dpfold\+\_\+pbacktrack5}
+    \subitem {2\+Dpfold.\+h}, \hyperpage{311}
+  \item {Two\+Dpfold\+\_\+vars}, \hyperpage{305}
+  \item {Two\+Dpfold\+List}
+    \subitem {2\+Dpfold.\+h}, \hyperpage{310}
+  \item {type}
+    \subitem {vrna\+\_\+fc\+\_\+s}, \hyperpage{248}
+
+  \indexspace
+
+  \item {unexpand\+\_\+\+Full}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{277}
+  \item {unexpand\+\_\+aligned\+\_\+\+F}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{277}
+  \item {unpack\+\_\+structure}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{282}
+  \item {unweight}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{277}
+  \item {update\+\_\+alifold\+\_\+params}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{177}
+  \item {update\+\_\+co\+\_\+pf\+\_\+params}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{366}
+  \item {update\+\_\+co\+\_\+pf\+\_\+params\+\_\+par}
+    \subitem {part\+\_\+func\+\_\+co.\+h}, \hyperpage{366}
+  \item {update\+\_\+cofold\+\_\+params}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{166}
+  \item {update\+\_\+cofold\+\_\+params\+\_\+par}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{166}
+  \item {update\+\_\+fold\+\_\+params}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{162}
+  \item {update\+\_\+fold\+\_\+params\+\_\+par}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{162}
+  \item {update\+\_\+pf\+\_\+params}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{142}
+  \item {update\+\_\+pf\+\_\+params\+\_\+par}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{142}
+  \item {update\+\_\+pf\+\_\+params\+L\+P}
+    \subitem {Partition functions for locally stable secondary structures}, 
+		\hyperpage{192}
+  \item {urn}
+    \subitem {utils.\+h}, \hyperpage{388}
+  \item {Utilities}, \hyperpage{126}
+    \subitem {get\+\_\+input\+\_\+line}, \hyperpage{130}
+    \subitem {get\+\_\+line}, \hyperpage{130}
+    \subitem {V\+R\+N\+A\+\_\+\+I\+N\+P\+U\+T\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T}, 
+		\hyperpage{128}
+    \subitem {V\+R\+N\+A\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+A\+S\+T\+A\+\_\+\+H\+E\+A\+D\+E\+R}, 
+		\hyperpage{128}
+    \subitem {vrna\+\_\+alloc}, \hyperpage{128}
+    \subitem {vrna\+\_\+idx\+\_\+col\+\_\+wise}, \hyperpage{132}
+    \subitem {vrna\+\_\+idx\+\_\+row\+\_\+wise}, \hyperpage{131}
+    \subitem {vrna\+\_\+int\+\_\+urn}, \hyperpage{130}
+    \subitem {vrna\+\_\+message\+\_\+error}, \hyperpage{129}
+    \subitem {vrna\+\_\+message\+\_\+input\+\_\+seq}, \hyperpage{131}
+    \subitem {vrna\+\_\+message\+\_\+input\+\_\+seq\+\_\+simple}, 
+		\hyperpage{131}
+    \subitem {vrna\+\_\+message\+\_\+warning}, \hyperpage{129}
+    \subitem {vrna\+\_\+realloc}, \hyperpage{129}
+    \subitem {vrna\+\_\+time\+\_\+stamp}, \hyperpage{130}
+    \subitem {vrna\+\_\+urn}, \hyperpage{129}
+    \subitem {xsubi}, \hyperpage{132}
+  \item {utils.\+h}
+    \subitem {filecopy}, \hyperpage{388}
+    \subitem {init\+\_\+rand}, \hyperpage{388}
+    \subitem {int\+\_\+urn}, \hyperpage{388}
+    \subitem {nrerror}, \hyperpage{387}
+    \subitem {print\+\_\+tty\+\_\+input\+\_\+seq}, \hyperpage{387}
+    \subitem {print\+\_\+tty\+\_\+input\+\_\+seq\+\_\+str}, 
+		\hyperpage{387}
+    \subitem {space}, \hyperpage{388}
+    \subitem {time\+\_\+stamp}, \hyperpage{388}
+    \subitem {urn}, \hyperpage{388}
+    \subitem {warn\+\_\+user}, \hyperpage{387}
+    \subitem {xrealloc}, \hyperpage{388}
+
+  \indexspace
+
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B}
+    \subitem {Hard Constraints}, \hyperpage{222}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+A\+N\+G\+\_\+\+B\+R\+A\+C\+K}
+    \subitem {constraints\+\_\+hard.\+h}, \hyperpage{324}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+D\+E\+F\+A\+U\+L\+T}
+    \subitem {Hard Constraints}, \hyperpage{224}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+D\+O\+T}
+    \subitem {Hard Constraints}, \hyperpage{222}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+E\+N\+F\+O\+R\+C\+E\+\_\+\+B\+P}
+    \subitem {Hard Constraints}, \hyperpage{222}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+G\+Q\+U\+A\+D}
+    \subitem {Hard Constraints}, \hyperpage{223}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+I\+N\+T\+E\+R\+M\+O\+L}
+    \subitem {Hard Constraints}, \hyperpage{223}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+I\+N\+T\+R\+A\+M\+O\+L}
+    \subitem {Hard Constraints}, \hyperpage{223}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+P\+I\+P\+E}
+    \subitem {Hard Constraints}, \hyperpage{222}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+R\+N\+D\+\_\+\+B\+R\+A\+C\+K}
+    \subitem {Hard Constraints}, \hyperpage{223}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+D\+B\+\_\+\+X}
+    \subitem {Hard Constraints}, \hyperpage{223}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+F\+I\+L\+E}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{111}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+M\+U\+L\+T\+I\+L\+I\+N\+E}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{289}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+N\+O\+\_\+\+H\+E\+A\+D\+E\+R}
+    \subitem {constraints\+\_\+hard.\+h}, \hyperpage{324}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+S\+O\+F\+T\+\_\+\+M\+F\+E}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{111}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T\+\_\+\+S\+O\+F\+T\+\_\+\+P\+F}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{112}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+A\+L\+L}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+B\+U\+L\+G\+E}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+A\+N\+G\+L\+E3}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+A\+N\+G\+L\+E5}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+D\+U\+M\+P}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{202}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+H\+P}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+I\+N\+T}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+I\+N\+T\+\_\+11}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+I\+N\+T\+\_\+21}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+I\+N\+T\+\_\+22}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+I\+S\+C}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+L}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+E\+X\+T}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+H\+P}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+I\+N\+T}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+I\+N\+T\+\_\+1\+N}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+I\+N\+T\+\_\+23}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+M\+M\+\_\+\+M\+U\+L\+T\+I}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+N\+I\+N\+I\+O}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{202}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+S\+P\+E\+C\+I\+A\+L\+\_\+\+H\+P}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{201}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+S\+T\+A\+C\+K}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{200}
+  \item {V\+R\+N\+A\+\_\+\+C\+O\+N\+V\+E\+R\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+V\+A\+N\+I\+L\+L\+A}
+    \subitem {Converting Energy Parameter Files}, \hyperpage{202}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{116}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{117}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T\+\_\+\+S\+T\+E\+M}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{117}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+E\+X\+T\+\_\+\+S\+T\+E\+M1}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{118}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+S\+T\+E\+M}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{116}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+S\+T\+E\+M\+\_\+\+E\+X\+T}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{117}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+E\+X\+T\+\_\+\+U\+P}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{116}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+C\+O\+A\+X\+I\+A\+L}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{115}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+M\+L}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{114}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+M\+L\+\_\+\+M\+L}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{113}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+M\+L\+\_\+\+S\+T\+E\+M}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{115}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+S\+T\+E\+M}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{114}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+M\+L\+\_\+\+U\+P}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{115}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+P\+A\+I\+R\+\_\+\+H\+P}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{112}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+P\+A\+I\+R\+\_\+\+I\+L}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{112}
+  \item {V\+R\+N\+A\+\_\+\+D\+E\+C\+O\+M\+P\+\_\+\+P\+A\+I\+R\+\_\+\+M\+L}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{113}
+  \item {V\+R\+N\+A\+\_\+\+I\+N\+P\+U\+T\+\_\+\+C\+O\+N\+S\+T\+R\+A\+I\+N\+T}
+    \subitem {Utilities}, \hyperpage{128}
+  \item {V\+R\+N\+A\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+A\+S\+T\+A\+\_\+\+H\+E\+A\+D\+E\+R}
+    \subitem {Utilities}, \hyperpage{128}
+  \item {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+C\+O\+N\+J\+U\+G\+A\+T\+E\+\_\+\+F\+R}
+    \subitem {Generate soft constraints from data}, \hyperpage{241}
+  \item {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+C\+O\+N\+J\+U\+G\+A\+T\+E\+\_\+\+P\+R}
+    \subitem {Generate soft constraints from data}, \hyperpage{241}
+  \item {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+S\+T\+E\+E\+P\+E\+S\+T\+\_\+\+D\+E\+S\+C\+E\+N\+T}
+    \subitem {Generate soft constraints from data}, \hyperpage{242}
+  \item {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+V\+E\+C\+T\+O\+R\+\_\+\+B\+F\+G\+S}
+    \subitem {Generate soft constraints from data}, \hyperpage{241}
+  \item {V\+R\+N\+A\+\_\+\+M\+I\+N\+I\+M\+I\+Z\+E\+R\+\_\+\+V\+E\+C\+T\+O\+R\+\_\+\+B\+F\+G\+S2}
+    \subitem {Generate soft constraints from data}, \hyperpage{241}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+I\+\_\+\+C\+V\+\_\+\+F\+A\+C\+T}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{91}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+I\+\_\+\+N\+C\+\_\+\+F\+A\+C\+T}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{91}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+I\+\_\+\+O\+L\+D\+\_\+\+E\+N}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{91}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+A\+L\+I\+\_\+\+R\+I\+B\+O}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{91}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+A\+C\+K\+T\+R\+A\+C\+K}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{90}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+A\+C\+K\+T\+R\+A\+C\+K\+\_\+\+T\+Y\+P\+E}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{90}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+E\+T\+A\+\_\+\+S\+C\+A\+L\+E}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{88}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+I\+R\+C}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{89}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+M\+P\+U\+T\+E\+\_\+\+B\+P\+P}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{90}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+A\+N\+G\+L\+E\+S}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{88}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+E\+R\+G\+Y\+\_\+\+S\+E\+T}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{89}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+G\+Q\+U\+A\+D}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{89}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+O\+G\+\_\+\+M\+L}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{90}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+A\+X\+\_\+\+B\+P\+\_\+\+S\+P\+A\+N}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{90}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+O\+\_\+\+G\+U}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{89}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+O\+\_\+\+G\+U\+\_\+\+C\+L\+O\+S\+U\+R\+E}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{89}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+O\+\_\+\+L\+P}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{88}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+F\+\_\+\+S\+C\+A\+L\+E}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{88}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+P\+E\+C\+I\+A\+L\+\_\+\+H\+P}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{88}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+E\+M\+P\+E\+R\+A\+T\+U\+R\+E}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{88}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+U\+N\+I\+Q\+\_\+\+M\+L}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{89}
+  \item {V\+R\+N\+A\+\_\+\+M\+O\+D\+E\+L\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+Z\+E}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{90}
+  \item {V\+R\+N\+A\+\_\+\+M\+X\+\_\+2\+D\+F\+O\+L\+D}
+    \subitem {The Dynamic Programming Matrices}, \hyperpage{261}
+  \item {V\+R\+N\+A\+\_\+\+M\+X\+\_\+\+D\+E\+F\+A\+U\+L\+T}
+    \subitem {The Dynamic Programming Matrices}, \hyperpage{261}
+  \item {V\+R\+N\+A\+\_\+\+M\+X\+\_\+\+W\+I\+N\+D\+O\+W}
+    \subitem {The Dynamic Programming Matrices}, \hyperpage{261}
+  \item {V\+R\+N\+A\+\_\+\+O\+B\+J\+E\+C\+T\+I\+V\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+A\+B\+S\+O\+L\+U\+T\+E}
+    \subitem {Generate soft constraints from data}, \hyperpage{241}
+  \item {V\+R\+N\+A\+\_\+\+O\+B\+J\+E\+C\+T\+I\+V\+E\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+Q\+U\+A\+D\+R\+A\+T\+I\+C}
+    \subitem {Generate soft constraints from data}, \hyperpage{241}
+  \item {V\+R\+N\+A\+\_\+\+O\+P\+T\+I\+O\+N\+\_\+\+E\+V\+A\+L\+\_\+\+O\+N\+L\+Y}
+    \subitem {The Fold Compound}, \hyperpage{252}
+  \item {V\+R\+N\+A\+\_\+\+O\+P\+T\+I\+O\+N\+\_\+\+M\+F\+E}
+    \subitem {The Fold Compound}, \hyperpage{252}
+  \item {V\+R\+N\+A\+\_\+\+O\+P\+T\+I\+O\+N\+\_\+\+M\+U\+L\+T\+I\+L\+I\+N\+E}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{289}
+  \item {V\+R\+N\+A\+\_\+\+O\+P\+T\+I\+O\+N\+\_\+\+P\+F}
+    \subitem {The Fold Compound}, \hyperpage{252}
+  \item {V\+R\+N\+A\+\_\+\+P\+L\+O\+T\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+I\+R\+C\+U\+L\+A\+R}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{296}
+  \item {V\+R\+N\+A\+\_\+\+P\+L\+O\+T\+\_\+\+T\+Y\+P\+E\+\_\+\+N\+A\+V\+I\+E\+W}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{295}
+  \item {V\+R\+N\+A\+\_\+\+P\+L\+O\+T\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+I\+M\+P\+L\+E}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{295}
+  \item {V\+R\+N\+A\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+M\+F\+E\+\_\+\+P\+O\+S\+T}
+    \subitem {The Fold Compound}, \hyperpage{251}
+  \item {V\+R\+N\+A\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+M\+F\+E\+\_\+\+P\+R\+E}
+    \subitem {The Fold Compound}, \hyperpage{251}
+  \item {V\+R\+N\+A\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+F\+\_\+\+P\+O\+S\+T}
+    \subitem {The Fold Compound}, \hyperpage{252}
+  \item {V\+R\+N\+A\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+F\+\_\+\+P\+R\+E}
+    \subitem {The Fold Compound}, \hyperpage{252}
+  \item {V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+L\+I\+G\+N\+M\+E\+N\+T}
+    \subitem {The Fold Compound}, \hyperpage{253}
+  \item {V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+I\+N\+G\+L\+E}
+    \subitem {The Fold Compound}, \hyperpage{253}
+  \item {Various utilities for Sequence Alignments, and Comparative Structure Prediction}, 
+		\hyperpage{286}
+    \subitem {pair\+\_\+info}, \hyperpage{287}
+    \subitem {vrna\+\_\+aln\+\_\+pinfo}, \hyperpage{287}
+  \item {Vienna\+R\+N\+A/1.\+8.\+4\+\_\+epars.\+h}, \hyperpage{307}
+  \item {Vienna\+R\+N\+A/1.\+8.\+4\+\_\+intloops.\+h}, \hyperpage{307}
+  \item {Vienna\+R\+N\+A/2\+Dfold.\+h}, \hyperpage{308}
+  \item {Vienna\+R\+N\+A/2\+Dpfold.\+h}, \hyperpage{309}
+  \item {Vienna\+R\+N\+A/\+L\+Pfold.\+h}, \hyperpage{348}
+  \item {Vienna\+R\+N\+A/\+Lfold.\+h}, \hyperpage{346}
+  \item {Vienna\+R\+N\+A/\+M\+E\+A.\+h}, \hyperpage{349}
+  \item {Vienna\+R\+N\+A/\+P\+S\+\_\+dot.\+h}, \hyperpage{373}
+  \item {Vienna\+R\+N\+A/\+R\+N\+Astruct.\+h}, \hyperpage{374}
+  \item {Vienna\+R\+N\+A/alifold.\+h}, \hyperpage{312}
+  \item {Vienna\+R\+N\+A/aln\+\_\+util.\+h}, \hyperpage{314}
+  \item {Vienna\+R\+N\+A/alphabet.\+h}, \hyperpage{315}
+  \item {Vienna\+R\+N\+A/boltzmann\+\_\+sampling.\+h}, \hyperpage{317}
+  \item {Vienna\+R\+N\+A/centroid.\+h}, \hyperpage{318}
+  \item {Vienna\+R\+N\+A/cofold.\+h}, \hyperpage{319}
+  \item {Vienna\+R\+N\+A/constraints.\+h}, \hyperpage{320}
+  \item {Vienna\+R\+N\+A/constraints\+\_\+\+S\+H\+A\+P\+E.\+h}, 
+		\hyperpage{325}
+  \item {Vienna\+R\+N\+A/constraints\+\_\+hard.\+h}, \hyperpage{321}
+  \item {Vienna\+R\+N\+A/constraints\+\_\+soft.\+h}, \hyperpage{326}
+  \item {Vienna\+R\+N\+A/convert\+\_\+epars.\+h}, \hyperpage{327}
+  \item {Vienna\+R\+N\+A/data\+\_\+structures.\+h}, \hyperpage{328}
+  \item {Vienna\+R\+N\+A/dist\+\_\+vars.\+h}, \hyperpage{330}
+  \item {Vienna\+R\+N\+A/dp\+\_\+matrices.\+h}, \hyperpage{332}
+  \item {Vienna\+R\+N\+A/duplex.\+h}, \hyperpage{333}
+  \item {Vienna\+R\+N\+A/edit\+\_\+cost.\+h}, \hyperpage{333}
+  \item {Vienna\+R\+N\+A/energy\+\_\+const.\+h}, \hyperpage{333}
+  \item {Vienna\+R\+N\+A/eval.\+h}, \hyperpage{335}
+  \item {Vienna\+R\+N\+A/exterior\+\_\+loops.\+h}, \hyperpage{337}
+  \item {Vienna\+R\+N\+A/file\+\_\+formats.\+h}, \hyperpage{337}
+  \item {Vienna\+R\+N\+A/findpath.\+h}, \hyperpage{339}
+  \item {Vienna\+R\+N\+A/fold.\+h}, \hyperpage{339}
+  \item {Vienna\+R\+N\+A/fold\+\_\+vars.\+h}, \hyperpage{341}
+  \item {Vienna\+R\+N\+A/gquad.\+h}, \hyperpage{342}
+  \item {Vienna\+R\+N\+A/hairpin\+\_\+loops.\+h}, \hyperpage{343}
+  \item {Vienna\+R\+N\+A/interior\+\_\+loops.\+h}, \hyperpage{344}
+  \item {Vienna\+R\+N\+A/inverse.\+h}, \hyperpage{346}
+  \item {Vienna\+R\+N\+A/ligand.\+h}, \hyperpage{347}
+  \item {Vienna\+R\+N\+A/loop\+\_\+energies.\+h}, \hyperpage{347}
+  \item {Vienna\+R\+N\+A/mfe.\+h}, \hyperpage{350}
+  \item {Vienna\+R\+N\+A/mm.\+h}, \hyperpage{351}
+  \item {Vienna\+R\+N\+A/model.\+h}, \hyperpage{351}
+  \item {Vienna\+R\+N\+A/multibranch\+\_\+loops.\+h}, \hyperpage{355}
+  \item {Vienna\+R\+N\+A/naview.\+h}, \hyperpage{357}
+  \item {Vienna\+R\+N\+A/params.\+h}, \hyperpage{357}
+  \item {Vienna\+R\+N\+A/part\+\_\+func.\+h}, \hyperpage{359}
+  \item {Vienna\+R\+N\+A/part\+\_\+func\+\_\+co.\+h}, \hyperpage{362}
+  \item {Vienna\+R\+N\+A/part\+\_\+func\+\_\+up.\+h}, \hyperpage{366}
+  \item {Vienna\+R\+N\+A/perturbation\+\_\+fold.\+h}, \hyperpage{367}
+  \item {Vienna\+R\+N\+A/plot\+\_\+aln.\+h}, \hyperpage{369}
+  \item {Vienna\+R\+N\+A/plot\+\_\+layouts.\+h}, \hyperpage{369}
+  \item {Vienna\+R\+N\+A/plot\+\_\+structure.\+h}, \hyperpage{371}
+  \item {Vienna\+R\+N\+A/profiledist.\+h}, \hyperpage{372}
+  \item {Vienna\+R\+N\+A/read\+\_\+epars.\+h}, \hyperpage{374}
+  \item {Vienna\+R\+N\+A/ribo.\+h}, \hyperpage{374}
+  \item {Vienna\+R\+N\+A/string\+\_\+utils.\+h}, \hyperpage{376}
+  \item {Vienna\+R\+N\+A/stringdist.\+h}, \hyperpage{378}
+  \item {Vienna\+R\+N\+A/structure\+\_\+utils.\+h}, \hyperpage{380}
+  \item {Vienna\+R\+N\+A/subopt.\+h}, \hyperpage{382}
+  \item {Vienna\+R\+N\+A/treedist.\+h}, \hyperpage{383}
+  \item {Vienna\+R\+N\+A/utils.\+h}, \hyperpage{384}
+  \item {vrna\+\_\+\+B\+T\+\_\+hp\+\_\+loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{68}
+  \item {vrna\+\_\+\+B\+T\+\_\+mb\+\_\+loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{70}
+  \item {vrna\+\_\+\+E\+\_\+ext\+\_\+hp\+\_\+loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{68}
+  \item {vrna\+\_\+\+E\+\_\+hp\+\_\+loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{68}
+  \item {vrna\+\_\+\+Lfold}
+    \subitem {Local M\+F\+E structure Prediction and Z-\/scores}, 
+		\hyperpage{189}
+  \item {vrna\+\_\+\+Lfoldz}
+    \subitem {Local M\+F\+E structure Prediction and Z-\/scores}, 
+		\hyperpage{190}
+  \item {vrna\+\_\+alifold}
+    \subitem {M\+F\+E Consensus Structures for Sequence Alignment(s)}, 
+		\hyperpage{180}
+  \item {vrna\+\_\+alloc}
+    \subitem {Utilities}, \hyperpage{128}
+  \item {vrna\+\_\+aln\+\_\+mpi}
+    \subitem {Predicting Consensus Structures from Alignment(s)}, 
+		\hyperpage{177}
+  \item {vrna\+\_\+aln\+\_\+pinfo}
+    \subitem {Various utilities for Sequence Alignments, and Comparative Structure Prediction}, 
+		\hyperpage{287}
+  \item {vrna\+\_\+backtrack5\+\_\+\+Two\+D}
+    \subitem {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{209}
+  \item {vrna\+\_\+basepair\+\_\+s}, \hyperpage{122}
+  \item {vrna\+\_\+bp\+\_\+distance}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{280}
+  \item {vrna\+\_\+bp\+\_\+stack\+\_\+s}, \hyperpage{123}
+  \item {vrna\+\_\+callback\+\_\+free\+\_\+auxdata}
+    \subitem {The Fold Compound}, \hyperpage{253}
+  \item {vrna\+\_\+callback\+\_\+hc\+\_\+evaluate}
+    \subitem {Hard Constraints}, \hyperpage{224}
+  \item {vrna\+\_\+callback\+\_\+recursion\+\_\+status}
+    \subitem {The Fold Compound}, \hyperpage{253}
+  \item {vrna\+\_\+callback\+\_\+sc\+\_\+backtrack}
+    \subitem {Soft Constraints}, \hyperpage{231}
+  \item {vrna\+\_\+callback\+\_\+sc\+\_\+energy}
+    \subitem {Soft Constraints}, \hyperpage{230}
+  \item {vrna\+\_\+callback\+\_\+sc\+\_\+exp\+\_\+energy}
+    \subitem {Soft Constraints}, \hyperpage{230}
+  \item {vrna\+\_\+centroid}
+    \subitem {Compute the centroid structure}, \hyperpage{147}
+  \item {vrna\+\_\+centroid\+\_\+from\+\_\+plist}
+    \subitem {Compute the centroid structure}, \hyperpage{147}
+  \item {vrna\+\_\+centroid\+\_\+from\+\_\+probs}
+    \subitem {Compute the centroid structure}, \hyperpage{148}
+  \item {vrna\+\_\+circalifold}
+    \subitem {M\+F\+E Consensus Structures for Sequence Alignment(s)}, 
+		\hyperpage{181}
+  \item {vrna\+\_\+circfold}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{159}
+  \item {vrna\+\_\+cofold}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{165}
+  \item {vrna\+\_\+constraints\+\_\+add}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{118}
+  \item {vrna\+\_\+cpair\+\_\+s}, \hyperpage{122}
+  \item {vrna\+\_\+cut\+\_\+point\+\_\+insert}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{271}
+  \item {vrna\+\_\+cut\+\_\+point\+\_\+remove}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{271}
+  \item {vrna\+\_\+db\+\_\+from\+\_\+bp\+\_\+stack}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{280}
+  \item {vrna\+\_\+db\+\_\+from\+\_\+plist}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{281}
+  \item {vrna\+\_\+db\+\_\+from\+\_\+ptable}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{279}
+  \item {vrna\+\_\+db\+\_\+pack}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{278}
+  \item {vrna\+\_\+db\+\_\+unpack}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{278}
+  \item {vrna\+\_\+dimer\+\_\+conc\+\_\+s}, \hyperpage{170}
+  \item {vrna\+\_\+dimer\+\_\+pf\+\_\+s}, \hyperpage{170}
+  \item {vrna\+\_\+eval\+\_\+covar\+\_\+structure}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{49}
+  \item {vrna\+\_\+eval\+\_\+hp\+\_\+loop}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{61}
+  \item {vrna\+\_\+eval\+\_\+loop\+\_\+pt}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{53}
+  \item {vrna\+\_\+eval\+\_\+move}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{54}
+  \item {vrna\+\_\+eval\+\_\+move\+\_\+pt}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{54}
+  \item {vrna\+\_\+eval\+\_\+structure}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{49}
+  \item {vrna\+\_\+eval\+\_\+structure\+\_\+pt}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{51}
+  \item {vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{52}
+  \item {vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+simple\+\_\+verbose}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{53}
+  \item {vrna\+\_\+eval\+\_\+structure\+\_\+pt\+\_\+verbose}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{52}
+  \item {vrna\+\_\+eval\+\_\+structure\+\_\+simple}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{50}
+  \item {vrna\+\_\+eval\+\_\+structure\+\_\+simple\+\_\+verbose}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{51}
+  \item {vrna\+\_\+eval\+\_\+structure\+\_\+verbose}
+    \subitem {Free Energy Evaluation for given Sequence / Structure Pairs}, 
+		\hyperpage{50}
+  \item {vrna\+\_\+exp\+\_\+\+E\+\_\+hp\+\_\+loop}
+    \subitem {Processing and Evaluating Decomposed Loops}, 
+		\hyperpage{68}
+  \item {vrna\+\_\+exp\+\_\+param\+\_\+s}, \hyperpage{74}
+    \subitem {alpha}, \hyperpage{75}
+    \subitem {id}, \hyperpage{75}
+  \item {vrna\+\_\+exp\+\_\+params}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{76}
+  \item {vrna\+\_\+exp\+\_\+params\+\_\+comparative}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{76}
+  \item {vrna\+\_\+exp\+\_\+params\+\_\+copy}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{77}
+  \item {vrna\+\_\+exp\+\_\+params\+\_\+rescale}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{78}
+  \item {vrna\+\_\+exp\+\_\+params\+\_\+reset}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{79}
+  \item {vrna\+\_\+exp\+\_\+params\+\_\+subst}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{78}
+  \item {vrna\+\_\+extract\+\_\+record\+\_\+rest\+\_\+constraint}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{293}
+  \item {vrna\+\_\+extract\+\_\+record\+\_\+rest\+\_\+structure}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{292}
+  \item {vrna\+\_\+fc\+\_\+s}, \hyperpage{245}
+    \subitem {auxdata}, \hyperpage{248}
+    \subitem {cons\+\_\+seq}, \hyperpage{250}
+    \subitem {free\+\_\+auxdata}, \hyperpage{248}
+    \subitem {n\+\_\+seq}, \hyperpage{250}
+    \subitem {pscore}, \hyperpage{251}
+    \subitem {pscore\+\_\+pf\+\_\+compat}, \hyperpage{251}
+    \subitem {ptype}, \hyperpage{249}
+    \subitem {ptype\+\_\+pf\+\_\+compat}, \hyperpage{249}
+    \subitem {S}, \hyperpage{250}
+    \subitem {S3}, \hyperpage{250}
+    \subitem {S5}, \hyperpage{250}
+    \subitem {S\+\_\+cons}, \hyperpage{250}
+    \subitem {sc}, \hyperpage{249}
+    \subitem {scs}, \hyperpage{251}
+    \subitem {sequence}, \hyperpage{248}
+    \subitem {sequence\+\_\+encoding}, \hyperpage{248}
+    \subitem {sequences}, \hyperpage{249}
+    \subitem {stat\+\_\+cb}, \hyperpage{248}
+    \subitem {type}, \hyperpage{248}
+  \item {vrna\+\_\+fc\+\_\+type\+\_\+e}
+    \subitem {The Fold Compound}, \hyperpage{253}
+  \item {vrna\+\_\+file\+\_\+\+P\+S\+\_\+rnaplot}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{297}
+  \item {vrna\+\_\+file\+\_\+\+P\+S\+\_\+rnaplot\+\_\+a}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{297}
+  \item {vrna\+\_\+file\+\_\+\+S\+H\+A\+P\+E\+\_\+read}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{292}
+  \item {vrna\+\_\+file\+\_\+bpseq}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{290}
+  \item {vrna\+\_\+file\+\_\+connect}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{289}
+  \item {vrna\+\_\+file\+\_\+constraints\+\_\+read}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{292}
+  \item {vrna\+\_\+file\+\_\+fasta\+\_\+read\+\_\+record}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{290}
+  \item {vrna\+\_\+file\+\_\+helixlist}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{289}
+  \item {vrna\+\_\+file\+\_\+json}
+    \subitem {Functions to Read/\+Write several File Formats for R\+N\+A Sequences, Structures, and Alignments}, 
+		\hyperpage{290}
+  \item {vrna\+\_\+fold}
+    \subitem {M\+F\+E Structures of single Nucleic Acid Sequences}, 
+		\hyperpage{159}
+  \item {vrna\+\_\+fold\+\_\+compound}
+    \subitem {The Fold Compound}, \hyperpage{253}
+  \item {vrna\+\_\+fold\+\_\+compound\+\_\+add\+\_\+auxdata}
+    \subitem {The Fold Compound}, \hyperpage{255}
+  \item {vrna\+\_\+fold\+\_\+compound\+\_\+add\+\_\+callback}
+    \subitem {The Fold Compound}, \hyperpage{256}
+  \item {vrna\+\_\+fold\+\_\+compound\+\_\+comparative}
+    \subitem {The Fold Compound}, \hyperpage{254}
+  \item {vrna\+\_\+fold\+\_\+compound\+\_\+free}
+    \subitem {The Fold Compound}, \hyperpage{255}
+  \item {vrna\+\_\+hamming\+\_\+distance}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{269}
+  \item {vrna\+\_\+hamming\+\_\+distance\+\_\+bound}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{269}
+  \item {vrna\+\_\+hc\+\_\+add\+\_\+bp}
+    \subitem {Hard Constraints}, \hyperpage{226}
+  \item {vrna\+\_\+hc\+\_\+add\+\_\+bp\+\_\+nonspecific}
+    \subitem {Hard Constraints}, \hyperpage{226}
+  \item {vrna\+\_\+hc\+\_\+add\+\_\+from\+\_\+db}
+    \subitem {Hard Constraints}, \hyperpage{226}
+  \item {vrna\+\_\+hc\+\_\+add\+\_\+up}
+    \subitem {Hard Constraints}, \hyperpage{225}
+  \item {vrna\+\_\+hc\+\_\+add\+\_\+up\+\_\+batch}
+    \subitem {Hard Constraints}, \hyperpage{225}
+  \item {vrna\+\_\+hc\+\_\+free}
+    \subitem {Hard Constraints}, \hyperpage{226}
+  \item {vrna\+\_\+hc\+\_\+init}
+    \subitem {Hard Constraints}, \hyperpage{225}
+  \item {vrna\+\_\+hc\+\_\+s}, \hyperpage{221}
+    \subitem {free\+\_\+data}, \hyperpage{221}
+  \item {vrna\+\_\+hc\+\_\+up\+\_\+s}, \hyperpage{221}
+  \item {vrna\+\_\+hx\+\_\+s}, \hyperpage{275}
+  \item {vrna\+\_\+idx\+\_\+col\+\_\+wise}
+    \subitem {Utilities}, \hyperpage{132}
+  \item {vrna\+\_\+idx\+\_\+row\+\_\+wise}
+    \subitem {Utilities}, \hyperpage{131}
+  \item {vrna\+\_\+int\+\_\+urn}
+    \subitem {Utilities}, \hyperpage{130}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+backtrack}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{99}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{99}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+type}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{99}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+type\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{100}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+beta\+Scale}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{93}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+beta\+Scale\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{93}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+circ}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{97}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+circ\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{97}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+compute\+\_\+bpp}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{100}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+compute\+\_\+bpp\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{100}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+cv\+\_\+fact}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{103}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+cv\+\_\+fact\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{103}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+dangles}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{94}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+dangles\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{94}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+energy\+\_\+set}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{98}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+energy\+\_\+set\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{99}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+gquad}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{97}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+gquad\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{98}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+log\+M\+L}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{96}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+log\+M\+L\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{97}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+max\+\_\+bp\+\_\+span}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{100}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+max\+\_\+bp\+\_\+span\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{101}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+min\+\_\+loop\+\_\+size}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{101}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+min\+\_\+loop\+\_\+size\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{101}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+nc\+\_\+fact}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{104}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+nc\+\_\+fact\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{104}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+U}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{95}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+U\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{96}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+Uclosure}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{96}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+Uclosure\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{96}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+no\+L\+P}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{95}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+no\+L\+P\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{95}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+old\+Ali\+En}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{102}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+old\+Ali\+En\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{102}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+reset}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{92}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+ribo}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{103}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+ribo\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{103}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+sfact}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{104}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+sfact\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{104}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+special\+\_\+hp}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{94}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+special\+\_\+hp\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{94}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+temperature}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{93}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+temperature\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{93}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+uniq\+\_\+\+M\+L}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{98}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+uniq\+\_\+\+M\+L\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{98}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+window\+\_\+size}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{101}
+  \item {vrna\+\_\+md\+\_\+defaults\+\_\+window\+\_\+size\+\_\+get}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{102}
+  \item {vrna\+\_\+md\+\_\+option\+\_\+string}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{92}
+  \item {vrna\+\_\+md\+\_\+s}, \hyperpage{86}
+    \subitem {dangles}, \hyperpage{87}
+    \subitem {min\+\_\+loop\+\_\+size}, \hyperpage{87}
+  \item {vrna\+\_\+md\+\_\+set\+\_\+default}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{91}
+  \item {vrna\+\_\+md\+\_\+update}
+    \subitem {Manipulation of the Prediction Models}, \hyperpage{92}
+  \item {vrna\+\_\+mean\+\_\+bp\+\_\+distance}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{139}
+  \item {vrna\+\_\+mean\+\_\+bp\+\_\+distance\+\_\+pr}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{138}
+  \item {vrna\+\_\+message\+\_\+constraint\+\_\+options}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{119}
+  \item {vrna\+\_\+message\+\_\+constraint\+\_\+options\+\_\+all}
+    \subitem {Constraining the Secondary Structure Predictions and Evaluations}, 
+		\hyperpage{120}
+  \item {vrna\+\_\+message\+\_\+error}
+    \subitem {Utilities}, \hyperpage{129}
+  \item {vrna\+\_\+message\+\_\+input\+\_\+seq}
+    \subitem {Utilities}, \hyperpage{131}
+  \item {vrna\+\_\+message\+\_\+input\+\_\+seq\+\_\+simple}
+    \subitem {Utilities}, \hyperpage{131}
+  \item {vrna\+\_\+message\+\_\+warning}
+    \subitem {Utilities}, \hyperpage{129}
+  \item {vrna\+\_\+mfe}
+    \subitem {Computing Minimum Free Energy (\+M\+F\+E) Structures}, 
+		\hyperpage{134}
+  \item {vrna\+\_\+mfe\+\_\+\+Two\+D}
+    \subitem {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{209}
+  \item {vrna\+\_\+mfe\+\_\+dimer}
+    \subitem {M\+F\+E Structures of two hybridized Sequences}, 
+		\hyperpage{168}
+  \item {vrna\+\_\+mfe\+\_\+window}
+    \subitem {Local M\+F\+E structure Prediction and Z-\/scores}, 
+		\hyperpage{190}
+  \item {vrna\+\_\+mfe\+\_\+window\+\_\+zscore}
+    \subitem {Local M\+F\+E structure Prediction and Z-\/scores}, 
+		\hyperpage{191}
+  \item {vrna\+\_\+mx\+\_\+add}
+    \subitem {The Dynamic Programming Matrices}, \hyperpage{262}
+  \item {vrna\+\_\+mx\+\_\+mfe\+\_\+free}
+    \subitem {The Dynamic Programming Matrices}, \hyperpage{262}
+  \item {vrna\+\_\+mx\+\_\+mfe\+\_\+s}, \hyperpage{258}
+  \item {vrna\+\_\+mx\+\_\+pf\+\_\+free}
+    \subitem {The Dynamic Programming Matrices}, \hyperpage{262}
+  \item {vrna\+\_\+mx\+\_\+pf\+\_\+s}, \hyperpage{259}
+  \item {vrna\+\_\+mx\+\_\+type\+\_\+e}
+    \subitem {The Dynamic Programming Matrices}, \hyperpage{261}
+  \item {vrna\+\_\+nucleotide\+\_\+decode}
+    \subitem {alphabet.\+h}, \hyperpage{316}
+  \item {vrna\+\_\+nucleotide\+\_\+encode}
+    \subitem {alphabet.\+h}, \hyperpage{316}
+  \item {vrna\+\_\+param\+\_\+s}, \hyperpage{73}
+  \item {vrna\+\_\+params}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{75}
+  \item {vrna\+\_\+params\+\_\+copy}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{76}
+  \item {vrna\+\_\+params\+\_\+reset}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{79}
+  \item {vrna\+\_\+params\+\_\+subst}
+    \subitem {Energy Parameter Sets and Boltzmann Factors}, 
+		\hyperpage{77}
+  \item {vrna\+\_\+path\+\_\+findpath}
+    \subitem {Direct refolding paths between two secondary structures}, 
+		\hyperpage{265}
+  \item {vrna\+\_\+path\+\_\+findpath\+\_\+saddle}
+    \subitem {Direct refolding paths between two secondary structures}, 
+		\hyperpage{265}
+  \item {vrna\+\_\+path\+\_\+s}, \hyperpage{264}
+  \item {vrna\+\_\+pbacktrack}
+    \subitem {Stochastic backtracking in the Ensemble}, \hyperpage{155}
+  \item {vrna\+\_\+pbacktrack5}
+    \subitem {Stochastic backtracking in the Ensemble}, \hyperpage{154}
+  \item {vrna\+\_\+pbacktrack5\+\_\+\+Two\+D}
+    \subitem {Stochastic Backtracking of Structures from Distance Based Partitioning}, 
+		\hyperpage{217}
+  \item {vrna\+\_\+pbacktrack\+\_\+\+Two\+D}
+    \subitem {Stochastic Backtracking of Structures from Distance Based Partitioning}, 
+		\hyperpage{216}
+  \item {vrna\+\_\+pf}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{137}
+  \item {vrna\+\_\+pf\+\_\+\+Two\+D}
+    \subitem {Calculate Partition Functions of a Distance Based Partitioning}, 
+		\hyperpage{214}
+  \item {vrna\+\_\+pf\+\_\+alifold}
+    \subitem {Partition Function and Base Pair Probabilities for Sequence Alignment(s)}, 
+		\hyperpage{183}
+  \item {vrna\+\_\+pf\+\_\+circalifold}
+    \subitem {Partition Function and Base Pair Probabilities for Sequence Alignment(s)}, 
+		\hyperpage{184}
+  \item {vrna\+\_\+pf\+\_\+circfold}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{138}
+  \item {vrna\+\_\+pf\+\_\+dimer}
+    \subitem {Partition Function for two hybridized Sequences}, 
+		\hyperpage{170}
+  \item {vrna\+\_\+pf\+\_\+dimer\+\_\+concentrations}
+    \subitem {Partition Function for two hybridized Sequences}, 
+		\hyperpage{171}
+  \item {vrna\+\_\+pf\+\_\+dimer\+\_\+probs}
+    \subitem {Partition Function for two hybridized Sequences}, 
+		\hyperpage{171}
+  \item {vrna\+\_\+pf\+\_\+float\+\_\+precision}
+    \subitem {part\+\_\+func.\+h}, \hyperpage{361}
+  \item {vrna\+\_\+pf\+\_\+fold}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{137}
+  \item {vrna\+\_\+pinfo\+\_\+s}, \hyperpage{286}
+  \item {vrna\+\_\+plist}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{280}
+  \item {vrna\+\_\+plist\+\_\+from\+\_\+probs}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{144}
+  \item {vrna\+\_\+plist\+\_\+s}, \hyperpage{122}
+  \item {vrna\+\_\+pt\+\_\+pk\+\_\+get}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{279}
+  \item {vrna\+\_\+pt\+\_\+snoop\+\_\+get}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{279}
+  \item {vrna\+\_\+ptable}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{278}
+  \item {vrna\+\_\+ptable\+\_\+copy}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{279}
+  \item {vrna\+\_\+ptypes}
+    \subitem {alphabet.\+h}, \hyperpage{316}
+  \item {vrna\+\_\+random\+\_\+string}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{269}
+  \item {vrna\+\_\+realloc}
+    \subitem {Utilities}, \hyperpage{129}
+  \item {vrna\+\_\+ref\+B\+Pcnt\+\_\+matrix}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{280}
+  \item {vrna\+\_\+ref\+B\+Pdist\+\_\+matrix}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Secondary Structures}, 
+		\hyperpage{280}
+  \item {vrna\+\_\+sc\+\_\+\+S\+H\+A\+P\+E\+\_\+parse\+\_\+method}
+    \subitem {constraints\+\_\+\+S\+H\+A\+P\+E.\+h}, \hyperpage{326}
+  \item {vrna\+\_\+sc\+\_\+\+S\+H\+A\+P\+E\+\_\+to\+\_\+pr}
+    \subitem {Incorporating S\+H\+A\+P\+E reactivity data}, 
+		\hyperpage{237}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+\+S\+H\+A\+P\+E\+\_\+deigan}
+    \subitem {Incorporating S\+H\+A\+P\+E reactivity data}, 
+		\hyperpage{235}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+\+S\+H\+A\+P\+E\+\_\+deigan\+\_\+ali}
+    \subitem {Incorporating S\+H\+A\+P\+E reactivity data}, 
+		\hyperpage{236}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+\+S\+H\+A\+P\+E\+\_\+zarringhalam}
+    \subitem {Incorporating S\+H\+A\+P\+E reactivity data}, 
+		\hyperpage{236}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+bp}
+    \subitem {Soft Constraints}, \hyperpage{232}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+bt}
+    \subitem {Soft Constraints}, \hyperpage{233}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+data}
+    \subitem {Soft Constraints}, \hyperpage{233}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+exp\+\_\+f}
+    \subitem {Soft Constraints}, \hyperpage{234}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+f}
+    \subitem {Soft Constraints}, \hyperpage{233}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+hi\+\_\+motif}
+    \subitem {Incorporating ligands binding to specific sequence/structure motifs}, 
+		\hyperpage{238}
+  \item {vrna\+\_\+sc\+\_\+add\+\_\+up}
+    \subitem {Soft Constraints}, \hyperpage{232}
+  \item {vrna\+\_\+sc\+\_\+free}
+    \subitem {Soft Constraints}, \hyperpage{233}
+  \item {vrna\+\_\+sc\+\_\+init}
+    \subitem {Soft Constraints}, \hyperpage{231}
+  \item {vrna\+\_\+sc\+\_\+minimize\+\_\+pertubation}
+    \subitem {Generate soft constraints from data}, \hyperpage{242}
+  \item {vrna\+\_\+sc\+\_\+remove}
+    \subitem {Soft Constraints}, \hyperpage{232}
+  \item {vrna\+\_\+sc\+\_\+s}, \hyperpage{229}
+    \subitem {bt}, \hyperpage{229}
+    \subitem {exp\+\_\+f}, \hyperpage{230}
+    \subitem {f}, \hyperpage{229}
+  \item {vrna\+\_\+sect\+\_\+s}, \hyperpage{122}
+  \item {vrna\+\_\+seq\+\_\+to\+R\+N\+A}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{271}
+  \item {vrna\+\_\+seq\+\_\+toupper}
+    \subitem {Parsing, Converting, and Comparing -\/ Functions to Manipulate Sequence and Structure Strings}, 
+		\hyperpage{271}
+  \item {vrna\+\_\+sol\+\_\+\+Two\+D\+\_\+pf\+\_\+t}, \hyperpage{213}
+    \subitem {Calculate Partition Functions of a Distance Based Partitioning}, 
+		\hyperpage{214}
+  \item {vrna\+\_\+sol\+\_\+\+Two\+D\+\_\+t}, \hyperpage{207}
+    \subitem {Calculating M\+F\+E representatives of a Distance Based Partitioning}, 
+		\hyperpage{208}
+  \item {vrna\+\_\+stack\+\_\+prob}
+    \subitem {Computing Partition Functions and Pair Probabilities}, 
+		\hyperpage{139}
+  \item {vrna\+\_\+subopt}
+    \subitem {Suboptimal structures within an energy band arround the M\+F\+E}, 
+		\hyperpage{152}
+  \item {vrna\+\_\+subopt\+\_\+sol\+\_\+s}, \hyperpage{306}
+  \item {vrna\+\_\+subopt\+\_\+zuker}
+    \subitem {Suboptimal structures according to Zuker et al. 1989}, 
+		\hyperpage{150}
+  \item {vrna\+\_\+time\+\_\+stamp}
+    \subitem {Utilities}, \hyperpage{130}
+  \item {vrna\+\_\+urn}
+    \subitem {Utilities}, \hyperpage{129}
+
+  \indexspace
+
+  \item {warn\+\_\+user}
+    \subitem {utils.\+h}, \hyperpage{387}
+  \item {write\+\_\+parameter\+\_\+file}
+    \subitem {Reading/\+Writing Energy Parameter Sets from/to File}, 
+		\hyperpage{197}
+
+  \indexspace
+
+  \item {xrealloc}
+    \subitem {utils.\+h}, \hyperpage{388}
+  \item {xrna\+\_\+plot}
+    \subitem {Functions for Creating R\+N\+A Secondary Structures Plots, Dot-\/\+Plots, and More}, 
+		\hyperpage{299}
+  \item {xsubi}
+    \subitem {Utilities}, \hyperpage{132}
+
+  \indexspace
+
+  \item {zukersubopt}
+    \subitem {Suboptimal structures according to Zuker et al. 1989}, 
+		\hyperpage{151}
+  \item {zukersubopt\+\_\+par}
+    \subitem {Suboptimal structures according to Zuker et al. 1989}, 
+		\hyperpage{151}
+
+\end{theindex}

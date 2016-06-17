@@ -1,0 +1,409 @@
+\hypertarget{group__consensus__fold}{}\section{Predicting Consensus Structures from Alignment(s)}
+\label{group__consensus__fold}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+
+
+compute various properties (consensus M\+F\+E structures, partition function, Boltzmann distributed stochastic samples, ...) for R\+N\+A sequence alignments  
+
+
+Collaboration diagram for Predicting Consensus Structures from Alignment(s)\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__consensus__fold}
+\end{center}
+\end{figure}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__consensus__mfe__fold}{M\+F\+E Consensus Structures for Sequence Alignment(s)}
+\item 
+\hyperlink{group__consensus__pf__fold}{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}
+\item 
+\hyperlink{group__consensus__stochbt}{Stochastic Backtracking of Consensus Structures from Sequence Alignment(s)}
+\item 
+\hyperlink{group__local__consensus__fold}{Local M\+F\+E consensus structures for Sequence Alignments}
+\end{DoxyCompactItemize}
+\subsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \hyperlink{alifold_8h}{alifold.\+h}
+\begin{DoxyCompactList}\small\item\em compute various properties (consensus M\+F\+E structures, partition function, Boltzmann distributed stochastic samples, ...) for R\+N\+A sequence alignments \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{group__consensus__fold_ga1c48869c03b49a342bf4cbdd61900081}{energy\+\_\+of\+\_\+alistruct} (const char $\ast$$\ast$sequences, const char $\ast$structure, int n\+\_\+seq, float $\ast$energy)
+\begin{DoxyCompactList}\small\item\em Calculate the free energy of a consensus structure given a set of aligned sequences. \end{DoxyCompactList}\item 
+int \hyperlink{group__consensus__fold_ga5349960075b1847720a2e9df021e2675}{get\+\_\+alipf\+\_\+arrays} (short $\ast$$\ast$$\ast$S\+\_\+p, short $\ast$$\ast$$\ast$S5\+\_\+p, short $\ast$$\ast$$\ast$S3\+\_\+p, unsigned short $\ast$$\ast$$\ast$a2s\+\_\+p, char $\ast$$\ast$$\ast$Ss\+\_\+p, \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$qb\+\_\+p, \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$qm\+\_\+p, \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$q1k\+\_\+p, \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$qln\+\_\+p, short $\ast$$\ast$pscore)
+\begin{DoxyCompactList}\small\item\em Get pointers to (almost) all relavant arrays used in alifold\textquotesingle{}s partition function computation. \end{DoxyCompactList}\item 
+void \hyperlink{group__consensus__fold_gac484c6bd429bafbd353b91044508d8e9}{update\+\_\+alifold\+\_\+params} (void)
+\begin{DoxyCompactList}\small\item\em Update the energy parameters for alifold function. \end{DoxyCompactList}\item 
+int \hyperlink{group__consensus__fold_ga20fd17bb27891009af7ce839f5386177}{vrna\+\_\+aln\+\_\+mpi} (char $\ast$Alseq\mbox{[}$\,$\mbox{]}, int n\+\_\+seq, int length, int $\ast$mini)
+\begin{DoxyCompactList}\small\item\em Get the mean pairwise identity in steps from ?to?(ident) \end{DoxyCompactList}\item 
+int \hyperlink{group__consensus__fold_gaa2d600be90844094ec145ea14a314d2f}{get\+\_\+mpi} (char $\ast$Alseq\mbox{[}$\,$\mbox{]}, int n\+\_\+seq, int length, int $\ast$mini)
+\begin{DoxyCompactList}\small\item\em Get the mean pairwise identity in steps from ?to?(ident) \end{DoxyCompactList}\item 
+void \hyperlink{group__consensus__fold_gaa3e40277c837d6f7603afe319884c786}{encode\+\_\+ali\+\_\+sequence} (const char $\ast$sequence, short $\ast$S, short $\ast$s5, short $\ast$s3, char $\ast$ss, unsigned short $\ast$as, int \hyperlink{group__model__details_gaf9202a1a09f5828dc731e2d9a10fa111}{circ})
+\begin{DoxyCompactList}\small\item\em Get arrays with encoded sequence of the alignment. \end{DoxyCompactList}\item 
+void \hyperlink{group__consensus__fold_ga8a560930f7f2582cc3967723a86cfdfa}{alloc\+\_\+sequence\+\_\+arrays} (const char $\ast$$\ast$sequences, short $\ast$$\ast$$\ast$S, short $\ast$$\ast$$\ast$S5, short $\ast$$\ast$$\ast$S3, unsigned short $\ast$$\ast$$\ast$a2s, char $\ast$$\ast$$\ast$Ss, int \hyperlink{group__model__details_gaf9202a1a09f5828dc731e2d9a10fa111}{circ})
+\begin{DoxyCompactList}\small\item\em Allocate memory for sequence array used to deal with aligned sequences. \end{DoxyCompactList}\item 
+void \hyperlink{group__consensus__fold_ga298a420a8c879202e2617b3f724fde38}{free\+\_\+sequence\+\_\+arrays} (unsigned int n\+\_\+seq, short $\ast$$\ast$$\ast$S, short $\ast$$\ast$$\ast$S5, short $\ast$$\ast$$\ast$S3, unsigned short $\ast$$\ast$$\ast$a2s, char $\ast$$\ast$$\ast$Ss)
+\begin{DoxyCompactList}\small\item\em Free the memory of the sequence arrays used to deal with aligned sequences. \end{DoxyCompactList}\item 
+\hypertarget{group__consensus__fold_ga1116aed4b2dab5252cd23946d47d52c3}{}float $\ast$$\ast$ \hyperlink{group__consensus__fold_ga1116aed4b2dab5252cd23946d47d52c3}{get\+\_\+ribosum} (const char $\ast$$\ast$Alseq, int n\+\_\+seq, int length)\label{group__consensus__fold_ga1116aed4b2dab5252cd23946d47d52c3}
+
+\begin{DoxyCompactList}\small\item\em Retrieve a Ribo\+Sum Scoring Matrix for a given Alignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{group__consensus__fold_gaf3cbac6ff5d706d6e414677841ddf94c}{cv\+\_\+fact}
+\begin{DoxyCompactList}\small\item\em This variable controls the weight of the covariance term in the energy function of alignment folding algorithms. \end{DoxyCompactList}\item 
+double \hyperlink{group__consensus__fold_ga502948a122a2af5b914355b1f3ea2f61}{nc\+\_\+fact}
+\begin{DoxyCompactList}\small\item\em This variable controls the magnitude of the penalty for non-\/compatible sequences in the covariance term of alignment folding algorithms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+compute various properties (consensus M\+F\+E structures, partition function, Boltzmann distributed stochastic samples, ...) for R\+N\+A sequence alignments 
+
+Consensus structures can be predicted by a modified version of the \hyperlink{group__mfe__fold__single_gaadafcb0f140795ae62e5ca027e335a9b}{fold()} algorithm that takes a set of aligned sequences instead of a single sequence. The energy function consists of the mean energy averaged over the sequences, plus a covariance term that favors pairs with consistent and compensatory mutations and penalizes pairs that cannot be formed by all structures. For details see \cite{hofacker:2002} and \cite{bernhart:2008}. 
+
+\subsection{Function Documentation}
+\hypertarget{group__consensus__fold_ga1c48869c03b49a342bf4cbdd61900081}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!energy\+\_\+of\+\_\+alistruct@{energy\+\_\+of\+\_\+alistruct}}
+\index{energy\+\_\+of\+\_\+alistruct@{energy\+\_\+of\+\_\+alistruct}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{energy\+\_\+of\+\_\+alistruct}]{\setlength{\rightskip}{0pt plus 5cm}float energy\+\_\+of\+\_\+alistruct (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{sequences, }
+\item[{const char $\ast$}]{structure, }
+\item[{int}]{n\+\_\+seq, }
+\item[{float $\ast$}]{energy}
+\end{DoxyParamCaption}
+)}\label{group__consensus__fold_ga1c48869c03b49a342bf4cbdd61900081}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Calculate the free energy of a consensus structure given a set of aligned sequences. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000015}{Deprecated}]Usage of this function is discouraged! Use \hyperlink{group__eval_ga58f199f1438d794a265f3b27fc8ea631}{vrna\+\_\+eval\+\_\+structure()}, and \hyperlink{group__eval_ga6cea75c0eb9857fb59172be54cab09e0}{vrna\+\_\+eval\+\_\+covar\+\_\+structure()} instead!\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & The N\+U\+L\+L terminated array of sequences \\
+\hline
+{\em structure} & The consensus structure \\
+\hline
+{\em n\+\_\+seq} & The number of sequences in the alignment \\
+\hline
+{\em energy} & A pointer to an array of at least two floats that will hold the free energies (energy\mbox{[}0\mbox{]} will contain the free energy, energy\mbox{[}1\mbox{]} will be filled with the covariance energy term) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+free energy in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__consensus__fold_ga5349960075b1847720a2e9df021e2675}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!get\+\_\+alipf\+\_\+arrays@{get\+\_\+alipf\+\_\+arrays}}
+\index{get\+\_\+alipf\+\_\+arrays@{get\+\_\+alipf\+\_\+arrays}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{get\+\_\+alipf\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+alipf\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{short $\ast$$\ast$$\ast$}]{S\+\_\+p, }
+\item[{short $\ast$$\ast$$\ast$}]{S5\+\_\+p, }
+\item[{short $\ast$$\ast$$\ast$}]{S3\+\_\+p, }
+\item[{unsigned short $\ast$$\ast$$\ast$}]{a2s\+\_\+p, }
+\item[{char $\ast$$\ast$$\ast$}]{Ss\+\_\+p, }
+\item[{{\bf F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$}]{qb\+\_\+p, }
+\item[{{\bf F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$}]{qm\+\_\+p, }
+\item[{{\bf F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$}]{q1k\+\_\+p, }
+\item[{{\bf F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$}]{qln\+\_\+p, }
+\item[{short $\ast$$\ast$}]{pscore}
+\end{DoxyParamCaption}
+)}\label{group__consensus__fold_ga5349960075b1847720a2e9df021e2675}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Get pointers to (almost) all relavant arrays used in alifold\textquotesingle{}s partition function computation. 
+
+\begin{DoxyNote}{Note}
+To obtain meaningful pointers, call alipf\+\_\+fold first!
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+pf\+\_\+alifold(), \hyperlink{group__consensus__pf__fold_gaadd8d570442f86cbbc4978c8c62c9646}{alipf\+\_\+circ\+\_\+fold()}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000024}{Deprecated}]It is discouraged to use this function! The new \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} allows direct access to all necessary consensus structure prediction related variables!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}, \hyperlink{group__fold__compound_gad6bacc816af274922b13d947f708aa0c}{vrna\+\_\+fold\+\_\+compound\+\_\+comparative()}, \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em S\+\_\+p} & A pointer to the \textquotesingle{}S\textquotesingle{} array (integer representation of nucleotides) \\
+\hline
+{\em S5\+\_\+p} & A pointer to the \textquotesingle{}S5\textquotesingle{} array \\
+\hline
+{\em S3\+\_\+p} & A pointer to the \textquotesingle{}S3\textquotesingle{} array \\
+\hline
+{\em a2s\+\_\+p} & A pointer to the pair type matrix \\
+\hline
+{\em Ss\+\_\+p} & A pointer to the \textquotesingle{}Ss\textquotesingle{} array \\
+\hline
+{\em qb\+\_\+p} & A pointer to the Q\textsuperscript{B} matrix \\
+\hline
+{\em qm\+\_\+p} & A pointer to the Q\textsuperscript{M} matrix \\
+\hline
+{\em q1k\+\_\+p} & A pointer to the 5\textquotesingle{} slice of the Q matrix ( $q1k(k) = Q(1, k)$) \\
+\hline
+{\em qln\+\_\+p} & A pointer to the 3\textquotesingle{} slice of the Q matrix ( $qln(l) = Q(l, n)$) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Non Zero if everything went fine, 0 otherwise 
+\end{DoxyReturn}
+\hypertarget{group__consensus__fold_gac484c6bd429bafbd353b91044508d8e9}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!update\+\_\+alifold\+\_\+params@{update\+\_\+alifold\+\_\+params}}
+\index{update\+\_\+alifold\+\_\+params@{update\+\_\+alifold\+\_\+params}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{update\+\_\+alifold\+\_\+params}]{\setlength{\rightskip}{0pt plus 5cm}void update\+\_\+alifold\+\_\+params (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__consensus__fold_gac484c6bd429bafbd353b91044508d8e9}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Update the energy parameters for alifold function. 
+
+Call this to recalculate the pair matrix and energy parameters after a change in folding parameters like \hyperlink{group__model__details_gab4b11c8d9c758430960896bc3fe82ead}{temperature}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000025}{Deprecated}]Usage of this function is discouraged! The new A\+P\+I uses \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} to lump all folding related necessities together, including the energy parameters. Use vrna\+\_\+update\+\_\+fold\+\_\+params() to update the energy parameters within a \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}. \end{DoxyRefDesc}
+\hypertarget{group__consensus__fold_ga20fd17bb27891009af7ce839f5386177}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!vrna\+\_\+aln\+\_\+mpi@{vrna\+\_\+aln\+\_\+mpi}}
+\index{vrna\+\_\+aln\+\_\+mpi@{vrna\+\_\+aln\+\_\+mpi}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{vrna\+\_\+aln\+\_\+mpi}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+aln\+\_\+mpi (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{Alseq\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{n\+\_\+seq, }
+\item[{int}]{length, }
+\item[{int $\ast$}]{mini}
+\end{DoxyParamCaption}
+)}\label{group__consensus__fold_ga20fd17bb27891009af7ce839f5386177}
+
+
+{\ttfamily \#include $<$\hyperlink{aln__util_8h}{Vienna\+R\+N\+A/aln\+\_\+util.\+h}$>$}
+
+
+
+Get the mean pairwise identity in steps from ?to?(ident) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Alseq} & \\
+\hline
+{\em n\+\_\+seq} & The number of sequences in the alignment \\
+\hline
+{\em length} & The length of the alignment \\
+\hline
+{\em mini} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean pairwise identity 
+\end{DoxyReturn}
+\hypertarget{group__consensus__fold_gaa2d600be90844094ec145ea14a314d2f}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!get\+\_\+mpi@{get\+\_\+mpi}}
+\index{get\+\_\+mpi@{get\+\_\+mpi}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{get\+\_\+mpi}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+mpi (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{Alseq\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{n\+\_\+seq, }
+\item[{int}]{length, }
+\item[{int $\ast$}]{mini}
+\end{DoxyParamCaption}
+)}\label{group__consensus__fold_gaa2d600be90844094ec145ea14a314d2f}
+
+
+{\ttfamily \#include $<$\hyperlink{aln__util_8h}{Vienna\+R\+N\+A/aln\+\_\+util.\+h}$>$}
+
+
+
+Get the mean pairwise identity in steps from ?to?(ident) 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000027}{Deprecated}]Use \hyperlink{group__consensus__fold_ga20fd17bb27891009af7ce839f5386177}{vrna\+\_\+aln\+\_\+mpi()} as a replacement\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em Alseq} & \\
+\hline
+{\em n\+\_\+seq} & The number of sequences in the alignment \\
+\hline
+{\em length} & The length of the alignment \\
+\hline
+{\em mini} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean pairwise identity 
+\end{DoxyReturn}
+\hypertarget{group__consensus__fold_gaa3e40277c837d6f7603afe319884c786}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!encode\+\_\+ali\+\_\+sequence@{encode\+\_\+ali\+\_\+sequence}}
+\index{encode\+\_\+ali\+\_\+sequence@{encode\+\_\+ali\+\_\+sequence}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{encode\+\_\+ali\+\_\+sequence}]{\setlength{\rightskip}{0pt plus 5cm}void encode\+\_\+ali\+\_\+sequence (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sequence, }
+\item[{short $\ast$}]{S, }
+\item[{short $\ast$}]{s5, }
+\item[{short $\ast$}]{s3, }
+\item[{char $\ast$}]{ss, }
+\item[{unsigned short $\ast$}]{as, }
+\item[{int}]{circ}
+\end{DoxyParamCaption}
+)}\label{group__consensus__fold_gaa3e40277c837d6f7603afe319884c786}
+
+
+{\ttfamily \#include $<$\hyperlink{aln__util_8h}{Vienna\+R\+N\+A/aln\+\_\+util.\+h}$>$}
+
+
+
+Get arrays with encoded sequence of the alignment. 
+
+this function assumes that in S, S5, s3, ss and as enough space is already allocated (size must be at least sequence length+2)
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & The gapped sequence from the alignment \\
+\hline
+{\em S} & pointer to an array that holds encoded sequence \\
+\hline
+{\em s5} & pointer to an array that holds the next base 5\textquotesingle{} of alignment position i \\
+\hline
+{\em s3} & pointer to an array that holds the next base 3\textquotesingle{} of alignment position i \\
+\hline
+{\em ss} & \\
+\hline
+{\em as} & \\
+\hline
+{\em circ} & assume the molecules to be circular instead of linear (circ=0) \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__consensus__fold_ga8a560930f7f2582cc3967723a86cfdfa}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!alloc\+\_\+sequence\+\_\+arrays@{alloc\+\_\+sequence\+\_\+arrays}}
+\index{alloc\+\_\+sequence\+\_\+arrays@{alloc\+\_\+sequence\+\_\+arrays}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{alloc\+\_\+sequence\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}void alloc\+\_\+sequence\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{sequences, }
+\item[{short $\ast$$\ast$$\ast$}]{S, }
+\item[{short $\ast$$\ast$$\ast$}]{S5, }
+\item[{short $\ast$$\ast$$\ast$}]{S3, }
+\item[{unsigned short $\ast$$\ast$$\ast$}]{a2s, }
+\item[{char $\ast$$\ast$$\ast$}]{Ss, }
+\item[{int}]{circ}
+\end{DoxyParamCaption}
+)}\label{group__consensus__fold_ga8a560930f7f2582cc3967723a86cfdfa}
+
+
+{\ttfamily \#include $<$\hyperlink{aln__util_8h}{Vienna\+R\+N\+A/aln\+\_\+util.\+h}$>$}
+
+
+
+Allocate memory for sequence array used to deal with aligned sequences. 
+
+Note that these arrays will also be initialized according to the sequence alignment given
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__consensus__fold_ga298a420a8c879202e2617b3f724fde38}{free\+\_\+sequence\+\_\+arrays()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & The aligned sequences \\
+\hline
+{\em S} & A pointer to the array of encoded sequences \\
+\hline
+{\em S5} & A pointer to the array that contains the next 5\textquotesingle{} nucleotide of a sequence position \\
+\hline
+{\em S3} & A pointer to the array that contains the next 3\textquotesingle{} nucleotide of a sequence position \\
+\hline
+{\em a2s} & A pointer to the array that contains the alignment to sequence position mapping \\
+\hline
+{\em Ss} & A pointer to the array that contains the ungapped sequence \\
+\hline
+{\em circ} & assume the molecules to be circular instead of linear (circ=0) \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__consensus__fold_ga298a420a8c879202e2617b3f724fde38}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!free\+\_\+sequence\+\_\+arrays@{free\+\_\+sequence\+\_\+arrays}}
+\index{free\+\_\+sequence\+\_\+arrays@{free\+\_\+sequence\+\_\+arrays}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{free\+\_\+sequence\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+sequence\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n\+\_\+seq, }
+\item[{short $\ast$$\ast$$\ast$}]{S, }
+\item[{short $\ast$$\ast$$\ast$}]{S5, }
+\item[{short $\ast$$\ast$$\ast$}]{S3, }
+\item[{unsigned short $\ast$$\ast$$\ast$}]{a2s, }
+\item[{char $\ast$$\ast$$\ast$}]{Ss}
+\end{DoxyParamCaption}
+)}\label{group__consensus__fold_ga298a420a8c879202e2617b3f724fde38}
+
+
+{\ttfamily \#include $<$\hyperlink{aln__util_8h}{Vienna\+R\+N\+A/aln\+\_\+util.\+h}$>$}
+
+
+
+Free the memory of the sequence arrays used to deal with aligned sequences. 
+
+This function frees the memory previously allocated with \hyperlink{group__consensus__fold_ga8a560930f7f2582cc3967723a86cfdfa}{alloc\+\_\+sequence\+\_\+arrays()}
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__consensus__fold_ga8a560930f7f2582cc3967723a86cfdfa}{alloc\+\_\+sequence\+\_\+arrays()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em n\+\_\+seq} & The number of aligned sequences \\
+\hline
+{\em S} & A pointer to the array of encoded sequences \\
+\hline
+{\em S5} & A pointer to the array that contains the next 5\textquotesingle{} nucleotide of a sequence position \\
+\hline
+{\em S3} & A pointer to the array that contains the next 3\textquotesingle{} nucleotide of a sequence position \\
+\hline
+{\em a2s} & A pointer to the array that contains the alignment to sequence position mapping \\
+\hline
+{\em Ss} & A pointer to the array that contains the ungapped sequence \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\hypertarget{group__consensus__fold_gaf3cbac6ff5d706d6e414677841ddf94c}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!cv\+\_\+fact@{cv\+\_\+fact}}
+\index{cv\+\_\+fact@{cv\+\_\+fact}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{cv\+\_\+fact}]{\setlength{\rightskip}{0pt plus 5cm}double cv\+\_\+fact}\label{group__consensus__fold_gaf3cbac6ff5d706d6e414677841ddf94c}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+This variable controls the weight of the covariance term in the energy function of alignment folding algorithms. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000016}{Deprecated}]See \hyperlink{group__model__details_a62ebefb9d0643e5c4c8a2ec84a105ce6}{vrna\+\_\+md\+\_\+t.\+cv\+\_\+fact}, and \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} to avoid using global variables\end{DoxyRefDesc}
+
+
+Default is 1. \hypertarget{group__consensus__fold_ga502948a122a2af5b914355b1f3ea2f61}{}\index{Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}!nc\+\_\+fact@{nc\+\_\+fact}}
+\index{nc\+\_\+fact@{nc\+\_\+fact}!Predicting Consensus Structures from Alignment(s)@{Predicting Consensus Structures from Alignment(s)}}
+\subsubsection[{nc\+\_\+fact}]{\setlength{\rightskip}{0pt plus 5cm}double nc\+\_\+fact}\label{group__consensus__fold_ga502948a122a2af5b914355b1f3ea2f61}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+This variable controls the magnitude of the penalty for non-\/compatible sequences in the covariance term of alignment folding algorithms. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000017}{Deprecated}]See \#vrna\+\_\+md\+\_\+t.\+nc\+\_\+fact, and \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} to avoid using global variables\end{DoxyRefDesc}
+
+
+Default is 1. 

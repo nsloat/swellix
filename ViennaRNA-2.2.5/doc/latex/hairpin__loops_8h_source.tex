@@ -1,0 +1,189 @@
+\hypertarget{hairpin__loops_8h_source}{}\section{hairpin\+\_\+loops.\+h}
+\label{hairpin__loops_8h_source}\index{Vienna\+R\+N\+A/hairpin\+\_\+loops.\+h@{Vienna\+R\+N\+A/hairpin\+\_\+loops.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_HAIRPIN\_LOOPS\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_HAIRPIN\_LOOPS\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <math.h>}
+00005 \textcolor{preprocessor}{#include <string.h>}
+00006 \textcolor{preprocessor}{#include <\hyperlink{utils_8h}{ViennaRNA/utils.h}>}
+00007 \textcolor{preprocessor}{#include <\hyperlink{data__structures_8h}{ViennaRNA/data\_structures.h}>}
+00008 \textcolor{preprocessor}{#include <\hyperlink{params_8h}{ViennaRNA/params.h}>}
+00009 
+00010 \textcolor{preprocessor}{#ifdef \_\_GNUC\_\_}
+00011 \textcolor{preprocessor}{# define INLINE inline}
+00012 \textcolor{preprocessor}{#else}
+00013 \textcolor{preprocessor}{# define INLINE}
+00014 \textcolor{preprocessor}{#endif}
+00015 
+00058 PRIVATE INLINE \textcolor{keywordtype}{int}
+00059 \hyperlink{group__loops_gadf943ee9a45b7f4cee9192c06210dace}{E\_Hairpin}(\textcolor{keywordtype}{int} size,
+00060               \textcolor{keywordtype}{int} type,
+00061               \textcolor{keywordtype}{int} si1,
+00062               \textcolor{keywordtype}{int} sj1,
+00063               \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string},
+00064               \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P);
+00065 
+00084 PRIVATE INLINE \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL}
+00085 \hyperlink{group__loops_ga51fb555974f180b78d76142b2894851c}{exp\_E\_Hairpin}(  \textcolor{keywordtype}{int} u,
+00086                 \textcolor{keywordtype}{int} type,
+00087                 \textcolor{keywordtype}{short} si1,
+00088                 \textcolor{keywordtype}{short} sj1,
+00089                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string},
+00090                 \hyperlink{group__energy__parameters_structvrna__exp__param__s}{vrna\_exp\_param\_t} *P);
+00091 
+00092 
+00093 \textcolor{keywordtype}{int}
+00094 \hyperlink{group__eval_gab3eb4651dc26dc2b653a57dd340d7e68}{vrna\_eval\_hp\_loop}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00095                   \textcolor{keywordtype}{int} i,
+00096                   \textcolor{keywordtype}{int} j);
+00097 
+00098 \textcolor{keywordtype}{int}
+00099 \hyperlink{group__eval_gad3b92453a6b501856eec8fae39f3235d}{vrna\_eval\_ext\_hp\_loop}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00100                       \textcolor{keywordtype}{int} i,
+00101                       \textcolor{keywordtype}{int} j);
+00102 
+00103 \textcolor{comment}{/*}
+00104 \textcolor{comment}{#################################}
+00105 \textcolor{comment}{# BEGIN OF FUNCTION DEFINITIONS #}
+00106 \textcolor{comment}{#################################}
+00107 \textcolor{comment}{*/}
+00108 
+00109 PRIVATE INLINE \textcolor{keywordtype}{int}
+\hypertarget{hairpin__loops_8h_source_l00110}{}\hyperlink{group__loops_gadf943ee9a45b7f4cee9192c06210dace}{00110} \hyperlink{group__loops_gadf943ee9a45b7f4cee9192c06210dace}{E\_Hairpin}(\textcolor{keywordtype}{int} size,
+00111           \textcolor{keywordtype}{int} type,
+00112           \textcolor{keywordtype}{int} si1,
+00113           \textcolor{keywordtype}{int} sj1,
+00114           \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string},
+00115           \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P)\{
+00116 
+00117   \textcolor{keywordtype}{int} energy;
+00118 
+00119   \textcolor{keywordflow}{if}(size <= 30)
+00120     energy = P->hairpin[size];
+00121   \textcolor{keywordflow}{else}
+00122     energy = P->hairpin[30] + (int)(P->lxc*log((size)/30.));
+00123 
+00124   \textcolor{keywordflow}{if}(size < 3) \textcolor{keywordflow}{return} energy; \textcolor{comment}{/* should only be the case when folding alignments */}
+00125 
+00126   \textcolor{keywordflow}{if}(P->\hyperlink{group__energy__parameters_a7b84353eb9075c595bad4ceb871bcae7}{model\_details}.\hyperlink{group__model__details_add64a96d23e77ef1d0ddf8dfc5228143}{special\_hp})\{
+00127     \textcolor{keywordflow}{if}(size == 4)\{ \textcolor{comment}{/* check for tetraloop bonus */}
+00128       \textcolor{keywordtype}{char} tl[7]=\{0\}, *ts;
+00129       strncpy(tl, \textcolor{keywordtype}{string}, 6);
+00130       \textcolor{keywordflow}{if} ((ts=strstr(P->Tetraloops, tl)))
+00131         \textcolor{keywordflow}{return} (P->Tetraloop\_E[(ts - P->Tetraloops)/7]);
+00132     \}
+00133     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(size == 6)\{
+00134       \textcolor{keywordtype}{char} tl[9]=\{0\}, *ts;
+00135       strncpy(tl, \textcolor{keywordtype}{string}, 8);
+00136       \textcolor{keywordflow}{if} ((ts=strstr(P->Hexaloops, tl)))
+00137         \textcolor{keywordflow}{return} (energy = P->Hexaloop\_E[(ts - P->Hexaloops)/9]);
+00138     \}
+00139     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(size == 3)\{
+00140       \textcolor{keywordtype}{char} tl[6]=\{0,0,0,0,0,0\}, *ts;
+00141       strncpy(tl, \textcolor{keywordtype}{string}, 5);
+00142       \textcolor{keywordflow}{if} ((ts=strstr(P->Triloops, tl))) \{
+00143         \textcolor{keywordflow}{return} (P->Triloop\_E[(ts - P->Triloops)/6]);
+00144       \}
+00145       \textcolor{keywordflow}{return} (energy + (type>2 ? P->TerminalAU : 0));
+00146     \}
+00147   \}
+00148   energy += P->mismatchH[type][si1][sj1];
+00149 
+00150   \textcolor{keywordflow}{return} energy;
+00151 \}
+00152 
+00161 \textcolor{keywordtype}{int}
+00162 \hyperlink{group__loops_ga999ba163a8148d72fd5f22819a681df7}{vrna\_E\_hp\_loop}( \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00163                 \textcolor{keywordtype}{int} i,
+00164                 \textcolor{keywordtype}{int} j);
+00165 
+00174 \textcolor{keywordtype}{int}
+00175 \hyperlink{group__loops_gac3393ee309372eccae944e3a07f455f9}{vrna\_E\_ext\_hp\_loop}( \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00176                     \textcolor{keywordtype}{int} i,
+00177                     \textcolor{keywordtype}{int} j);
+00178 
+00185 \textcolor{keywordtype}{int}
+00186 \hyperlink{group__eval_gad3b92453a6b501856eec8fae39f3235d}{vrna\_eval\_ext\_hp\_loop}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00187                       \textcolor{keywordtype}{int} i,
+00188                       \textcolor{keywordtype}{int} j);
+00189 
+00203 \textcolor{keywordtype}{int}
+00204 \hyperlink{group__eval_gab3eb4651dc26dc2b653a57dd340d7e68}{vrna\_eval\_hp\_loop}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00205                   \textcolor{keywordtype}{int} i,
+00206                   \textcolor{keywordtype}{int} j);
+00207 
+00208 \textcolor{comment}{/*}
+00209 \textcolor{comment}{*************************************}
+00210 \textcolor{comment}{* Partition function variants below *}
+00211 \textcolor{comment}{*************************************}
+00212 \textcolor{comment}{*/}
+00213 
+00214 PRIVATE INLINE \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL}
+\hypertarget{hairpin__loops_8h_source_l00215}{}\hyperlink{group__loops_ga51fb555974f180b78d76142b2894851c}{00215} \hyperlink{group__loops_ga51fb555974f180b78d76142b2894851c}{exp\_E\_Hairpin}(\textcolor{keywordtype}{int} u,
+00216               \textcolor{keywordtype}{int} type,
+00217               \textcolor{keywordtype}{short} si1,
+00218               \textcolor{keywordtype}{short} sj1,
+00219               \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string},
+00220               \hyperlink{group__energy__parameters_structvrna__exp__param__s}{vrna\_exp\_param\_t} *P)\{
+00221 
+00222   \textcolor{keywordtype}{double} q, kT;
+00223   kT = P->kT;   \textcolor{comment}{/* kT in cal/mol  */}
+00224 
+00225   \textcolor{keywordflow}{if}(u <= 30)
+00226     q = P->exphairpin[u];
+00227   \textcolor{keywordflow}{else}
+00228     q = P->exphairpin[30] * exp( -(P->lxc*log( u/30.))*10./kT);
+00229 
+00230   \textcolor{keywordflow}{if}(u < 3) \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})q; \textcolor{comment}{/* should only be the case when folding alignments */}
+00231 
+00232   \textcolor{keywordflow}{if}(P->\hyperlink{group__energy__parameters_ac18055127bccc27c1223f1d2f3b01b53}{model\_details}.\hyperlink{group__model__details_add64a96d23e77ef1d0ddf8dfc5228143}{special\_hp})\{
+00233     \textcolor{keywordflow}{if}(u==4)\{
+00234       \textcolor{keywordtype}{char} tl[7]=\{0,0,0,0,0,0,0\}, *ts;
+00235       strncpy(tl, \textcolor{keywordtype}{string}, 6);
+00236       \textcolor{keywordflow}{if} ((ts=strstr(P->Tetraloops, tl)))\{
+00237         \textcolor{keywordflow}{if}(type != 7)
+00238           \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(P->exptetra[(ts-P->Tetraloops)/7]);
+00239         \textcolor{keywordflow}{else}
+00240           q *= P->exptetra[(ts-P->Tetraloops)/7];
+00241       \}
+00242     \}
+00243     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(u==6)\{
+00244       \textcolor{keywordtype}{char} tl[9]=\{0,0,0,0,0,0,0,0,0\}, *ts;
+00245       strncpy(tl, \textcolor{keywordtype}{string}, 8);
+00246       \textcolor{keywordflow}{if} ((ts=strstr(P->Hexaloops, tl)))
+00247         \textcolor{keywordflow}{return}  (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(P->exphex[(ts-P->Hexaloops)/9]);
+00248     \}
+00249     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(u==3)\{
+00250       \textcolor{keywordtype}{char} tl[6]=\{0,0,0,0,0,0\}, *ts;
+00251       strncpy(tl, \textcolor{keywordtype}{string}, 5);
+00252       \textcolor{keywordflow}{if} ((ts=strstr(P->Triloops, tl)))
+00253         \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(P->exptri[(ts-P->Triloops)/6]);
+00254       \textcolor{keywordflow}{if} (type>2)
+00255         \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(q * P->expTermAU);
+00256       \textcolor{keywordflow}{else}
+00257         \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})q;
+00258     \}
+00259   \}
+00260   q *= P->expmismatchH[type][si1][sj1];
+00261 
+00262   \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})q;
+00263 \}
+00264 
+00265 
+00275 \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL}
+00276 \hyperlink{group__loops_gac9f49b31d3ec1d9040798b05506c71da}{vrna\_exp\_E\_hp\_loop}( \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00277                     \textcolor{keywordtype}{int} i,
+00278                     \textcolor{keywordtype}{int} j);
+00279 
+00287 \textcolor{keywordtype}{int}
+00288 \hyperlink{group__loops_ga6c4ba14d24f716d0ca9021771357e903}{vrna\_BT\_hp\_loop}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00289                 \textcolor{keywordtype}{int} i,
+00290                 \textcolor{keywordtype}{int} j,
+00291                 \textcolor{keywordtype}{int} en,
+00292                 \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\_bp\_stack\_t} *bp\_stack,
+00293                 \textcolor{keywordtype}{int}   *stack\_count);
+00294 
+00300 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

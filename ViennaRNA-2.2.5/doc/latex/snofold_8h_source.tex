@@ -1,0 +1,56 @@
+\hypertarget{snofold_8h_source}{}\section{snofold.\+h}
+\label{snofold_8h_source}\index{Vienna\+R\+N\+A/snofold.\+h@{Vienna\+R\+N\+A/snofold.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* function from fold.c */}
+00002 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_SNOFOLD\_H}
+00003 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_SNOFOLD\_H}
+00004 
+00005 \textcolor{preprocessor}{#include <\hyperlink{data__structures_8h}{ViennaRNA/data\_structures.h}>}
+00006 
+00007 \textcolor{comment}{/* Normal fold */}
+00008 
+00012 \textcolor{keywordtype}{int}  snofold( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *sequence,
+00013     \textcolor{keywordtype}{char} *structure,
+00014                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} max\_assym,
+00015                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} threshold, 
+00016                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} min\_s2,
+00017                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} max\_s2,
+00018                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} half\_stem,
+00019                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} max\_half\_stem);
+00024 \textcolor{keywordtype}{void}   snofree\_arrays(\textcolor{keyword}{const} \textcolor{keywordtype}{int} length);  \textcolor{comment}{/* free arrays for mfe folding */}
+00025 \textcolor{keywordtype}{void}   snoinitialize\_fold(\textcolor{keywordtype}{int} length);    \textcolor{comment}{/* allocate arrays for folding */}
+00026 \textcolor{keywordtype}{void}   snoupdate\_fold\_params(\textcolor{keywordtype}{void});       \textcolor{comment}{/* recalculate parameters */}
+00027 \textcolor{keywordtype}{int}    snoloop\_energy(\textcolor{keywordtype}{short} *ptable,
+00028                       \textcolor{keywordtype}{short} *s,
+00029                       \textcolor{keywordtype}{short} *s1,
+00030                       \textcolor{keywordtype}{int} i);
+00031 \textcolor{keywordtype}{void}   snoexport\_fold\_arrays( \textcolor{keywordtype}{int} **indx\_p,
+00032                               \textcolor{keywordtype}{int} **mLoop\_p,
+00033                               \textcolor{keywordtype}{int} **cLoop,
+00034                               \hyperlink{group__data__structures_structnode}{folden} ***fold\_p,
+00035                               \hyperlink{group__data__structures_structnode}{folden} ***fold\_p\_XS);
+00036 \textcolor{keywordtype}{char} * snobacktrack\_fold\_from\_pair( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *sequence,
+00037                                     \textcolor{keywordtype}{int} i,
+00038                                     \textcolor{keywordtype}{int} j);
+00039 \textcolor{comment}{/* alifold */}
+00040 \textcolor{keywordtype}{float} alisnofold( \textcolor{keyword}{const} \textcolor{keywordtype}{char} **strings,
+00041                   \textcolor{keyword}{const} \textcolor{keywordtype}{int} max\_assym,
+00042                   \textcolor{keyword}{const} \textcolor{keywordtype}{int} threshloop, 
+00043                   \textcolor{keyword}{const} \textcolor{keywordtype}{int} min\_s2,
+00044                   \textcolor{keyword}{const} \textcolor{keywordtype}{int} max\_s2,
+00045                   \textcolor{keyword}{const} \textcolor{keywordtype}{int} half\_stem,
+00046                   \textcolor{keyword}{const} \textcolor{keywordtype}{int} max\_half\_stem);
+00047 \textcolor{keywordtype}{void}  alisnofree\_arrays(\textcolor{keyword}{const} \textcolor{keywordtype}{int} length);
+00048 \textcolor{keywordtype}{char}  *alisnobacktrack\_fold\_from\_pair(\textcolor{keyword}{const} \textcolor{keywordtype}{char} **sequence,
+00049                                       \textcolor{keywordtype}{int} i,
+00050                                       \textcolor{keywordtype}{int} j,
+00051                                       \textcolor{keywordtype}{int} *cov);
+00052 \textcolor{keyword}{extern} \textcolor{keywordtype}{double} \hyperlink{group__consensus__fold_gaf3cbac6ff5d706d6e414677841ddf94c}{cv\_fact} \textcolor{comment}{/* =1 */};
+00053 \textcolor{keyword}{extern} \textcolor{keywordtype}{double} \hyperlink{group__consensus__fold_ga502948a122a2af5b914355b1f3ea2f61}{nc\_fact} \textcolor{comment}{/* =1 */};
+00054 
+00055 \textcolor{comment}{/* max number of mismatch >>>>>..((   )).>>>> */}
+00056 \textcolor{preprocessor}{#define MISMATCH 3}
+00057 
+00058 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

@@ -1,0 +1,24 @@
+\hypertarget{read__epars_8h_source}{}\section{read\+\_\+epars.\+h}
+\label{read__epars_8h_source}\index{Vienna\+R\+N\+A/read\+\_\+epars.\+h@{Vienna\+R\+N\+A/read\+\_\+epars.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_READ\_EPARS\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_READ\_EPARS\_H}
+00003 
+00020 \textcolor{keyword}{enum} parset \{
+00021   UNKNOWN= -1, QUIT,
+00022   S, S\_H, HP, HP\_H, B, B\_H, IL, IL\_H, MMH, MMH\_H, MMI, MMI\_H,
+00023   MMI1N, MMI1N\_H, MMI23, MMI23\_H, MMM, MMM\_H, MME, MME\_H, D5, D5\_H, D3, D3\_H,
+00024   INT11, INT11\_H, INT21, INT21\_H, INT22, INT22\_H, ML, TL,
+00025   TRI, HEX, NIN, MISC\};
+00026 
+00032 \textcolor{keywordtype}{void}  \hyperlink{group__energy__parameters__rw_ga165a142a3c68fb6655c69ef4ab7cd749}{read\_parameter\_file}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} fname[]);
+00033 
+00039 \textcolor{keywordtype}{void}  \hyperlink{group__energy__parameters__rw_ga8a43459be386a7489feeab68dc2c6c76}{write\_parameter\_file}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} fname[]);
+00040 
+00045 \textcolor{keyword}{enum}  parset gettype(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *ident);
+00046 
+00051 \textcolor{keywordtype}{char}  *settype(\textcolor{keyword}{enum} parset s);
+00052 
+00057 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}
