@@ -1,0 +1,9 @@
+<map id="RNA Secondary Structure Prediction" name="RNA Secondary Structure Prediction">
+<area shape="rect" id="node1" href="$group__consensus__fold.html" title="compute various properties (consensus MFE structures, partition function, Boltzmann distributed stoch..." alt="" coords="228,5,421,47"/>
+<area shape="rect" id="node2" href="$group__class__fold.html" title="Classified Dynamic\l Programming" alt="" coords="257,71,393,112"/>
+<area shape="rect" id="node3" href="$group__pf__fold.html" title="This section provides information about all functions and variables related to the calculation of the..." alt="" coords="256,137,393,193"/>
+<area shape="rect" id="node4" href="$group__local__fold.html" title="Predicting Locally\l stable structures of\l large sequences" alt="" coords="255,217,394,273"/>
+<area shape="rect" id="node5" href="$group__subopt__fold.html" title="Enumerating Suboptimal\l Structures" alt="" coords="243,297,407,339"/>
+<area shape="rect" id="node6" href="$group__mfe__fold.html" title="This section covers all functions and variables related to the calculation of minimum free energy (MF..." alt="" coords="239,363,411,404"/>
+<area shape="rect" id="node8" href="$group__cofold.html" title="Predict structures formed by two molecules upon hybridization. " alt="" coords="241,429,408,485"/>
+</map>

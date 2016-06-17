@@ -1,0 +1,34 @@
+\hypertarget{mfe_8h_source}{}\section{mfe.\+h}
+\label{mfe_8h_source}\index{Vienna\+R\+N\+A/mfe.\+h@{Vienna\+R\+N\+A/mfe.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_MFE\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_MFE\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <stdio.h>}
+00005 \textcolor{preprocessor}{#include <\hyperlink{data__structures_8h}{ViennaRNA/data\_structures.h}>}
+00006 
+00061 \textcolor{keywordtype}{float}
+00062 \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\_mfe}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00063           \textcolor{keywordtype}{char} *structure);
+00064 
+00076 \textcolor{keywordtype}{float} \hyperlink{group__mfe__cofold_gaab22d10c1190f205f16a77cab9d5d3ee}{vrna\_mfe\_dimer}( \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00077                       \textcolor{keywordtype}{char} *structure);
+00078 
+00106 \textcolor{keywordtype}{float} \hyperlink{group__local__mfe__fold_ga689df235a1915a1ad56e377383c044ce}{vrna\_mfe\_window}( \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc, FILE *file);
+00107 
+00108 \textcolor{preprocessor}{#ifdef USE\_SVM}
+00109 
+00136 \textcolor{keywordtype}{float} \hyperlink{group__local__mfe__fold_gaa4f67ae94efd08d800c17f9b53423fd6}{vrna\_mfe\_window\_zscore}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc, \textcolor{keywordtype}{double} 
+      min\_z, FILE *file);
+00137 \textcolor{preprocessor}{#endif}
+00138 
+00139 \textcolor{keywordtype}{void}
+00140 vrna\_backtrack\_from\_intervals(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00141                               \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\_bp\_stack\_t} *bp\_stack,
+00142                               \hyperlink{group__data__structures_structvrna__sect__s}{sect} bt\_stack[],
+00143                               \textcolor{keywordtype}{int} s);
+00144 
+00145 
+00146 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

@@ -1,0 +1,480 @@
+\hypertarget{interior__loops_8h_source}{}\section{interior\+\_\+loops.\+h}
+\label{interior__loops_8h_source}\index{Vienna\+R\+N\+A/interior\+\_\+loops.\+h@{Vienna\+R\+N\+A/interior\+\_\+loops.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_INTERIOR\_LOOPS\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_INTERIOR\_LOOPS\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <\hyperlink{utils_8h}{ViennaRNA/utils.h}>}
+00005 \textcolor{preprocessor}{#include "ViennaRNA/energy\_par.h"}
+00006 \textcolor{preprocessor}{#include <\hyperlink{data__structures_8h}{ViennaRNA/data\_structures.h}>}
+00007 \textcolor{preprocessor}{#include <\hyperlink{params_8h}{ViennaRNA/params.h}>}
+00008 \textcolor{preprocessor}{#include <\hyperlink{constraints_8h}{ViennaRNA/constraints.h}>}
+00009 
+00010 \textcolor{preprocessor}{#ifdef \_\_GNUC\_\_}
+00011 \textcolor{preprocessor}{# define INLINE inline}
+00012 \textcolor{preprocessor}{#else}
+00013 \textcolor{preprocessor}{# define INLINE}
+00014 \textcolor{preprocessor}{#endif}
+00015 
+00016 \textcolor{preprocessor}{#ifdef ON\_SAME\_STRAND}
+00017 \textcolor{preprocessor}{#undef ON\_SAME\_STRAND}
+00018 \textcolor{preprocessor}{#endif}
+00019 
+00020 \textcolor{preprocessor}{#define ON\_SAME\_STRAND(I,J,C)  (((I)>=(C))||((J)<(C)))}
+00021 
+00075 PRIVATE INLINE \textcolor{keywordtype}{int} \hyperlink{group__loops_ga0266d2c7a6098259280fb97e9f980b34}{E\_IntLoop}(\textcolor{keywordtype}{int} n1,
+00076                               \textcolor{keywordtype}{int} n2,
+00077                               \textcolor{keywordtype}{int} type,
+00078                               \textcolor{keywordtype}{int} type\_2,
+00079                               \textcolor{keywordtype}{int} si1,
+00080                               \textcolor{keywordtype}{int} sj1,
+00081                               \textcolor{keywordtype}{int} sp1,
+00082                               \textcolor{keywordtype}{int} sq1,
+00083                               \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P);
+00084 
+00104 PRIVATE INLINE \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL} \hyperlink{group__loops_ga34e8abb9e1b54fab38524fb20214a43e}{exp\_E\_IntLoop}(\textcolor{keywordtype}{int} u1,
+00105                                         \textcolor{keywordtype}{int} u2,
+00106                                         \textcolor{keywordtype}{int} type,
+00107                                         \textcolor{keywordtype}{int} type2,
+00108                                         \textcolor{keywordtype}{short} si1,
+00109                                         \textcolor{keywordtype}{short} sj1,
+00110                                         \textcolor{keywordtype}{short} sp1,
+00111                                         \textcolor{keywordtype}{short} sq1,
+00112                                         \hyperlink{group__energy__parameters_structvrna__exp__param__s}{vrna\_exp\_param\_t} *P);
+00113 
+00114 
+00115 PRIVATE INLINE \textcolor{keywordtype}{int} E\_IntLoop\_Co(\textcolor{keywordtype}{int} type,
+00116                                 \textcolor{keywordtype}{int} type\_2,
+00117                                 \textcolor{keywordtype}{int} i,
+00118                                 \textcolor{keywordtype}{int} j,
+00119                                 \textcolor{keywordtype}{int} p,
+00120                                 \textcolor{keywordtype}{int} q,
+00121                                 \textcolor{keywordtype}{int} cutpoint,
+00122                                 \textcolor{keywordtype}{short} si1,
+00123                                 \textcolor{keywordtype}{short} sj1,
+00124                                 \textcolor{keywordtype}{short} sp1,
+00125                                 \textcolor{keywordtype}{short} sq1,
+00126                                 \textcolor{keywordtype}{int} \hyperlink{group__model__details_ga72b511ed1201f7e23ec437e468790d74}{dangles},
+00127                                 \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P);
+00128 
+00129 
+00133 \textcolor{keywordtype}{int} \hyperlink{group__loops_ga98a95d7a76da898b86e7bf459a062fdd}{E\_stack}(\textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} j, \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc);
+00134 
+00135 \textcolor{comment}{/*}
+00136 \textcolor{comment}{#################################}
+00137 \textcolor{comment}{# BEGIN OF FUNCTION DEFINITIONS #}
+00138 \textcolor{comment}{#################################}
+00139 \textcolor{comment}{*/}
+00140 
+00141 \textcolor{comment}{/*}
+00142 \textcolor{comment}{ *  ugly but fast interior loop evaluation}
+00143 \textcolor{comment}{ *}
+00144 \textcolor{comment}{ *  Avoid including this function in your own code. It only serves}
+00145 \textcolor{comment}{ *  as a fast inline block internally re-used throughout the RNAlib. It}
+00146 \textcolor{comment}{ *  evalutes the free energy of interior loops in single sequences or sequence}
+00147 \textcolor{comment}{ *  hybrids. Soft constraints are also applied if available.}
+00148 \textcolor{comment}{ *}
+00149 \textcolor{comment}{ *  NOTE: do not include into doxygen reference manual!}
+00150 \textcolor{comment}{ */}
+00151 PRIVATE INLINE \textcolor{keywordtype}{int}
+00152 ubf\_eval\_int\_loop(  \textcolor{keywordtype}{int} i,
+00153                     \textcolor{keywordtype}{int} j,
+00154                     \textcolor{keywordtype}{int} p,
+00155                     \textcolor{keywordtype}{int} q,
+00156                     \textcolor{keywordtype}{int} i1,
+00157                     \textcolor{keywordtype}{int} j1,
+00158                     \textcolor{keywordtype}{int} p1,
+00159                     \textcolor{keywordtype}{int} q1,
+00160                     \textcolor{keywordtype}{short} si,
+00161                     \textcolor{keywordtype}{short} sj,
+00162                     \textcolor{keywordtype}{short} sp,
+00163                     \textcolor{keywordtype}{short} sq,
+00164                     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} type,
+00165                     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} type\_2,
+00166                     \textcolor{keywordtype}{int} *rtype,
+00167                     \textcolor{keywordtype}{int} ij,
+00168                     \textcolor{keywordtype}{int} cp,
+00169                     \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P,
+00170                     \hyperlink{group__soft__constraints_structvrna__sc__s}{vrna\_sc\_t} *sc)\{
+00171 
+00172   \textcolor{keywordtype}{int} energy, u1, u2;
+00173 
+00174   u1 = p1 - i;
+00175   u2 = j1 - q;
+00176 
+00177   \textcolor{keywordflow}{if}((cp < 0) || (ON\_SAME\_STRAND(i, p, cp) && ON\_SAME\_STRAND(q, j, cp)))\{ \textcolor{comment}{/* regular interior loop */}
+00178     energy = \hyperlink{group__loops_ga0266d2c7a6098259280fb97e9f980b34}{E\_IntLoop}(u1, u2, type, type\_2, si, sj, sp, sq, P);
+00179   \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* interior loop like cofold structure */}
+00180     \textcolor{keywordtype}{short} Si, Sj;
+00181     Si  = ON\_SAME\_STRAND(i, i1, cp) ? si : -1;
+00182     Sj  = ON\_SAME\_STRAND(j1, j, cp) ? sj : -1;
+00183     energy = E\_IntLoop\_Co(rtype[type], rtype[type\_2],
+00184                             i, j, p, q,
+00185                             cp,
+00186                             Si, Sj,
+00187                             sp, sq,
+00188                             P->\hyperlink{group__energy__parameters_a7b84353eb9075c595bad4ceb871bcae7}{model\_details}.\hyperlink{group__model__details_adcda4ff2ea77748ae0e8700288282efc}{dangles},
+00189                             P);
+00190   \}
+00191 
+00192   \textcolor{comment}{/* add soft constraints */}
+00193   \textcolor{keywordflow}{if}(sc)\{
+00194     \textcolor{keywordflow}{if}(sc->\hyperlink{group__soft__constraints_a57e4dbb924ab11f304e3762a3a9b07a1}{energy\_up})
+00195       energy += sc->\hyperlink{group__soft__constraints_a57e4dbb924ab11f304e3762a3a9b07a1}{energy\_up}[i1][u1]
+00196                 + sc->\hyperlink{group__soft__constraints_a57e4dbb924ab11f304e3762a3a9b07a1}{energy\_up}[q1][u2];
+00197 
+00198     \textcolor{keywordflow}{if}(sc->\hyperlink{group__soft__constraints_ad139b8e06632e00cbcf3909815d0d03d}{energy\_bp})
+00199       energy += sc->\hyperlink{group__soft__constraints_ad139b8e06632e00cbcf3909815d0d03d}{energy\_bp}[ij];
+00200 
+00201     \textcolor{keywordflow}{if}(sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack})
+00202       \textcolor{keywordflow}{if}(u1 + u2 == 0)\{
+00203         \textcolor{keywordtype}{int} a =   sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack}[i]
+00204                   + sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack}[p]
+00205                   + sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack}[q]
+00206                   + sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack}[j];
+00207         energy += a;
+00208       \}
+00209     \textcolor{keywordflow}{if}(sc->\hyperlink{group__soft__constraints_a32dc86090237888c75491bbd4861a04b}{f})
+00210       energy += sc->\hyperlink{group__soft__constraints_a32dc86090237888c75491bbd4861a04b}{f}(i, j, p, q, \hyperlink{group__constraints_gaeab04f34d7730cff2d651d782f95d857}{VRNA\_DECOMP\_PAIR\_IL}, sc->
+      \hyperlink{group__soft__constraints_a7574680143df97b9029146c2150bf06d}{data});
+00211   \}
+00212 
+00213   \textcolor{keywordflow}{return} energy;
+00214 
+00215 \}
+00216 
+00217 \textcolor{comment}{/*}
+00218 \textcolor{comment}{ *  ugly but fast exterior interior loop evaluation}
+00219 \textcolor{comment}{ *}
+00220 \textcolor{comment}{ *  Avoid including this function in your own code. It only serves}
+00221 \textcolor{comment}{ *  as a fast inline block internally re-used throughout the RNAlib. It}
+00222 \textcolor{comment}{ *  evalutes the free energy of interior loops in single sequences or sequence}
+00223 \textcolor{comment}{ *  hybrids. Soft constraints are also applied if available.}
+00224 \textcolor{comment}{ *}
+00225 \textcolor{comment}{ *  NOTE: do not include into doxygen reference manual!}
+00226 \textcolor{comment}{ */}
+00227 PRIVATE INLINE \textcolor{keywordtype}{int}
+00228 ubf\_eval\_ext\_int\_loop(\textcolor{keywordtype}{int} i,
+00229                       \textcolor{keywordtype}{int} j,
+00230                       \textcolor{keywordtype}{int} p,
+00231                       \textcolor{keywordtype}{int} q,
+00232                       \textcolor{keywordtype}{int} i1,
+00233                       \textcolor{keywordtype}{int} j1,
+00234                       \textcolor{keywordtype}{int} p1,
+00235                       \textcolor{keywordtype}{int} q1,
+00236                       \textcolor{keywordtype}{short} si,
+00237                       \textcolor{keywordtype}{short} sj,
+00238                       \textcolor{keywordtype}{short} sp,
+00239                       \textcolor{keywordtype}{short} sq,
+00240                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} type,
+00241                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} type\_2,
+00242                       \textcolor{keywordtype}{int} length,
+00243                       \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P,
+00244                       \hyperlink{group__soft__constraints_structvrna__sc__s}{vrna\_sc\_t} *sc)\{
+00245 
+00246   \textcolor{keywordtype}{int} energy, u1, u2, u3;
+00247   
+00248   u1 = i1;
+00249   u2 = p1 - j;
+00250   u3 = length - q;
+00251 
+00252   energy = \hyperlink{group__loops_ga0266d2c7a6098259280fb97e9f980b34}{E\_IntLoop}(u2, u1 + u3, type, type\_2, si, sj, sp, sq, P);
+00253 
+00254   \textcolor{comment}{/* add soft constraints */}
+00255   \textcolor{keywordflow}{if}(sc)\{
+00256     \textcolor{keywordflow}{if}(sc->\hyperlink{group__soft__constraints_a57e4dbb924ab11f304e3762a3a9b07a1}{energy\_up})
+00257       energy += sc->\hyperlink{group__soft__constraints_a57e4dbb924ab11f304e3762a3a9b07a1}{energy\_up}[j1][u2]
+00258                 + sc->\hyperlink{group__soft__constraints_a57e4dbb924ab11f304e3762a3a9b07a1}{energy\_up}[q1][u3]
+00259                 + sc->\hyperlink{group__soft__constraints_a57e4dbb924ab11f304e3762a3a9b07a1}{energy\_up}[1][u1];
+00260 
+00261     \textcolor{keywordflow}{if}(sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack})
+00262       \textcolor{keywordflow}{if}(u1 + u2 + u3 == 0)
+00263         energy +=   sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack}[i]
+00264                   + sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack}[p]
+00265                   + sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack}[q]
+00266                   + sc->\hyperlink{group__soft__constraints_ac20dded6068e81acd0f1139092f66a22}{energy\_stack}[j];
+00267 
+00268     \textcolor{keywordflow}{if}(sc->\hyperlink{group__soft__constraints_a32dc86090237888c75491bbd4861a04b}{f})
+00269       energy += sc->\hyperlink{group__soft__constraints_a32dc86090237888c75491bbd4861a04b}{f}(i, j, p, q, \hyperlink{group__constraints_gaeab04f34d7730cff2d651d782f95d857}{VRNA\_DECOMP\_PAIR\_IL}, sc->
+      \hyperlink{group__soft__constraints_a7574680143df97b9029146c2150bf06d}{data});
+00270   \}
+00271 
+00272   \textcolor{keywordflow}{return} energy;
+00273 
+00274 \}
+00275 
+00276 PRIVATE INLINE \textcolor{keywordtype}{int}
+\hypertarget{interior__loops_8h_source_l00277}{}\hyperlink{group__loops_ga0266d2c7a6098259280fb97e9f980b34}{00277} \hyperlink{group__loops_ga0266d2c7a6098259280fb97e9f980b34}{E\_IntLoop}(\textcolor{keywordtype}{int} n1,
+00278           \textcolor{keywordtype}{int} n2,
+00279           \textcolor{keywordtype}{int} type,
+00280           \textcolor{keywordtype}{int} type\_2,
+00281           \textcolor{keywordtype}{int} si1,
+00282           \textcolor{keywordtype}{int} sj1,
+00283           \textcolor{keywordtype}{int} sp1,
+00284           \textcolor{keywordtype}{int} sq1,
+00285           \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P)\{
+00286 
+00287   \textcolor{comment}{/* compute energy of degree 2 loop (stack bulge or interior) */}
+00288   \textcolor{keywordtype}{int} nl, ns, u, energy;
+00289   energy = \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF};
+00290 
+00291   \textcolor{keywordflow}{if} (n1>n2) \{ nl=n1; ns=n2;\}
+00292   \textcolor{keywordflow}{else} \{nl=n2; ns=n1;\}
+00293 
+00294   \textcolor{keywordflow}{if} (nl == 0)
+00295     \textcolor{keywordflow}{return} P->stack[type][type\_2];  \textcolor{comment}{/* stack */}
+00296 
+00297   \textcolor{keywordflow}{if} (ns==0) \{                      \textcolor{comment}{/* bulge */}
+00298     energy = (nl<=\hyperlink{energy__const_8h_ad1bd6eabac419670ddd3c9ed82145988}{MAXLOOP})?P->bulge[nl]:
+00299       (P->bulge[30]+(\textcolor{keywordtype}{int})(P->lxc*log(nl/30.)));
+00300     \textcolor{keywordflow}{if} (nl==1) energy += P->stack[type][type\_2];
+00301     \textcolor{keywordflow}{else} \{
+00302       \textcolor{keywordflow}{if} (type>2) energy += P->TerminalAU;
+00303       \textcolor{keywordflow}{if} (type\_2>2) energy += P->TerminalAU;
+00304     \}
+00305     \textcolor{keywordflow}{return} energy;
+00306   \}
+00307   \textcolor{keywordflow}{else} \{                            \textcolor{comment}{/* interior loop */}
+00308     \textcolor{keywordflow}{if} (ns==1) \{
+00309       \textcolor{keywordflow}{if} (nl==1)                    \textcolor{comment}{/* 1x1 loop */}
+00310         \textcolor{keywordflow}{return} P->int11[type][type\_2][si1][sj1];
+00311       \textcolor{keywordflow}{if} (nl==2) \{                  \textcolor{comment}{/* 2x1 loop */}
+00312         \textcolor{keywordflow}{if} (n1==1)
+00313           energy = P->int21[type][type\_2][si1][sq1][sj1];
+00314         \textcolor{keywordflow}{else}
+00315           energy = P->int21[type\_2][type][sq1][si1][sp1];
+00316         \textcolor{keywordflow}{return} energy;
+00317       \}
+00318       \textcolor{keywordflow}{else} \{  \textcolor{comment}{/* 1xn loop */}
+00319         energy = (nl+1<=\hyperlink{energy__const_8h_ad1bd6eabac419670ddd3c9ed82145988}{MAXLOOP})?(P->internal\_loop[nl+1]) : (P->internal\_loop[30]+(int)(P->lxc*log((
+      nl+1)/30.)));
+00320         energy += \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(MAX\_NINIO, (nl-ns)*P->ninio[2]);
+00321         energy += P->mismatch1nI[type][si1][sj1] + P->mismatch1nI[type\_2][sq1][sp1];
+00322         \textcolor{keywordflow}{return} energy;
+00323       \}
+00324     \}
+00325     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ns==2) \{
+00326       \textcolor{keywordflow}{if}(nl==2)      \{              \textcolor{comment}{/* 2x2 loop */}
+00327         \textcolor{keywordflow}{return} P->int22[type][type\_2][si1][sp1][sq1][sj1];\}
+00328       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (nl==3)\{              \textcolor{comment}{/* 2x3 loop */}
+00329         energy = P->internal\_loop[5]+P->ninio[2];
+00330         energy += P->mismatch23I[type][si1][sj1] + P->mismatch23I[type\_2][sq1][sp1];
+00331         \textcolor{keywordflow}{return} energy;
+00332       \}
+00333 
+00334     \}
+00335     \{ \textcolor{comment}{/* generic interior loop (no else here!)*/}
+00336       u = nl + ns;
+00337       energy = (u <= \hyperlink{energy__const_8h_ad1bd6eabac419670ddd3c9ed82145988}{MAXLOOP}) ? (P->internal\_loop[u]) : (P->internal\_loop[30]+(int)(P->lxc*log((u)/
+      30.)));
+00338 
+00339       energy += \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(MAX\_NINIO, (nl-ns)*P->ninio[2]);
+00340 
+00341       energy += P->mismatchI[type][si1][sj1] + P->mismatchI[type\_2][sq1][sp1];
+00342     \}
+00343   \}
+00344   \textcolor{keywordflow}{return} energy;
+00345 \}
+00346 
+00347 PRIVATE INLINE \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL}
+\hypertarget{interior__loops_8h_source_l00348}{}\hyperlink{group__loops_ga34e8abb9e1b54fab38524fb20214a43e}{00348} \hyperlink{group__loops_ga34e8abb9e1b54fab38524fb20214a43e}{exp\_E\_IntLoop}(\textcolor{keywordtype}{int} u1,
+00349               \textcolor{keywordtype}{int} u2,
+00350               \textcolor{keywordtype}{int} type,
+00351               \textcolor{keywordtype}{int} type2,
+00352               \textcolor{keywordtype}{short} si1,
+00353               \textcolor{keywordtype}{short} sj1,
+00354               \textcolor{keywordtype}{short} sp1,
+00355               \textcolor{keywordtype}{short} sq1,
+00356               \hyperlink{group__energy__parameters_structvrna__exp__param__s}{vrna\_exp\_param\_t} *P)\{
+00357 
+00358   \textcolor{keywordtype}{int} ul, us, no\_close = 0;
+00359   \textcolor{keywordtype}{double} z = 0.;
+00360 
+00361   \textcolor{keywordflow}{if} ((\hyperlink{group__model__details_gaa8d1c7b92489179e1eafa562b7bdd259}{no\_closingGU}) && ((type2==3)||(type2==4)||(type==3)||(type==4)))
+00362     no\_close = 1;
+00363 
+00364   \textcolor{keywordflow}{if} (u1>u2) \{ ul=u1; us=u2;\}
+00365   \textcolor{keywordflow}{else} \{ul=u2; us=u1;\}
+00366 
+00367   \textcolor{keywordflow}{if} (ul==0) \textcolor{comment}{/* stack */}
+00368     z = P->expstack[type][type2];
+00369   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!no\_close)\{
+00370     \textcolor{keywordflow}{if} (us==0) \{                      \textcolor{comment}{/* bulge */}
+00371       z = P->expbulge[ul];
+00372       \textcolor{keywordflow}{if} (ul==1) z *= P->expstack[type][type2];
+00373       \textcolor{keywordflow}{else} \{
+00374         \textcolor{keywordflow}{if} (type>2) z *= P->expTermAU;
+00375         \textcolor{keywordflow}{if} (type2>2) z *= P->expTermAU;
+00376       \}
+00377       \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})z;
+00378     \}
+00379     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (us==1) \{
+00380       \textcolor{keywordflow}{if} (ul==1)\{                    \textcolor{comment}{/* 1x1 loop */}
+00381         \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(P->expint11[type][type2][si1][sj1]);
+00382       \}
+00383       \textcolor{keywordflow}{if} (ul==2) \{                  \textcolor{comment}{/* 2x1 loop */}
+00384         \textcolor{keywordflow}{if} (u1==1)
+00385           \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(P->expint21[type][type2][si1][sq1][sj1]);
+00386         \textcolor{keywordflow}{else}
+00387           \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(P->expint21[type2][type][sq1][si1][sp1]);
+00388       \}
+00389       \textcolor{keywordflow}{else} \{  \textcolor{comment}{/* 1xn loop */}
+00390         z = P->expinternal[ul+us] * P->expmismatch1nI[type][si1][sj1] * P->expmismatch1nI[type2][sq1][sp1];
+00391         \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(z * P->expninio[2][ul-us]);
+00392       \}
+00393     \}
+00394     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (us==2) \{
+00395       \textcolor{keywordflow}{if}(ul==2) \textcolor{comment}{/* 2x2 loop */}
+00396         \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(P->expint22[type][type2][si1][sp1][sq1][sj1]);
+00397       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ul==3)\{              \textcolor{comment}{/* 2x3 loop */}
+00398         z = P->expinternal[5]*P->expmismatch23I[type][si1][sj1]*P->expmismatch23I[type2][sq1][sp1];
+00399         \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(z * P->expninio[2][1]);
+00400       \}
+00401     \}
+00402     \textcolor{comment}{/* generic interior loop (no else here!)*/}
+00403     z = P->expinternal[ul+us] * P->expmismatchI[type][si1][sj1] * P->expmismatchI[type2][sq1][sp1];
+00404     \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})(z * P->expninio[2][ul-us]);
+00405 
+00406   \}
+00407   \textcolor{keywordflow}{return} (\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL})z;
+00408 \}
+00409 
+00410 PRIVATE INLINE \textcolor{keywordtype}{int}
+00411 E\_IntLoop\_Co( \textcolor{keywordtype}{int} type,
+00412               \textcolor{keywordtype}{int} type\_2,
+00413               \textcolor{keywordtype}{int} i,
+00414               \textcolor{keywordtype}{int} j,
+00415               \textcolor{keywordtype}{int} p,
+00416               \textcolor{keywordtype}{int} q,
+00417               \textcolor{keywordtype}{int} cutpoint,
+00418               \textcolor{keywordtype}{short} si1,
+00419               \textcolor{keywordtype}{short} sj1,
+00420               \textcolor{keywordtype}{short} sp1,
+00421               \textcolor{keywordtype}{short} sq1,
+00422               \textcolor{keywordtype}{int} \hyperlink{group__model__details_ga72b511ed1201f7e23ec437e468790d74}{dangles},
+00423               \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P)\{
+00424 
+00425   \textcolor{keywordtype}{int} energy, ci, cj, cp, cq, d3, d5, d5\_2, d3\_2, tmm, tmm\_2;
+00426 
+00427   energy = 0;
+00428   \textcolor{keywordflow}{if}(type > 2)   energy += P->TerminalAU;
+00429   \textcolor{keywordflow}{if}(type\_2 > 2) energy += P->TerminalAU;
+00430 
+00431   \textcolor{keywordflow}{if}(!dangles) \textcolor{keywordflow}{return} energy;
+00432 
+00433   ci = ON\_SAME\_STRAND(i, i + 1, cutpoint);
+00434   cj = ON\_SAME\_STRAND(j - 1, j, cutpoint);
+00435   cp = ON\_SAME\_STRAND(p - 1, p, cutpoint);
+00436   cq = ON\_SAME\_STRAND(q, q + 1, cutpoint);
+00437 
+00438   d3    = ci  ? P->dangle3[type][si1]   : 0;
+00439   d5    = cj  ? P->dangle5[type][sj1]   : 0;
+00440   d5\_2  = cp  ? P->dangle5[type\_2][sp1] : 0;
+00441   d3\_2  = cq  ? P->dangle3[type\_2][sq1] : 0;
+00442 
+00443   tmm   = (cj && ci) ? P->mismatchExt[type][sj1][si1]   : d5 + d3;
+00444   tmm\_2 = (cp && cq) ? P->mismatchExt[type\_2][sp1][sq1] : d5\_2 + d3\_2;
+00445 
+00446   \textcolor{keywordflow}{if}(dangles == 2) \textcolor{keywordflow}{return} energy + tmm + tmm\_2;
+00447 
+00448   \textcolor{comment}{/* now we may have non-double dangles only */}
+00449   \textcolor{keywordflow}{if}(i+2 < p)\{
+00450     \textcolor{keywordflow}{if}(q+2 < j)\{ energy += tmm + tmm\_2;\}
+00451     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(q+2 == j)\{ energy += (cj && cq) ? \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(tmm + d5\_2, tmm\_2 + d3) : tmm + tmm\_2;\}
+00452     \textcolor{keywordflow}{else} energy += d3 + d5\_2;
+00453   \}
+00454   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(i+2 == p)\{
+00455     \textcolor{keywordflow}{if}(q+2 < j)\{ energy += (ci && cp) ? \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(tmm + d3\_2, tmm\_2 + d5) : tmm + tmm\_2;\}
+00456     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(q+2 == j)\{
+00457       energy += \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(tmm, \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(tmm\_2, \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(d5 + d5\_2, d3 + d3\_2)));
+00458     \}
+00459     \textcolor{keywordflow}{else} energy += \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(d3, d5\_2);
+00460   \}
+00461   \textcolor{keywordflow}{else}\{
+00462     \textcolor{keywordflow}{if}(q+2 < j)\{ energy += d5 + d3\_2;\}
+00463     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(q+2 == j)\{ energy += \hyperlink{group__utils_gae0b9cd0ce090bd69b951aa73e8fa4f7d}{MIN2}(d5, d3\_2);\}
+00464   \}
+00465   \textcolor{keywordflow}{return} energy;
+00466 \}
+00467 
+00468 \textcolor{keywordtype}{int}
+00469 vrna\_E\_int\_loop(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00470                 \textcolor{keywordtype}{int} i,
+00471                 \textcolor{keywordtype}{int} j);
+00472 
+00473 PUBLIC \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL}
+00474 vrna\_exp\_E\_int\_loop(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00475                 \textcolor{keywordtype}{int} i,
+00476                 \textcolor{keywordtype}{int} j);
+00477 
+00478 \textcolor{keywordtype}{int}
+00479 vrna\_E\_ext\_int\_loop(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00480                     \textcolor{keywordtype}{int} i,
+00481                     \textcolor{keywordtype}{int} j,
+00482                     \textcolor{keywordtype}{int} *ip,
+00483                     \textcolor{keywordtype}{int} *iq);
+00484 
+00485 \textcolor{keywordtype}{int}
+00486 vrna\_E\_stack( \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00487               \textcolor{keywordtype}{int} i,
+00488               \textcolor{keywordtype}{int} j);
+00489 
+00490 
+00491 \textcolor{keywordtype}{int}
+00492 \hyperlink{group__loops_ga0266d2c7a6098259280fb97e9f980b34}{E\_IntLoop}(\textcolor{keywordtype}{int} n1,
+00493           \textcolor{keywordtype}{int} n2,
+00494           \textcolor{keywordtype}{int} type,
+00495           \textcolor{keywordtype}{int} type\_2,
+00496           \textcolor{keywordtype}{int} si1,
+00497           \textcolor{keywordtype}{int} sj1,
+00498           \textcolor{keywordtype}{int} sp1,
+00499           \textcolor{keywordtype}{int} sq1,
+00500           \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P);
+00501 
+00502 
+00503 PUBLIC \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL}
+00504 \hyperlink{group__loops_ga34e8abb9e1b54fab38524fb20214a43e}{exp\_E\_IntLoop}(\textcolor{keywordtype}{int} u1,
+00505               \textcolor{keywordtype}{int} u2,
+00506               \textcolor{keywordtype}{int} type,
+00507               \textcolor{keywordtype}{int} type2,
+00508               \textcolor{keywordtype}{short} si1,
+00509               \textcolor{keywordtype}{short} sj1,
+00510               \textcolor{keywordtype}{short} sp1,
+00511               \textcolor{keywordtype}{short} sq1,
+00512               \hyperlink{group__energy__parameters_structvrna__exp__param__s}{vrna\_exp\_param\_t} *P);
+00513 
+00514 \textcolor{keywordtype}{int}
+00515 E\_IntLoop\_Co( \textcolor{keywordtype}{int} type,
+00516               \textcolor{keywordtype}{int} type\_2,
+00517               \textcolor{keywordtype}{int} i,
+00518               \textcolor{keywordtype}{int} j,
+00519               \textcolor{keywordtype}{int} p,
+00520               \textcolor{keywordtype}{int} q,
+00521               \textcolor{keywordtype}{int} cutpoint,
+00522               \textcolor{keywordtype}{short} si1,
+00523               \textcolor{keywordtype}{short} sj1,
+00524               \textcolor{keywordtype}{short} sp1,
+00525               \textcolor{keywordtype}{short} sq1,
+00526               \textcolor{keywordtype}{int} dangles,
+00527               \hyperlink{group__energy__parameters_structvrna__param__s}{vrna\_param\_t} *P);
+00528 
+00529 
+00534 \textcolor{keywordtype}{int}
+00535 \hyperlink{group__loops_gad320d5d721e33bed120168213d8f45e5}{vrna\_BT\_stack}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00536               \textcolor{keywordtype}{int} *i,
+00537               \textcolor{keywordtype}{int} *j,
+00538               \textcolor{keywordtype}{int} *en,
+00539               \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\_bp\_stack\_t} *bp\_stack,
+00540               \textcolor{keywordtype}{int} *stack\_count);
+00545 \textcolor{keywordtype}{int}
+00546 \hyperlink{group__loops_ga849b7dc373b6c0b029672e16a7e52053}{vrna\_BT\_int\_loop}( \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00547                   \textcolor{keywordtype}{int} *i,
+00548                   \textcolor{keywordtype}{int} *j,
+00549                   \textcolor{keywordtype}{int} en,
+00550                   \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\_bp\_stack\_t} *bp\_stack,
+00551                   \textcolor{keywordtype}{int} *stack\_count);
+00552 
+00553 
+00559 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

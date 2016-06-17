@@ -1,0 +1,337 @@
+\hypertarget{1_88_84__epars_8h_source}{}\section{1.8.4\+\_\+epars.h}
+\label{1_88_84__epars_8h_source}\index{Vienna\+R\+N\+A/1.\+8.\+4\+\_\+epars.\+h@{Vienna\+R\+N\+A/1.\+8.\+4\+\_\+epars.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_OLD\_EPARS\_\_}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_OLD\_EPARS\_\_}
+00003 
+00038 \textcolor{preprocessor}{#define K0        273.15}
+00039 \textcolor{preprocessor}{#ifdef INF}
+00040 \textcolor{preprocessor}{#undef INF}
+00041 \textcolor{preprocessor}{#endif}
+00042 \textcolor{preprocessor}{#define INF       1000000}
+00043 \textcolor{preprocessor}{#define NBPAIRS   7}
+00044 \textcolor{preprocessor}{#define NST       0     }\textcolor{comment}{/* Energy for nonstandard stacked pairs */}\textcolor{preprocessor}{}
+00045 \textcolor{preprocessor}{#define DEF       -50   }\textcolor{comment}{/* Default terminal mismatch, used for I */}\textcolor{preprocessor}{}
+00046                         \textcolor{comment}{/* and any non\_pairing bases */}
+00047 \textcolor{preprocessor}{#define NSM       0     }\textcolor{comment}{/* terminal mismatch for non standard pairs */}\textcolor{preprocessor}{}
+00048 
+00049 PRIVATE \textcolor{keywordtype}{double} Tmeasure\_184 = 37 + \hyperlink{energy__const_8h_a307c72605e3713972b4f4fb2d53ea20e}{K0};  \textcolor{comment}{/* temperature of param measurements */}
+00050 PRIVATE \textcolor{keywordtype}{double} lxc37\_184    = 107.856;  \textcolor{comment}{/* parameter for logarithmic loop}
+00051 \textcolor{comment}{                                           energy extrapolation */}
+00052 
+00053 PRIVATE \textcolor{keywordtype}{int} stack37\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1] =
+00054 \textcolor{comment}{/*          CG     GC     GU     UG     AU     UA  */}
+00055 \{ \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, INF\},
+00056   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -240,  -330,  -210,  -140,  -210,  -210, NST\},
+00057   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -330,  -340,  -250,  -150,  -220,  -240, NST\},
+00058   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -210,  -250,   130,   -50,  -140,  -130, NST\},
+00059   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -140,  -150,   -50,    30,   -60,  -100, NST\},
+00060   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -210,  -220,  -140,   -60,  -110,   -90, NST\},
+00061   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -210,  -240,  -130,  -100,   -90,  -130, NST\},
+00062   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   NST,   NST,   NST,   NST,   NST,   NST, NST\}\};
+00063 
+00064 \textcolor{comment}{/* enthalpies (0.01*kcal/mol at 37 C) for stacked pairs */}
+00065 \textcolor{comment}{/* different from mfold-2.3, which uses values from mfold-2.2 */}
+00066 PRIVATE \textcolor{keywordtype}{int} enthalpies\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1] =
+00067 \textcolor{comment}{/*          CG     GC     GU     UG     AU     UA  */}
+00068 \{ \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, INF\},
+00069   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, -1060, -1340, -1210,  -560, -1050, -1040, NST\},
+00070   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, -1340, -1490, -1260,  -830, -1140, -1240, NST\},
+00071   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, -1210, -1260, -1460, -1350,  -880, -1280, NST\},
+00072   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -560,  -830, -1350,  -930,  -320,  -700, NST\},
+00073   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, -1050, -1140,  -880,  -320,  -940,  -680, NST\},
+00074   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, -1040, -1240, -1280,  -700,  -680,  -770, NST\},
+00075   \{  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},   NST,   NST,   NST,   NST,   NST,   NST, NST\}\};
+00076 
+00077 
+00078 \textcolor{comment}{/* old values are here just for comparison */}
+00079 PRIVATE \textcolor{keywordtype}{int} oldhairpin37\_184[31] = \{ \textcolor{comment}{/* from ViennaRNA 1.3 */}
+00080   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, 410, 490, 440, 470, 500, 510, 520, 531,
+00081        542, 551, 560, 568, 575, 582, 589, 595, 601, 606,
+00082        611, 616, 621, 626, 630, 634, 638, 642, 646, 650\};
+00083 
+00084 PRIVATE \textcolor{keywordtype}{int} hairpin37\_184[31] = \{
+00085   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, 570, 560, 560, 540, 590, 560, 640, 650,
+00086        660, 670, 678, 686, 694, 701, 707, 713, 719, 725,
+00087        730, 735, 740, 744, 749, 753, 757, 761, 765, 769\};
+00088 
+00089 PRIVATE \textcolor{keywordtype}{int} oldbulge37\_184[31] = \{
+00090   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, 390, 310, 350, 420, 480, 500, 516, 531, 543, 555,
+00091        565, 574, 583, 591, 598, 605, 612, 618, 624, 630,
+00092        635, 640, 645, 649, 654, 658, 662, 666, 670, 673\};
+00093 
+00094 PRIVATE \textcolor{keywordtype}{int} bulge37\_184[31] = \{
+00095   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, 380, 280, 320, 360, 400, 440, 459, 470, 480, 490,
+00096        500, 510, 519, 527, 534, 541, 548, 554, 560, 565,
+00097   571, 576, 580, 585, 589, 594, 598, 602, 605, 609\};
+00098 
+00099 PRIVATE \textcolor{keywordtype}{int} oldinternal\_loop37\_184[31] = \{
+00100   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, 410, 510, 490, 530, 570, 587, 601, 614, 625,
+00101        635, 645, 653, 661, 669, 676, 682, 688, 694, 700,
+00102        705, 710, 715, 720, 724, 728, 732, 736, 740, 744\};
+00103 
+00104 PRIVATE \textcolor{keywordtype}{int} internal\_loop37\_184[31] = \{
+00105   \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, 410, 510, 170, 180, 200, 220, 230, 240, 250,
+00106        260, 270, 278, 286, 294, 301, 307, 313, 319, 325,
+00107        330, 335, 340, 345, 349, 353, 357, 361, 365, 369\};
+00108 
+00109 \textcolor{comment}{/* terminal mismatches */}
+00110 \textcolor{comment}{/* mismatch free energies for interior loops at 37C */}
+00111 PRIVATE \textcolor{keywordtype}{int} mismatchI37\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][5][5] =
+00112 \{ \textcolor{comment}{/* @@ */}
+00113   \{\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\}\},
+00114   \{ \textcolor{comment}{/* CG */}
+00115    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00116    \{   0,    0,    0, -110,    0\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00117    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00118    \{   0, -110,    0,    0,    0\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00119    \{   0,    0,    0,    0,  -70\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00120   \{ \textcolor{comment}{/* GC */}
+00121    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00122    \{   0,    0,    0, -110,    0\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00123    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00124    \{   0, -110,    0,    0,    0\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00125    \{   0,    0,    0,    0,  -70\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00126   \{ \textcolor{comment}{/* GU */}
+00127    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00128    \{   0,   70,   70,  -40,   70\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00129    \{   0,   70,   70,   70,   70\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00130    \{   0,  -40,   70,   70,   70\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00131    \{   0,   70,   70,   70,    0\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00132   \{ \textcolor{comment}{/* UG */}
+00133    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00134    \{   0,   70,   70,  -40,   70\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00135    \{   0,   70,   70,   70,   70\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00136    \{   0,  -40,   70,   70,   70\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00137    \{   0,   70,   70,   70,    0\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00138   \{ \textcolor{comment}{/* AU */}
+00139    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00140    \{   0,   70,   70,  -40,   70\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00141    \{   0,   70,   70,   70,   70\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00142    \{   0,  -40,   70,   70,   70\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00143    \{   0,   70,   70,   70,    0\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00144   \{ \textcolor{comment}{/* UA */}
+00145    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00146    \{   0,   70,   70,  -40,   70\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00147    \{   0,   70,   70,   70,   70\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00148    \{   0,  -40,   70,   70,   70\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00149    \{   0,   70,   70,   70,    0\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00150   \{ \textcolor{comment}{/* @@ */}
+00151    \{ 90, 90, 90, 90, 90\},\{ 90, 90, 90, 90,-20\},\{ 90, 90, 90, 90, 90\},
+00152    \{ 90,-20, 90, 90, 90\},\{ 90, 90, 90, 90, 20\}\}
+00153 \};
+00154 
+00155 \textcolor{comment}{/* mismatch free energies for hairpins at 37C */}
+00156 PRIVATE \textcolor{keywordtype}{int} mismatchH37\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][5][5] =
+00157 \{ \textcolor{comment}{/* @@ */}
+00158   \{\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\}\},
+00159   \{ \textcolor{comment}{/* CG */}
+00160    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00161    \{ -90, -150, -150, -140, -180\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00162    \{ -90, -100,  -90, -290,  -80\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00163    \{ -90, -220, -200, -160, -110\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00164    \{ -90, -170, -140, -180, -200\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00165   \{ \textcolor{comment}{/* GC */}
+00166    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00167    \{ -70, -110, -150, -130, -210\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00168    \{ -70, -110,  -70, -240,  -50\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00169    \{ -70, -240, -290, -140, -120\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00170    \{ -70, -190, -100, -220, -150\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00171   \{ \textcolor{comment}{/* GU */}
+00172    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00173    \{   0,   20,  -50,  -30,  -30\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00174    \{   0,  -10,  -20, -150,  -20\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00175    \{   0,  -90, -110,  -30,    0\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00176    \{   0,  -30,  -30,  -40, -110\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00177   \{ \textcolor{comment}{/* UG */}
+00178    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00179    \{   0,  -50,  -30,  -60,  -50\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00180    \{   0,  -20,  -10, -170,    0\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00181    \{   0,  -80, -120,  -30,  -70\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00182    \{   0,  -60,  -10,  -60,  -80\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00183   \{ \textcolor{comment}{/* AU */}
+00184    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00185    \{   0,  -30,  -50,  -30,  -30\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00186    \{   0,  -10,  -20, -150,  -20\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00187    \{   0, -110, -120,  -20,   20\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00188    \{   0,  -30,  -30,  -60, -110\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00189   \{ \textcolor{comment}{/* UA */}
+00190    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00191    \{   0,  -50,  -30,  -60,  -50\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00192    \{   0,  -20,  -10, -120,   -0\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00193    \{   0, -140, -120,  -70,  -20\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00194    \{   0,  -30,  -10,  -50,  -80\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00195   \{ \textcolor{comment}{/* @@ */}
+00196    \{  0,  0,  0,  0,  0\},\{  0,  0,  0,  0,  0\},\{  0,  0,  0,  0,  0\},
+00197    \{  0,  0,  0,  0,  0\},\{  0,  0,  0,  0,  0\}\}
+00198 \};
+00199 
+00200 \textcolor{comment}{/* mismatch energies in multiloops */}
+00201 PRIVATE \textcolor{keywordtype}{int} mismatchM37\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][5][5];
+00202 
+00203 \textcolor{comment}{/* these are probably junk */}
+00204 \textcolor{comment}{/* mismatch enthalpies for temperature scaling */}
+00205 PRIVATE \textcolor{keywordtype}{int} mism\_H\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][5][5] =
+00206 \{ \textcolor{comment}{/* no pair */}
+00207   \{\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\},\{0,0,0,0,0\}\},
+00208   \{ \textcolor{comment}{/* CG */}
+00209    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00210    \{ DEF,-1030, -950,-1030,-1030\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00211    \{ DEF, -520, -450, -520, -670\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00212    \{ DEF, -940, -940, -940, -940\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00213    \{ DEF, -810, -740, -810, -860\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00214   \{ \textcolor{comment}{/* GC */}
+00215    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00216    \{ DEF, -520, -880, -560, -880\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00217    \{ DEF, -720, -310, -310, -390\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00218    \{ DEF, -710, -740, -620, -740\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00219    \{ DEF, -500, -500, -500, -570\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00220   \{ \textcolor{comment}{/* GU */}
+00221    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00222    \{ DEF, -430, -600, -600, -600\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00223    \{ DEF, -260, -240, -240, -240\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00224    \{ DEF, -340, -690, -690, -690\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00225    \{ DEF, -330, -330, -330, -330\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00226   \{ \textcolor{comment}{/* UG */}
+00227    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00228    \{ DEF, -720, -790, -960, -810\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00229    \{ DEF, -480, -480, -360, -480\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00230    \{ DEF, -660, -810, -920, -810\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00231    \{ DEF, -550, -440, -550, -360\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00232   \{ \textcolor{comment}{/* AU */}
+00233    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00234    \{ DEF, -430, -600, -600, -600\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00235    \{ DEF, -260, -240, -240, -240\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00236    \{ DEF, -340, -690, -690, -690\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00237    \{ DEF, -330, -330, -330, -330\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00238   \{ \textcolor{comment}{/* UA */}
+00239    \{   0,    0,    0,    0,    0\}, \textcolor{comment}{/* @@  @A  @C  @G  @U */}
+00240    \{ DEF, -400, -630, -890, -590\}, \textcolor{comment}{/* A@  AA  AC  AG  AU */}
+00241    \{ DEF, -430, -510, -200, -180\}, \textcolor{comment}{/* C@  CA  CC  CG  CU */}
+00242    \{ DEF, -380, -680, -890, -680\}, \textcolor{comment}{/* G@  GA  GC  GG  GU */}
+00243    \{ DEF, -280, -140, -280, -140\}\},\textcolor{comment}{/* U@  UA  UC  UG  UU */}
+00244   \{ \textcolor{comment}{/* nonstandard pair */}
+00245    \{DEF,DEF,DEF,DEF,DEF\},\{DEF,DEF,DEF,DEF,DEF\},\{DEF,DEF,DEF,DEF,DEF\},
+00246    \{DEF,DEF,DEF,DEF,DEF\},\{DEF,DEF,DEF,DEF,DEF\}\}
+00247 \};
+00248 
+00249 \textcolor{comment}{/* 5' dangling ends (unpaird base stacks on first paired base) */}
+00250 PRIVATE \textcolor{keywordtype}{int} dangle5\_37\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][5]=
+00251 \{\textcolor{comment}{/*   @     A     C     G     U   */}
+00252    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  INF\}, \textcolor{comment}{/* no pair */}
+00253    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -50,  -30,  -20,  -10\}, \textcolor{comment}{/* CG  (stacks on C) */}
+00254    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -20,  -30,   -0,   -0\}, \textcolor{comment}{/* GC  (stacks on G) */}
+00255    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -30,  -30,  -40,  -20\}, \textcolor{comment}{/* GU */}
+00256    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -30,  -10,  -20,  -20\}, \textcolor{comment}{/* UG */}
+00257    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -30,  -30,  -40,  -20\}, \textcolor{comment}{/* AU */}
+00258    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -30,  -10,  -20,  -20\}, \textcolor{comment}{/* UA */}
+00259    \{   0,    0,     0,    0,   0\}  \textcolor{comment}{/*  @ */}
+00260 \};
+00261 
+00262 \textcolor{comment}{/* 3' dangling ends (unpaired base stacks on second paired base */}
+00263 PRIVATE \textcolor{keywordtype}{int} dangle3\_37\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][5]=
+00264 \{\textcolor{comment}{/*   @     A     C     G     U   */}
+00265    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  INF\},  \textcolor{comment}{/* no pair */}
+00266    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, -110,  -40, -130,  -60\},  \textcolor{comment}{/* CG  (stacks on G) */}
+00267    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}, -170,  -80, -170, -120\},  \textcolor{comment}{/* GC */}
+00268    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -70,  -10,  -70,  -10\},  \textcolor{comment}{/* GU */}
+00269    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -80,  -50,  -80,  -60\},  \textcolor{comment}{/* UG */}
+00270    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -70,  -10,  -70,  -10\},  \textcolor{comment}{/* AU */}
+00271    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  -80,  -50,  -80,  -60\},  \textcolor{comment}{/* UA */}
+00272    \{   0,    0,     0,    0,   0\}   \textcolor{comment}{/*  @ */}
+00273 \};
+00274 
+00275 \textcolor{comment}{/* enthalpies for temperature scaling */}
+00276 PRIVATE \textcolor{keywordtype}{int} dangle3\_H\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][5] =
+00277 \{\textcolor{comment}{/*   @     A     C     G     U   */}
+00278    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  INF\},  \textcolor{comment}{/* no pair */}
+00279    \{   0, -740, -280, -640, -360\},
+00280    \{   0, -900, -410, -860, -750\},
+00281    \{   0, -740, -240, -720, -490\},
+00282    \{   0, -490,  -90, -550, -230\},
+00283    \{   0, -570,  -70, -580, -220\},
+00284    \{   0, -490,  -90, -550, -230\},
+00285    \{   0,    0,    0,    0,   0\}
+00286 \};
+00287 
+00288 PRIVATE \textcolor{keywordtype}{int} dangle5\_H\_184[\hyperlink{energy__const_8h_a5e75221c779d618eab81e096f37e32ce}{NBPAIRS}+1][5] =
+00289 \{\textcolor{comment}{/*   @     A     C     G     U   */}
+00290    \{ \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  \hyperlink{energy__const_8h_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF},  INF\},  \textcolor{comment}{/* no pair */}
+00291    \{   0, -240,  330,   80, -140\},
+00292    \{   0, -160,   70, -460,  -40\},
+00293    \{   0,  160,  220,   70,  310\},
+00294    \{   0, -150,  510,   10,  100\},
+00295    \{   0,  160,  220,   70,  310\},
+00296    \{   0,  -50,  690,  -60,  -60\},
+00297    \{   0,    0,    0,    0,   0\}
+00298 \};
+00299 
+00300 
+00301 \textcolor{comment}{/* constants for linearly destabilizing contributions for multi-loops}
+00302 \textcolor{comment}{   F = ML\_closing + ML\_intern*k + ML\_BASE*u  */}
+00303 \textcolor{comment}{/* old versions erroneously used ML\_intern*(k-1) */}
+00304 PRIVATE \textcolor{keywordtype}{int} ML\_BASE37\_184 = 0;
+00305 PRIVATE \textcolor{keywordtype}{int} ML\_closing37\_184 = 340;
+00306 PRIVATE \textcolor{keywordtype}{int} ML\_intern37\_184 =  40;
+00307 
+00308 \textcolor{comment}{/* Ninio-correction for asymmetric internal loops with branches n1 and n2 */}
+00309 \textcolor{comment}{/*    ninio\_energy = min\{max\_ninio, |n1-n2|*F\_ninio[min\{4.0, n1, n2\}] \} */}
+00310 PRIVATE \textcolor{keywordtype}{int} MAX\_NINIO\_184 = 300;                   \textcolor{comment}{/* maximum correction */}
+00311 PRIVATE \textcolor{keywordtype}{int} F\_ninio37\_184[5] = \{ 0, 40, 50, 20, 10 \};      \textcolor{comment}{/* only F[2] used */}
+00312 
+00313 \textcolor{comment}{/* stabilizing contribution due to special hairpins of size 4 (tetraloops) */}
+00314 
+00315 PRIVATE \textcolor{keywordtype}{char} Tetraloops\_184[1400] =  \textcolor{comment}{/* place for up to 200 tetra loops */}
+00316   \textcolor{stringliteral}{"GGGGAC "}
+00317   \textcolor{stringliteral}{"GGUGAC "}
+00318   \textcolor{stringliteral}{"CGAAAG "}
+00319   \textcolor{stringliteral}{"GGAGAC "}
+00320   \textcolor{stringliteral}{"CGCAAG "}
+00321   \textcolor{stringliteral}{"GGAAAC "}
+00322   \textcolor{stringliteral}{"CGGAAG "}
+00323   \textcolor{stringliteral}{"CUUCGG "}
+00324   \textcolor{stringliteral}{"CGUGAG "}
+00325   \textcolor{stringliteral}{"CGAAGG "}
+00326   \textcolor{stringliteral}{"CUACGG "}
+00327   \textcolor{stringliteral}{"GGCAAC "}
+00328   \textcolor{stringliteral}{"CGCGAG "}
+00329   \textcolor{stringliteral}{"UGAGAG "}
+00330   \textcolor{stringliteral}{"CGAGAG "}
+00331   \textcolor{stringliteral}{"AGAAAU "}
+00332   \textcolor{stringliteral}{"CGUAAG "}
+00333   \textcolor{stringliteral}{"CUAACG "}
+00334   \textcolor{stringliteral}{"UGAAAG "}
+00335   \textcolor{stringliteral}{"GGAAGC "}
+00336   \textcolor{stringliteral}{"GGGAAC "}
+00337   \textcolor{stringliteral}{"UGAAAA "}
+00338   \textcolor{stringliteral}{"AGCAAU "}
+00339   \textcolor{stringliteral}{"AGUAAU "}
+00340   \textcolor{stringliteral}{"CGGGAG "}
+00341   \textcolor{stringliteral}{"AGUGAU "}
+00342   \textcolor{stringliteral}{"GGCGAC "}
+00343   \textcolor{stringliteral}{"GGGAGC "}
+00344   \textcolor{stringliteral}{"GUGAAC "}
+00345   \textcolor{stringliteral}{"UGGAAA "}
+00346 ;
+00347 
+00348 PRIVATE \textcolor{keywordtype}{int}   TETRA\_ENERGY37\_184[200] = \{
+00349   -300, -300, -300, -300, -300, -300, -300, -300, -300, -250, -250, -250,
+00350   -250, -250, -200, -200, -200, -200, -200, -150, -150, -150, -150, -150,
+00351   -150, -150, -150, -150, -150, -150\};
+00352 
+00353 PRIVATE \textcolor{keywordtype}{int}   TETRA\_ENTH37\_184   = -400;
+00354 
+00355 PRIVATE \textcolor{keywordtype}{char} Triloops\_184[241] = \textcolor{stringliteral}{""};
+00356 
+00357 PRIVATE \textcolor{keywordtype}{int} Triloop\_E37\_184[40];
+00358 
+00359 \textcolor{comment}{/* penalty for AU (or GU) terminating helix) */}
+00360 \textcolor{comment}{/* mismatches already contain these */}
+00361 PRIVATE \textcolor{keywordtype}{int} TerminalAU\_184 = 50;
+00362 
+00363 \textcolor{comment}{/* penalty for forming a bi-molecular duplex */}
+00364 PRIVATE \textcolor{keywordtype}{int} DuplexInit\_184 = 410;
+00365 
+00366 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

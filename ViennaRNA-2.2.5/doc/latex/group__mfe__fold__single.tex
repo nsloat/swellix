@@ -1,0 +1,439 @@
+\hypertarget{group__mfe__fold__single}{}\section{M\+F\+E Structures of single Nucleic Acid Sequences}
+\label{group__mfe__fold__single}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+
+
+This module contains all functions and variables related to the calculation of global minimum free energy structures for single sequences.  
+
+
+Collaboration diagram for M\+F\+E Structures of single Nucleic Acid Sequences\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__mfe__fold__single}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{group__mfe__fold__single_gae7ca49ffb3086f145da36c964a7cec64}{vrna\+\_\+fold} (const char $\ast$string, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute Minimum Free Energy (M\+F\+E), and a corresponding secondary structure for an R\+N\+A sequence. \end{DoxyCompactList}\item 
+float \hyperlink{group__mfe__fold__single_gaa0f5bf321038f404b36a6147bdae4154}{vrna\+\_\+circfold} (const char $\ast$string, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute Minimum Free Energy (M\+F\+E), and a corresponding secondary structure for a circular R\+N\+A sequence. \end{DoxyCompactList}\item 
+float \hyperlink{group__mfe__fold__single_ga2bc41df5d71fee6fd8da9904ee65d8fb}{fold\+\_\+par} (const char $\ast$sequence, char $\ast$structure, \hyperlink{group__energy__parameters_ga8a69ca7d787e4fd6079914f5343a1f35}{vrna\+\_\+param\+\_\+t} $\ast$parameters, int is\+\_\+constrained, int is\+\_\+circular)
+\begin{DoxyCompactList}\small\item\em Compute minimum free energy and an appropriate secondary structure of an R\+N\+A sequence. \end{DoxyCompactList}\item 
+float \hyperlink{group__mfe__fold__single_gaadafcb0f140795ae62e5ca027e335a9b}{fold} (const char $\ast$sequence, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute minimum free energy and an appropriate secondary structure of an R\+N\+A sequence. \end{DoxyCompactList}\item 
+float \hyperlink{group__mfe__fold__single_ga4ac63ab3e8d9a80ced28b8052d94e423}{circfold} (const char $\ast$sequence, char $\ast$structure)
+\begin{DoxyCompactList}\small\item\em Compute minimum free energy and an appropriate secondary structure of a circular R\+N\+A sequence. \end{DoxyCompactList}\item 
+void \hyperlink{group__mfe__fold__single_ga107fdfe5fd641868156bfd849f6866c7}{free\+\_\+arrays} (void)
+\begin{DoxyCompactList}\small\item\em Free arrays for mfe folding. \end{DoxyCompactList}\item 
+void \hyperlink{group__mfe__fold__single_ga41bf8f6fa15b94471f7095cad9f0ccf3}{update\+\_\+fold\+\_\+params} (void)
+\begin{DoxyCompactList}\small\item\em Recalculate energy parameters. \end{DoxyCompactList}\item 
+void \hyperlink{group__mfe__fold__single_gae66dc422efb8f5d56717d92d6002a9f8}{update\+\_\+fold\+\_\+params\+\_\+par} (\hyperlink{group__energy__parameters_ga8a69ca7d787e4fd6079914f5343a1f35}{vrna\+\_\+param\+\_\+t} $\ast$parameters)
+\begin{DoxyCompactList}\small\item\em Recalculate energy parameters. \end{DoxyCompactList}\item 
+void \hyperlink{group__mfe__fold__single_ga99641b8dbb40891da5490d3cc271e607}{export\+\_\+fold\+\_\+arrays} (int $\ast$$\ast$f5\+\_\+p, int $\ast$$\ast$c\+\_\+p, int $\ast$$\ast$f\+M\+L\+\_\+p, int $\ast$$\ast$f\+M1\+\_\+p, int $\ast$$\ast$indx\+\_\+p, char $\ast$$\ast$ptype\+\_\+p)
+\item 
+void \hyperlink{group__mfe__fold__single_ga6606ec0ec964ea506fdadb997a1a5328}{export\+\_\+fold\+\_\+arrays\+\_\+par} (int $\ast$$\ast$f5\+\_\+p, int $\ast$$\ast$c\+\_\+p, int $\ast$$\ast$f\+M\+L\+\_\+p, int $\ast$$\ast$f\+M1\+\_\+p, int $\ast$$\ast$indx\+\_\+p, char $\ast$$\ast$ptype\+\_\+p, \hyperlink{group__energy__parameters_ga8a69ca7d787e4fd6079914f5343a1f35}{vrna\+\_\+param\+\_\+t} $\ast$$\ast$P\+\_\+p)
+\item 
+void \hyperlink{group__mfe__fold__single_ga04d5d639fd4473ca766436a9bae5665c}{export\+\_\+circfold\+\_\+arrays} (int $\ast$Fc\+\_\+p, int $\ast$Fc\+H\+\_\+p, int $\ast$Fc\+I\+\_\+p, int $\ast$Fc\+M\+\_\+p, int $\ast$$\ast$f\+M2\+\_\+p, int $\ast$$\ast$f5\+\_\+p, int $\ast$$\ast$c\+\_\+p, int $\ast$$\ast$f\+M\+L\+\_\+p, int $\ast$$\ast$f\+M1\+\_\+p, int $\ast$$\ast$indx\+\_\+p, char $\ast$$\ast$ptype\+\_\+p)
+\item 
+void \hyperlink{group__mfe__fold__single_ga004bb901e7fd2f8d5ae68f9530318ce1}{export\+\_\+circfold\+\_\+arrays\+\_\+par} (int $\ast$Fc\+\_\+p, int $\ast$Fc\+H\+\_\+p, int $\ast$Fc\+I\+\_\+p, int $\ast$Fc\+M\+\_\+p, int $\ast$$\ast$f\+M2\+\_\+p, int $\ast$$\ast$f5\+\_\+p, int $\ast$$\ast$c\+\_\+p, int $\ast$$\ast$f\+M\+L\+\_\+p, int $\ast$$\ast$f\+M1\+\_\+p, int $\ast$$\ast$indx\+\_\+p, char $\ast$$\ast$ptype\+\_\+p, \hyperlink{group__energy__parameters_ga8a69ca7d787e4fd6079914f5343a1f35}{vrna\+\_\+param\+\_\+t} $\ast$$\ast$P\+\_\+p)
+\item 
+int \hyperlink{group__mfe__fold__single_ga2163034a25c6115d894b199e97e03f6c}{Loop\+Energy} (int n1, int n2, int type, int type\+\_\+2, int si1, int sj1, int sp1, int sq1)
+\item 
+int \hyperlink{group__mfe__fold__single_gab327ce11972f5ac069d52c8dedfdb700}{Hairpin\+E} (int size, int type, int si1, int sj1, const char $\ast$string)
+\item 
+void \hyperlink{group__mfe__fold__single_gac3f0a28d9cb609d388b155445073fd20}{initialize\+\_\+fold} (int length)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module contains all functions and variables related to the calculation of global minimum free energy structures for single sequences. 
+
+The library provides a fast dynamic programming minimum free energy folding algorithm as described by \char`\"{}\+Zuker \& Stiegler (1981)\char`\"{} \cite{zuker:1981}. 
+
+\subsection{Function Documentation}
+\hypertarget{group__mfe__fold__single_gae7ca49ffb3086f145da36c964a7cec64}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!vrna\+\_\+fold@{vrna\+\_\+fold}}
+\index{vrna\+\_\+fold@{vrna\+\_\+fold}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{vrna\+\_\+fold}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+fold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_gae7ca49ffb3086f145da36c964a7cec64}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+
+
+Compute Minimum Free Energy (M\+F\+E), and a corresponding secondary structure for an R\+N\+A sequence. 
+
+This simplified interface to \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} computes the M\+F\+E and, if required, a secondary structure for an R\+N\+A sequence using default options. Memory required for dynamic programming (D\+P) matrices will be allocated and free\textquotesingle{}d on-\/the-\/fly. Hence, after return of this function, the recursively filled matrices are not available any more for any post-\/processing, e.\+g. suboptimal backtracking, etc.
+
+\begin{DoxyNote}{Note}
+In case you want to use the filled D\+P matrices for any subsequent post-\/processing step, or you require other conditions than specified by the default model details, use \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, and the data structure \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} instead.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__mfe__fold__single_gaa0f5bf321038f404b36a6147bdae4154}{vrna\+\_\+circfold()}, \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\+\_\+fold\+\_\+compound()}, \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & R\+N\+A sequence \\
+\hline
+{\em structure} & A pointer to the character array where the secondary structure in dot-\/bracket notation will be written to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the minimum free energy (M\+F\+E) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__mfe__fold__single_gaa0f5bf321038f404b36a6147bdae4154}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!vrna\+\_\+circfold@{vrna\+\_\+circfold}}
+\index{vrna\+\_\+circfold@{vrna\+\_\+circfold}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{vrna\+\_\+circfold}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+circfold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_gaa0f5bf321038f404b36a6147bdae4154}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+
+
+Compute Minimum Free Energy (M\+F\+E), and a corresponding secondary structure for a circular R\+N\+A sequence. 
+
+This simplified interface to \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} computes the M\+F\+E and, if required, a secondary structure for a circular R\+N\+A sequence using default options. Memory required for dynamic programming (D\+P) matrices will be allocated and free\textquotesingle{}d on-\/the-\/fly. Hence, after return of this function, the recursively filled matrices are not available any more for any post-\/processing, e.\+g. suboptimal backtracking, etc.
+
+Folding of circular R\+N\+A sequences is handled as a post-\/processing step of the forward recursions. See \cite{hofacker:2006} for further details.
+
+\begin{DoxyNote}{Note}
+In case you want to use the filled D\+P matrices for any subsequent post-\/processing step, or you require other conditions than specified by the default model details, use \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, and the data structure \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} instead.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__mfe__fold__single_gae7ca49ffb3086f145da36c964a7cec64}{vrna\+\_\+fold()}, \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, \hyperlink{group__fold__compound_ga6601d994ba32b11511b36f68b08403be}{vrna\+\_\+fold\+\_\+compound()}, \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & R\+N\+A sequence \\
+\hline
+{\em structure} & A pointer to the character array where the secondary structure in dot-\/bracket notation will be written to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the minimum free energy (M\+F\+E) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__mfe__fold__single_ga2bc41df5d71fee6fd8da9904ee65d8fb}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!fold\+\_\+par@{fold\+\_\+par}}
+\index{fold\+\_\+par@{fold\+\_\+par}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{fold\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}float fold\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sequence, }
+\item[{char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+param\+\_\+t} $\ast$}]{parameters, }
+\item[{int}]{is\+\_\+constrained, }
+\item[{int}]{is\+\_\+circular}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga2bc41df5d71fee6fd8da9904ee65d8fb}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+
+
+Compute minimum free energy and an appropriate secondary structure of an R\+N\+A sequence. 
+
+The first parameter given, the R\+N\+A sequence, must be {\itshape uppercase} and should only contain an alphabet $\Sigma$ that is understood by the R\+N\+Alib~\newline
+(e.\+g. $ \Sigma = \{A,U,C,G\} $)~\newline
+ The second parameter, {\itshape structure}, must always point to an allocated block of memory with a size of at least $\mathrm{strlen}(\mathrm{sequence})+1$
+
+If the third parameter is N\+U\+L\+L, global model detail settings are assumed for the folding recursions. Otherwise, the provided parameters are used.
+
+The fourth parameter indicates whether a secondary structure constraint in enhanced dot-\/bracket notation is passed through the structure parameter or not. If so, the characters \char`\"{} $\vert$ x $<$ $>$ \char`\"{} are recognized to mark bases that are paired, unpaired, paired upstream, or downstream, respectively. Matching brackets \char`\"{} ( ) \char`\"{} denote base pairs, dots \char`\"{}.\char`\"{} are used for unconstrained bases.
+
+To indicate that the R\+N\+A sequence is circular and thus has to be post-\/processed, set the last parameter to non-\/zero
+
+After a successful call of \hyperlink{group__mfe__fold__single_ga2bc41df5d71fee6fd8da9904ee65d8fb}{fold\+\_\+par()}, a backtracked secondary structure (in dot-\/bracket notation) that exhibits the minimum of free energy will be written to the memory {\itshape structure} is pointing to. The function returns the minimum of free energy for any fold of the sequence given.
+
+\begin{DoxyNote}{Note}
+Open\+M\+P\+: Passing N\+U\+L\+L to the \textquotesingle{}parameters\textquotesingle{} argument involves access to several global model detail variables and thus is not to be considered threadsafe
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000070}{Deprecated}]use \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()}, \hyperlink{group__mfe__fold__single_gaadafcb0f140795ae62e5ca027e335a9b}{fold()}, \hyperlink{group__mfe__fold__single_ga4ac63ab3e8d9a80ced28b8052d94e423}{circfold()}, \hyperlink{group__model__details_ga1f8a10e12a0a1915f2a4eff0b28ea17c}{vrna\+\_\+md\+\_\+t}, set\+\_\+energy\+\_\+model(), \hyperlink{group__energy__parameters_ga7fa6a000d7c16feab939f2c4ee626197}{get\+\_\+scaled\+\_\+parameters()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & R\+N\+A sequence \\
+\hline
+{\em structure} & A pointer to the character array where the secondary structure in dot-\/bracket notation will be written to \\
+\hline
+{\em parameters} & A data structure containing the prescaled energy contributions and the model details. (N\+U\+L\+L may be passed, see Open\+M\+P notes above) \\
+\hline
+{\em is\+\_\+constrained} & Switch to indicate that a structure contraint is passed via the structure argument (0==off) \\
+\hline
+{\em is\+\_\+circular} & Switch to (de-\/)activate postprocessing steps in case R\+N\+A sequence is circular (0==off)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the minimum free energy (M\+F\+E) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__mfe__fold__single_gaadafcb0f140795ae62e5ca027e335a9b}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!fold@{fold}}
+\index{fold@{fold}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{fold}]{\setlength{\rightskip}{0pt plus 5cm}float fold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sequence, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_gaadafcb0f140795ae62e5ca027e335a9b}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+
+
+Compute minimum free energy and an appropriate secondary structure of an R\+N\+A sequence. 
+
+This function essentially does the same thing as \hyperlink{group__mfe__fold__single_ga2bc41df5d71fee6fd8da9904ee65d8fb}{fold\+\_\+par()}. However, it takes its model details, i.\+e. \hyperlink{group__model__details_gab4b11c8d9c758430960896bc3fe82ead}{temperature}, \hyperlink{group__model__details_ga72b511ed1201f7e23ec437e468790d74}{dangles}, \hyperlink{group__model__details_ga4f6265bdf0ead7ff4628a360adbfd77e}{tetra\+\_\+loop}, \hyperlink{group__model__details_gabf380d09e4f1ab94fc6af57cf0ad5d32}{no\+G\+U}, \hyperlink{group__model__details_gaa8d1c7b92489179e1eafa562b7bdd259}{no\+\_\+closing\+G\+U}, \hyperlink{fold__vars_8h_a0afc287c2464866d94858c39175154af}{fold\+\_\+constrained}, \hyperlink{group__model__details_ga097eccaabd6ae8b4fef83cccff85bb5d}{no\+Lonely\+Pairs} from the current global settings within the library
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000071}{Deprecated}]use \hyperlink{group__mfe__fold__single_gae7ca49ffb3086f145da36c964a7cec64}{vrna\+\_\+fold()}, or \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__mfe__fold__single_ga2bc41df5d71fee6fd8da9904ee65d8fb}{fold\+\_\+par()}, \hyperlink{group__mfe__fold__single_ga4ac63ab3e8d9a80ced28b8052d94e423}{circfold()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & R\+N\+A sequence \\
+\hline
+{\em structure} & A pointer to the character array where the secondary structure in dot-\/bracket notation will be written to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the minimum free energy (M\+F\+E) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__mfe__fold__single_ga4ac63ab3e8d9a80ced28b8052d94e423}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!circfold@{circfold}}
+\index{circfold@{circfold}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{circfold}]{\setlength{\rightskip}{0pt plus 5cm}float circfold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{sequence, }
+\item[{char $\ast$}]{structure}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga4ac63ab3e8d9a80ced28b8052d94e423}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+
+
+Compute minimum free energy and an appropriate secondary structure of a circular R\+N\+A sequence. 
+
+This function essentially does the same thing as \hyperlink{group__mfe__fold__single_ga2bc41df5d71fee6fd8da9904ee65d8fb}{fold\+\_\+par()}. However, it takes its model details, i.\+e. \hyperlink{group__model__details_gab4b11c8d9c758430960896bc3fe82ead}{temperature}, \hyperlink{group__model__details_ga72b511ed1201f7e23ec437e468790d74}{dangles}, \hyperlink{group__model__details_ga4f6265bdf0ead7ff4628a360adbfd77e}{tetra\+\_\+loop}, \hyperlink{group__model__details_gabf380d09e4f1ab94fc6af57cf0ad5d32}{no\+G\+U}, \hyperlink{group__model__details_gaa8d1c7b92489179e1eafa562b7bdd259}{no\+\_\+closing\+G\+U}, \hyperlink{fold__vars_8h_a0afc287c2464866d94858c39175154af}{fold\+\_\+constrained}, \hyperlink{group__model__details_ga097eccaabd6ae8b4fef83cccff85bb5d}{no\+Lonely\+Pairs} from the current global settings within the library
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000072}{Deprecated}]Use \hyperlink{group__mfe__fold__single_gaa0f5bf321038f404b36a6147bdae4154}{vrna\+\_\+circfold()}, or \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} instead!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__mfe__fold__single_ga2bc41df5d71fee6fd8da9904ee65d8fb}{fold\+\_\+par()}, \hyperlink{group__mfe__fold__single_ga4ac63ab3e8d9a80ced28b8052d94e423}{circfold()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & R\+N\+A sequence \\
+\hline
+{\em structure} & A pointer to the character array where the secondary structure in dot-\/bracket notation will be written to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the minimum free energy (M\+F\+E) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__mfe__fold__single_ga107fdfe5fd641868156bfd849f6866c7}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!free\+\_\+arrays@{free\+\_\+arrays}}
+\index{free\+\_\+arrays@{free\+\_\+arrays}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{free\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga107fdfe5fd641868156bfd849f6866c7}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+
+
+Free arrays for mfe folding. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000073}{Deprecated}]See \hyperlink{group__mfe__fold__single_gae7ca49ffb3086f145da36c964a7cec64}{vrna\+\_\+fold()}, \hyperlink{group__mfe__fold__single_gaa0f5bf321038f404b36a6147bdae4154}{vrna\+\_\+circfold()}, or \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} and \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} for the usage of the new A\+P\+I!\end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_ga41bf8f6fa15b94471f7095cad9f0ccf3}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!update\+\_\+fold\+\_\+params@{update\+\_\+fold\+\_\+params}}
+\index{update\+\_\+fold\+\_\+params@{update\+\_\+fold\+\_\+params}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{update\+\_\+fold\+\_\+params}]{\setlength{\rightskip}{0pt plus 5cm}void update\+\_\+fold\+\_\+params (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga41bf8f6fa15b94471f7095cad9f0ccf3}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+
+
+Recalculate energy parameters. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000074}{Deprecated}]For non-\/default model settings use the new A\+P\+I with \hyperlink{group__energy__parameters_ga5d1909208f7ea3baa98b75afaa1f62ca}{vrna\+\_\+params\+\_\+subst()} and \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} instead!\end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_gae66dc422efb8f5d56717d92d6002a9f8}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!update\+\_\+fold\+\_\+params\+\_\+par@{update\+\_\+fold\+\_\+params\+\_\+par}}
+\index{update\+\_\+fold\+\_\+params\+\_\+par@{update\+\_\+fold\+\_\+params\+\_\+par}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{update\+\_\+fold\+\_\+params\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}void update\+\_\+fold\+\_\+params\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+param\+\_\+t} $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_gae66dc422efb8f5d56717d92d6002a9f8}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+
+
+Recalculate energy parameters. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000075}{Deprecated}]For non-\/default model settings use the new A\+P\+I with \hyperlink{group__energy__parameters_ga5d1909208f7ea3baa98b75afaa1f62ca}{vrna\+\_\+params\+\_\+subst()} and \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} instead!\end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_ga99641b8dbb40891da5490d3cc271e607}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!export\+\_\+fold\+\_\+arrays@{export\+\_\+fold\+\_\+arrays}}
+\index{export\+\_\+fold\+\_\+arrays@{export\+\_\+fold\+\_\+arrays}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{export\+\_\+fold\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}void export\+\_\+fold\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{f5\+\_\+p, }
+\item[{int $\ast$$\ast$}]{c\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M\+L\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M1\+\_\+p, }
+\item[{int $\ast$$\ast$}]{indx\+\_\+p, }
+\item[{char $\ast$$\ast$}]{ptype\+\_\+p}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga99641b8dbb40891da5490d3cc271e607}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000076}{Deprecated}]See \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} and \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} for the usage of the new A\+P\+I!\end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_ga6606ec0ec964ea506fdadb997a1a5328}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!export\+\_\+fold\+\_\+arrays\+\_\+par@{export\+\_\+fold\+\_\+arrays\+\_\+par}}
+\index{export\+\_\+fold\+\_\+arrays\+\_\+par@{export\+\_\+fold\+\_\+arrays\+\_\+par}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{export\+\_\+fold\+\_\+arrays\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}void export\+\_\+fold\+\_\+arrays\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{f5\+\_\+p, }
+\item[{int $\ast$$\ast$}]{c\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M\+L\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M1\+\_\+p, }
+\item[{int $\ast$$\ast$}]{indx\+\_\+p, }
+\item[{char $\ast$$\ast$}]{ptype\+\_\+p, }
+\item[{{\bf vrna\+\_\+param\+\_\+t} $\ast$$\ast$}]{P\+\_\+p}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga6606ec0ec964ea506fdadb997a1a5328}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000077}{Deprecated}]See \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} and \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} for the usage of the new A\+P\+I!\end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_ga04d5d639fd4473ca766436a9bae5665c}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!export\+\_\+circfold\+\_\+arrays@{export\+\_\+circfold\+\_\+arrays}}
+\index{export\+\_\+circfold\+\_\+arrays@{export\+\_\+circfold\+\_\+arrays}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{export\+\_\+circfold\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}void export\+\_\+circfold\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Fc\+\_\+p, }
+\item[{int $\ast$}]{Fc\+H\+\_\+p, }
+\item[{int $\ast$}]{Fc\+I\+\_\+p, }
+\item[{int $\ast$}]{Fc\+M\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M2\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f5\+\_\+p, }
+\item[{int $\ast$$\ast$}]{c\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M\+L\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M1\+\_\+p, }
+\item[{int $\ast$$\ast$}]{indx\+\_\+p, }
+\item[{char $\ast$$\ast$}]{ptype\+\_\+p}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga04d5d639fd4473ca766436a9bae5665c}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000078}{Deprecated}]See \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} and \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} for the usage of the new A\+P\+I!\end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_ga004bb901e7fd2f8d5ae68f9530318ce1}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!export\+\_\+circfold\+\_\+arrays\+\_\+par@{export\+\_\+circfold\+\_\+arrays\+\_\+par}}
+\index{export\+\_\+circfold\+\_\+arrays\+\_\+par@{export\+\_\+circfold\+\_\+arrays\+\_\+par}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{export\+\_\+circfold\+\_\+arrays\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}void export\+\_\+circfold\+\_\+arrays\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Fc\+\_\+p, }
+\item[{int $\ast$}]{Fc\+H\+\_\+p, }
+\item[{int $\ast$}]{Fc\+I\+\_\+p, }
+\item[{int $\ast$}]{Fc\+M\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M2\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f5\+\_\+p, }
+\item[{int $\ast$$\ast$}]{c\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M\+L\+\_\+p, }
+\item[{int $\ast$$\ast$}]{f\+M1\+\_\+p, }
+\item[{int $\ast$$\ast$}]{indx\+\_\+p, }
+\item[{char $\ast$$\ast$}]{ptype\+\_\+p, }
+\item[{{\bf vrna\+\_\+param\+\_\+t} $\ast$$\ast$}]{P\+\_\+p}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga004bb901e7fd2f8d5ae68f9530318ce1}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000079}{Deprecated}]See \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} and \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} for the usage of the new A\+P\+I!\end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_ga2163034a25c6115d894b199e97e03f6c}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!Loop\+Energy@{Loop\+Energy}}
+\index{Loop\+Energy@{Loop\+Energy}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{Loop\+Energy}]{\setlength{\rightskip}{0pt plus 5cm}int Loop\+Energy (
+\begin{DoxyParamCaption}
+\item[{int}]{n1, }
+\item[{int}]{n2, }
+\item[{int}]{type, }
+\item[{int}]{type\+\_\+2, }
+\item[{int}]{si1, }
+\item[{int}]{sj1, }
+\item[{int}]{sp1, }
+\item[{int}]{sq1}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_ga2163034a25c6115d894b199e97e03f6c}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000080}{Deprecated}]\{This function is deprecated and will be removed soon. Use \hyperlink{group__loops_ga0266d2c7a6098259280fb97e9f980b34}{E\+\_\+\+Int\+Loop()} instead!\} \end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_gab327ce11972f5ac069d52c8dedfdb700}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!Hairpin\+E@{Hairpin\+E}}
+\index{Hairpin\+E@{Hairpin\+E}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{Hairpin\+E}]{\setlength{\rightskip}{0pt plus 5cm}int Hairpin\+E (
+\begin{DoxyParamCaption}
+\item[{int}]{size, }
+\item[{int}]{type, }
+\item[{int}]{si1, }
+\item[{int}]{sj1, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_gab327ce11972f5ac069d52c8dedfdb700}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000081}{Deprecated}]\{This function is deprecated and will be removed soon. Use \hyperlink{group__loops_gadf943ee9a45b7f4cee9192c06210dace}{E\+\_\+\+Hairpin()} instead!\} \end{DoxyRefDesc}
+\hypertarget{group__mfe__fold__single_gac3f0a28d9cb609d388b155445073fd20}{}\index{M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}!initialize\+\_\+fold@{initialize\+\_\+fold}}
+\index{initialize\+\_\+fold@{initialize\+\_\+fold}!M\+F\+E Structures of single Nucleic Acid Sequences@{M\+F\+E Structures of single Nucleic Acid Sequences}}
+\subsubsection[{initialize\+\_\+fold}]{\setlength{\rightskip}{0pt plus 5cm}void initialize\+\_\+fold (
+\begin{DoxyParamCaption}
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)}\label{group__mfe__fold__single_gac3f0a28d9cb609d388b155445073fd20}
+
+
+{\ttfamily \#include $<$\hyperlink{fold_8h}{Vienna\+R\+N\+A/fold.\+h}$>$}
+
+Allocate arrays for folding~\newline
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000082}{Deprecated}]See \hyperlink{group__mfe__fold_gabd3b147371ccf25c577f88bbbaf159fd}{vrna\+\_\+mfe()} and \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} for the usage of the new A\+P\+I!\end{DoxyRefDesc}

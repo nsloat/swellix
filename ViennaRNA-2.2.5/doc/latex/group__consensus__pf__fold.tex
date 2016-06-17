@@ -1,0 +1,262 @@
+\hypertarget{group__consensus__pf__fold}{}\section{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}
+\label{group__consensus__pf__fold}\index{Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}}
+Collaboration diagram for Partition Function and Base Pair Probabilities for Sequence Alignment(s)\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__consensus__pf__fold}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{group__consensus__pf__fold_gaef750636c70e597a85ee139197a4350d}{vrna\+\_\+pf\+\_\+alifold} (const char $\ast$$\ast$strings, char $\ast$structure, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$$\ast$pl)
+\begin{DoxyCompactList}\small\item\em Compute Partition function $Q$ (and base pair probabilities) for an R\+N\+A sequence alignment using a comparative method. \end{DoxyCompactList}\item 
+float \hyperlink{group__consensus__pf__fold_ga017209394a4c1e68d96cd47e61d16d25}{vrna\+\_\+pf\+\_\+circalifold} (const char $\ast$$\ast$sequences, char $\ast$structure, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$$\ast$pl)
+\begin{DoxyCompactList}\small\item\em Compute Partition function $Q$ (and base pair probabilities) for an alignment of circular R\+N\+A sequences using a comparative method. \end{DoxyCompactList}\item 
+float \hyperlink{group__consensus__pf__fold_ga5e8d54e41bf3d5b6e535d5bdb33c416e}{alipf\+\_\+fold\+\_\+par} (const char $\ast$$\ast$sequences, char $\ast$structure, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$$\ast$pl, \hyperlink{group__energy__parameters_ga01d8b92fe734df8d79a6169482c7d8d8}{vrna\+\_\+exp\+\_\+param\+\_\+t} $\ast$parameters, int calculate\+\_\+bppm, int is\+\_\+constrained, int is\+\_\+circular)
+\item 
+float \hyperlink{group__consensus__pf__fold_gaa150d3ba7b009a1c27cb6f0eb197f6b4}{alipf\+\_\+fold} (const char $\ast$$\ast$sequences, char $\ast$structure, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$$\ast$pl)
+\begin{DoxyCompactList}\small\item\em The partition function version of \hyperlink{group__consensus__mfe__fold_ga4cf00f0659e5f0480335d69e797f05b1}{alifold()} works in analogy to \hyperlink{group__pf__fold_gadc3db3d98742427e7001a7fd36ef28c2}{pf\+\_\+fold()}. Pair probabilities and information about sequence covariations are returned via the \textquotesingle{}pi\textquotesingle{} variable as a list of \hyperlink{group__aln__utils_ga6660dfca23debee7306e0cd53341263f}{vrna\+\_\+pinfo\+\_\+t} structs. The list is terminated by the first entry with pi.\+i = 0. \end{DoxyCompactList}\item 
+float \hyperlink{group__consensus__pf__fold_gaadd8d570442f86cbbc4978c8c62c9646}{alipf\+\_\+circ\+\_\+fold} (const char $\ast$$\ast$sequences, char $\ast$structure, \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} $\ast$$\ast$pl)
+\item 
+\hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$ \hyperlink{group__consensus__pf__fold_ga11b6ab8bd9be1821fea352b190a01cab}{export\+\_\+ali\+\_\+bppm} (void)
+\begin{DoxyCompactList}\small\item\em Get a pointer to the base pair probability array. \end{DoxyCompactList}\item 
+void \hyperlink{group__consensus__pf__fold_ga0c0498f35686e26b38ee460d3db1a661}{free\+\_\+alipf\+\_\+arrays} (void)
+\begin{DoxyCompactList}\small\item\em Free the memory occupied by folding matrices allocated by alipf\+\_\+fold, alipf\+\_\+circ\+\_\+fold, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__consensus__pf__fold_gaef750636c70e597a85ee139197a4350d}{}\index{Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}!vrna\+\_\+pf\+\_\+alifold@{vrna\+\_\+pf\+\_\+alifold}}
+\index{vrna\+\_\+pf\+\_\+alifold@{vrna\+\_\+pf\+\_\+alifold}!Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}}
+\subsubsection[{vrna\+\_\+pf\+\_\+alifold}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+pf\+\_\+alifold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{strings, }
+\item[{char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$$\ast$}]{pl}
+\end{DoxyParamCaption}
+)}\label{group__consensus__pf__fold_gaef750636c70e597a85ee139197a4350d}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Compute Partition function $Q$ (and base pair probabilities) for an R\+N\+A sequence alignment using a comparative method. 
+
+This simplified interface to \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()} computes the partition function and, if required, base pair probabilities for an R\+N\+A sequence alignment using default options. Memory required for dynamic programming (D\+P) matrices will be allocated and free\textquotesingle{}d on-\/the-\/fly. Hence, after return of this function, the recursively filled matrices are not available any more for any post-\/processing.
+
+\begin{DoxyNote}{Note}
+In case you want to use the filled D\+P matrices for any subsequent post-\/processing step, or you require other conditions than specified by the default model details, use \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()}, and the data structure \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} instead.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__consensus__pf__fold_ga017209394a4c1e68d96cd47e61d16d25}{vrna\+\_\+pf\+\_\+circalifold()}, \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()}, \hyperlink{group__fold__compound_gad6bacc816af274922b13d947f708aa0c}{vrna\+\_\+fold\+\_\+compound\+\_\+comparative()}, \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & R\+N\+A sequence alignment \\
+\hline
+{\em structure} & A pointer to the character array where position-\/wise pairing propensity will be stored. (Maybe N\+U\+L\+L) \\
+\hline
+{\em pl} & A pointer to a list of \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} to store pairing probabilities (Maybe N\+U\+L\+L) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Gibbs free energy of the ensemble ( $G = -RT \cdot \log(Q) $) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__consensus__pf__fold_ga017209394a4c1e68d96cd47e61d16d25}{}\index{Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}!vrna\+\_\+pf\+\_\+circalifold@{vrna\+\_\+pf\+\_\+circalifold}}
+\index{vrna\+\_\+pf\+\_\+circalifold@{vrna\+\_\+pf\+\_\+circalifold}!Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}}
+\subsubsection[{vrna\+\_\+pf\+\_\+circalifold}]{\setlength{\rightskip}{0pt plus 5cm}float vrna\+\_\+pf\+\_\+circalifold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{sequences, }
+\item[{char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$$\ast$}]{pl}
+\end{DoxyParamCaption}
+)}\label{group__consensus__pf__fold_ga017209394a4c1e68d96cd47e61d16d25}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Compute Partition function $Q$ (and base pair probabilities) for an alignment of circular R\+N\+A sequences using a comparative method. 
+
+This simplified interface to \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()} computes the partition function and, if required, base pair probabilities for an R\+N\+A sequence alignment using default options. Memory required for dynamic programming (D\+P) matrices will be allocated and free\textquotesingle{}d on-\/the-\/fly. Hence, after return of this function, the recursively filled matrices are not available any more for any post-\/processing.
+
+\begin{DoxyNote}{Note}
+In case you want to use the filled D\+P matrices for any subsequent post-\/processing step, or you require other conditions than specified by the default model details, use \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()}, and the data structure \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} instead.
+\end{DoxyNote}
+Folding of circular R\+N\+A sequences is handled as a post-\/processing step of the forward recursions. See \cite{hofacker:2006} for further details.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__consensus__pf__fold_gaef750636c70e597a85ee139197a4350d}{vrna\+\_\+pf\+\_\+alifold()}, \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()}, \hyperlink{group__fold__compound_gad6bacc816af274922b13d947f708aa0c}{vrna\+\_\+fold\+\_\+compound\+\_\+comparative()}, \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & Sequence alignment of circular R\+N\+As \\
+\hline
+{\em structure} & A pointer to the character array where position-\/wise pairing propensity will be stored. (Maybe N\+U\+L\+L) \\
+\hline
+{\em pl} & A pointer to a list of \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} to store pairing probabilities (Maybe N\+U\+L\+L) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Gibbs free energy of the ensemble ( $G = -RT \cdot \log(Q) $) in kcal/mol 
+\end{DoxyReturn}
+\hypertarget{group__consensus__pf__fold_ga5e8d54e41bf3d5b6e535d5bdb33c416e}{}\index{Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}!alipf\+\_\+fold\+\_\+par@{alipf\+\_\+fold\+\_\+par}}
+\index{alipf\+\_\+fold\+\_\+par@{alipf\+\_\+fold\+\_\+par}!Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}}
+\subsubsection[{alipf\+\_\+fold\+\_\+par}]{\setlength{\rightskip}{0pt plus 5cm}float alipf\+\_\+fold\+\_\+par (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{sequences, }
+\item[{char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$$\ast$}]{pl, }
+\item[{{\bf vrna\+\_\+exp\+\_\+param\+\_\+t} $\ast$}]{parameters, }
+\item[{int}]{calculate\+\_\+bppm, }
+\item[{int}]{is\+\_\+constrained, }
+\item[{int}]{is\+\_\+circular}
+\end{DoxyParamCaption}
+)}\label{group__consensus__pf__fold_ga5e8d54e41bf3d5b6e535d5bdb33c416e}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000018}{Deprecated}]Use \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()} instead\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & \\
+\hline
+{\em structure} & \\
+\hline
+{\em pl} & \\
+\hline
+{\em parameters} & \\
+\hline
+{\em calculate\+\_\+bppm} & \\
+\hline
+{\em is\+\_\+constrained} & \\
+\hline
+{\em is\+\_\+circular} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{group__consensus__pf__fold_gaa150d3ba7b009a1c27cb6f0eb197f6b4}{}\index{Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}!alipf\+\_\+fold@{alipf\+\_\+fold}}
+\index{alipf\+\_\+fold@{alipf\+\_\+fold}!Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}}
+\subsubsection[{alipf\+\_\+fold}]{\setlength{\rightskip}{0pt plus 5cm}float alipf\+\_\+fold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{sequences, }
+\item[{char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$$\ast$}]{pl}
+\end{DoxyParamCaption}
+)}\label{group__consensus__pf__fold_gaa150d3ba7b009a1c27cb6f0eb197f6b4}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+The partition function version of \hyperlink{group__consensus__mfe__fold_ga4cf00f0659e5f0480335d69e797f05b1}{alifold()} works in analogy to \hyperlink{group__pf__fold_gadc3db3d98742427e7001a7fd36ef28c2}{pf\+\_\+fold()}. Pair probabilities and information about sequence covariations are returned via the \textquotesingle{}pi\textquotesingle{} variable as a list of \hyperlink{group__aln__utils_ga6660dfca23debee7306e0cd53341263f}{vrna\+\_\+pinfo\+\_\+t} structs. The list is terminated by the first entry with pi.\+i = 0. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000019}{Deprecated}]Use \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()} instead\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & \\
+\hline
+{\em structure} & \\
+\hline
+{\em pl} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{group__consensus__pf__fold_gaadd8d570442f86cbbc4978c8c62c9646}{}\index{Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}!alipf\+\_\+circ\+\_\+fold@{alipf\+\_\+circ\+\_\+fold}}
+\index{alipf\+\_\+circ\+\_\+fold@{alipf\+\_\+circ\+\_\+fold}!Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}}
+\subsubsection[{alipf\+\_\+circ\+\_\+fold}]{\setlength{\rightskip}{0pt plus 5cm}float alipf\+\_\+circ\+\_\+fold (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$$\ast$}]{sequences, }
+\item[{char $\ast$}]{structure, }
+\item[{{\bf vrna\+\_\+plist\+\_\+t} $\ast$$\ast$}]{pl}
+\end{DoxyParamCaption}
+)}\label{group__consensus__pf__fold_gaadd8d570442f86cbbc4978c8c62c9646}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000020}{Deprecated}]Use \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()} instead\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequences} & \\
+\hline
+{\em structure} & \\
+\hline
+{\em pl} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{group__consensus__pf__fold_ga11b6ab8bd9be1821fea352b190a01cab}{}\index{Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}!export\+\_\+ali\+\_\+bppm@{export\+\_\+ali\+\_\+bppm}}
+\index{export\+\_\+ali\+\_\+bppm@{export\+\_\+ali\+\_\+bppm}!Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}}
+\subsubsection[{export\+\_\+ali\+\_\+bppm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L}$\ast$ export\+\_\+ali\+\_\+bppm (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__consensus__pf__fold_ga11b6ab8bd9be1821fea352b190a01cab}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Get a pointer to the base pair probability array. 
+
+Accessing the base pair probabilities for a pair (i,j) is achieved by \begin{DoxyVerb}FLT_OR_DBL *pr = export_bppm(); pr_ij = pr[iindx[i]-j]; \end{DoxyVerb}
+
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000021}{Deprecated}]Usage of this function is discouraged! The new \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} allows direct access to the folding matrices, including the pair probabilities! The pair probability array returned here reflects the one of the latest call to \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()}, or any of the old A\+P\+I calls for consensus structure partition function folding.\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}, \hyperlink{group__fold__compound_gad6bacc816af274922b13d947f708aa0c}{vrna\+\_\+fold\+\_\+compound\+\_\+comparative()}, and \hyperlink{group__pf__fold_ga29e256d688ad221b78d37f427e0e99bc}{vrna\+\_\+pf()}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+A pointer to the base pair probability array 
+\end{DoxyReturn}
+\hypertarget{group__consensus__pf__fold_ga0c0498f35686e26b38ee460d3db1a661}{}\index{Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}!free\+\_\+alipf\+\_\+arrays@{free\+\_\+alipf\+\_\+arrays}}
+\index{free\+\_\+alipf\+\_\+arrays@{free\+\_\+alipf\+\_\+arrays}!Partition Function and Base Pair Probabilities for Sequence Alignment(s)@{Partition Function and Base Pair Probabilities for Sequence Alignment(s)}}
+\subsubsection[{free\+\_\+alipf\+\_\+arrays}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+alipf\+\_\+arrays (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{group__consensus__pf__fold_ga0c0498f35686e26b38ee460d3db1a661}
+
+
+{\ttfamily \#include $<$\hyperlink{alifold_8h}{Vienna\+R\+N\+A/alifold.\+h}$>$}
+
+
+
+Free the memory occupied by folding matrices allocated by alipf\+\_\+fold, alipf\+\_\+circ\+\_\+fold, etc. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000022}{Deprecated}]Usage of this function is discouraged! This function only free\textquotesingle{}s memory allocated by old A\+P\+I function calls. Memory allocated by any of the new A\+P\+I calls (starting with vrna\+\_\+) will be not affected!\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}, vrna\+\_\+vrna\+\_\+fold\+\_\+compound\+\_\+free() 
+\end{DoxySeeAlso}

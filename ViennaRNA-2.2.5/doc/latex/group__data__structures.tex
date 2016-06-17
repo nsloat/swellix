@@ -1,0 +1,285 @@
+\hypertarget{group__data__structures}{}\section{Data Structures and Preprocessor Macros}
+\label{group__data__structures}\index{Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}}
+
+
+All datastructures and typedefs shared among the Vienna R\+N\+A Package can be found here.  
+
+
+Collaboration diagram for Data Structures and Preprocessor Macros\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__data__structures}
+\end{center}
+\end{figure}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__fold__compound}{The Fold Compound}
+\begin{DoxyCompactList}\small\item\em This module provides interfaces that deal with the most basic data structure used in structure predicting and energy evaluating function of the R\+N\+Alib. \end{DoxyCompactList}\item 
+\hyperlink{group__dp__matrices}{The Dynamic Programming Matrices}
+\begin{DoxyCompactList}\small\item\em This module provides interfaces that deal with creation and destruction of dynamic programming matrices used within the R\+N\+Alib. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{group__data__structures_structvrna__basepair__s}{vrna\+\_\+basepair\+\_\+s}
+\begin{DoxyCompactList}\small\item\em Base pair data structure used in subopt.\+c.  \hyperlink{group__data__structures_structvrna__basepair__s}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{group__data__structures_structvrna__plist__s}{vrna\+\_\+plist\+\_\+s}
+\begin{DoxyCompactList}\small\item\em this datastructure is used as input parameter in functions of \hyperlink{PS__dot_8h}{P\+S\+\_\+dot.\+h} and others  \hyperlink{group__data__structures_structvrna__plist__s}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{group__data__structures_structvrna__cpair__s}{vrna\+\_\+cpair\+\_\+s}
+\begin{DoxyCompactList}\small\item\em this datastructure is used as input parameter in functions of P\+S\+\_\+dot.\+c  \hyperlink{group__data__structures_structvrna__cpair__s}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{group__data__structures_structvrna__sect__s}{vrna\+\_\+sect\+\_\+s}
+\begin{DoxyCompactList}\small\item\em Stack of partial structures for backtracking.  \hyperlink{group__data__structures_structvrna__sect__s}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\+\_\+bp\+\_\+stack\+\_\+s}
+\begin{DoxyCompactList}\small\item\em Base pair stack element.  \hyperlink{group__data__structures_structvrna__bp__stack__s}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{group__data__structures_structpu__contrib}{pu\+\_\+contrib}
+\begin{DoxyCompactList}\small\item\em contributions to p\+\_\+u  \hyperlink{group__data__structures_structpu__contrib}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{group__data__structures_structinteract}{interact}
+\item 
+struct \hyperlink{group__data__structures_structpu__out}{pu\+\_\+out}
+\begin{DoxyCompactList}\small\item\em Collection of all free\+\_\+energy of beeing unpaired values for output.  \hyperlink{group__data__structures_structpu__out}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{group__data__structures_structconstrain}{constrain}
+\begin{DoxyCompactList}\small\item\em constraints for cofolding  \hyperlink{group__data__structures_structconstrain}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{group__data__structures_structduplexT}{duplex\+T}
+\item 
+struct \hyperlink{group__data__structures_structnode}{node}
+\item 
+struct \hyperlink{group__data__structures_structsnoopT}{snoop\+T}
+\item 
+struct \hyperlink{group__data__structures_structdupVar}{dup\+Var}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__data__structures_gac8c5669d3fb813cacf506489689305ce}{}typedef struct \hyperlink{group__data__structures_structvrna__basepair__s}{vrna\+\_\+basepair\+\_\+s} \hyperlink{group__data__structures_gac8c5669d3fb813cacf506489689305ce}{vrna\+\_\+basepair\+\_\+t}\label{group__data__structures_gac8c5669d3fb813cacf506489689305ce}
+
+\begin{DoxyCompactList}\small\item\em Typename for the base pair repesenting data structure \hyperlink{group__data__structures_structvrna__basepair__s}{vrna\+\_\+basepair\+\_\+s}. \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{}typedef struct \hyperlink{group__data__structures_structvrna__plist__s}{vrna\+\_\+plist\+\_\+s} \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t}\label{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}
+
+\begin{DoxyCompactList}\small\item\em Typename for the base pair list repesenting data structure \hyperlink{group__data__structures_structvrna__plist__s}{vrna\+\_\+plist\+\_\+s}. \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_gaa651bda42e7692f08cb603cd6834b0ee}{}typedef struct \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\+\_\+bp\+\_\+stack\+\_\+s} \hyperlink{group__data__structures_gaa651bda42e7692f08cb603cd6834b0ee}{vrna\+\_\+bp\+\_\+stack\+\_\+t}\label{group__data__structures_gaa651bda42e7692f08cb603cd6834b0ee}
+
+\begin{DoxyCompactList}\small\item\em Typename for the base pair stack repesenting data structure \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\+\_\+bp\+\_\+stack\+\_\+s}. \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_gae4fc91141cc69c6d8eaf1332cb991ecc}{}typedef struct \hyperlink{group__data__structures_structvrna__cpair__s}{vrna\+\_\+cpair\+\_\+s} \hyperlink{group__data__structures_gae4fc91141cc69c6d8eaf1332cb991ecc}{vrna\+\_\+cpair\+\_\+t}\label{group__data__structures_gae4fc91141cc69c6d8eaf1332cb991ecc}
+
+\begin{DoxyCompactList}\small\item\em Typename for data structure \hyperlink{group__data__structures_structvrna__cpair__s}{vrna\+\_\+cpair\+\_\+s}. \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_gacc9cdae790dac75a7024e7069c0d4400}{}typedef struct \hyperlink{group__data__structures_structvrna__sect__s}{vrna\+\_\+sect\+\_\+s} \hyperlink{group__data__structures_gacc9cdae790dac75a7024e7069c0d4400}{vrna\+\_\+sect\+\_\+t}\label{group__data__structures_gacc9cdae790dac75a7024e7069c0d4400}
+
+\begin{DoxyCompactList}\small\item\em Typename for stack of partial structures \hyperlink{group__data__structures_structvrna__sect__s}{vrna\+\_\+sect\+\_\+s}. \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ga31125aeace516926bf7f251f759b6126}{}typedef double \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L}\label{group__data__structures_ga31125aeace516926bf7f251f759b6126}
+
+\begin{DoxyCompactList}\small\item\em Typename for floating point number in partition function computations. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{group__data__structures_structvrna__basepair__s}{vrna\+\_\+basepair\+\_\+s} \hyperlink{group__data__structures_ga4381025ffbd692e54189b2c679c79c99}{P\+A\+I\+R}
+\begin{DoxyCompactList}\small\item\em Old typename of \hyperlink{group__data__structures_structvrna__basepair__s}{vrna\+\_\+basepair\+\_\+s}. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{group__data__structures_structvrna__plist__s}{vrna\+\_\+plist\+\_\+s} \hyperlink{group__data__structures_gab1d8894b43aa84cbc50b862a73785fbc}{plist}
+\begin{DoxyCompactList}\small\item\em Old typename of \hyperlink{group__data__structures_structvrna__plist__s}{vrna\+\_\+plist\+\_\+s}. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{group__data__structures_structvrna__cpair__s}{vrna\+\_\+cpair\+\_\+s} \hyperlink{group__data__structures_ga8412f116a2eb07b59ade9e14ca7c5ef1}{cpair}
+\begin{DoxyCompactList}\small\item\em Old typename of \hyperlink{group__data__structures_structvrna__cpair__s}{vrna\+\_\+cpair\+\_\+s}. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{group__data__structures_structvrna__sect__s}{vrna\+\_\+sect\+\_\+s} \hyperlink{group__data__structures_gaaacedee1f05d3d45aa6764eca51a8876}{sect}
+\begin{DoxyCompactList}\small\item\em Old typename of \hyperlink{group__data__structures_structvrna__sect__s}{vrna\+\_\+sect\+\_\+s}. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\+\_\+bp\+\_\+stack\+\_\+s} \hyperlink{group__data__structures_gaaeed53a7508c6ce549a98223e94b25df}{bond\+T}
+\begin{DoxyCompactList}\small\item\em Old typename of \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\+\_\+bp\+\_\+stack\+\_\+s}. \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ga20881ac02e5932356c09b070efedb560}{}typedef struct \hyperlink{group__data__structures_structpu__contrib}{pu\+\_\+contrib} \hyperlink{group__data__structures_ga20881ac02e5932356c09b070efedb560}{pu\+\_\+contrib}\label{group__data__structures_ga20881ac02e5932356c09b070efedb560}
+
+\begin{DoxyCompactList}\small\item\em contributions to p\+\_\+u \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ga501763bd204b60f40e3ab68b40023023}{}typedef struct \hyperlink{group__data__structures_structpu__out}{pu\+\_\+out} \hyperlink{group__data__structures_ga501763bd204b60f40e3ab68b40023023}{pu\+\_\+out}\label{group__data__structures_ga501763bd204b60f40e3ab68b40023023}
+
+\begin{DoxyCompactList}\small\item\em Collection of all free\+\_\+energy of beeing unpaired values for output. \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ga212e3afb0cc299acdfb1ec976435686e}{}typedef struct \hyperlink{group__data__structures_structconstrain}{constrain} \hyperlink{group__data__structures_ga212e3afb0cc299acdfb1ec976435686e}{constrain}\label{group__data__structures_ga212e3afb0cc299acdfb1ec976435686e}
+
+\begin{DoxyCompactList}\small\item\em constraints for cofolding \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+All datastructures and typedefs shared among the Vienna R\+N\+A Package can be found here. 
+
+
+
+\subsection{Data Structure Documentation}
+\index{vrna\+\_\+basepair\+\_\+s@{vrna\+\_\+basepair\+\_\+s}}\label{structvrna__basepair__s}
+\hypertarget{group__data__structures_structvrna__basepair__s}{}
+\subsubsection{struct vrna\+\_\+basepair\+\_\+s}
+Base pair data structure used in subopt.\+c. \index{vrna\+\_\+plist\+\_\+s@{vrna\+\_\+plist\+\_\+s}}\label{structvrna__plist__s}
+\hypertarget{group__data__structures_structvrna__plist__s}{}
+\subsubsection{struct vrna\+\_\+plist\+\_\+s}
+this datastructure is used as input parameter in functions of \hyperlink{PS__dot_8h}{P\+S\+\_\+dot.\+h} and others \index{vrna\+\_\+cpair\+\_\+s@{vrna\+\_\+cpair\+\_\+s}}\label{structvrna__cpair__s}
+\hypertarget{group__data__structures_structvrna__cpair__s}{}
+\subsubsection{struct vrna\+\_\+cpair\+\_\+s}
+this datastructure is used as input parameter in functions of P\+S\+\_\+dot.\+c \index{vrna\+\_\+sect\+\_\+s@{vrna\+\_\+sect\+\_\+s}}\label{structvrna__sect__s}
+\hypertarget{group__data__structures_structvrna__sect__s}{}
+\subsubsection{struct vrna\+\_\+sect\+\_\+s}
+Stack of partial structures for backtracking. \index{vrna\+\_\+bp\+\_\+stack\+\_\+s@{vrna\+\_\+bp\+\_\+stack\+\_\+s}}\label{structvrna__bp__stack__s}
+\hypertarget{group__data__structures_structvrna__bp__stack__s}{}
+\subsubsection{struct vrna\+\_\+bp\+\_\+stack\+\_\+s}
+Base pair stack element. \index{pu\+\_\+contrib@{pu\+\_\+contrib}}\label{structpu__contrib}
+\hypertarget{group__data__structures_structpu__contrib}{}
+\subsubsection{struct pu\+\_\+contrib}
+contributions to p\+\_\+u \subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__data__structures_ac9034ac9a84ed0647587659d6e9be1e8}{}double $\ast$$\ast$ \hyperlink{group__data__structures_ac9034ac9a84ed0647587659d6e9be1e8}{H}\label{group__data__structures_ac9034ac9a84ed0647587659d6e9be1e8}
+
+\begin{DoxyCompactList}\small\item\em hairpin loops \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a8ca0da20536780589fb3e3472ca0581f}{}double $\ast$$\ast$ \hyperlink{group__data__structures_a8ca0da20536780589fb3e3472ca0581f}{I}\label{group__data__structures_a8ca0da20536780589fb3e3472ca0581f}
+
+\begin{DoxyCompactList}\small\item\em interior loops \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a1222ebf74f426bbcd843dcc325da207b}{}double $\ast$$\ast$ \hyperlink{group__data__structures_a1222ebf74f426bbcd843dcc325da207b}{M}\label{group__data__structures_a1222ebf74f426bbcd843dcc325da207b}
+
+\begin{DoxyCompactList}\small\item\em multi loops \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_accb192ba6b4b91a1cb2f8080934fd428}{}double $\ast$$\ast$ \hyperlink{group__data__structures_accb192ba6b4b91a1cb2f8080934fd428}{E}\label{group__data__structures_accb192ba6b4b91a1cb2f8080934fd428}
+
+\begin{DoxyCompactList}\small\item\em exterior loop \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a33d5ada6e861db0c81aa3d5b2989262e}{}int \hyperlink{group__data__structures_a33d5ada6e861db0c81aa3d5b2989262e}{length}\label{group__data__structures_a33d5ada6e861db0c81aa3d5b2989262e}
+
+\begin{DoxyCompactList}\small\item\em length of the input sequence \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a403c1c7f20beeeffba7632fac0cfcbff}{}int \hyperlink{group__data__structures_a403c1c7f20beeeffba7632fac0cfcbff}{w}\label{group__data__structures_a403c1c7f20beeeffba7632fac0cfcbff}
+
+\begin{DoxyCompactList}\small\item\em longest unpaired region \end{DoxyCompactList}\end{DoxyCompactItemize}
+\index{interact@{interact}}\label{structinteract}
+\hypertarget{group__data__structures_structinteract}{}
+\subsubsection{struct interact}
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__data__structures_a1fc8b3860c083f164daa9712690a3a56}{}double $\ast$ \hyperlink{group__data__structures_a1fc8b3860c083f164daa9712690a3a56}{Pi}\label{group__data__structures_a1fc8b3860c083f164daa9712690a3a56}
+
+\begin{DoxyCompactList}\small\item\em probabilities of interaction \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a54f8183542fff4c32ab7ace49a16c02c}{}double $\ast$ \hyperlink{group__data__structures_a54f8183542fff4c32ab7ace49a16c02c}{Gi}\label{group__data__structures_a54f8183542fff4c32ab7ace49a16c02c}
+
+\begin{DoxyCompactList}\small\item\em free energies of interaction \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ad58303190f9e085c3ab59890cbf61223}{}double \hyperlink{group__data__structures_ad58303190f9e085c3ab59890cbf61223}{Gikjl}\label{group__data__structures_ad58303190f9e085c3ab59890cbf61223}
+
+\begin{DoxyCompactList}\small\item\em full free energy for interaction between \mbox{[}k,i\mbox{]} k$<$i in longer seq and \mbox{[}j,l\mbox{]} j$<$l in shorter seq \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a41793812abae560805414761fec398fe}{}double \hyperlink{group__data__structures_a41793812abae560805414761fec398fe}{Gikjl\+\_\+wo}\label{group__data__structures_a41793812abae560805414761fec398fe}
+
+\begin{DoxyCompactList}\small\item\em Gikjl without contributions for prob\+\_\+unpaired. \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ab6d031a21388be8763b75ea74c937f17}{}int \hyperlink{group__data__structures_ab6d031a21388be8763b75ea74c937f17}{i}\label{group__data__structures_ab6d031a21388be8763b75ea74c937f17}
+
+\begin{DoxyCompactList}\small\item\em k$<$i in longer seq \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a61e457fbf943d57364be6ddf1b4e7b8a}{}int \hyperlink{group__data__structures_a61e457fbf943d57364be6ddf1b4e7b8a}{k}\label{group__data__structures_a61e457fbf943d57364be6ddf1b4e7b8a}
+
+\begin{DoxyCompactList}\small\item\em k$<$i in longer seq \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a7555cb6363d1479341eb72b9c087aa34}{}int \hyperlink{group__data__structures_a7555cb6363d1479341eb72b9c087aa34}{j}\label{group__data__structures_a7555cb6363d1479341eb72b9c087aa34}
+
+\begin{DoxyCompactList}\small\item\em j$<$l in shorter seq \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a030ab45056342e12cb3955e4defd3904}{}int \hyperlink{group__data__structures_a030ab45056342e12cb3955e4defd3904}{l}\label{group__data__structures_a030ab45056342e12cb3955e4defd3904}
+
+\begin{DoxyCompactList}\small\item\em j$<$l in shorter seq \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ac9fcb5dca54ec5faa76e02b6488b9524}{}int \hyperlink{group__data__structures_ac9fcb5dca54ec5faa76e02b6488b9524}{length}\label{group__data__structures_ac9fcb5dca54ec5faa76e02b6488b9524}
+
+\begin{DoxyCompactList}\small\item\em length of longer sequence \end{DoxyCompactList}\end{DoxyCompactItemize}
+\index{pu\+\_\+out@{pu\+\_\+out}}\label{structpu__out}
+\hypertarget{group__data__structures_structpu__out}{}
+\subsubsection{struct pu\+\_\+out}
+Collection of all free\+\_\+energy of beeing unpaired values for output. \subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__data__structures_a314b8f43c3ee0bf6060afbeced5dbe6c}{}int \hyperlink{group__data__structures_a314b8f43c3ee0bf6060afbeced5dbe6c}{len}\label{group__data__structures_a314b8f43c3ee0bf6060afbeced5dbe6c}
+
+\begin{DoxyCompactList}\small\item\em sequence length \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a7697bc7a46cd1b8e37e337e708cb6023}{}int \hyperlink{group__data__structures_a7697bc7a46cd1b8e37e337e708cb6023}{u\+\_\+vals}\label{group__data__structures_a7697bc7a46cd1b8e37e337e708cb6023}
+
+\begin{DoxyCompactList}\small\item\em number of different -\/u values \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a638b0de1837cfd441871d005d3ab2938}{}int \hyperlink{group__data__structures_a638b0de1837cfd441871d005d3ab2938}{contribs}\label{group__data__structures_a638b0de1837cfd441871d005d3ab2938}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}-\/c \char`\"{}\+S\+H\+I\+M\+E\char`\"{}\mbox{]} \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_ac9e9e30b16e7d04c770460b8487fb09d}{}char $\ast$$\ast$ \hyperlink{group__data__structures_ac9e9e30b16e7d04c770460b8487fb09d}{header}\label{group__data__structures_ac9e9e30b16e7d04c770460b8487fb09d}
+
+\begin{DoxyCompactList}\small\item\em header line \end{DoxyCompactList}\item 
+\hypertarget{group__data__structures_a366edbc4170d5c177908e178ff340828}{}double $\ast$$\ast$ \hyperlink{group__data__structures_a366edbc4170d5c177908e178ff340828}{u\+\_\+values}\label{group__data__structures_a366edbc4170d5c177908e178ff340828}
+
+\begin{DoxyCompactList}\small\item\em (the -\/u values $\ast$ \mbox{[}-\/c \char`\"{}\+S\+H\+I\+M\+E\char`\"{}\mbox{]}) $\ast$ seq len \end{DoxyCompactList}\end{DoxyCompactItemize}
+\index{constrain@{constrain}}\label{structconstrain}
+\hypertarget{group__data__structures_structconstrain}{}
+\subsubsection{struct constrain}
+constraints for cofolding \index{duplex\+T@{duplex\+T}}\label{structduplexT}
+\hypertarget{group__data__structures_structduplexT}{}
+\subsubsection{struct duplex\+T}
+\index{node@{node}}\label{structnode}
+\hypertarget{group__data__structures_structnode}{}
+\subsubsection{struct node}
+
+
+Collaboration diagram for node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{structnode__coll__graph}
+\end{center}
+\end{figure}
+\index{snoop\+T@{snoop\+T}}\label{structsnoopT}
+\hypertarget{group__data__structures_structsnoopT}{}
+\subsubsection{struct snoop\+T}
+\index{dup\+Var@{dup\+Var}}\label{structdupVar}
+\hypertarget{group__data__structures_structdupVar}{}
+\subsubsection{struct dup\+Var}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{group__data__structures_ga4381025ffbd692e54189b2c679c79c99}{}\index{Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}!P\+A\+I\+R@{P\+A\+I\+R}}
+\index{P\+A\+I\+R@{P\+A\+I\+R}!Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}}
+\subsubsection[{P\+A\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf vrna\+\_\+basepair\+\_\+s} {\bf P\+A\+I\+R}}\label{group__data__structures_ga4381025ffbd692e54189b2c679c79c99}
+
+
+{\ttfamily \#include $<$\hyperlink{data__structures_8h}{Vienna\+R\+N\+A/data\+\_\+structures.\+h}$>$}
+
+
+
+Old typename of \hyperlink{group__data__structures_structvrna__basepair__s}{vrna\+\_\+basepair\+\_\+s}. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000046}{Deprecated}]Use \hyperlink{group__data__structures_gac8c5669d3fb813cacf506489689305ce}{vrna\+\_\+basepair\+\_\+t} instead! \end{DoxyRefDesc}
+\hypertarget{group__data__structures_gab1d8894b43aa84cbc50b862a73785fbc}{}\index{Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}!plist@{plist}}
+\index{plist@{plist}!Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}}
+\subsubsection[{plist}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf vrna\+\_\+plist\+\_\+s} {\bf plist}}\label{group__data__structures_gab1d8894b43aa84cbc50b862a73785fbc}
+
+
+{\ttfamily \#include $<$\hyperlink{data__structures_8h}{Vienna\+R\+N\+A/data\+\_\+structures.\+h}$>$}
+
+
+
+Old typename of \hyperlink{group__data__structures_structvrna__plist__s}{vrna\+\_\+plist\+\_\+s}. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000047}{Deprecated}]Use \hyperlink{group__data__structures_ga8e4eb5e1bfc95776559575beb359af87}{vrna\+\_\+plist\+\_\+t} instead! \end{DoxyRefDesc}
+\hypertarget{group__data__structures_ga8412f116a2eb07b59ade9e14ca7c5ef1}{}\index{Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}!cpair@{cpair}}
+\index{cpair@{cpair}!Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}}
+\subsubsection[{cpair}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf vrna\+\_\+cpair\+\_\+s} {\bf cpair}}\label{group__data__structures_ga8412f116a2eb07b59ade9e14ca7c5ef1}
+
+
+{\ttfamily \#include $<$\hyperlink{data__structures_8h}{Vienna\+R\+N\+A/data\+\_\+structures.\+h}$>$}
+
+
+
+Old typename of \hyperlink{group__data__structures_structvrna__cpair__s}{vrna\+\_\+cpair\+\_\+s}. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000048}{Deprecated}]Use \hyperlink{group__data__structures_gae4fc91141cc69c6d8eaf1332cb991ecc}{vrna\+\_\+cpair\+\_\+t} instead! \end{DoxyRefDesc}
+\hypertarget{group__data__structures_gaaacedee1f05d3d45aa6764eca51a8876}{}\index{Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}!sect@{sect}}
+\index{sect@{sect}!Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}}
+\subsubsection[{sect}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf vrna\+\_\+sect\+\_\+s} {\bf sect}}\label{group__data__structures_gaaacedee1f05d3d45aa6764eca51a8876}
+
+
+{\ttfamily \#include $<$\hyperlink{data__structures_8h}{Vienna\+R\+N\+A/data\+\_\+structures.\+h}$>$}
+
+
+
+Old typename of \hyperlink{group__data__structures_structvrna__sect__s}{vrna\+\_\+sect\+\_\+s}. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000049}{Deprecated}]Use \hyperlink{group__data__structures_gacc9cdae790dac75a7024e7069c0d4400}{vrna\+\_\+sect\+\_\+t} instead! \end{DoxyRefDesc}
+\hypertarget{group__data__structures_gaaeed53a7508c6ce549a98223e94b25df}{}\index{Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}!bond\+T@{bond\+T}}
+\index{bond\+T@{bond\+T}!Data Structures and Preprocessor Macros@{Data Structures and Preprocessor Macros}}
+\subsubsection[{bond\+T}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf vrna\+\_\+bp\+\_\+stack\+\_\+s} {\bf bond\+T}}\label{group__data__structures_gaaeed53a7508c6ce549a98223e94b25df}
+
+
+{\ttfamily \#include $<$\hyperlink{data__structures_8h}{Vienna\+R\+N\+A/data\+\_\+structures.\+h}$>$}
+
+
+
+Old typename of \hyperlink{group__data__structures_structvrna__bp__stack__s}{vrna\+\_\+bp\+\_\+stack\+\_\+s}. 
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\hyperlink{deprecated__deprecated000050}{Deprecated}]Use \hyperlink{group__data__structures_gaa651bda42e7692f08cb603cd6834b0ee}{vrna\+\_\+bp\+\_\+stack\+\_\+t} instead! \end{DoxyRefDesc}

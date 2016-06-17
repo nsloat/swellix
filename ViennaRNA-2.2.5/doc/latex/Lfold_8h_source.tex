@@ -1,0 +1,52 @@
+\hypertarget{Lfold_8h_source}{}\section{Lfold.\+h}
+\label{Lfold_8h_source}\index{Vienna\+R\+N\+A/\+Lfold.\+h@{Vienna\+R\+N\+A/\+Lfold.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_LFOLD\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_LFOLD\_H}
+00003 
+00007 \textcolor{comment}{/* make this interface backward compatible with RNAlib < 2.2.0 */}
+00008 \textcolor{preprocessor}{#define VRNA\_BACKWARD\_COMPAT}
+00009 
+00010 \textcolor{preprocessor}{#ifdef DEPRECATION\_WARNINGS}
+00011 \textcolor{preprocessor}{# ifdef \_\_GNUC\_\_}
+00012 \textcolor{preprocessor}{#  define DEPRECATED(func) func \_\_attribute\_\_ ((deprecated))}
+00013 \textcolor{preprocessor}{# else}
+00014 \textcolor{preprocessor}{#  define DEPRECATED(func) func}
+00015 \textcolor{preprocessor}{# endif}
+00016 \textcolor{preprocessor}{#else}
+00017 \textcolor{preprocessor}{# define DEPRECATED(func) func}
+00018 \textcolor{preprocessor}{#endif}
+00019 
+00032 \textcolor{preprocessor}{#include <\hyperlink{mfe_8h}{ViennaRNA/mfe.h}>}
+00033 
+00064 \textcolor{keywordtype}{float}
+00065 \hyperlink{group__local__mfe__fold_ga4918cce52bf69c1913cda503b2ac75d8}{vrna\_Lfold}( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string},
+00066             \textcolor{keywordtype}{int} window\_size,
+00067             FILE  *file);
+00068 
+00069 \textcolor{preprocessor}{#ifdef USE\_SVM}
+00070 
+00097 \textcolor{keywordtype}{float}
+00098 \hyperlink{group__local__mfe__fold_ga27fddda5fc63eb49c861e38845fc34b4}{vrna\_Lfoldz}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string},
+00099             \textcolor{keywordtype}{int} window\_size,
+00100             \textcolor{keywordtype}{double} min\_z,
+00101             FILE *file);
+00102 
+00103 \textcolor{preprocessor}{#endif}
+00104 
+00105 
+00123 \textcolor{keywordtype}{float} \hyperlink{group__local__consensus__fold_ga20a173a3cdb83f5d1778e36c1a6b1f2b}{aliLfold}( \textcolor{keyword}{const} \textcolor{keywordtype}{char} **strings,
+00124                 \textcolor{keywordtype}{char} *structure,
+00125                 \textcolor{keywordtype}{int} maxdist);
+00126 
+00127 \textcolor{preprocessor}{#ifdef  VRNA\_BACKWARD\_COMPAT}
+00128 
+00139 DEPRECATED(\textcolor{keywordtype}{float} \hyperlink{group__local__mfe__fold_ga16e5a70e60835bb969eaecbe6482f1be}{Lfold}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string}, \textcolor{keywordtype}{char} *structure, \textcolor{keywordtype}{int} maxdist));
+00140 
+00148 DEPRECATED(\textcolor{keywordtype}{float} \hyperlink{group__local__mfe__fold_gab6d79eecc180f586679f7b85cce5cbe9}{Lfoldz}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string}, \textcolor{keywordtype}{char} *structure, \textcolor{keywordtype}{int} maxdist, \textcolor{keywordtype}{int} zsc, \textcolor{keywordtype}{double} min\_z));
+00149 
+00150 \textcolor{preprocessor}{#endif}
+00151 
+00152 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

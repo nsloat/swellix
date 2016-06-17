@@ -1,0 +1,32 @@
+\hypertarget{group__cofold}{}\section{Calculate Secondary Structures of two R\+N\+As upon Dimerization}
+\label{group__cofold}\index{Calculate Secondary Structures of two R\+N\+As upon Dimerization@{Calculate Secondary Structures of two R\+N\+As upon Dimerization}}
+
+
+Predict structures formed by two molecules upon hybridization.  
+
+
+Collaboration diagram for Calculate Secondary Structures of two R\+N\+As upon Dimerization\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group__cofold}
+\end{center}
+\end{figure}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__mfe__cofold}{M\+F\+E Structures of two hybridized Sequences}
+\item 
+\hyperlink{group__pf__cofold}{Partition Function for two hybridized Sequences}
+\begin{DoxyCompactList}\small\item\em Partition Function Cofolding. \end{DoxyCompactList}\item 
+\hyperlink{group__up__cofold}{Partition Function for two hybridized Sequences as a stepwise Process}
+\begin{DoxyCompactList}\small\item\em Partition Function Cofolding as a stepwise process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Predict structures formed by two molecules upon hybridization. 
+
+The function of an R\+N\+A molecule often depends on its interaction with other R\+N\+As. The following routines therefore allow to predict structures formed by two R\+N\+A molecules upon hybridization.~\newline
+One approach to co-\/folding two R\+N\+As consists of concatenating the two sequences and keeping track of the concatenation point in all energy evaluations. Correspondingly, many of the \hyperlink{group__mfe__cofold_gabc8517f22cfe70595ee81fc837910d52}{cofold()} and \hyperlink{part__func__co_8h_ae5c1e7331718669bdae7a86de2be6184}{co\+\_\+pf\+\_\+fold()} routines below take one sequence string as argument and use the the global variable \hyperlink{fold__vars_8h_ab9b2c3a37a5516614c06d0ab54b97cda}{cut\+\_\+point} to mark the concatenation point. Note that while the {\itshape R\+N\+Acofold} program uses the \textquotesingle{}\&\textquotesingle{} character to mark the chain break in its input, you should not use an \textquotesingle{}\&\textquotesingle{} when using the library routines (set \hyperlink{fold__vars_8h_ab9b2c3a37a5516614c06d0ab54b97cda}{cut\+\_\+point} instead).~\newline
+In a second approach to co-\/folding two R\+N\+As, cofolding is seen as a stepwise process. In the first step the probability of an unpaired region is calculated and in a second step this probability of an unpaired region is multiplied with the probability of an interaction between the two R\+N\+As. This approach is implemented for the interaction between a long target sequence and a short ligand R\+N\+A. Function \hyperlink{group__up__cofold_ga5b4ee40e190d2f633cd01cf0d2fe93cf}{pf\+\_\+unstru()} calculates the partition function over all unpaired regions in the input sequence. Function \hyperlink{group__up__cofold_ga1aa0aa02bc3a724f87360c03097afd00}{pf\+\_\+interact()}, which calculates the partition function over all possible interactions between two sequences, needs both sequence as separate strings as input. 

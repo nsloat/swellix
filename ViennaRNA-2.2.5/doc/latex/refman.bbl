@@ -1,0 +1,127 @@
+\begin{thebibliography}{10}
+
+\bibitem{bernhart:2008}
+S.H. Bernhart, I.L. Hofacker, S.~Will, A.R. Gruber, and P.F. Stadler.
+\newblock {RNAalifold}: Improved consensus structure prediction for {RNA}
+  alignments.
+\newblock {\em BMC bioinformatics}, 9(1):474, 2008.
+
+\bibitem{bernhart:2006}
+S.H. Bernhart, H.~Tafer, U.~M{\"u}ckstein, C.~Flamm, P.F. Stadler, and I.L.
+  Hofacker.
+\newblock Partition function and base pairing probabilities of {RNA}
+  heterodimers.
+\newblock {\em Algorithms for Molecular Biology}, 1(1):3, 2006.
+
+\bibitem{deigan:2009}
+Katherine~E. Deigan, Tian~W. Li, David~H. Mathews, and Kevin~M. Weeks.
+\newblock Accurate {SHAPE}-directed {RNA} structure determination.
+\newblock {\em PNAS}, 106:97--102, 2009.
+
+\bibitem{flamm:2001}
+Christoph Flamm, Ivo~L Hofacker, Sebastian Maurer-Stroh, Peter~F Stadler, and
+  Martin Zehl.
+\newblock Design of multistable {RNA} molecules.
+\newblock {\em RNA}, 7(02):254--265, 2001.
+
+\bibitem{fontana:1993b}
+W.~Fontana, P.F. Stadler, E.G. Bornberg-Bauer, T.~Griesmacher, I.L. Hofacker,
+  M.~Tacker, P.~Tarazona, E.D. Weinberger, and P.~Schuster.
+\newblock {RNA} folding and combinatory landscapes.
+\newblock {\em Physical review E}, 47(3):2083, 1993.
+
+\bibitem{hofacker:2002}
+I.L. Hofacker, M.~Fekete, and P.F. Stadler.
+\newblock Secondary structure prediction for aligned {RNA} sequences.
+\newblock {\em Journal of molecular biology}, 319(5):1059--1066, 2002.
+
+\bibitem{hofacker:1994}
+I.L. Hofacker, W.~Fontana, P.F. Stadler, L.S. Bonhoeffer, M.~Tacker, and
+  P.~Schuster.
+\newblock Fast folding and comparison of {RNA} secondary structures.
+\newblock {\em Monatshefte f{\"u}r Chemie/Chemical Monthly}, 125(2):167--188,
+  1994.
+
+\bibitem{hofacker:2006}
+I.L. Hofacker and P.F. Stadler.
+\newblock Memory efficient folding algorithms for circular {RNA} secondary
+  structures.
+\newblock {\em Bioinformatics}, 22(10):1172--1176, 2006.
+
+\bibitem{lorenz:2011}
+Ronny Lorenz, Stephan~H. Bernhart, Christian H{\"o}ner~zu Siederdissen, Hakim
+  Tafer, Christoph Flamm, Peter~F. Stadler, and Ivo~L. Hofacker.
+\newblock {ViennaRNA} package 2.0.
+\newblock {\em Algorithms for Molecular Biology}, 6(1):26, 2011.
+
+\bibitem{lorenz:2009}
+Ronny Lorenz, Christoph Flamm, and Ivo~L. Hofacker.
+\newblock 2d projections of {RNA} folding landscapes.
+\newblock In Ivo Grosse, Steffen Neumann, Stefan Posch, Falk Schreiber, and
+  Peter~F. Stadler, editors, {\em German Conference on Bioinformatics 2009},
+  volume 157 of {\em Lecture Notes in Informatics}, pages 11--20, Bonn,
+  September 2009. Gesellschaft f.\ Informatik.
+
+\bibitem{mathews:2004}
+D.H. Mathews, M.D. Disney, J.L. Childs, S.J. Schroeder, M.~Zuker, and D.H.
+  Turner.
+\newblock Incorporating chemical modification constraints into a dynamic
+  programming algorithm for prediction of {RNA} secondary structure.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 101(19):7287, 2004.
+
+\bibitem{mccaskill:1990}
+J.S. McCaskill.
+\newblock The equilibrium partition function and base pair binding
+  probabilities for {RNA} secondary structure.
+\newblock {\em Biopolymers}, 29(6-7):1105--1119, 1990.
+
+\bibitem{shapiro:1988}
+B.A. Shapiro.
+\newblock An algorithm for comparing multiple {RNA} secondary structures.
+\newblock {\em Computer applications in the biosciences: CABIOS},
+  4(3):387--393, 1988.
+
+\bibitem{shapiro:1990}
+B.A. Shapiro and K.~Zhang.
+\newblock Comparing multiple {RNA} secondary structures using tree comparisons.
+\newblock {\em Computer applications in the biosciences: CABIOS},
+  6(4):309--318, 1990.
+
+\bibitem{turner:2010}
+D.H. Turner and D.H. Mathews.
+\newblock {NNDB}: The nearest neighbor parameter database for predicting
+  stability of nucleic acid secondary structure.
+\newblock {\em Nucleic Acids Research}, 38(suppl 1):D280--D282, 2010.
+
+\bibitem{washietl:2012}
+Stefan Washietl, Ivo~L. Hofacker, Peter~F. Stadler, and Manolis Kellis.
+\newblock {RNA} folding with soft constraints: reconciliation of probing data
+  and thermodynamics secondary structure prediction.
+\newblock {\em Nucleic Acids Research}, 40(10):4261--4272, 2012.
+
+\bibitem{wuchty:1999}
+S.~Wuchty, W.~Fontana, I.~L. Hofacker, and P.~Schuster.
+\newblock Complete suboptimal folding of {RNA} and the stability of secondary
+  structures.
+\newblock {\em Biopolymers}, 49(2):145--165, February 1999.
+
+\bibitem{zarringhalam:2012}
+Kourosh Zarringhalam, Michelle~M. Meyer, Ivan Dotu, Jeffrey~H. Chuang, and
+  Peter Clote.
+\newblock Integrating chemical footprinting data into {RNA} secondary structure
+  prediction.
+\newblock {\em PLOS ONE}, 7(10), 2012.
+
+\bibitem{zuker:1989}
+M.~Zuker.
+\newblock On finding all suboptimal foldings of an {RNA} molecule.
+\newblock {\em Science}, 244(4900):48--52, April 1989.
+
+\bibitem{zuker:1981}
+M.~Zuker and P.~Stiegler.
+\newblock Optimal computer folding of large {RNA} sequences using
+  thermodynamics and auxiliary information.
+\newblock {\em Nucleic acids research}, 9(1):133--148, 1981.
+
+\end{thebibliography}

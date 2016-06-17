@@ -1,0 +1,66 @@
+\hypertarget{constraints__soft_8h}{}\section{Vienna\+R\+N\+A/constraints\+\_\+soft.h File Reference}
+\label{constraints__soft_8h}\index{Vienna\+R\+N\+A/constraints\+\_\+soft.\+h@{Vienna\+R\+N\+A/constraints\+\_\+soft.\+h}}
+
+
+Functions and data structures for secondary structure soft constraints.  
+
+
+Include dependency graph for constraints\+\_\+soft.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constraints__soft_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{constraints__soft_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{group__soft__constraints_structvrna__sc__s}{vrna\+\_\+sc\+\_\+s}
+\begin{DoxyCompactList}\small\item\em The soft constraints data structure.  \hyperlink{group__soft__constraints_structvrna__sc__s}{More...}\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__soft__constraints_ga75401ce219ef8dbcceb672db82d434c6}{}typedef struct \hyperlink{group__soft__constraints_structvrna__sc__s}{vrna\+\_\+sc\+\_\+s} \hyperlink{group__soft__constraints_ga75401ce219ef8dbcceb672db82d434c6}{vrna\+\_\+sc\+\_\+t}\label{group__soft__constraints_ga75401ce219ef8dbcceb672db82d434c6}
+
+\begin{DoxyCompactList}\small\item\em Typename for the soft constraints data structure \hyperlink{group__soft__constraints_structvrna__sc__s}{vrna\+\_\+sc\+\_\+s}. \end{DoxyCompactList}\item 
+typedef int( \hyperlink{group__soft__constraints_gaf38062858ac25fd5e240c2c3b0b0b780}{vrna\+\_\+callback\+\_\+sc\+\_\+energy}) (int i, int j, int k, int l, char d, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Callback to retrieve pseudo energy contribution for soft constraint feature. \end{DoxyCompactList}\item 
+typedef \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L}( \hyperlink{group__soft__constraints_ga2eade8745c163a553763be4cfe2a679b}{vrna\+\_\+callback\+\_\+sc\+\_\+exp\+\_\+energy}) (int i, int j, int k, int l, char d, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Callback to retrieve pseudo energy contribution as Boltzmann Factors for soft constraint feature. \end{DoxyCompactList}\item 
+typedef \hyperlink{group__data__structures_gac8c5669d3fb813cacf506489689305ce}{vrna\+\_\+basepair\+\_\+t} $\ast$( \hyperlink{group__soft__constraints_gaa216f513c3b0bd6fe5807dd0c53a8e5a}{vrna\+\_\+callback\+\_\+sc\+\_\+backtrack}) (int i, int j, int k, int l, char d, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Callback to retrieve auxiliary base pairs for soft constraint feature. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__soft__constraints_ga9d977a1681356778cc66dceafbe5b032}{vrna\+\_\+sc\+\_\+init} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc)
+\begin{DoxyCompactList}\small\item\em Initialize an empty soft constraints data structure within a \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}. \end{DoxyCompactList}\item 
+void \hyperlink{group__soft__constraints_ga86049d4bb0ea8674cae9b6177156b184}{vrna\+\_\+sc\+\_\+add\+\_\+bp} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, const \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$$\ast$constraints, unsigned int options)
+\begin{DoxyCompactList}\small\item\em Add soft constraints for paired nucleotides. \end{DoxyCompactList}\item 
+void \hyperlink{group__soft__constraints_ga30f30c8eff9676775a3e831d972b5284}{vrna\+\_\+sc\+\_\+add\+\_\+up} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, const \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{F\+L\+T\+\_\+\+O\+R\+\_\+\+D\+B\+L} $\ast$constraints, unsigned int options)
+\begin{DoxyCompactList}\small\item\em Add soft constraints for unpaired nucleotides. \end{DoxyCompactList}\item 
+void \hyperlink{group__soft__constraints_ga73cdc07b9a199c614367bebef0f2c41a}{vrna\+\_\+sc\+\_\+remove} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc)
+\begin{DoxyCompactList}\small\item\em Remove soft constraints from \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}. \end{DoxyCompactList}\item 
+void \hyperlink{group__soft__constraints_ga6d55446448d69346fc313b993c4fb3e8}{vrna\+\_\+sc\+\_\+free} (\hyperlink{group__soft__constraints_ga75401ce219ef8dbcceb672db82d434c6}{vrna\+\_\+sc\+\_\+t} $\ast$sc)
+\begin{DoxyCompactList}\small\item\em Free memory occupied by a \hyperlink{group__soft__constraints_ga75401ce219ef8dbcceb672db82d434c6}{vrna\+\_\+sc\+\_\+t} data structure. \end{DoxyCompactList}\item 
+void \hyperlink{group__soft__constraints_ga15c6d52471ec97897e2bb7f964f5deb6}{vrna\+\_\+sc\+\_\+add\+\_\+data} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, void $\ast$data, \hyperlink{group__fold__compound_ga3ae51bfd5fc3236652d1de4e3274b49b}{vrna\+\_\+callback\+\_\+free\+\_\+auxdata} $\ast$free\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Add an auxiliary data structure for the generic soft constraints callback function. \end{DoxyCompactList}\item 
+void \hyperlink{group__soft__constraints_ga8c7d907ec0125cd61c04e0908010a4e9}{vrna\+\_\+sc\+\_\+add\+\_\+f} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, \hyperlink{group__soft__constraints_gaf38062858ac25fd5e240c2c3b0b0b780}{vrna\+\_\+callback\+\_\+sc\+\_\+energy} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Bind a function pointer for generic soft constraint feature (M\+F\+E version) \end{DoxyCompactList}\item 
+void \hyperlink{group__soft__constraints_gabde7d07a79bb9a8f4721aee247b674ea}{vrna\+\_\+sc\+\_\+add\+\_\+bt} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, \hyperlink{group__soft__constraints_gaa216f513c3b0bd6fe5807dd0c53a8e5a}{vrna\+\_\+callback\+\_\+sc\+\_\+backtrack} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Bind a backtracking function pointer for generic soft constraint feature. \end{DoxyCompactList}\item 
+void \hyperlink{group__soft__constraints_ga87e382b5d0c9b7d9ce1b79c0473ff700}{vrna\+\_\+sc\+\_\+add\+\_\+exp\+\_\+f} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, \hyperlink{group__soft__constraints_ga2eade8745c163a553763be4cfe2a679b}{vrna\+\_\+callback\+\_\+sc\+\_\+exp\+\_\+energy} $\ast$exp\+\_\+f)
+\begin{DoxyCompactList}\small\item\em Bind a function pointer for generic soft constraint feature (P\+F version) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions and data structures for secondary structure soft constraints. 
+

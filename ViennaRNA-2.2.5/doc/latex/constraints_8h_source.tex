@@ -1,0 +1,62 @@
+\hypertarget{constraints_8h_source}{}\section{constraints.\+h}
+\label{constraints_8h_source}\index{Vienna\+R\+N\+A/constraints.\+h@{Vienna\+R\+N\+A/constraints.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_CONSTRAINTS\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_CONSTRAINTS\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <\hyperlink{data__structures_8h}{ViennaRNA/data\_structures.h}>}
+00005 
+00006 \textcolor{comment}{/* include all structure constraint related headers */}
+00007 \textcolor{preprocessor}{#include <\hyperlink{constraints__hard_8h}{ViennaRNA/constraints\_hard.h}>}
+00008 \textcolor{preprocessor}{#include <\hyperlink{constraints__soft_8h}{ViennaRNA/constraints\_soft.h}>}
+00009 \textcolor{preprocessor}{#include <\hyperlink{constraints__SHAPE_8h}{ViennaRNA/constraints\_SHAPE.h}>}
+00010 \textcolor{preprocessor}{#include <\hyperlink{perturbation__fold_8h}{ViennaRNA/perturbation\_fold.h}>}
+00011 \textcolor{preprocessor}{#include <\hyperlink{ligand_8h}{ViennaRNA/ligand.h}>}
+00012 
+\hypertarget{constraints_8h_source_l00035}{}\hyperlink{group__constraints_ga62e0ed0c33002c09423de4e646f85a2b}{00035} \textcolor{preprocessor}{#define VRNA\_CONSTRAINT\_FILE      0}
+00036 
+\hypertarget{constraints_8h_source_l00043}{}\hyperlink{group__constraints_ga62aa195893d02d1a79ca94952748df36}{00043} \textcolor{preprocessor}{#define VRNA\_CONSTRAINT\_SOFT\_MFE  0}
+00044 
+\hypertarget{constraints_8h_source_l00051}{}\hyperlink{group__constraints_ga03fb5000c19b9a2082bf4ea30a543045}{00051} \textcolor{preprocessor}{#define VRNA\_CONSTRAINT\_SOFT\_PF   VRNA\_OPTION\_PF}
+00052 
+\hypertarget{constraints_8h_source_l00065}{}\hyperlink{group__constraints_ga8bd41ebc8039378d242e4e8c273716a5}{00065} \textcolor{preprocessor}{#define VRNA\_DECOMP\_PAIR\_HP     1}
+00066 
+\hypertarget{constraints_8h_source_l00080}{}\hyperlink{group__constraints_gaeab04f34d7730cff2d651d782f95d857}{00080} \textcolor{preprocessor}{#define VRNA\_DECOMP\_PAIR\_IL     2}
+00081 
+\hypertarget{constraints_8h_source_l00095}{}\hyperlink{group__constraints_gaa15b1185673f0b9e900c4748d45f388f}{00095} \textcolor{preprocessor}{#define VRNA\_DECOMP\_PAIR\_ML     3}
+00096 
+\hypertarget{constraints_8h_source_l00110}{}\hyperlink{group__constraints_ga735517266f2e35e1374b8f1ea77ef23e}{00110} \textcolor{preprocessor}{#define VRNA\_DECOMP\_ML\_ML\_ML    5}
+00111 
+\hypertarget{constraints_8h_source_l00125}{}\hyperlink{group__constraints_ga4a23054c75d8efc785de50e3ea87602f}{00125} \textcolor{preprocessor}{#define VRNA\_DECOMP\_ML\_STEM     4}
+00126 
+\hypertarget{constraints_8h_source_l00140}{}\hyperlink{group__constraints_ga7f4cb9ff7a33e67f0539bd39e7b19a78}{00140} \textcolor{preprocessor}{#define VRNA\_DECOMP\_ML\_ML       6}
+00141 
+\hypertarget{constraints_8h_source_l00156}{}\hyperlink{group__constraints_gae6478dda14e50e2f2cb9ef333a29256e}{00156} \textcolor{preprocessor}{#define VRNA\_DECOMP\_ML\_UP       11}
+00157 
+\hypertarget{constraints_8h_source_l00172}{}\hyperlink{group__constraints_ga63d8ceb8c96ae3b463e529e28cc0fe98}{00172} \textcolor{preprocessor}{#define VRNA\_DECOMP\_ML\_ML\_STEM 20}
+00173 
+\hypertarget{constraints_8h_source_l00188}{}\hyperlink{group__constraints_ga4fe48d575830b16c208e280e01ab1497}{00188} \textcolor{preprocessor}{#define VRNA\_DECOMP\_ML\_COAXIAL  13}
+00189 
+\hypertarget{constraints_8h_source_l00204}{}\hyperlink{group__constraints_ga437adf5115c1999304eff26b41e4c9b6}{00204} \textcolor{preprocessor}{#define VRNA\_DECOMP\_EXT\_EXT     9}
+00205 
+\hypertarget{constraints_8h_source_l00220}{}\hyperlink{group__constraints_gaff1ddaffe86d984623910b40cc8a8717}{00220} \textcolor{preprocessor}{#define VRNA\_DECOMP\_EXT\_UP      8}
+00221 
+\hypertarget{constraints_8h_source_l00235}{}\hyperlink{group__constraints_gae44b5ace0d9b4a29088069ecb4cec441}{00235} \textcolor{preprocessor}{#define VRNA\_DECOMP\_EXT\_STEM 14}
+00236 
+\hypertarget{constraints_8h_source_l00250}{}\hyperlink{group__constraints_ga803bd818b3f4b2b0a4a5cfa2f7dc2045}{00250} \textcolor{preprocessor}{#define VRNA\_DECOMP\_EXT\_EXT\_EXT 15}
+00251 
+\hypertarget{constraints_8h_source_l00266}{}\hyperlink{group__constraints_gabb09c5b78b75a44502fc77b950125c1e}{00266} \textcolor{preprocessor}{#define VRNA\_DECOMP\_EXT\_STEM\_EXT 16}
+00267 
+\hypertarget{constraints_8h_source_l00274}{}\hyperlink{group__constraints_gae7554cd3ff089360c02e4920229e221c}{00274} \textcolor{preprocessor}{#define VRNA\_DECOMP\_EXT\_STEM\_OUTSIDE 17}
+00275 
+\hypertarget{constraints_8h_source_l00290}{}\hyperlink{group__constraints_ga06efd054c9271438f6d82d4559d9e69f}{00290} \textcolor{preprocessor}{#define VRNA\_DECOMP\_EXT\_EXT\_STEM 18}
+00291 
+\hypertarget{constraints_8h_source_l00307}{}\hyperlink{group__constraints_ga2e75d7a77118735b32f25422d9686719}{00307} \textcolor{preprocessor}{#define VRNA\_DECOMP\_EXT\_EXT\_STEM1 19}
+00308 
+00352 \textcolor{keywordtype}{void} \hyperlink{group__constraints_ga35a401f680969a556858a8dd5f1d07cc}{vrna\_constraints\_add}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc,
+00353                           \textcolor{keyword}{const} \textcolor{keywordtype}{char} *constraint,
+00354                           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} options);
+00355 
+00356 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

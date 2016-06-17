@@ -1,0 +1,95 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./refman.tex
+LaTeX2e <2011/06/27>
+Babel <3.9k> and hyphenation patterns for 8 languages loaded.
+
+This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
+Scanning input file refman.idx.....done (1325 entries accepted, 0 rejected).
+Sorting entries.............done (14315 comparisons).
+Generating output file refman.ind.....done (2502 lines written, 0 warnings).
+Output written in refman.ind.
+Transcript written in refman.ilg.
+This is BibTeX, Version 0.99d (TeX Live 2014)
+The top-level auxiliary file: refman.aux
+A level-1 auxiliary file: group__inverse__fold.aux
+A level-1 auxiliary file: group__paths.aux
+A level-1 auxiliary file: group__eval.aux
+A level-1 auxiliary file: group__loops.aux
+A level-1 auxiliary file: group__energy__parameters.aux
+A level-1 auxiliary file: group__model__details.aux
+A level-1 auxiliary file: group__constraints.aux
+A level-1 auxiliary file: group__data__structures.aux
+A level-1 auxiliary file: group__utils.aux
+A level-1 auxiliary file: group__mfe__fold.aux
+A level-1 auxiliary file: group__pf__fold.aux
+A level-1 auxiliary file: group__mea__fold.aux
+A level-1 auxiliary file: group__centroid__fold.aux
+A level-1 auxiliary file: group__subopt__fold.aux
+A level-1 auxiliary file: group__subopt__zuker.aux
+A level-1 auxiliary file: group__subopt__wuchty.aux
+A level-1 auxiliary file: group__subopt__stochbt.aux
+A level-1 auxiliary file: group__cofold.aux
+A level-1 auxiliary file: group__mfe__fold__single.aux
+A level-1 auxiliary file: group__mfe__cofold.aux
+A level-1 auxiliary file: group__pf__cofold.aux
+A level-1 auxiliary file: group__up__cofold.aux
+A level-1 auxiliary file: group__consensus__fold.aux
+A level-1 auxiliary file: group__consensus__mfe__fold.aux
+A level-1 auxiliary file: group__consensus__pf__fold.aux
+A level-1 auxiliary file: group__consensus__stochbt.aux
+A level-1 auxiliary file: group__local__fold.aux
+A level-1 auxiliary file: group__local__mfe__fold.aux
+A level-1 auxiliary file: group__local__pf__fold.aux
+A level-1 auxiliary file: group__local__consensus__fold.aux
+A level-1 auxiliary file: group__energy__parameters__rw.aux
+A level-1 auxiliary file: group__energy__parameters__convert.aux
+A level-1 auxiliary file: group__class__fold.aux
+A level-1 auxiliary file: group__kl__neighborhood.aux
+A level-1 auxiliary file: group__kl__neighborhood__mfe.aux
+A level-1 auxiliary file: group__kl__neighborhood__pf.aux
+A level-1 auxiliary file: group__kl__neighborhood__stochbt.aux
+A level-1 auxiliary file: group__dos.aux
+A level-1 auxiliary file: group__hard__constraints.aux
+A level-1 auxiliary file: group__soft__constraints.aux
+A level-1 auxiliary file: group__SHAPE__reactivities.aux
+A level-1 auxiliary file: group__ligands.aux
+A level-1 auxiliary file: group__perturbation.aux
+A level-1 auxiliary file: group__fold__compound.aux
+A level-1 auxiliary file: group__dp__matrices.aux
+A level-1 auxiliary file: group__direct__paths.aux
+A level-1 auxiliary file: group__string__utils.aux
+A level-1 auxiliary file: group__struct__utils.aux
+A level-1 auxiliary file: group__aln__utils.aux
+A level-1 auxiliary file: group__file__utils.aux
+A level-1 auxiliary file: group__plotting__utils.aux
+The style file: plain.bst
+Database file #1: bibTmpFile_1.bib
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./refman.tex
+LaTeX2e <2011/06/27>
+Babel <3.9k> and hyphenation patterns for 8 languages loaded.
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./refman.tex
+LaTeX2e <2011/06/27>
+Babel <3.9k> and hyphenation patterns for 8 languages loaded.
+
+This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
+Scanning input file refman.idx.....done (1325 entries accepted, 0 rejected).
+Sorting entries.............done (14315 comparisons).
+Generating output file refman.ind.....done (2502 lines written, 0 warnings).
+Output written in refman.ind.
+Transcript written in refman.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./refman.tex
+LaTeX2e <2011/06/27>
+Babel <3.9k> and hyphenation patterns for 8 languages loaded.
+
