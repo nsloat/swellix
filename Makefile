@@ -29,7 +29,7 @@ MPIFLAGS =-D_MPI
 #export MPI_HARDWARE=ib
 #export MPI_SOFTWARE=openmpi
 #export MPI_COMPILER=intel
-CFLAGS=-g -fPIC #-fopenmp
+CFLAGS= #-openmp #-g -fPIC #-fopenmp
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
@@ -95,7 +95,7 @@ $(OBJDIR)/subopt.o: subopt.c subopt.h
 	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 swellix-mpi.exe: $(OBJS)
-	gcc -o $@ $^ $(CFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
+	$(myCC) -o $@ $^ $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
 vienna:
 #	cd viennabuild; \
