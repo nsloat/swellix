@@ -579,9 +579,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
     keepgoing = 1;
 
     // check if it's worth it to go thru the rest of the components
-    if(time_to_quit(seq, todd))
-      keepgoing = 0;
-    else if(keepgoing)
+    if(!time_to_quit(seq, todd)) {
       while(todd->cmpntLLCursr) {
         disp(seq,DISP_ALL,"at 'make_jump_tree' while loop, lvl 0 hlix selected\n");
         disp(seq,DISP_ALL,"{%2d-%-2d{    }%2d-%-2d}\n", todd->cmpntLLCursr->opnBrsOutIndx, 
@@ -612,6 +610,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 
         todd->cmpntLLCursr = todd->cmpntLLCursr->cmpntListNext;
       }  // end while
+    }
   }      // end for
 
   exit_curr_recur(seq,crik, todd);
