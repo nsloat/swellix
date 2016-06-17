@@ -26,17 +26,10 @@ export MPICC  = mpicc
 MPIFLAGS = #-D_MPI
 #MPIRUN = /usr/mpi/gcc/mvapich2-2.1/bin/mpirun_rsh
 #CC = GNU
-<<<<<<< HEAD
-export MPI_HARDWARE=ib
-export MPI_SOFTWARE=openmpi
-export MPI_COMPILER=intel
-CFLAGS=-g -fPIC# -fopenmp
-=======
 #export MPI_HARDWARE=ib
 #export MPI_SOFTWARE=openmpi
 #export MPI_COMPILER=intel
 CFLAGS=-g -fPIC -fopenmp
->>>>>>> origin/master
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
