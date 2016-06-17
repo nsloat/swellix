@@ -67,8 +67,8 @@
 //          : 1. initialize_sequence_by_getting_argument() from command line
 //          : 2. initialize_sequence_by_getting_constraints() from conf file
 //*****************************************************************************
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
+
   int rank, wsize, start, end, span, rem;
 #ifdef _MPI
   MPI_Init(&argc, &argv);
@@ -188,8 +188,8 @@ int main(int argc, char** argv)
 // Return   : seq
 // Display  : error message, if any
 //*****************************************************************************
-config* initialize_sequence_by_getting_argument(int argc, char** argv)
-{
+config* initialize_sequence_by_getting_argument(int argc, char** argv) {
+
   config* seq = malloc(sizeof(config));
   int8_t arg;                                                                                                 // the index counter refering to the address of the argv[]
                                                                                                               // used to constantly check with argc
@@ -265,8 +265,8 @@ config* initialize_sequence_by_getting_argument(int argc, char** argv)
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int initialize_sequence_by_settng_memory(config* seq)
-{ 
+int initialize_sequence_by_settng_memory(config* seq) {
+
   if(!seq->dispFile) seq->dispFile = stdout;                         disp(seq,DISP_ALL,"################################################################################################  Enterng 'init_seq'\n");
   init_seq_ltr(seq);                                                 // initialize seq->ltr (get the sequence data, and store in seq->ltr)
   seq->strLen    = strlen(seq->ltr);                                 // count the number of characters in this string
@@ -288,8 +288,9 @@ int initialize_sequence_by_settng_memory(config* seq)
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int initialize_sequence_by_gettng_constraint(config* seq)
-{                                                         disp(seq,DISP_ALL,"Entering 'init_seq_constraint'\n");
+int initialize_sequence_by_gettng_constraint(config* seq) {
+
+  disp(seq,DISP_ALL,"Entering 'init_seq_constraint'\n");
   //if(seq->srcFile == stdin)  return 0;
   if(!seq->constraintActive) return 0;
 
@@ -344,8 +345,10 @@ int initialize_sequence_by_gettng_constraint(config* seq)
 // Return   : crik
 // Display  : none
 //*****************************************************************************
-global* initialize_crik(config* seq)
-{                                                                                              disp(seq,DISP_ALL,"################################################################################################  Enterng 'initialize_crik'\n");
+global* initialize_crik(config* seq) {
+
+  disp(seq,DISP_ALL,"################################################################################################  Enterng 'initialize_crik'\n");
+
   global* crik = malloc(sizeof(global));                                                 // Crick the Book-keeper, our handy right-hand man #1
   crik->linkedmms         = 0;
   crik->struLinked	  = 0;
@@ -389,11 +392,13 @@ global* initialize_crik(config* seq)
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-int make_parenthesis_look_up_table(config* seq)
-{                                                                               disp(seq,DISP_ALL,"################################");
-                                                                                disp(seq,DISP_ALL,"################################");
-                                                                                disp(seq,DISP_ALL,"################################");
-                                                                                disp(seq,DISP_ALL,"  Entering 'make_paren_luk_up'\n");
+int make_parenthesis_look_up_table(config* seq) {
+  
+  disp(seq,DISP_ALL,"################################");
+  disp(seq,DISP_ALL,"################################");
+  disp(seq,DISP_ALL,"################################");
+  disp(seq,DISP_ALL,"  Entering 'make_paren_luk_up'\n");
+
   int16_t rowI;
 
   seq->parenLukUpTable = malloc(sizeof(*seq->parenLukUpTable) * seq->strLen);   // set up the backbone for the rows of the table
@@ -418,8 +423,10 @@ int make_parenthesis_look_up_table(config* seq)
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-int make_component_list(config* seq, global* crik)
-{                                                              disp(seq,DISP_ALL,"################################################################################################  Entering 'make_component_list'\n");
+int make_component_list(config* seq, global* crik) {
+  
+  disp(seq,DISP_ALL,"################################################################################################  Entering 'make_component_list'\n");
+ 
   crik->cmpntList = calloc(seq->strLen, sizeof(edgeList));       // the backbone of 'edge list' to store all the components arbitrarily assgin some number of rooms to accomodate unknown number of components trim out the extra empty unused rooms later after all components are found
   crik->cmpntListOcupidTyp = calloc(seq->strLen, sizeof(int));
 
@@ -441,8 +448,10 @@ int make_component_list(config* seq, global* crik)
 //          : 2nd dimension - colJ : column j, upper              "                        "
 //          : 3rd dimension - hgtK : height k, number of cmpnt types which may fit into the interval
 //*****************************************************************************
-int make_interval_look_up_table(config* seq, global* crik)
-{                                                                                  disp(seq,DISP_ALL,"################################################################################################  Entering 'make_intrvl_luk_up'\n");
+int make_interval_look_up_table(config* seq, global* crik) {
+
+  disp(seq,DISP_ALL,"################################################################################################  Entering 'make_intrvl_luk_up'\n");
+
   int16_t rowI;
 
   seq->intrvlLukUpTable = malloc(sizeof(seq->intrvlLukUpTable) * seq->strLen);     // set up the backbone for the rows of the table
