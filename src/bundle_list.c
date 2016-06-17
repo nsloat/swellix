@@ -356,7 +356,7 @@ void run_sliding_windows(config* seq, global* crik) {
         int index;
         char* subSeq = calloc(window+1, sizeof(char));
         char* subMod = calloc(window+1, sizeof(char));
-//#pragma omp parallel for private(subSeq, subMod)
+#pragma omp parallel for private(subSeq, subMod)
         for(index = 0; index < seq->strLen+1; index++) {
           int start = index-window-1;
           int stroffset = start+1 > 0 ? start+1 : 0;
