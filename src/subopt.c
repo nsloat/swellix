@@ -84,10 +84,11 @@ int slide_those_windows(char* subSeq,
 
     MPI_Finalize();
 #else
+#endif
+#endif
     //print( "%s\n", seq);
     start(seq, constraints);
-#endif // _MPI
-#endif
+//#endif // _MPI
     if (OPTIONS.count){
         //print( "%d\n", OPTIONS.count);
     }
