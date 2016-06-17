@@ -245,7 +245,7 @@ pwd
 # NOTE!!! YOU ***MUST*** USE THE ABSOLUTE FULL PATH FOR YOUR EXECUTABLE!
 #   ***DON'T*** USE A RELATIVE PATH OR LEAVE OUT THE PATH!!!
 
-date
+#date
 mpirun /home/nsloat/swellix/swellix/swellix-mpi.exe -i /home/nsloat/swellix/swellix/14.seq -b 
-date
+#date
 
