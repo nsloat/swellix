@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-myCC = gcc#mpicc
+myCC=mpicc
 
 EXECUTABLE=swellix.exe
 
@@ -22,14 +22,16 @@ OBJS = $(FILES:.c=.o)
 
 OBJDIR=$(EXECDIR)src
 
-export MPICC  = mpicc
-MPIFLAGS = #-D_MPI
+MPICC  = mpicc
+MPIFLAGS= -D_MPI
+#MPICOMPILE=-I/opt/oscer/software/openmpi/1.10.1/intel/include -pthread
+#MPILINK=-pthread -Wl,-rpath -Wl,/opt/oscer/software/openmpi/1.10.1/intel/lib64 -Wl,--enable-new-dtags -L/opt/oscer/software/openmpi/1.10.1/intel/lib64 -lmpi
 #MPIRUN = /usr/mpi/gcc/mvapich2-2.1/bin/mpirun_rsh
-#export CC = gcc
+#export CC = intel
 #export MPI_HARDWARE=ib
 #export MPI_SOFTWARE=openmpi
 #export MPI_COMPILER=intel
-CFLAGS= -g3 #-openmp #-g -fPIC #-fopenmp
+CFLAGS= ##-openmp #-g -fPIC #-fopenmp
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
@@ -121,7 +123,8 @@ dispOn:
 	-D _display -D _test $(BUNDLINGFLAG)
 
 mpi_disp:
-	$(MPICC) $(CFLAGS) -o exe--swellix.mpi $(CFILES) $(RNAFLAGS) -W -Wall -g3 \
+	echo $(FILES)
+	$(MPICC) -o swellix-mpi.exe $(FILES) $(CFLAGS) $(RNAFLAGS) -W -Wall -g3 \
 	-D_MPI -D_display -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG) -lX11 -lm
 
 #mpi_prof:
