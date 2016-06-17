@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-myCC = mpicc
+myCC =mpicc
 
 EXECUTABLE=swellix.exe
 
@@ -25,14 +25,14 @@ OBJDIR=$(EXECDIR)src
 #export MPICC  = mpicc
 MPIFLAGS =
 ifeq (mpicc, $(myCC))
-MPIFLAGS += -D_MPI
+MPIFLAGS +=-D_MPI
 endif
 
 #CC = GNU
 export MPI_HARDWARE=ib
 export MPI_SOFTWARE=openmpi
 export MPI_COMPILER=intel
-CFLAGS= #-openmp#-g -fPIC# -fopenmp
+CFLAGS=-g -fPIC# -fopenmp
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
