@@ -73,19 +73,6 @@ int slide_those_windows(char* subSeq,
     } else {
         constraints = NULL;
     }
-#if 0
-#ifdef _MPI
-    MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &mpi_rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &mpi_size);
-
-    print( "%d: %s\n", mpi_rank, seq);
-    pstart(seq, constraints);
-
-    MPI_Finalize();
-#else
-#endif
-#endif
     //print( "%s\n", seq);
     start(seq, constraints);
 //#endif // _MPI
@@ -100,31 +87,7 @@ int slide_those_windows(char* subSeq,
     if (constraints) free(constraints);
     return 0;
 }
-#if 0
-{
-#ifdef _MPI
-void pstart(char *seq, int *constraints)
-{
-    if (0 == mpi_rank) {
-        start(seq, constraints);
-    } else {
-        int *message = wait_for_state();
-        state *s = interpret_message(message);
-        free(message);
 
-        s->sequence = seq;
-        s->constraints = constraints;
-
-        refine_state(s);
-        while(s->intervals){
-            unmake_interval(s);
-        }
-        free(s);
-    }
-}
-#endif // _MPI
-}
-#endif
 void start(char *seq, int *constraints)
 {
     int len = strlen(seq);
@@ -157,25 +120,7 @@ void refine_state(state *s){
     // rearrange_intervals(s);
 
     OPTIONS.statecount ++;
-#if 0
-{
-#if defined(_MPI)
-    // This is a poor condition. Be smarter.
-    if(MPI_RANK_MASTER==mpi_rank && OPTIONS.statecount-1 > 0 && OPTIONS.statecount-1 < mpi_size) {
-        // send state to process with mpi_rank equal to statecount
-        int * p = pack_state(s);
-        MPI_Ssend(p, p[0]+(3*p[1])+2, MPI_INT, OPTIONS.statecount-1, MPI_FIVE, MPI_COMM_WORLD);
-
-        free(p);
-    } else {
-        refine_state_locally(s);
-    }
-#else
-#endif
-}
-#endif
     refine_state_locally(s);
-//#endif // _MPI
 }
 
 

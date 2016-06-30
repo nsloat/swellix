@@ -22,7 +22,7 @@ OBJS = $(CFILES:.c=.o)
 
 OBJDIR=$(EXECDIR)src
 
-#export MPICC  = mpicc
+#export MPICC  = mpic
 MPIFLAGS =
 ifeq (mpicc, $(myCC))
 MPIFLAGS +=-D_MPI
@@ -99,6 +99,11 @@ $(OBJDIR)/subopt.o: subopt.c subopt.h
 swellix-mpi.exe: $(OBJS)
 	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' $(BUNDLINGFLAG)
 
+pre-build-mpi:
+	$(eval MPIENV=module load mpi/openmpi/1.10.1)
+
+pre-build:
+	@echo want more functionality
 #vienna:
 #	cd viennabuild; \
 #	rm -r $(VIENNADIRS)
@@ -111,12 +116,13 @@ swellix-mpi.exe: $(OBJS)
 #	make install
 
 clean:
-	rm -f exe--swellix exe--swellix.mpi exe--swellix-tests
-	cd ViennaRNA-2.2.5; \
-	make clean; \
-	make distclean
-	cd viennabuild; \
-	rm -r $(VIENNADIRS)
+	rm $(OBJS)
+#	rm -f exe--swellix exe--swellix.mpi exe--swellix-tests
+#	cd ViennaRNA-2.2.5; \
+#	make clean; \
+#	make distclean
+#	cd viennabuild; \
+#	rm -r $(VIENNADIRS)
 
 dispOn:
 	gcc -g -o exe--swellix $(CFILES) $(RNAFLAGS) -W -Wall -g3 -D_EXECDIR='"$(EXECDIR)"' \

@@ -53,17 +53,16 @@
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-int initialize_eden(config* seq, global* crik)
-{
-	disp(seq,DISP_ALL,"Enterng 'initialize_eden'");
-	int16_t i;
+int initialize_eden(config* seq, global* crik) {
+  disp(seq,DISP_ALL,"Enterng 'initialize_eden'");
+  int16_t i;
 
-	crik->eden = calloc(seq->strLen, sizeof(thuong*));      // the main plain of 'edge list' to store all the bundle fruits
+  crik->eden = calloc(seq->strLen, sizeof(thuong*));      // the main plain of 'edge list' to store all the bundle fruits
                                                           // arbitrarily assgin some number of rooms to accomodate unknown number of bundle plans
-	for(i = 0 ; i < seq->strLen ; i++)
-		crik->eden[i] = calloc(seq->strLen, sizeof(thuong));
+  for(i = 0 ; i < seq->strLen ; i++)
+    crik->eden[i] = calloc(seq->strLen, sizeof(thuong));
 
-	return 0;
+  return 0;
 }  // end initialize_eden
 
 //*****************************************************************************
@@ -80,37 +79,37 @@ int initialize_eden(config* seq, global* crik)
 // Display  : error message, if necessary
 //*****************************************************************************
 int get_mismatches(char* structure, int openOut, int openIn, int closeOut, int closeIn, int16_t** mismatch) {
-	int i;
-	// Find any mismatches
-	int j = 0;
-	int toReturn = 0;
-	for (i = openOut; i <= openIn; i++) {
-		if (i < 0) {
-			mismatch[j][0] = i;
-			j++;
-		} else if (structure[i] == '.') {
-	//		fprintf(seq->dispFile, "j = %d\n", j);
-			mismatch[j][0] = i;
-			j++;
+  int i;
+  // Find any mismatches
+  int j = 0;
+  int toReturn = 0;
+  for (i = openOut; i <= openIn; i++) {
+    if (i < 0) {
+      mismatch[j][0] = i;
+      j++;
+    } else if (structure[i] == '.') {
+//		fprintf(seq->dispFile, "j = %d\n", j);
+      mismatch[j][0] = i;
+      j++;
 
-			if (i == openOut+1 || i == openIn-1) {
-				toReturn = 1;
-			}
-		}
-	}
+      if (i == openOut+1 || i == openIn-1) {
+        toReturn = 1;
+      }
+    }
+  }
 
-	j = 0;
-	for (i = closeOut; i >= closeIn; i--) {
-		if (i >= (int)strlen(structure)) {
-			mismatch[j][1] = i;
-			j++;
-		} else if (structure[i] == '.') {
-			mismatch[j][1] = i;
-			j++;
-		}
-	}
+  j = 0;
+  for (i = closeOut; i >= closeIn; i--) {
+    if (i >= (int)strlen(structure)) {
+      mismatch[j][1] = i;
+      j++;
+    } else if (structure[i] == '.') {
+      mismatch[j][1] = i;
+      j++;
+    }
+  }
 
-	return toReturn;
+  return toReturn;
 }
 
 //*****************************************************************************
@@ -122,8 +121,8 @@ int get_mismatches(char* structure, int openOut, int openIn, int closeOut, int c
 // Display  : error message, if necessary
 //*****************************************************************************
 void remove_outer_pair(char* structure, int start, int end) {
-	structure[start] = '.';
-	structure[end] = '.';
+  structure[start] = '.';
+  structure[end] = '.';
 }
 
 //*****************************************************************************
@@ -185,97 +184,120 @@ void remove_duplicates(char* filename) {
 /* Function to test whether two nodes are equal */
 int nodes_equal(knob* first, knob* second) {
 
-	// Compare combined helices as well
-	knob* firstCursr = first;
-	int openIn1 = first->opnBrsInnIndx;
-	int openOut1 = first->opnBrsOutIndx;
-	int closeIn1 = first->closeBrsInnIndx;
-	int closeOut1 = first->closeBrsOutIndx;
-	int formed = 0;
-	firstCursr = firstCursr->bundleListNext;
-	while(firstCursr) {
-		if (openOut1 - firstCursr->opnBrsInnIndx == 1 && firstCursr->closeBrsInnIndx - closeOut1 == 1) {
-			openOut1 = firstCursr->opnBrsOutIndx;
-			closeOut1 = firstCursr->closeBrsOutIndx;
-			formed = 1;
+  // Compare combined helices as well
+  knob* firstCursr = first;
+  int openIn1 = first->opnBrsInnIndx;
+  int openOut1 = first->opnBrsOutIndx;
+  int closeIn1 = first->closeBrsInnIndx;
+  int closeOut1 = first->closeBrsOutIndx;
+  int formed = 0;
+  firstCursr = firstCursr->bundleListNext;
+  while(firstCursr) {
+    if (openOut1 - firstCursr->opnBrsInnIndx == 1 && firstCursr->closeBrsInnIndx - closeOut1 == 1) {
+      openOut1 = firstCursr->opnBrsOutIndx;
+      closeOut1 = firstCursr->closeBrsOutIndx;
+      formed = 1;
 
-		//	printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
+//	printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
 
-		} else if (firstCursr->opnBrsOutIndx - openIn1 == 1 && closeIn1 - firstCursr->closeBrsOutIndx == 1) {
-			openIn1 = firstCursr->opnBrsInnIndx;
-			closeIn1 = firstCursr->closeBrsInnIndx;
-			formed = 1;
+    } else if (firstCursr->opnBrsOutIndx - openIn1 == 1 && closeIn1 - firstCursr->closeBrsOutIndx == 1) {
+      openIn1 = firstCursr->opnBrsInnIndx;
+      closeIn1 = firstCursr->closeBrsInnIndx;
+      formed = 1;
 
-	//		printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
+//		printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
 
-		} else if (!formed) {
-			openIn1 = firstCursr->opnBrsInnIndx;
-			openOut1 = firstCursr->opnBrsOutIndx;
-			closeIn1 = firstCursr->closeBrsInnIndx;
-			closeOut1 = firstCursr->closeBrsOutIndx;
-		}
+    } else if (!formed) {
+      openIn1 = firstCursr->opnBrsInnIndx;
+      openOut1 = firstCursr->opnBrsOutIndx;
+      closeIn1 = firstCursr->closeBrsInnIndx;
+      closeOut1 = firstCursr->closeBrsOutIndx;
+    }
 
-		firstCursr = firstCursr->bundleListNext;
-	}
+    firstCursr = firstCursr->bundleListNext;
+  }
 
-	knob* secondCursr = second;
-	int openIn2 = second->opnBrsInnIndx;
-	int openOut2 = second->opnBrsOutIndx;
-	int closeIn2 = second->closeBrsInnIndx;
-	int closeOut2 = second->closeBrsOutIndx;
-	formed = 0;
-	secondCursr = secondCursr->bundleListNext;
-	while(secondCursr) {
-		if (openOut2 - secondCursr->opnBrsInnIndx == 1 && secondCursr->closeBrsInnIndx - closeOut2 == 1) {
-			openOut2 = secondCursr->opnBrsOutIndx;
-			closeOut2 = secondCursr->closeBrsOutIndx;
-			formed = 1;
+  knob* secondCursr = second;
+  int openIn2 = second->opnBrsInnIndx;
+  int openOut2 = second->opnBrsOutIndx;
+  int closeIn2 = second->closeBrsInnIndx;
+  int closeOut2 = second->closeBrsOutIndx;
+  formed = 0;
+  secondCursr = secondCursr->bundleListNext;
+  while(secondCursr) {
+    if (openOut2 - secondCursr->opnBrsInnIndx == 1 && secondCursr->closeBrsInnIndx - closeOut2 == 1) {
+      openOut2 = secondCursr->opnBrsOutIndx;
+      closeOut2 = secondCursr->closeBrsOutIndx;
+      formed = 1;
 
-		//	printf("formed: %d|%d-%d|%d\n", openOut2, openIn2, closeIn2, closeOut2);
+//	printf("formed: %d|%d-%d|%d\n", openOut2, openIn2, closeIn2, closeOut2);
 
-		} else if (!formed) {
-			openIn2 = secondCursr->opnBrsInnIndx;
-			openOut2 = secondCursr->opnBrsOutIndx;
-			closeIn2 = secondCursr->closeBrsInnIndx;
-			closeOut2 = secondCursr->closeBrsOutIndx;
-		}
+    } else if (!formed) {
+      openIn2 = secondCursr->opnBrsInnIndx;
+      openOut2 = secondCursr->opnBrsOutIndx;
+      closeIn2 = secondCursr->closeBrsInnIndx;
+      closeOut2 = secondCursr->closeBrsOutIndx;
+    }
 
-		secondCursr = secondCursr->bundleListNext;
-	}
+    secondCursr = secondCursr->bundleListNext;
+  }
 
-	int escaped1 = 0;
-	int escaped2 = 0;
-	while (first && second) {
-		if ((first->opnBrsInnIndx == second->opnBrsInnIndx && first->opnBrsOutIndx == second->opnBrsOutIndx && first->closeBrsInnIndx == second->closeBrsInnIndx && first->closeBrsOutIndx == second->closeBrsOutIndx)
-				|| (openOut1 == openOut2 && openIn1 == openIn2 && closeIn1 == closeIn2 && closeOut1 == closeOut2)) {
-			if (!escaped1 && openOut1 == openOut2 && openIn1 == openIn2 && closeIn1 == closeIn2 && closeOut1 == closeOut2) {
-				while (first && first->opnBrsOutIndx >= openOut1 && first->closeBrsOutIndx <= closeOut1 && first->opnBrsInnIndx <= openIn1
-						&& first->closeBrsInnIndx >= closeIn1) {
-					first = first->bundleListNext;
-				}
-				escaped1 = 1;
-			} else {
-				first = first->bundleListNext;
-			}
+  int escaped1 = 0;
+  int escaped2 = 0;
+  while (first && second) {
+    if ((first->opnBrsInnIndx == second->opnBrsInnIndx && 
+         first->opnBrsOutIndx == second->opnBrsOutIndx && 
+         first->closeBrsInnIndx == second->closeBrsInnIndx && 
+         first->closeBrsOutIndx == second->closeBrsOutIndx) || 
+        (openOut1 == openOut2 && 
+         openIn1 == openIn2 && 
+         closeIn1 == closeIn2 && 
+         closeOut1 == closeOut2)) {
 
-			if (!escaped2 && openOut1 == openOut2 && openIn1 == openIn2 && closeIn1 == closeIn2 && closeOut1 == closeOut2) {
-				while (second && second->opnBrsOutIndx >= openOut2 && second->closeBrsOutIndx <= closeOut2 && second->opnBrsInnIndx <= openIn2
-									&& second->closeBrsInnIndx >= closeIn2) {
-					second = second->bundleListNext;
-				}
-			} else {
-				second = second->bundleListNext;
-			}
+      if (!escaped1 && 
+          openOut1 == openOut2 && 
+          openIn1 == openIn2 && 
+          closeIn1 == closeIn2 && 
+          closeOut1 == closeOut2) {
 
-			if ((first && !second) || (!first && second)) {
-				return 0;
-			}
-		} else {
-			return 0;
-		}
-	}
+        while (first && 
+               first->opnBrsOutIndx >= openOut1 && 
+               first->closeBrsOutIndx <= closeOut1 && 
+               first->opnBrsInnIndx <= openIn1 && 
+               first->closeBrsInnIndx >= closeIn1) {
+          first = first->bundleListNext;
+        }
+        escaped1 = 1;
+      } else {
+        first = first->bundleListNext;
+      }
 
-	return 1;
+      if (!escaped2 && 
+          openOut1 == openOut2 && 
+          openIn1 == openIn2 && 
+          closeIn1 == closeIn2 && 
+          closeOut1 == closeOut2) {
+
+        while (second && 
+               second->opnBrsOutIndx >= openOut2 && 
+               second->closeBrsOutIndx <= closeOut2 && 
+               second->opnBrsInnIndx <= openIn2 && 
+               second->closeBrsInnIndx >= closeIn2) {
+          second = second->bundleListNext;
+        }
+      } else {
+        second = second->bundleListNext;
+      }
+
+      if ((first && !second) || (!first && second)) {
+        return 0;
+      }
+    } else {
+      return 0;
+    }
+  }
+
+  return 1;
 }
 
 /* Function to remove duplicates from a unsorted linked list */
@@ -356,7 +378,7 @@ void run_sliding_windows(config* seq, global* crik) {
         int index;
         char* subSeq = calloc(window+1, sizeof(char));
         char* subMod = calloc(window+1, sizeof(char));
-#pragma omp parallel for private(subSeq, subMod)
+//#pragma omp parallel for private(subSeq, subMod)
         for(index = 0; index < seq->strLen+1; index++) {
           int start = index-window-1;
           int stroffset = start+1 > 0 ? start+1 : 0;
