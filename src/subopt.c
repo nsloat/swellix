@@ -28,7 +28,6 @@ int MISMATCHES;
 
 int slide_those_windows(char* subSeq, 
                         char* subMod, 
-                        int pid, 
                         int startindex, 
                         char* sequence, 
                         char* mods, 
@@ -37,7 +36,7 @@ int slide_those_windows(char* subSeq,
                         int tmms, 
                         int asymm, 
                         int maxNumMMs, 
-                        char* bundledir) {
+                        LabeledStructures *lab) {
     // This series of assigments is guaranteed input, and the order in which these parameters are passed to the program 
     // is a fixed one. Therefore, hardcoded access of the program argv input is acceptable. 
     // These parameters are a direct result of copying the label.c code into this file, so they could be more efficiently integrated
@@ -53,7 +52,7 @@ int slide_those_windows(char* subSeq,
     TERMINAL_MISMATCHES = tmms;
     ASYMMETRY = asymm;
     MISMATCHES = maxNumMMs;
-    sprintf(saveto, "%slabeled/%i", bundledir, pid); //the file to which the final structures will be saved
+//    sprintf(saveto, "%slabeled/%i", bundledir, pid); //the file to which the final structures will be saved
 
 //printf("START %i, WINDOW %i, LENGTH %i, TMMS %i, ASYMM %i, MMS %i\n", START, WINDOW, LENGTH, TERMINAL_MISMATCHES, ASYMMETRY, MISMATCHES);
     set_args();

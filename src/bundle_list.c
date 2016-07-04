@@ -344,98 +344,120 @@ int remove_duplicates_LL(ToL* start)
 //*****************************************************************************
 void run_sliding_windows(config* seq, global* crik) {
 	
-	int pid = getpid();	     // Used for creating unique directories of structures so that many instances of Swellix can be run 
-				     // at once without interfering with the others' data.
+//  int pid = getpid();	     // Used for creating unique directories of structures so that many instances of Swellix can be run 
+                             // at once without interfering with the others' data.
 
-	char idstring[50];
-	char bundleDir[256];
+  // This will replace the system calls to external files for creating bundles from subopt output.
+  LabeledStructures *mylab = malloc(sizeof(LabeledStructures));
+  initLabeledStructures(mylab);
 
-	int pidlength = sprintf(idstring, "%d", pid);
+//  char idstring[50];
+//  char bundleDir[256];
+ 
+//  int pidlength = sprintf(idstring, "%d", pid);
 
-	char mods[seq->strLen+1];
-	mods[seq->strLen] = '\0';
+  char mods[seq->strLen+1];
+  mods[seq->strLen] = '\0';
 
-	int i;
-	for (i = 0; i < seq->strLen; i++)
-		mods[i] = '.';
-	for (i = 0; i < seq->numS1Pairng; i++) {
-		mods[seq->s1Pairng[i]] = 'X';
-	}
+  int i;
+  for (i = 0; i < seq->strLen; i++)
+    mods[i] = '.';
+  for (i = 0; i < seq->numS1Pairng; i++) {
+    mods[seq->s1Pairng[i]] = 'X';
+  }
 
-	int16_t window, tmm, asymmetry;
-	window = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
-	if (window > seq->strLen) window = seq->strLen;
-	tmm = seq->maxNumMismatch;
-	asymmetry = 0;
+  int16_t window, tmm, asymmetry;
+  window = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
+  if (window > seq->strLen) window = seq->strLen;
+  tmm = seq->maxNumMismatch;
+  asymmetry = 0;
 
-	// Get ready to run sliding windows
-	char cwd[1024];
+  // Get ready to run sliding windows
+//  char cwd[1024];
 
-	char command[128];
-	sprintf(command, "mkdir %slabeled/%i", _BUNDLE, pid);
-        system(command);
-
-        int index;
-        char* subSeq = calloc(window+1, sizeof(char));
-        char* subMod = calloc(window+1, sizeof(char));
+//  char command[128];
+//  sprintf(command, "mkdir %slabeled/%i", _BUNDLE, pid);
+//  system(command);
+int pid = 0;
+  int index;
+  char* subSeq = calloc(window+1, sizeof(char));
+  char* subMod = calloc(window+1, sizeof(char));
 //#pragma omp parallel for private(subSeq, subMod)
-        for(index = 0; index < seq->strLen+1; index++) {
-          int start = index-window-1;
-          int stroffset = start+1 > 0 ? start+1 : 0;
-          int substrLen = index-stroffset > window ? window : index-stroffset;
-          strncpy(subSeq, seq->ltr+stroffset, substrLen);
-          strncpy(subMod, mods+stroffset, substrLen);
-          slide_those_windows(subSeq, subMod, pid, start, seq->ltr, mods, window, seq->minLenOfHlix, tmm, asymmetry, seq->maxNumMismatch, _BUNDLE);
-        }
+  for(index = 0; index < seq->strLen+1; index++) {
+    int start = index-window-1;
+    int stroffset = start+1 > 0 ? start+1 : 0;
+    int substrLen = index-stroffset > window ? window : index-stroffset;
+    strncpy(subSeq, seq->ltr+stroffset, substrLen);
+    strncpy(subMod, mods+stroffset, substrLen);
+    slide_those_windows(subSeq, subMod, start, seq->ltr, mods, window, seq->minLenOfHlix, tmm, asymmetry, seq->maxNumMismatch, mylab);
+    resetLabeledStructures(mylab);
+  }
 
-        free(subSeq);
-        free(subMod);
+  free(subSeq);
+  free(subMod);
 
-	sprintf(bundleDir, "%slabeled/%d", _BUNDLE, pid);
-	if (chdir(bundleDir) == -1) {
-		fprintf(seq->dispFile, "Error changing to bundleDir: %s!\n", bundleDir);
-		exit(1);
-	}
-	system("ls > list.txt"); // get list of labeled files to read from
+  freeLabeledStructures(&mylab);
+//  sprintf(bundleDir, "%slabeled/%d", _BUNDLE, pid);
+//  if (chdir(bundleDir) == -1) {
+//    fprintf(seq->dispFile, "Error changing to bundleDir: %s!\n", bundleDir);
+//    exit(1);
+//  }
+//  system("ls > list.txt"); // get list of labeled files to read from
 
 
-	FILE* infile;
-	infile = fopen(strcat(bundleDir, "/list.txt"), "r");
+  FILE* infile;
+//  infile = fopen(strcat(bundleDir, "/list.txt"), "r");
 
-	if (infile == NULL) {
-		fprintf(stderr, "Can't open file list.txt!\n");
-		exit(1);
-	}
+//  if (infile == NULL) {
+//    fprintf(stderr, "Can't open file list.txt!\n");
+//    exit(1);
+//  }
 
-	bundleDir[strlen(bundleDir)-9-pidlength] = '\0';
+//  bundleDir[strlen(bundleDir)-9-pidlength] = '\0';
 
-	char filename[50];
-	while (fscanf(infile, "%s", filename) != EOF) {
-		if (isalpha(filename[0]) || filename == NULL) // not a labeled file
-			continue;
+  char filename[50];
+  while (fscanf(infile, "%s", filename) != EOF) {
+    if (isalpha(filename[0]) || filename == NULL) // not a labeled file
+        continue;
 
-		// add a new node to represent a new bundle
-		add_dumi_node(seq, crik, filename);
+    // add a new node to represent a new bundle
+    add_dumi_node(seq, crik, filename);
 
-		// remove duplicates from labeled file
-		remove_duplicates(filename);
+    // remove duplicates from labeled file
+    remove_duplicates(filename);
 
-		// is a labeled file, so open it and convert text to structures
-		make_bundles(seq, crik, filename);
-	}
+    // is a labeled file, so open it and convert text to structures
+    make_bundles(seq, crik, filename);
+  }
 
-	fclose(infile);
+//  fclose(infile);
 
-	sprintf(command, "rm -r %s%d", bundleDir, pid);
-	system(command);
+//  sprintf(command, "rm -r %s%d", bundleDir, pid);
+//  system(command);
 
-	// remove duplicates from linked list
-	int j;
-	for (i = 0; i < seq->strLen-seq->minLenOfHlix; i++) {
-		for (j = seq->minLenOfHlix; j < seq->strLen; j++) {
-			crik->eden[i][j].numStru -= remove_duplicates_LL(crik->eden[i][j].stemNode);
-		}
-	}
+  // remove duplicates from linked list
+  int j;
+  for (i = 0; i < seq->strLen-seq->minLenOfHlix; i++) {
+    for (j = seq->minLenOfHlix; j < seq->strLen; j++) {
+      crik->eden[i][j].numStru -= remove_duplicates_LL(crik->eden[i][j].stemNode);
+    }
+  }
+}
+
+void initLabeledStructures(LabeledStructures *lab) {
+  
+}
+
+void resetLabeledStructures(LabeledStructures *lab) {
+  lab->structures = memset(lab->structures, '\0', lab->buffsize);
+}
+
+void freeLabeledStructures(LabeledStructures **lab) {
+  free((*lab)->title);
+  free((*lab)->structures);
+
+  free(*lab);
+  *lab = NULL;
 }
 
 //*****************************************************************************
@@ -648,10 +670,8 @@ void make_bundles(config* seq, global* crik, char* filename) {
           mismatch[j][0] += begin; // calibrate the mismatch indices so they match the actual sequence
           mismatch[j][1] += begin;
 
-          if (seq->parenLukUpTable[mismatch[j][0]][mismatch[j][1]]) { // this mismatch can actually pair. skip
-			//			fprintf(seq->dispFile, "mismatch[j][0]: %d, mismatch[j][1]: %d\n", mismatch[j][0], mismatch[j][1]);
-            skip = 1;
-          }
+          skip = seq->parenLukUpTable[mismatch[j][0]][mismatch[j][1]]; // this mismatch can actually pair. skip
+//fprintf(seq->dispFile, "mismatch[j][0]: %d, mismatch[j][1]: %d\n", mismatch[j][0], mismatch[j][1]);
         }
       }
 

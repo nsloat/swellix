@@ -32,6 +32,10 @@
  *****************************************************************************************************************************
  *****************************************************************************************************************************/
 
+void initLabeledStructures(LabeledStructures *lab);
+void resetLabeledStructures(LabeledStructures *lab);
+void freeLabeledStructures(LabeledStructures **lab);
+
 void filename_to_indices(char* filename, int* position, int* length);
 void run_sliding_windows(config* seq, global* crik);
 int reset_dot_n_paren(config* seq);

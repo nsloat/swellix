@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-myCC =mpicc
+myCC =gcc#mpicc
 
 EXECUTABLE=swellix.exe
 
