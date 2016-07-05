@@ -343,19 +343,8 @@ int remove_duplicates_LL(ToL* start)
 // Display  : error message, if necessary
 //*****************************************************************************
 void run_sliding_windows(config* seq, global* crik) {
-	
-//  int pid = getpid();	     // Used for creating unique directories of structures so that many instances of Swellix can be run 
-                             // at once without interfering with the others' data.
 
-  // This will replace the system calls to external files for creating bundles from subopt output.
-//  LabeledStructures *mylab = malloc(sizeof(LabeledStructures));i
-//  initLabeledStructures(mylab);
-
-//  char idstring[50];
-//  char bundleDir[256];
- 
-//  int pidlength = sprintf(idstring, "%d", pid);
-
+  // Get ready to run sliding windows
   char mods[seq->strLen+1];
   mods[seq->strLen] = '\0';
 
@@ -372,13 +361,6 @@ void run_sliding_windows(config* seq, global* crik) {
   tmm = seq->maxNumMismatch;
   asymmetry = 0;
 
-  // Get ready to run sliding windows
-//  char cwd[1024];
-
-//  char command[128];
-//  sprintf(command, "mkdir %slabeled/%i", _BUNDLE, pid);
-//  system(command);
-int pid = 0;
   int index;
   char* subSeq = calloc(window+1, sizeof(char));
   char* subMod = calloc(window+1, sizeof(char));
@@ -392,63 +374,10 @@ int pid = 0;
     strncpy(subSeq, seq->ltr+stroffset, substrLen);
     strncpy(subMod, mods+stroffset, substrLen);
     slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, crik);
-//    while (fscanf(infile, "%s", filename) != EOF) {
-//      if (isalpha(filename[0]) || filename == NULL) // not a labeled file
-//          continue;
-
-      // add a new node to represent a new bundle
-//      add_dumi_node(seq, crik, mylab);
-
-//      // remove duplicates from labeled file
-//      remove_duplicates(filename);
-
-      // is a labeled file, so open it and convert text to structures
-//      make_bundles(seq, crik, mylab);
-//    }
-    //resetLabeledStructures(mylab);
   }
 
   free(subSeq);
   free(subMod);
-
-//  freeLabeledStructures(&mylab);
-//  sprintf(bundleDir, "%slabeled/%d", _BUNDLE, pid);
-//  if (chdir(bundleDir) == -1) {
-//    fprintf(seq->dispFile, "Error changing to bundleDir: %s!\n", bundleDir);
-//    exit(1);
-//  }
-//  system("ls > list.txt"); // get list of labeled files to read from
-
-
-//  FILE* infile;
-//  infile = fopen(strcat(bundleDir, "/list.txt"), "r");
-
-//  if (infile == NULL) {
-//    fprintf(stderr, "Can't open file list.txt!\n");
-//    exit(1);
-//  }
-
-//  bundleDir[strlen(bundleDir)-9-pidlength] = '\0';
-
-//  char filename[50];
-//  while (fscanf(infile, "%s", filename) != EOF) {
-//    if (isalpha(filename[0]) || filename == NULL) // not a labeled file
-//        continue;
-
-    // add a new node to represent a new bundle
-//    add_dumi_node(seq, crik, filename);
-
-    // remove duplicates from labeled file
-//    remove_duplicates(filename);
-
-    // is a labeled file, so open it and convert text to structures
-//    make_bundles(seq, crik, filename);
-//  }
-
-//  fclose(infile);
-
-//  sprintf(command, "rm -r %s%d", bundleDir, pid);
-//  system(command);
 
   // remove duplicates from linked list
   int j;
@@ -461,7 +390,7 @@ int pid = 0;
 
 void initLabeledStructures(LabeledStructures *lab) {
   lab->title = (char*)calloc(64, sizeof(char));
-  lab->buffsize = 4096;
+  lab->buffsize = 4096;  // default buffsize to 4kB arbitrarily
   lab->structures = (char*)calloc(lab->buffsize, sizeof(char)); 
 }
 
@@ -581,22 +510,6 @@ void add_b_node(global* crik, knob* refBNode, int16_t masterLB, int16_t masterUB
 // Display  : error message, if necessary
 //*****************************************************************************
 void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
-//  FILE* infile;
-
-//  char cwd[1024];
-//  if (getcwd(cwd, sizeof(cwd)) != NULL) {
-    //printf("make_bundles infile: %s/%s\n", cwd, filename);
-//    infile = fopen(filename, "r");
-//  } else {
-//    fprintf(seq->dispFile, "Error getting current working directory while trying to open labeled files.");
-//    exit(1);
-//  }
-
-//  if (infile == NULL) {
-//    fprintf(stderr, "Can't open file %s!\n", filename);
-//    exit(1);
-//  }
-
 
   int begin, end;
   char line[1024];
@@ -606,7 +519,6 @@ void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
   tok = strtok(lab->structures, "\n");
 
   while (tok != NULL) {
-//    printf("make bundles for %s\ntok = %s\n", lab->title, tok);
     char structure[999999]; // arbitrary length. probably won't be longer than this. if it is, won't complete in reasonable time anyway
     char s1[20], s2[20], s3[20], remainder[50];
     sscanf(tok, "%[^,],%[^,],%[^,],%[^,],%s", s1, s2, structure, s3, remainder);
@@ -787,8 +699,6 @@ void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
     crik->eden[begin][end].dumiNode = NULL;
     crik->eden[begin][end].numStru = 0;
   }
-
-//  fclose(infile);
 }
 
 //*****************************************************************************
