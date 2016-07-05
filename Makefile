@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-myCC=mpicc
+myCC=gcc#mpicc
 
 EXECUTABLE=swellix.exe
 
@@ -23,7 +23,7 @@ OBJS = $(FILES:.c=.o)
 OBJDIR=$(EXECDIR)src
 
 MPICC  = mpicc
-MPIFLAGS= -D_MPI
+MPIFLAGS= #-D_MPI
 #MPICOMPILE=-I/opt/oscer/software/openmpi/1.10.1/intel/include -pthread
 #MPILINK=-pthread -Wl,-rpath -Wl,/opt/oscer/software/openmpi/1.10.1/intel/lib64 -Wl,--enable-new-dtags -L/opt/oscer/software/openmpi/1.10.1/intel/lib64 -lmpi
 #MPIRUN = /usr/mpi/gcc/mvapich2-2.1/bin/mpirun_rsh
