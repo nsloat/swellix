@@ -32,9 +32,9 @@
  *****************************************************************************************************************************
  *****************************************************************************************************************************/
 
-void initLabeledStructures(LabeledStructures *lab);
-void resetLabeledStructures(LabeledStructures *lab);
-void freeLabeledStructures(LabeledStructures **lab);
+void initLabeledStructures(LabeledStructures* lab);
+void resetLabeledStructures(LabeledStructures* lab, char* newtitle);
+void freeLabeledStructures(LabeledStructures** lab);
 
 void filename_to_indices(char* filename, int* position, int* length);
 void run_sliding_windows(config* seq, global* crik);
@@ -49,8 +49,8 @@ int disp_dumi_node(config* seq, global* crik, int16_t bundleLB, int16_t bundleUB
 int disp_bundle_list(config* seq, global* crik);
 void get_outer_pair_indices(char* structure, int len, int* start, int* end);
 void remove_outer_pair(char* structure, int start, int end);
-void make_bundles(config* seq, global* crik, char* filename);
-void add_dumi_node(config* seq, global* crik, char* filename);
+void make_bundles(config* seq, global* crik, LabeledStructures* lab);
+void add_dumi_node(config* seq, global* crik, LabeledStructures* lab);
 knob* init_b_node(int openOut, int openIn, int closeOut, int closeIn, int16_t** mismatch);
 void add_s_b_node(global* crik, knob* refBNode, int16_t masterLB, int16_t masterUB, int8_t mms);
 void add_b_node(global* crik, knob* refBNode, int16_t masterLB, int16_t masterUB);

@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "subopt.h"
+#include "bundle_list.h"
 
 
 #ifdef _MPI
@@ -24,57 +25,74 @@ int LENGTH;
 int TERMINAL_MISMATCHES;
 int ASYMMETRY;
 int MISMATCHES;
+LabeledStructures* mylab;
+config* seq;
+global* crik;
 
 
 int slide_those_windows(char* subSeq, 
                         char* subMod, 
                         int startindex, 
-                        char* sequence, 
                         char* mods, 
                         int window, 
-                        int minHelixLEN, 
                         int tmms, 
                         int asymm, 
-                        int maxNumMMs, 
-                        LabeledStructures *lab) {
+                        config* pseq, 
+                        global* pcrik) {
+
+//printf("new slide windows call\n");
+
     // This series of assigments is guaranteed input, and the order in which these parameters are passed to the program 
     // is a fixed one. Therefore, hardcoded access of the program argv input is acceptable. 
     // These parameters are a direct result of copying the label.c code into this file, so they could be more efficiently integrated
     // and possibly omitted upon further development. As for now, a working version of this change to the algorithm is of utmost importance.
     //
     START = startindex; //indicates the index within the sequence marking the beginning of the window
-    SEQ = calloc(strlen(sequence)+1, sizeof(char));
-    strcpy(SEQ, sequence);//SEQ = sequence; //the sequence of RNA being analyzed
+    SEQ = calloc(strlen(pseq->ltr)+1, sizeof(char));
+    strcpy(SEQ, pseq->ltr);//SEQ = sequence; //the sequence of RNA being analyzed
     MODS = calloc(strlen(mods)+1, sizeof(char));
     strcpy(MODS, mods); //the chemical modification data pertaining to the sequence. (i.e. must-pair nt, must not pair nt, etc.)
     WINDOW = window; //the span of the current window
-    LENGTH = minHelixLEN;
+    LENGTH = pseq->minLenOfHlix;
     TERMINAL_MISMATCHES = tmms;
     ASYMMETRY = asymm;
-    MISMATCHES = maxNumMMs;
-//    sprintf(saveto, "%slabeled/%i", bundledir, pid); //the file to which the final structures will be saved
+    MISMATCHES = pseq->maxNumMismatch;
+
+    mylab = malloc(sizeof(LabeledStructures));
+    initLabeledStructures(mylab);
+
+    seq = pseq;
+    crik = pcrik;
 
 //printf("START %i, WINDOW %i, LENGTH %i, TMMS %i, ASYMM %i, MMS %i\n", START, WINDOW, LENGTH, TERMINAL_MISMATCHES, ASYMMETRY, MISMATCHES);
     set_args();
-    char* seq = calloc(strlen(subSeq)+1, sizeof(char));
+    char* locseq = calloc(strlen(subSeq)+1, sizeof(char));
 //    fscanf(OPTIONS.infile, "%s", seq);
-    strcpy(seq, subSeq);
+    strcpy(locseq, subSeq);
     int i;
-    for(i=0; seq[i]; i++)
-        seq[i] = toupper(seq[i]);
+    for(i=0; locseq[i]; i++)
+        locseq[i] = toupper(locseq[i]);
  
     int *constraints;
     if (OPTIONS.constraints){
         char* consts = calloc(strlen(subSeq)+1, sizeof(char));
         strcpy(consts, subMod);
         constraints = interpreted_constraints(consts);
+        free(consts);
 //printf("I got subseq: %s\nsubmod: %s\n", seq, consts);
     } else {
         constraints = NULL;
     }
     //print( "%s\n", seq);
-    start(seq, constraints);
+    start(locseq, constraints);
 //#endif // _MPI
+
+    //write out final labeled structures computed for this window
+    if(mylab->title[0] != '\0') {
+      add_dumi_node(seq, crik, mylab);
+      make_bundles(seq, crik, mylab);
+    }
+
     if (OPTIONS.count){
         //print( "%d\n", OPTIONS.count);
     }
@@ -82,7 +100,11 @@ int slide_those_windows(char* subSeq,
     if (OPTIONS.infile != stdin) fclose(OPTIONS.infile);
     if (OPTIONS.outfile != stdout) fclose(OPTIONS.outfile);
 
-    free(seq);
+    freeLabeledStructures(&mylab);
+    free(MODS);
+    free(SEQ);
+
+    free(locseq);
     if (constraints) free(constraints);
     return 0;
 }
@@ -515,7 +537,7 @@ void print_soln(state *s){
     }
     //    float en = energy_of_struct(s->sequence, a);
 //    print( "%s\n", a);
-	label_struct(a, START, saveto);
+	label_struct(a, START);
 
 }
 
@@ -846,20 +868,34 @@ bool pairable(char c1, char c2) {
 	return FALSE;
 }
 
-void write_to_file(char* outprefix, int end, int width, char* structure, int helices, char* helix_info, int wcpairs, int gupairs, int asymmetry, int inner_mismatches, int terminal_mismatches, int chemmod, int thermo) {
-	char outfileString[256];
-	char stringToWrite[256];
-	sprintf(outfileString, "%s/%dx%d.lab", outprefix, end, width);
-	FILE* outFile = fopen(outfileString, "a+");
-	if(outFile == NULL) return;
+void saveLabeledStructure(int end, int width, char* structure, int helices, char* helix_info, int wcpairs, int gupairs, int asymmetry, int inner_mismatches, int terminal_mismatches, int chemmod, int thermo) {
+	char* titleString = calloc(256, sizeof(char));
+	char saveString[256];
+	sprintf(titleString, "%dx%d.lab", end, width);
+//printf("new titleString: %s\n", titleString);
+//printf("strcmp(%s, %s) = %d\n", mylab->title, titleString, strcmp(mylab->title, titleString));
+        if(strcmp(mylab->title, titleString) != 0) {
+//printf("making bundles for %s\n%s", mylab->title, mylab->structures);
+          if(mylab->title[0] != '\0') {
+            add_dumi_node(seq, crik, mylab);
+            make_bundles(seq, crik, mylab);
+          }
+//printf("resetting mylab %s\n%s\n", mylab->title, mylab->structures);
 
-	sprintf(stringToWrite, "%d,%d,%s,%d,%s,%d,%d,%d,%d,%d,%d,%d\n", end, width, structure, helices, helix_info, wcpairs, gupairs, asymmetry, inner_mismatches, terminal_mismatches, chemmod, thermo);
-
-	fputs(stringToWrite, outFile);
-	fclose(outFile);	
+          resetLabeledStructures(mylab, titleString);
+        }
+        
+	sprintf(saveString, "%d,%d,%s,%d,%s,%d,%d,%d,%d,%d,%d,%d\n", end, width, structure, helices, helix_info, wcpairs, gupairs, asymmetry, inner_mismatches, terminal_mismatches, chemmod, thermo);
+//printf("saving to %s\n%s\n", mylab->title, saveString);
+        if(strlen(mylab->structures)+256 > mylab->buffsize) {
+          mylab->buffsize = mylab->buffsize << 1;
+          mylab->structures = (char*)realloc(mylab->structures, mylab->buffsize);
+        }
+	strcat(mylab->structures, saveString);
+        free(titleString);
 }
 
-int label_struct(char* structure, int start, char* outprefix) {
+int label_struct(char* structure, int start) {
   int prev_openOut[WINDOW], prev_openIn[WINDOW], prev_closeOut[WINDOW], prev_closeIn[WINDOW];
   int terminal = 0, width = 0;
   int tmmi, tmmi2, tmmi3, k, m, n;
@@ -1094,7 +1130,7 @@ int label_struct(char* structure, int start, char* outprefix) {
                   terminal_mismatches += terminal;
                 }
 
-                if(outprefix) {
+                if(mylab->title) {
                   char* helix_info = (char*)calloc(256, sizeof(char));
                   char helperString[256];
                   char outputStruct[WINDOW+terminal+1];
@@ -1135,7 +1171,7 @@ int label_struct(char* structure, int start, char* outprefix) {
                   }
                   strcpy(outputStruct, slice(structure, i - terminal + 1));
                   strcat(outputStruct, terminalDots);
-                  write_to_file(outprefix, start+WINDOW+terminal, width+(terminal<<2), outputStruct, helices, helix_info, wc_pairs, gu_pairs, asymmetry, internal_mismatches, terminal_mismatches, CM_score, 0);
+                  saveLabeledStructure(start+WINDOW+terminal, width+(terminal<<2), outputStruct, helices, helix_info, wc_pairs, gu_pairs, asymmetry, internal_mismatches, terminal_mismatches, CM_score, 0);
                   free(helix_info);
                 }
               }
@@ -1150,7 +1186,7 @@ int label_struct(char* structure, int start, char* outprefix) {
 
 int label(char* structure, char* outDir, int i) {
 
-	label_struct(structure, i, outDir);
+	label_struct(structure, i);
 
 	return 0;
 }

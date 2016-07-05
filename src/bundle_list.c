@@ -133,9 +133,9 @@ void remove_outer_pair(char* structure, int start, int end) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-void add_dumi_node(config* seq, global* crik, char* filename) {
+void add_dumi_node(config* seq, global* crik, LabeledStructures* lab) {
 	int begin, end;
-	filename_to_indices(filename, &begin, &end);
+	filename_to_indices(lab->title, &begin, &end);
 	knob* dumi;
 	int16_t hlixLen = (end - begin + 1 - seq->minPairngDist) >> 1;
 
@@ -348,8 +348,8 @@ void run_sliding_windows(config* seq, global* crik) {
                              // at once without interfering with the others' data.
 
   // This will replace the system calls to external files for creating bundles from subopt output.
-  LabeledStructures *mylab = malloc(sizeof(LabeledStructures));
-  initLabeledStructures(mylab);
+//  LabeledStructures *mylab = malloc(sizeof(LabeledStructures));i
+//  initLabeledStructures(mylab);
 
 //  char idstring[50];
 //  char bundleDir[256];
@@ -382,21 +382,36 @@ int pid = 0;
   int index;
   char* subSeq = calloc(window+1, sizeof(char));
   char* subMod = calloc(window+1, sizeof(char));
+  char* tok;
+  int start, stroffset, substrLen;
 //#pragma omp parallel for private(subSeq, subMod)
   for(index = 0; index < seq->strLen+1; index++) {
-    int start = index-window-1;
-    int stroffset = start+1 > 0 ? start+1 : 0;
-    int substrLen = index-stroffset > window ? window : index-stroffset;
+    start = index-window-1;
+    stroffset = start+1 > 0 ? start+1 : 0;
+    substrLen = index-stroffset > window ? window : index-stroffset;
     strncpy(subSeq, seq->ltr+stroffset, substrLen);
     strncpy(subMod, mods+stroffset, substrLen);
-    slide_those_windows(subSeq, subMod, start, seq->ltr, mods, window, seq->minLenOfHlix, tmm, asymmetry, seq->maxNumMismatch, mylab);
-    resetLabeledStructures(mylab);
+    slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, crik);
+//    while (fscanf(infile, "%s", filename) != EOF) {
+//      if (isalpha(filename[0]) || filename == NULL) // not a labeled file
+//          continue;
+
+      // add a new node to represent a new bundle
+//      add_dumi_node(seq, crik, mylab);
+
+//      // remove duplicates from labeled file
+//      remove_duplicates(filename);
+
+      // is a labeled file, so open it and convert text to structures
+//      make_bundles(seq, crik, mylab);
+//    }
+    //resetLabeledStructures(mylab);
   }
 
   free(subSeq);
   free(subMod);
 
-  freeLabeledStructures(&mylab);
+//  freeLabeledStructures(&mylab);
 //  sprintf(bundleDir, "%slabeled/%d", _BUNDLE, pid);
 //  if (chdir(bundleDir) == -1) {
 //    fprintf(seq->dispFile, "Error changing to bundleDir: %s!\n", bundleDir);
@@ -405,7 +420,7 @@ int pid = 0;
 //  system("ls > list.txt"); // get list of labeled files to read from
 
 
-  FILE* infile;
+//  FILE* infile;
 //  infile = fopen(strcat(bundleDir, "/list.txt"), "r");
 
 //  if (infile == NULL) {
@@ -415,20 +430,20 @@ int pid = 0;
 
 //  bundleDir[strlen(bundleDir)-9-pidlength] = '\0';
 
-  char filename[50];
-  while (fscanf(infile, "%s", filename) != EOF) {
-    if (isalpha(filename[0]) || filename == NULL) // not a labeled file
-        continue;
+//  char filename[50];
+//  while (fscanf(infile, "%s", filename) != EOF) {
+//    if (isalpha(filename[0]) || filename == NULL) // not a labeled file
+//        continue;
 
     // add a new node to represent a new bundle
-    add_dumi_node(seq, crik, filename);
+//    add_dumi_node(seq, crik, filename);
 
     // remove duplicates from labeled file
-    remove_duplicates(filename);
+//    remove_duplicates(filename);
 
     // is a labeled file, so open it and convert text to structures
-    make_bundles(seq, crik, filename);
-  }
+//    make_bundles(seq, crik, filename);
+//  }
 
 //  fclose(infile);
 
@@ -445,11 +460,15 @@ int pid = 0;
 }
 
 void initLabeledStructures(LabeledStructures *lab) {
-  
+  lab->title = (char*)calloc(64, sizeof(char));
+  lab->buffsize = 4096;
+  lab->structures = (char*)calloc(lab->buffsize, sizeof(char)); 
 }
 
-void resetLabeledStructures(LabeledStructures *lab) {
+void resetLabeledStructures(LabeledStructures* lab, char* newtitle) {
+  lab->title = memset(lab->title, '\0', 64);
   lab->structures = memset(lab->structures, '\0', lab->buffsize);
+  if(newtitle != NULL) strcat(lab->title, newtitle);
 }
 
 void freeLabeledStructures(LabeledStructures **lab) {
@@ -561,39 +580,46 @@ void add_b_node(global* crik, knob* refBNode, int16_t masterLB, int16_t masterUB
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-void make_bundles(config* seq, global* crik, char* filename) {
-  FILE* infile;
+void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
+//  FILE* infile;
 
-  char cwd[1024];
-  if (getcwd(cwd, sizeof(cwd)) != NULL) {
+//  char cwd[1024];
+//  if (getcwd(cwd, sizeof(cwd)) != NULL) {
     //printf("make_bundles infile: %s/%s\n", cwd, filename);
-    infile = fopen(filename, "r");
-  } else {
-    fprintf(seq->dispFile, "Error getting current working directory while trying to open labeled files.");
-    exit(1);
-  }
+//    infile = fopen(filename, "r");
+//  } else {
+//    fprintf(seq->dispFile, "Error getting current working directory while trying to open labeled files.");
+//    exit(1);
+//  }
 
-  if (infile == NULL) {
-    fprintf(stderr, "Can't open file %s!\n", filename);
-    exit(1);
-  }
+//  if (infile == NULL) {
+//    fprintf(stderr, "Can't open file %s!\n", filename);
+//    exit(1);
+//  }
 
 
   int begin, end;
   char line[1024];
+  char* tok;
   int maxBasePairs = 0;
   int8_t repFlag;
+  tok = strtok(lab->structures, "\n");
 
-  while (fscanf(infile, "%s", line) != EOF) {
+  while (tok != NULL) {
+//    printf("make bundles for %s\ntok = %s\n", lab->title, tok);
     char structure[999999]; // arbitrary length. probably won't be longer than this. if it is, won't complete in reasonable time anyway
     char s1[20], s2[20], s3[20], remainder[50];
-    sscanf(line, "%[^,],%[^,],%[^,],%[^,],%s", s1, s2, structure, s3, remainder);
+    sscanf(tok, "%[^,],%[^,],%[^,],%[^,],%s", s1, s2, structure, s3, remainder);
 		
     repFlag = FALSE;
     int helices = atoi(s3);
-    if(helices > maxBasePairs) { 
+    int numPairs = 0, index = 0;
+    while(structure[index] != '\0') {
+      if(structure[index++] == '(') numPairs++;
+    }
+    if(numPairs > maxBasePairs) {
       repFlag = TRUE;
-      maxBasePairs = helices;
+      maxBasePairs = numPairs;
     }
     int helices_added = 0;
     // create nodes based on the helix info in the file
@@ -617,7 +643,7 @@ void make_bundles(config* seq, global* crik, char* filename) {
 
       char a1[20], a2[20], a3[20], a4[20];
       sscanf(remainder, "%[^/]/%[^|]|%[^/]/%[^,],%s", a1, a2, a3, a4, remainder);
-      filename_to_indices(filename, &begin, &end);
+      filename_to_indices(lab->title, &begin, &end);
       openOut = atoi(a1) + begin;
       openIn = atoi(a2) + begin;
       closeIn = atoi(a3) + begin;
@@ -753,6 +779,8 @@ void make_bundles(config* seq, global* crik, char* filename) {
       free(mismatch);
     }
     if(repFlag) crik->eden[LB][UB].repNode = crik->eden[LB][UB].stemNode->branchNode; 
+
+    tok = strtok(NULL, "\n");
   }
 
   if (!crik->eden[begin][end].stemNode) {
@@ -760,7 +788,7 @@ void make_bundles(config* seq, global* crik, char* filename) {
     crik->eden[begin][end].numStru = 0;
   }
 
-  fclose(infile);
+//  fclose(infile);
 }
 
 //*****************************************************************************

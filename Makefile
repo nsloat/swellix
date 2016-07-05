@@ -124,9 +124,11 @@ clean:
 #	cd viennabuild; \
 #	rm -r $(VIENNADIRS)
 
-dispOn:
-	gcc -g -o exe--swellix $(CFILES) $(RNAFLAGS) -W -Wall -g3 -D_EXECDIR='"$(EXECDIR)"' \
-	-D _display -D _test $(BUNDLINGFLAG)
+.PHONY: dispOn
+
+dispOn: CFLAGS+=-D_display
+
+dispOn: swellix.exe
 
 mpi_disp:
 	echo $(CFILES)
