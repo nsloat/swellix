@@ -547,9 +547,13 @@ void make_bundles(config* seq, global* crik, char* filename) {
 		
     repFlag = FALSE;
     int helices = atoi(s3);
-    if(helices > maxBasePairs) { 
+    int numPairs = 0, index = 0;
+    while(structure[index] != '\0') {
+      if(structure[index++] == '(') numPairs++;
+    }
+    if(numPairs > maxBasePairs) { 
       repFlag = TRUE;
-      maxBasePairs = helices;
+      maxBasePairs = numPairs;
     }
     int helices_added = 0;
     // create nodes based on the helix info in the file

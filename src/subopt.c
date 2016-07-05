@@ -900,7 +900,7 @@ void write_to_file(char* outprefix, int end, int width, char* structure, int hel
 
 	sprintf(stringToWrite, "%d,%d,%s,%d,%s,%d,%d,%d,%d,%d,%d,%d\n", end, width, structure, helices, helix_info, wcpairs, gupairs, asymmetry, inner_mismatches, terminal_mismatches, chemmod, thermo);
 
-printf("saving to %s\n%s\n", outfileString, stringToWrite);
+//printf("saving to %s\n%s\n", outfileString, stringToWrite);
 
 	fputs(stringToWrite, outFile);
 	fclose(outFile);	
