@@ -44,6 +44,10 @@
 #include "bundle_list.h"
 #include "subopt.h"
 
+#ifdef _MPI
+#include "mpi.h"
+#endif
+
 //*****************************************************************************
 // Function : Initialize Eden
 // Caller   : make_bundle_list()
@@ -344,6 +348,19 @@ int remove_duplicates_LL(ToL* start)
 //*****************************************************************************
 void run_sliding_windows(config* seq, global* crik) {
 
+  int rank, wsize, istart, iend, span, rem;
+#ifdef _MPI
+  MPI_Comm_rank(MPI_COMM_WORLD,&rank);
+  MPI_Comm_size(MPI_COMM_WORLD,&wsize);
+#else
+  rank = 0; wsize = 1;
+#endif
+
+  span = (seq->strLen+1)/(wsize);
+  rem = seq->strLen+1 % wsize;
+  istart = rank*span;
+  iend = (rank == wsize-1) ? istart+span+rem : istart+span;
+
   // Get ready to run sliding windows
   char mods[seq->strLen+1];
   mods[seq->strLen] = '\0';
@@ -361,6 +378,9 @@ void run_sliding_windows(config* seq, global* crik) {
   tmm = seq->maxNumMismatch;
   asymmetry = 0;
 
+  LabeledStructures** labs = calloc(seq->strLen*4, sizeof(LabeledStructures*));
+  int labsSize = 0;
+
   int index;
   char* subSeq = calloc(window+1, sizeof(char));
   char* subMod = calloc(window+1, sizeof(char));
@@ -368,14 +388,25 @@ void run_sliding_windows(config* seq, global* crik) {
   int start, stroffset, substrLen;
 //#pragma omp parallel for private(subSeq, subMod)
   for(index = 0; index < seq->strLen+1; index++) {
+//  for(index = start; index < end; index++) {
     start = index-window-1;
     stroffset = start+1 > 0 ? start+1 : 0;
     substrLen = index-stroffset > window ? window : index-stroffset;
     strncpy(subSeq, seq->ltr+stroffset, substrLen);
     strncpy(subMod, mods+stroffset, substrLen);
-    slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, crik);
+    slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, labs, &labsSize);
+  }
+//  int totalLabs;
+//  MPI_AllReduce
+//  MPI_AllGather
+
+  for(index = 0; index < labsSize; index++) {
+    add_dumi_node(seq, crik, labs[index]);
+    make_bundles(seq, crik, labs[index]);
+    freeLabeledStructures(&(labs[index]));
   }
 
+  free(labs);
   free(subSeq);
   free(subMod);
 

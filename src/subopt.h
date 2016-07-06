@@ -62,7 +62,7 @@ typedef struct state_struct {
 
 #define MIN_PAIR_DIST 3
 
-int slide_those_windows(char* subSeq, char* subMod, int start, char* mods, int window, int tmms, int asymm, config* seq, global* crik);
+int slide_those_windows(char* subSeq, char* subMod, int start, char* mods, int window, int tmms, int asymm, config* seq, LabeledStructures** labs, int* labsSize);
 
 void start(char *seq, int *constraints);
 void start_with_constraints(state *s, int i);

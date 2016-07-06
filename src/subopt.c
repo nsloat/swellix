@@ -26,9 +26,9 @@ int TERMINAL_MISMATCHES;
 int ASYMMETRY;
 int MISMATCHES;
 LabeledStructures* mylab;
+LabeledStructures** mylabs;
+int* mylabsSize;
 config* seq;
-global* crik;
-
 
 int slide_those_windows(char* subSeq, 
                         char* subMod, 
@@ -38,12 +38,11 @@ int slide_those_windows(char* subSeq,
                         int tmms, 
                         int asymm, 
                         config* pseq, 
-                        global* pcrik) {
+                        LabeledStructures** labs,
+                        int* labsSize) {
 
 //printf("new slide windows call\n");
 
-    // This series of assigments is guaranteed input, and the order in which these parameters are passed to the program 
-    // is a fixed one. Therefore, hardcoded access of the program argv input is acceptable. 
     // These parameters are a direct result of copying the label.c code into this file, so they could be more efficiently integrated
     // and possibly omitted upon further development. As for now, a working version of this change to the algorithm is of utmost importance.
     //
@@ -58,11 +57,13 @@ int slide_those_windows(char* subSeq,
     ASYMMETRY = asymm;
     MISMATCHES = pseq->maxNumMismatch;
 
+    mylabs = labs;
+    mylabsSize = labsSize;
+
     mylab = malloc(sizeof(LabeledStructures));
     initLabeledStructures(mylab);
 
     seq = pseq;
-    crik = pcrik;
 
 //printf("START %i, WINDOW %i, LENGTH %i, TMMS %i, ASYMM %i, MMS %i\n", START, WINDOW, LENGTH, TERMINAL_MISMATCHES, ASYMMETRY, MISMATCHES);
     set_args();
@@ -89,9 +90,9 @@ int slide_those_windows(char* subSeq,
 
     //write out final labeled structures computed for this window
     if(mylab->title[0] != '\0') {
-      add_dumi_node(seq, crik, mylab);
-      make_bundles(seq, crik, mylab);
-    }
+      mylabs[(*mylabsSize)++] = mylab;
+    } else
+      freeLabeledStructures(&mylab);
 
     if (OPTIONS.count){
         //print( "%d\n", OPTIONS.count);
@@ -100,7 +101,6 @@ int slide_those_windows(char* subSeq,
     if (OPTIONS.infile != stdin) fclose(OPTIONS.infile);
     if (OPTIONS.outfile != stdout) fclose(OPTIONS.outfile);
 
-    freeLabeledStructures(&mylab);
     free(MODS);
     free(SEQ);
 
@@ -877,11 +877,12 @@ void saveLabeledStructure(int end, int width, char* structure, int helices, char
         if(strcmp(mylab->title, titleString) != 0) {
 //printf("making bundles for %s\n%s", mylab->title, mylab->structures);
           if(mylab->title[0] != '\0') {
-            add_dumi_node(seq, crik, mylab);
-            make_bundles(seq, crik, mylab);
-          }
+            mylabs[(*mylabsSize)++] = mylab;
+          } else
+            freeLabeledStructures(&mylab);
 //printf("resetting mylab %s\n%s\n", mylab->title, mylab->structures);
-
+          mylab = malloc(sizeof(LabeledStructures));
+          initLabeledStructures(mylab);
           resetLabeledStructures(mylab, titleString);
         }
         

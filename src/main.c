@@ -90,35 +90,6 @@ int main(int argc, char** argv) {
   start = rank*span;
   end = (rank == wsize-1) ? start+span+rem : start+span;
 
-/*#ifdef _MPI
-  switch (rank) {
-    case 0:
-      start = 0; end = 2;
-      break;
-    case 1:
-      start = 2; end = 4;
-      break;
-    case 2:
-      start = 4; end = 7;
-      break;
-    case 3:
-      start = 7; end = 11;
-      break;
-    case 4:
-      start = 11; end = 16;
-      break;
-    case 5:
-      start = 16; end = 22;
-      break;
-    case 6:
-      start = 22; end = 31;
-      break;
-    case 7:
-      start = 31; end = 42;
-      break;
-  }
-#endif*/
-
   printf("rank %i working on (%i, %i)\n", rank, start, end);
 
   if(rank == 0) {

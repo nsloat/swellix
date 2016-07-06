@@ -102,6 +102,7 @@ void update_max_distance(config* seq) {
 }
 
 void update_motif_count(config* seq) {
+//printf("updating motif count\n");
   char* s = seq->motifStruc;               // motif structure dot-parenthesis form
   char* l = seq->motifSeq;                 // motif sequence "letter" form
   char dnc = 'x';                          // "do not care" character
@@ -120,11 +121,13 @@ void update_motif_count(config* seq) {
     m = mlen-1;
     while((s[k] != dnc) && (k < mlen)) { // if this loop exits normally, then either the 5' side of a bulge
                                          // motif matched or the whole hairpin motif matched.
+//printf("S: %s\ns: %s\nL: %s\nl: %s\nentered 5' match section\n", S, s, L, l);
       if((s[k] != S[i+k]) || ((l[k] != L[i+k]) && (l[k] != wcp))) { match = 0; break; }
 
       k++;
     }
     if(k < mlen && match) {
+//printf("s: %s\nl: %s\nentered 3' match section\n", s, l);
     // if this condition is still TRUE, then the matched motif was the 5' side 
     // of a variable-length motif and we need to look for the 3' side.
       j = slen-1;
@@ -146,7 +149,7 @@ void update_motif_count(config* seq) {
             k++;
             m--;
           }
-          if(opn == cls) seq->motifCount++;
+          if(opn == cls) { seq->motifCount++; return; } 
         }
         j--;
       }
@@ -154,7 +157,7 @@ void update_motif_count(config* seq) {
                      // iteration of the j loop. this edge case would count a motif above and exit the loop with
                      // match == 1, then the following conditional statement would increment the motif count again.
     }
-    if(match) seq->motifCount++;
+    if(match) { seq->motifCount++; return; }
     i++;
   }
 }
