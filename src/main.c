@@ -53,7 +53,7 @@
 //#include "mpi_make_bundle_list.h"
 #endif
 
-//int rank, wsize;
+int rank, wsize;
 
 //*****************************************************************************
 // Function : Main
@@ -71,7 +71,7 @@
 //*****************************************************************************
 int main(int argc, char** argv) {
 
-  int rank, wsize, start, end, span, rem;
+  int start, end, span, rem;
 #ifdef _MPI
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
@@ -94,10 +94,10 @@ int main(int argc, char** argv) {
 
   if(rank == 0) {
     printf("%s\n",seq->ltr);
-    init_vrna(seq->ltr);
-    float energy = get_mfe_structure(seq->ltr, seq->mfe);
-    seq->maxenergy = energy;
   }
+  init_vrna(seq->ltr);
+  float energy = get_mfe_structure(seq->ltr, seq->mfe);
+  seq->maxenergy = energy;
 
   global* crik = initialize_crik(seq);
 
@@ -126,11 +126,11 @@ int main(int argc, char** argv) {
 
 #ifdef _MPI
   uint64_t sumStructures = 0, sumUBStructures = 0, maxDist = 0, motifCount = 0;
-  double maxEng = 0.0;
+  float maxEng = 0.0;
 //  MPI_Reduce(&crik->numBundles, &sumBundles, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numStru, &sumStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numUnbundledStru, &sumUBStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&seq->maxenergy, &maxEng, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&seq->maxenergy, &maxEng, 1, MPI_FLOAT, MPI_MAX, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->maxdist, &maxDist, 1, MPI_INT, MPI_MAX, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->motifCount, &motifCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   if(rank==0) {

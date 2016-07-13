@@ -348,13 +348,8 @@ int remove_duplicates_LL(ToL* start)
 //*****************************************************************************
 void run_sliding_windows(config* seq, global* crik) {
 
-  int rank, wsize, istart, iend, span, rem;
-#ifdef _MPI
-  MPI_Comm_rank(MPI_COMM_WORLD,&rank);
-  MPI_Comm_size(MPI_COMM_WORLD,&wsize);
-#else
-  rank = 0; wsize = 1;
-#endif
+  extern int rank, wsize;
+  int istart, iend, span, rem;
 
   span = (seq->strLen+1)/(wsize);
   rem = seq->strLen+1 % wsize;
@@ -386,7 +381,6 @@ void run_sliding_windows(config* seq, global* crik) {
   char* subMod = calloc(window+1, sizeof(char));
   char* tok;
   int start, stroffset, substrLen;
-//#pragma omp parallel for private(subSeq, subMod)
   for(index = 0; index < seq->strLen+1; index++) {
 //  for(index = start; index < end; index++) {
     start = index-window-1;
@@ -396,9 +390,22 @@ void run_sliding_windows(config* seq, global* crik) {
     strncpy(subMod, mods+stroffset, substrLen);
     slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, labs, &labsSize);
   }
-//  int totalLabs;
-//  MPI_AllReduce
-//  MPI_AllGather
+  int totalLabs = 0;
+printf("PE %d has %d labs\n", rank, labsSize);
+  MPI_Allreduce(&labsSize, &totalLabs, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+printf("totalLabs = %d\n", totalLabs);
+  int counts[wsize];
+  MPI_Allgather(&labsSize, 1, MPI_INT, counts, 1, MPI_INT, MPI_COMM_WORLD);
+  int* displs = calloc(wsize, sizeof(int));
+  for(index = 1; index < wsize; index++)
+    displs[index] = displs[index-1] + counts[index-1];
+
+  printf("PE %d has displs:\n", rank);
+  for(index = 0; index < wsize; index++)
+    printf("%d, ", displs[index]);
+  printf("\n");
+
+//  MPI_Allgatherv(labs, labsSize, MPI_LABELEDSTRUCT, 
 
   for(index = 0; index < labsSize; index++) {
     add_dumi_node(seq, crik, labs[index]);

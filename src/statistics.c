@@ -13,10 +13,14 @@
 
 
 
+//extern vrna_md_t md;
+//extern vrna_param_t* P;
+//extern vrna_fold_compound_t* vc;
+//extern vrna_fold_compound_t* evalc;
 static vrna_md_t md;
-static vrna_param_t* P = NULL;
-static vrna_fold_compound_t* vc = NULL;
-static vrna_fold_compound_t* evalc = NULL;
+static vrna_param_t* P;
+static vrna_fold_compound_t* vc;
+static vrna_fold_compound_t* evalc;
 float energy;
 int distance;
 
@@ -50,8 +54,8 @@ void init_vrna(char* sequence) {
 //******************************************************************************
 float get_mfe_structure(char* sequence, char* structure) {
 //  if(md == NULL) { printf("error in get_mfe_structure; model uninitialized\n"); return -10000000; }
-  if(vc != NULL) vrna_fold_compound_free(vc);
-  vc = vrna_fold_compound(sequence, &md, VRNA_OPTION_MFE);
+  if(vc == NULL) //vrna_fold_compound_free(vc);
+    vc = vrna_fold_compound(sequence, &md, VRNA_OPTION_MFE);
   return vrna_mfe(vc, structure);
 }
 
@@ -84,8 +88,12 @@ void update_stats(config* seq) {
 //
 //******************************************************************************
 void update_max_energy(config* seq) {
+  if(evalc == NULL) //vrna_fold_compound_free(evalc);
+    evalc = vrna_fold_compound(seq->ltr, &md, VRNA_OPTION_EVAL_ONLY);
   energy = vrna_eval_structure(evalc, seq->dotNParen);
-  if(energy > seq->maxenergy) seq->maxenergy = energy;
+  if(energy > seq->maxenergy) {
+    seq->maxenergy = energy;
+  }
 }
 
 //******************************************************************************
