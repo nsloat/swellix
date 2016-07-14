@@ -29,6 +29,8 @@
 #include "main.h"
 #include "init_general.h"
 
+extern int rank;
+
 //*****************************************************************************
 // Function : Initialize Command Line Argument Default Values
 // Caller   : initialize_sequence_by_getting_argument()
@@ -173,7 +175,7 @@ void set_motif(config* seq, int8_t arg, int argc, char** argv) {
       free(seq);
       exit(1);//      print_usage();
     }
-    printf("motif stored: xxxxxxx%sxxxxxxx\n              xxxxxxx%sxxxxxxx\n", seq->motifSeq, seq->motifStruc);
+    if(rank==0) printf("motif stored: xxxxxxx%sxxxxxxx\n              xxxxxxx%sxxxxxxx\n", seq->motifSeq, seq->motifStruc);
   }
 }
 

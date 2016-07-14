@@ -351,11 +351,12 @@ void run_sliding_windows(config* seq, global* crik) {
   extern int rank, wsize;
   int istart, iend, span, rem;
 
-  span = (seq->strLen+1)/(wsize);
-  rem = seq->strLen+1 % wsize;
+printf("rank = %d, wsize = %d\n", rank, wsize);
+  span = (seq->strLen)/(wsize);
+  rem = seq->strLen % wsize;
   istart = rank*span;
   iend = (rank == wsize-1) ? istart+span+rem : istart+span;
-
+printf("seq->strLen = %d, span = %d, rem = %d\n", seq->strLen, span, rem);
   // Get ready to run sliding windows
   char mods[seq->strLen+1];
   mods[seq->strLen] = '\0';
@@ -379,10 +380,13 @@ void run_sliding_windows(config* seq, global* crik) {
   int index;
   char* subSeq = calloc(window+1, sizeof(char));
   char* subMod = calloc(window+1, sizeof(char));
-  char* tok;
   int start, stroffset, substrLen;
-  for(index = 0; index < seq->strLen+1; index++) {
-//  for(index = start; index < end; index++) {
+//#ifdef _MPI
+printf("istart = %d, iend = %d\n", istart, iend);
+  for(index = istart; index < iend+1; index++) {
+//#else
+//  for(index = 0; index < seq->strLen+1; index++) {
+//#endif
     start = index-window-1;
     stroffset = start+1 > 0 ? start+1 : 0;
     substrLen = index-stroffset > window ? window : index-stroffset;
@@ -390,12 +394,30 @@ void run_sliding_windows(config* seq, global* crik) {
     strncpy(subMod, mods+stroffset, substrLen);
     slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, labs, &labsSize);
   }
+#ifdef _MPI
+// Create MPI datatype to pass LabeledStructures types across PEs
+
+  /* make the datatype here pls */
+  MPI_Datatype mpi_labeled_structures;
+  MPI_Datatype types[4] = {MPI_Aint, MPI_INT, MPI_Aint, MPI_INT};
+  int blocklens[4] = {1, 1, 1, 1};
+  LabeledStructures setup;
+  MPI_Aint displacements[4];
+  displacements[0] = &setup.title - &setup;
+  displacements[1] = &setup.titlesize - &setup;
+  displacements[2] = &setup.structures - &setup;
+  displacements[3] = &setup.buffsize - &setup;
+  MPI_Type_create_struct(4, blocklens, displacements, types, &mpi_labeled_structures);
+  MPI_Type_commit(&mpi_labeled_structures);
+
   int totalLabs = 0;
 printf("PE %d has %d labs\n", rank, labsSize);
   MPI_Allreduce(&labsSize, &totalLabs, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
 printf("totalLabs = %d\n", totalLabs);
+
   int counts[wsize];
   MPI_Allgather(&labsSize, 1, MPI_INT, counts, 1, MPI_INT, MPI_COMM_WORLD);
+
   int* displs = calloc(wsize, sizeof(int));
   for(index = 1; index < wsize; index++)
     displs[index] = displs[index-1] + counts[index-1];
@@ -405,7 +427,50 @@ printf("totalLabs = %d\n", totalLabs);
     printf("%d, ", displs[index]);
   printf("\n");
 
-//  MPI_Allgatherv(labs, labsSize, MPI_LABELEDSTRUCT, 
+  LabeledStructures* completeLabs = (LabeledStructures*)calloc(totalLabs, sizeof(LabeledStructures));
+  for(index = 0; index < totalLabs; index++) {
+//    initLabeledStructures(&completeLabs[index]);
+    if(index >= displs[rank] && index < displs[rank]+counts[rank]) {
+      initLabeledStructures(&completeLabs[index]);
+      strcpy(completeLabs[index].title, labs[index-displs[rank]].title);
+      if(completeLabs[index].buffsize != labs[index-displs[rank]].buffsize) {
+        completeLabs[index].buffsize = labs[index-displs[rank]].buffsize;
+        completeLabs[index].structures = (char*)realloc(completeLabs[index].structures, completeLabs[index].buffsize);
+      }
+      strcpy(completeLabs[index].structures, labs[index-displs[rank]].structures);
+    }
+  }
+  
+  MPI_Allgatherv(labs, labsSize, mpi_labeled_structures, 
+                 completeLabs, counts, displs, mpi_labeled_structures, 
+                 MPI_COMM_WORLD);
+  LabeledStructures* ptr;
+  for(index = 0; index < totalLabs; index++) {
+    ptr = &completeLabs[index];
+    if(index < displs[rank] || index >= displs[rank] + counts[rank]) {
+      initLabeledStructures(ptr);
+    }
+    int root, i = 0;
+    while(i < wsize-1) {
+      if(index < displs[i+1]) root = i;
+    }
+
+    MPI_Bcast(ptr->title, ptr->titlesize, MPI_CHAR, root, MPI_COMM_WORLD);
+    MPI_Bcast(ptr->buffize, 1, MPI_INT, root, MPI_COMM_WORLD);
+    if(rank != root) ptr->structures = (char*)realloc(ptr->structures, ptr->buffsize);
+    MPI_Bcast(ptr->structures, ptr->buffsize, MPI_CHAR, root, MPI_COMM_WORLD);
+  }
+
+  for(index = 0; index < totalLabs; index++) {
+    add_dumi_node(seq, crik, completeLabs[index]);
+    make_bundles(seq, crik, completeLabs[index]);
+    free(completeLabs[index].title);
+    free(completeLabs[index].structures);
+  }
+  
+  free(completeLabs);
+  MPI_Type_free(&mpi_labeled_structures);
+#else
 
   for(index = 0; index < labsSize; index++) {
     add_dumi_node(seq, crik, labs[index]);
@@ -413,9 +478,12 @@ printf("totalLabs = %d\n", totalLabs);
     freeLabeledStructures(&(labs[index]));
   }
 
+#endif
+
   free(labs);
   free(subSeq);
   free(subMod);
+
 
   // remove duplicates from linked list
   int j;
@@ -427,13 +495,14 @@ printf("totalLabs = %d\n", totalLabs);
 }
 
 void initLabeledStructures(LabeledStructures *lab) {
-  lab->title = (char*)calloc(64, sizeof(char));
+  lab->titlesize = 64;
+  lab->title = (char*)calloc(lab->titlesize, sizeof(char));
   lab->buffsize = 4096;  // default buffsize to 4kB arbitrarily
   lab->structures = (char*)calloc(lab->buffsize, sizeof(char)); 
 }
 
 void resetLabeledStructures(LabeledStructures* lab, char* newtitle) {
-  lab->title = memset(lab->title, '\0', 64);
+  lab->title = memset(lab->title, '\0', lab->titlesize);
   lab->structures = memset(lab->structures, '\0', lab->buffsize);
   if(newtitle != NULL) strcat(lab->title, newtitle);
 }
@@ -550,7 +619,6 @@ void add_b_node(global* crik, knob* refBNode, int16_t masterLB, int16_t masterUB
 void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
 
   int begin, end;
-  char line[1024];
   char* tok;
   int maxBasePairs = 0;
   int8_t repFlag;
