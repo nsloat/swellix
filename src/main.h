@@ -141,10 +141,10 @@ enum statMode {
 extern char* NODE_TYPE_TO_STRING[];
 
 typedef struct LabeledStructures {
-  char* title;      // the #x#.lab file name string
   int titlesize;    // the size of the title string
-  char* structures; // newline-delimited list of output from the subopt+label process
   int buffsize;     // the size of the structures buffer allocated
+  char* title;      // the #x#.lab file name string
+  char* structures; // newline-delimited list of output from the subopt+label process
 } LabeledStructures;
 
 typedef struct knob       knob;

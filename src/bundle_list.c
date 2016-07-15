@@ -351,12 +351,14 @@ void run_sliding_windows(config* seq, global* crik) {
   extern int rank, wsize;
   int istart, iend, span, rem;
 
-printf("rank = %d, wsize = %d\n", rank, wsize);
+//printf("rank = %d, wsize = %d\n", rank, wsize);
   span = (seq->strLen)/(wsize);
   rem = seq->strLen % wsize;
   istart = rank*span;
-  iend = (rank == wsize-1) ? istart+span+rem : istart+span;
-printf("seq->strLen = %d, span = %d, rem = %d\n", seq->strLen, span, rem);
+  iend = (rank == wsize-1) ? istart+span+rem : istart+span-1;
+//printf("seq->strLen = %d, span = %d, rem = %d\n", seq->strLen, span, rem);
+
+
   // Get ready to run sliding windows
   char mods[seq->strLen+1];
   mods[seq->strLen] = '\0';
@@ -374,19 +376,15 @@ printf("seq->strLen = %d, span = %d, rem = %d\n", seq->strLen, span, rem);
   tmm = seq->maxNumMismatch;
   asymmetry = 0;
 
-  LabeledStructures** labs = calloc(seq->strLen*4, sizeof(LabeledStructures*));
+  LabeledStructures* labs = calloc(seq->strLen*300, sizeof(LabeledStructures*));
   int labsSize = 0;
 
   int index;
   char* subSeq = calloc(window+1, sizeof(char));
   char* subMod = calloc(window+1, sizeof(char));
   int start, stroffset, substrLen;
-//#ifdef _MPI
-printf("istart = %d, iend = %d\n", istart, iend);
   for(index = istart; index < iend+1; index++) {
-//#else
 //  for(index = 0; index < seq->strLen+1; index++) {
-//#endif
     start = index-window-1;
     stroffset = start+1 > 0 ? start+1 : 0;
     substrLen = index-stroffset > window ? window : index-stroffset;
@@ -394,44 +392,74 @@ printf("istart = %d, iend = %d\n", istart, iend);
     strncpy(subMod, mods+stroffset, substrLen);
     slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, labs, &labsSize);
   }
-#ifdef _MPI
-// Create MPI datatype to pass LabeledStructures types across PEs
 
-  /* make the datatype here pls */
+#ifdef _MPI
+  // Create MPI datatype to pass LabeledStructures structs across PEs
   MPI_Datatype mpi_labeled_structures;
-  MPI_Datatype types[4] = {MPI_Aint, MPI_INT, MPI_Aint, MPI_INT};
-  int blocklens[4] = {1, 1, 1, 1};
+  MPI_Datatype types[3] = {MPI_INT, MPI_INT, MPI_UB}; //due to the dynamically allocated arrays in the structs
+                                                      //MPI needs to take the integer fields plus however much more
+                                                      //memory the struct takes up.
+  int blocklens[3] = {1, 1, 1};
   LabeledStructures setup;
-  MPI_Aint displacements[4];
-  displacements[0] = &setup.title - &setup;
-  displacements[1] = &setup.titlesize - &setup;
-  displacements[2] = &setup.structures - &setup;
-  displacements[3] = &setup.buffsize - &setup;
-  MPI_Type_create_struct(4, blocklens, displacements, types, &mpi_labeled_structures);
+  MPI_Aint displacements[3];
+  displacements[0] = (MPI_Aint)&setup.titlesize - (MPI_Aint)&setup;
+  displacements[1] = (MPI_Aint)&setup.buffsize - (MPI_Aint)&setup;
+  displacements[2] = (MPI_Aint)sizeof(setup);
+  MPI_Type_create_struct(3, blocklens, displacements, types, &mpi_labeled_structures);
   MPI_Type_commit(&mpi_labeled_structures);
 
-  int totalLabs = 0;
-printf("PE %d has %d labs\n", rank, labsSize);
-  MPI_Allreduce(&labsSize, &totalLabs, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-printf("totalLabs = %d\n", totalLabs);
+  /*
+    The way this parallelization works is that all PEs do their own bundling on a pseudo-evenly distributed
+    chunk of the input RNA sequence. After each PE finishes its own portion of the sliding windows step, said PE
+    needs to transmit its data to all other PEs so they can construct their own appropriate data locally. For this,
+    MPI_Allgatherv will be used to handle the (probable) case that not all PEs finish with the same number of 
+    LabeledStructures instances populated.
+  */
 
+  // We need to sum up the total number of LabeledStructures instances that got filled with data.
+  int totalLabs = 0;
+//printf("PE %d has %d labs\n", rank, labsSize);
+  MPI_Allreduce(&labsSize, &totalLabs, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+//printf("totalLabs = %d\n", totalLabs);
+
+  // Now, gather the local counts of LabeledStructures instances from each PE an store them 
+  // in an array for Allgatherv.
   int counts[wsize];
   MPI_Allgather(&labsSize, 1, MPI_INT, counts, 1, MPI_INT, MPI_COMM_WORLD);
 
+  // Construct an array to store the displacement of each PEs data in the final complete array as per Allgatherv.
   int* displs = calloc(wsize, sizeof(int));
   for(index = 1; index < wsize; index++)
     displs[index] = displs[index-1] + counts[index-1];
 
-  printf("PE %d has displs:\n", rank);
-  for(index = 0; index < wsize; index++)
-    printf("%d, ", displs[index]);
-  printf("\n");
+//  printf("PE %d has displs:\n", rank);
+//  for(index = 0; index < wsize; index++)
+//    printf("%d, ", displs[index]);
+//  printf("\n");
 
+  // Allocate space for the complete array of LabeledStructures instances, using the sum totalLabs from above to
+  // allocate just enough memory as needed.
   LabeledStructures* completeLabs = (LabeledStructures*)calloc(totalLabs, sizeof(LabeledStructures));
+  
+//  for(index = 0; index < totalLabs; index++) {
+//    completeLabs[index].titlesize = 64;
+//    completeLabs[index].buffsize = 4096;
+//  }
+//1if(rank == 0)printf("before allgatherv, PE 0 at index 0 has title %s and titlesize %d\nand completeLabs titlesize %d\n", labs[0].title, labs[0].titlesize, completeLabs[0].titlesize);
+
+  // Now, from each PEs local labs array, gather the respective elements and construct a complete array in each
+  // PE according to our count and displacement arrays from above.
+  MPI_Allgatherv(labs, labsSize, mpi_labeled_structures, 
+                 completeLabs, counts, displs, mpi_labeled_structures, 
+                 MPI_COMM_WORLD);
+
+  // Since the structs we sent contain dynamically allocated character arrays, we need to now allocate memory for
+  // these cstrings in each PE's memory. In addition, on each PE we need to copy over the actual cstring values to
+  // the appropriate places in the completeLabs array.
   for(index = 0; index < totalLabs; index++) {
-//    initLabeledStructures(&completeLabs[index]);
+    completeLabs[index].title = (char*)calloc(completeLabs[index].titlesize, sizeof(char));
+    completeLabs[index].structures = (char*)calloc(completeLabs[index].buffsize, sizeof(char));
     if(index >= displs[rank] && index < displs[rank]+counts[rank]) {
-      initLabeledStructures(&completeLabs[index]);
       strcpy(completeLabs[index].title, labs[index-displs[rank]].title);
       if(completeLabs[index].buffsize != labs[index-displs[rank]].buffsize) {
         completeLabs[index].buffsize = labs[index-displs[rank]].buffsize;
@@ -440,10 +468,12 @@ printf("totalLabs = %d\n", totalLabs);
       strcpy(completeLabs[index].structures, labs[index-displs[rank]].structures);
     }
   }
-  
-  MPI_Allgatherv(labs, labsSize, mpi_labeled_structures, 
-                 completeLabs, counts, displs, mpi_labeled_structures, 
-                 MPI_COMM_WORLD);
+
+//if(rank == 0)printf("after allgatherv, PE 0 at index 0 has title %s and titlesize %d\n", completeLabs[0].title, completeLabs[0].titlesize);
+//printf("allgatherv completed\n");
+
+  // Finally, to complete the transmission of the data between all of the PEs, each PE needs to send its own local
+  // information to the other PEs in their completeLabs struct arrays.
   LabeledStructures* ptr;
   for(index = 0; index < totalLabs; index++) {
     ptr = &completeLabs[index];
@@ -451,31 +481,59 @@ printf("totalLabs = %d\n", totalLabs);
       initLabeledStructures(ptr);
     }
     int root, i = 0;
-    while(i < wsize-1) {
-      if(index < displs[i+1]) root = i;
+    while(i < wsize) {
+      // Use the displacements and counts to figure out which PE should be the source for this index in the
+      // completeLabs array.
+      if(index >= displs[i] && index < displs[i]+counts[i]) root = i;
+      i++;
     }
+    // As of now, the titlesize doesn't ever change and isn't really used, so I suppose this Bcast isn't vital.
+//    MPI_Bcast(&ptr->titlesize, 1, MPI_INT, root, MPI_COMM_WORLD);
+
+//printf("set up root %d for index %d\n", root, index);
+//if(rank == root)printf("PE %d has title %s and titlesize %d\n", root, ptr->title, ptr->titlesize);
 
     MPI_Bcast(ptr->title, ptr->titlesize, MPI_CHAR, root, MPI_COMM_WORLD);
-    MPI_Bcast(ptr->buffize, 1, MPI_INT, root, MPI_COMM_WORLD);
-    if(rank != root) ptr->structures = (char*)realloc(ptr->structures, ptr->buffsize);
+
+//printf("first bcast, root %d\n", root);
+
+    MPI_Bcast(&ptr->buffsize, 1, MPI_INT, root, MPI_COMM_WORLD);
+
+//printf("second bcast, root %d\n", root);
+
+    if(rank != root && ptr->buffsize > 4096) ptr->structures = (char*)realloc(ptr->structures, ptr->buffsize);
     MPI_Bcast(ptr->structures, ptr->buffsize, MPI_CHAR, root, MPI_COMM_WORLD);
+
+//printf("last bcast, root %d\n", root);
+
   }
 
+//printf("bcast series completed\n");
+
+  // Now that the information has been distributed across all PEs, let each PE construct its bundles locally using
+  // the full array of LabeledStructures instances.
   for(index = 0; index < totalLabs; index++) {
-    add_dumi_node(seq, crik, completeLabs[index]);
-    make_bundles(seq, crik, completeLabs[index]);
+    add_dumi_node(seq, crik, &completeLabs[index]);
+    make_bundles(seq, crik, &completeLabs[index]);
     free(completeLabs[index].title);
     free(completeLabs[index].structures);
+
+    free(labs[index].title);
+    free(labs[index].structures);
   }
   
   free(completeLabs);
   MPI_Type_free(&mpi_labeled_structures);
+
 #else
 
+  // The default (serial) behavior: the process should have populated labs with all possible LabeledStructures
+  // so just make the bundles as above with the MPI-accumulated completeLabs array.
   for(index = 0; index < labsSize; index++) {
-    add_dumi_node(seq, crik, labs[index]);
-    make_bundles(seq, crik, labs[index]);
-    freeLabeledStructures(&(labs[index]));
+    add_dumi_node(seq, crik, &labs[index]);
+    make_bundles(seq, crik, &labs[index]);
+    free(labs[index].title);
+    free(labs[index].structures);
   }
 
 #endif

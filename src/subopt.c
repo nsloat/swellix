@@ -25,8 +25,8 @@ int LENGTH;
 int TERMINAL_MISMATCHES;
 int ASYMMETRY;
 int MISMATCHES;
-LabeledStructures* mylab;
-LabeledStructures** mylabs;
+LabeledStructures* mylab; //pointer to the labeledstructure object to use
+LabeledStructures* mylabs; //target array of objects to build up
 int* mylabsSize;
 config* seq;
 
@@ -38,7 +38,7 @@ int slide_those_windows(char* subSeq,
                         int tmms, 
                         int asymm, 
                         config* pseq, 
-                        LabeledStructures** labs,
+                        LabeledStructures* labs,
                         int* labsSize) {
 
 //printf("new slide windows call\n");
@@ -60,8 +60,12 @@ int slide_those_windows(char* subSeq,
     mylabs = labs;
     mylabsSize = labsSize;
 
-    mylab = malloc(sizeof(LabeledStructures));
-    initLabeledStructures(mylab);
+    mylab = &mylabs[*mylabsSize];//malloc(sizeof(LabeledStructures));
+//    initLabeledStructures(mylab);
+    mylab->titlesize = 64;
+    mylab->buffsize = 4096;
+    mylab->title = (char*)calloc(mylab->titlesize, sizeof(char));
+    mylab->structures = (char*)calloc(mylab->buffsize, sizeof(char));
 
     seq = pseq;
 
@@ -90,9 +94,17 @@ int slide_those_windows(char* subSeq,
 
     //write out final labeled structures computed for this window
     if(mylab->title[0] != '\0') {
-      mylabs[(*mylabsSize)++] = mylab;
-    } else
-      freeLabeledStructures(&mylab);
+//      mylabs[(*mylabsSize)++] = mylab;
+      (*mylabsSize)++;
+    } else {
+//      freeLabeledStructures(&mylab);
+      free(mylab->title);
+      free(mylab->structures);
+      mylab->title = NULL;
+      mylab->structures = NULL;
+      mylab->titlesize = 0;
+      mylab->buffsize = 0;
+    }
 
     if (OPTIONS.count){
         //print( "%d\n", OPTIONS.count);
@@ -874,14 +886,19 @@ void saveLabeledStructure(int end, int width, char* structure, int helices, char
 	sprintf(titleString, "%dx%d.lab", end, width);
 //printf("new titleString: %s\n", titleString);
 //printf("strcmp(%s, %s) = %d\n", mylab->title, titleString, strcmp(mylab->title, titleString));
-        if(strcmp(mylab->title, titleString) != 0) {
+        if(mylab->title && strcmp(mylab->title, titleString) != 0) {
 //printf("making bundles for %s\n%s", mylab->title, mylab->structures);
           if(mylab->title[0] != '\0') {
-            mylabs[(*mylabsSize)++] = mylab;
-          } else
-            freeLabeledStructures(&mylab);
+//            mylabs[(*mylabsSize)++] = mylab;
+            (*mylabsSize)++;
+          } else {
+            //freeLabeledStructures(&mylab);
+            free(mylab->title);
+            free(mylab->structures);
+          }
 //printf("resetting mylab %s\n%s\n", mylab->title, mylab->structures);
-          mylab = malloc(sizeof(LabeledStructures));
+          //mylab = malloc(sizeof(LabeledStructures));
+          mylab = &mylabs[*mylabsSize];
           initLabeledStructures(mylab);
           resetLabeledStructures(mylab, titleString);
         }
