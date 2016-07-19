@@ -49,7 +49,7 @@ long long g_x2;
 #define DEFAULT_MAX_NUMBER_OF_MISMATCH 0
 #define DEFAULT_MIN_NUMBER_OF_HELIX    0
 #define DEFAULT_MIN_NUMBER_OF_HP       0
-#define CONSTRAINT_SIZE                64    // just an arbitrary number (2^6) large enought to accomodate largest possble number of constraints, used in swellix-initialize_constraint.c
+#define CONSTRAINT_SIZE                64    // just an arbitrary number (2^6) large enought to accomodate largest possble number of constraints, used in init_constraint.c
 #define BAKI_SORT_DIVIDR               8     // bucket sort divider                        : used for bucket sort, to determine the size of each bucket
 
 #ifdef  _display
