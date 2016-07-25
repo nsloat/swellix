@@ -805,310 +805,337 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
   if (toddP) {
     disp(seq,DISP_ALL,"crik->interval = (%d,%d)\n", intrvlCursr->opnBrsInnIndx, intrvlCursr->closeBrsInnIndx);
     disp(seq,DISP_ALL,"intrvlLukUpTab = %d\n", seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][0]);
-    todd->lukUpCmpntTypLB =
-        seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][0]; // ||
-    todd->lukUpCmpntTypUB =
-        seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][1]; // ||
-  } // end if                                                                                                  // \/
 
-  if (intrvlCursr) {               // || set todd intrvl upper and lower bound
-    todd->intrvlLB = intrvlCursr->opnBrsInnIndx;                       // ||
-    todd->intrvlUB = intrvlCursr->closeBrsInnIndx;                     // ||
-  } else {                                                               // ||
-    todd->intrvlLB = -1; // || init as -1 instead of 0, since 0 presents the location 0 on the sequence
-    todd->intrvlUB = -1;                                               // ||
-  } // end if 2                                                               // \/
+    todd->lukUpCmpntTypLB = seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][0];
+    todd->lukUpCmpntTypUB = seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][1];   } // end if
+
+  if (intrvlCursr) {               // set todd intrvl upper and lower bound
+    todd->intrvlLB = intrvlCursr->opnBrsInnIndx;
+    todd->intrvlUB = intrvlCursr->closeBrsInnIndx;
+  } else {
+    todd->intrvlLB = -1; // init as -1 instead of 0, since 0 presents the location 0 on the sequence
+    todd->intrvlUB = -1;
+  } // end if 2 
 
   todd->lvlOfRecur = toddP ? toddP->lvlOfRecur + 1 : 0;
   disp(seq,DISP_ALL,"Todd made, recur lvl = %d\n", todd->lvlOfRecur);
   crik->lvlOfRecur++;
-  dispLL(seq,crik,0,toddP); disp(seq,DISP_ALL,"intrvl: (%d,%d) -> (LB,UB): (%d,%d)\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx, todd->lukUpCmpntTypLB, todd->lukUpCmpntTypUB ); dispLL(seq,crik,0,toddP);
+
+  dispLL(seq,crik,0,toddP); 
+  disp(seq,DISP_ALL,"intrvl: (%d,%d) -> (LB UB): (%d,%d)\n", crik->interval->opnBrsInnIndx, 
+                                                             crik->interval->closeBrsInnIndx, 
+                                                             todd->lukUpCmpntTypLB, 
+                                                             todd->lukUpCmpntTypUB);
+  dispLL(seq,crik,0,toddP);
+
   remove_intrvl(seq, crik, toddP, recurRoute);
   disp(seq,DISP_ALL,"This 2 b hooked bak later\n");
   crik->intrvlCntr++; // it's like batch number, used to distinguish one batch from another
-						// to facilitate new helix insert and old helix removal
+                      // to facilitate new helix insert and old helix removal
 
-  if (0) { } else {
+  todd->intrvlCntr = crik->intrvlCntr;
+  while ((i < crik->numCmpntTypOcupid) && (crik->cmpntListOcupidTyp[i] < todd->lukUpCmpntTypLB))
+  i++; // the lowerbound of the looked-up component is at the left of the target lowerbound
 
-    todd->intrvlCntr = crik->intrvlCntr;
-    //printf("MJT line 861 crik->numCmpntTypOcupid = %d\n",crik->numCmpntTypOcupid);
-    while ((i < crik->numCmpntTypOcupid) && (crik->cmpntListOcupidTyp[i] < todd->lukUpCmpntTypLB))
-    i++; // the lowerbound of the looked-up component is at the left of the target lowerbound
-//  if (crik->hackCounter == 0 && !(crik->cmpntListOcupidTyp[1] < todd->lukUpCmpntTypLB)) i = 0; // HACK!!!!
-    if (intrvlMsgr->intrvlTypFlag == BEH_INTRVL)
-      crik->numHP++; // hairpin increases only if the new interval is behind interval (inside interval only nest in further at the same hairpin)
-    while ((i < crik->numCmpntTypOcupid) && 
-           (crik->cmpntListOcupidTyp[i] <= todd->lukUpCmpntTypUB)) { // scan thru the whole cmpnt list of interested types. previously it scan only up to todd->lukUpCmpntTypUB + 1 due to l*p + k rule, we have to add one up to accomidate the missing bit (see tempUB making of make_jump_ins_intrvl in jump_stage_1_set_intrvl()
+  if (intrvlMsgr->intrvlTypFlag == BEH_INTRVL)
+    crik->numHP++; // hairpin increases only if the new interval is behind interval 
+                   // (inside interval only nest in further at the same hairpin)
 
-      cmpntCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
-      disp(seq,DISP_ALL,"Jump Stage 2 'While' loop cmpnt:\n");
+  while ((i < crik->numCmpntTypOcupid) && (crik->cmpntListOcupidTyp[i] <= todd->lukUpCmpntTypUB)) { 
+    // scan thru the whole cmpnt list of interested types. previously it scan only up to 
+    // todd->lukUpCmpntTypUB + 1 due to l*p + k rule, we have to add one up to accomidate 
+    // the missing bit (see tempUB making of make_jump_ins_intrvl in jump_stage_1_set_intrvl()
+
+    cmpntCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
+    disp(seq,DISP_ALL,"Jump Stage 2 'While' loop cmpnt:\n");
+    hlixCursr = crik->hlixInStru;
+    dispLL(seq,crik,0,toddP);
+
+    while (cmpntCursr) { 
+      // SCAN A COMPONENT TYPE : scan thru the components of the same component type
       hlixCursr = crik->hlixInStru;
-      dispLL(seq,crik,0,toddP);
 
-      while (cmpntCursr) { // || SCAN A COMPONENT TYPE : scan thru the components of the same component type
-        hlixCursr = crik->hlixInStru;                              // ||
+      todd->cmpntLLCursr = cmpntCursr;
+      dispLL(seq,crik,todd,toddP);
 
-        todd->cmpntLLCursr = cmpntCursr;
+      g_x2++;
+      disp(seq,DISP_ALL,"cmpnt cadidate: {%2d-%-2d{    }%2d-%-2d}\n", cmpntCursr->opnBrsOutIndx, 
+                                                                      cmpntCursr->opnBrsInnIndx, 
+                                                                      cmpntCursr->closeBrsInnIndx, 
+                                                                      cmpntCursr->closeBrsOutIndx);
+ 
+     if (cmpntCursr->closeBrsOutIndx <= todd->intrvlUB) { 
+        // HELIX FITS! helix size fittable to the interval, and going to be placed in
+
+        cmpntCursr->intrvlCntr = todd->intrvlCntr;
         dispLL(seq,crik,todd,toddP);
-				//    printf("chkpnt 1\n");
-	//			dispLL(seq,crik,todd,toddP);
+        if (hlixCursr) {
+          disp(seq,DISP_ALL,"            (lvlOfRecur, branchngIndx, intrvlCntr)\n"); 
+          disp(seq,DISP_ALL,"hlixInStru: (%10d, %12d, %10d)\n", hlixCursr->lvlOfRecur, 
+                                                                hlixCursr->hlixBranchngIndx1, 
+                                                                hlixCursr->intrvlCntr); 
+          disp(seq,DISP_ALL,"intrvlMsgr: (%10d, %12d, %10d)\n", intrvlMsgr->lvlOfRecur, 
+                                                                intrvlMsgr->hlixBranchngIndx1, 
+                                                                cmpntCursr->intrvlCntr);
 
-        g_x2++;
-        disp(seq,DISP_ALL,"cmpnt cadidate: {%2d-%-2d{    }%2d-%-2d}\n", cmpntCursr->opnBrsOutIndx, cmpntCursr->opnBrsInnIndx, cmpntCursr->closeBrsInnIndx, cmpntCursr->closeBrsOutIndx);
-        if (cmpntCursr->closeBrsOutIndx <= todd->intrvlUB) { // HELIX FITS! helix size fittable to the interval, and going to be placed in
+          if ((hlixCursr->lvlOfRecur == intrvlMsgr->lvlOfRecur + 1) && 
+              (hlixCursr->hlixBranchngIndx1 == intrvlMsgr->hlixBranchngIndx1) &&
+              (hlixCursr->intrvlCntr == todd->intrvlCntr)) { 
+            // REPLACE OLD HELIX BY NEW ONE : it takes three parameters to ensure that 
+            // the present helix to be erased is indeed from the same level
 
-          if (0) { } else {
+            int maxMismatches = 0;
+            int numMismatches = 0;
+            if (!cmpntCursr->bundleFlag) {
+              maxMismatches = 1;
+              int q;
+              for (q = 0; q < seq->maxNumMismatch; q++) {
+                if (cmpntCursr->mismatchFlag[q][0] == -1) {
+                  maxMismatches = 0;
+                } else {
+                  numMismatches++;
+                }
+              }
+            }
 
-						//     printf("chkpnt 7\n");
-//						dispLL(seq,crik,todd,toddP);
+            if (hlixCursr && cmpntCursr && hlixCursr->jumpTreeNext && 
+                (hlixCursr->jumpTreeNext->opnBrsInnIndx - cmpntCursr->opnBrsOutIndx == -1) && 
+                (hlixCursr->jumpTreeNext->closeBrsInnIndx - cmpntCursr->closeBrsOutIndx == 1)) {
+              // l*p + k rule in the case of add new hlix w/o removing old one
+              int q;
+              if (!hlixCursr->jumpTreeNext->bundleFlag) {
+                for (q = 0; q < seq->maxNumMismatch; q++) {
+                  if (hlixCursr->jumpTreeNext->mismatchFlag[q][0] != -1) {
+                    numMismatches++;
+                  }
+                }
+              }
 
+              crik->linkedmms += numMismatches;
+              if (crik->linkedmms > seq->maxNumMismatch) {
+                crik->linkedmms = 0;
+                break;
+              }
+
+              if (seq->maxNumMismatch > 0) {
+                if (((hlixCursr->jumpTreeNext->opnBrsInnIndx - 
+                      hlixCursr->jumpTreeNext->opnBrsOutIndx != (seq->minLenOfHlix - 1)) && 
+                     ((hlixCursr->jumpTreeNext->mismatchFlag[seq->maxNumMismatch-1][0] != 
+                       hlixCursr->jumpTreeNext->opnBrsInnIndx || maxMismatches) || 
+                      ((cmpntCursr->opnBrsInnIndx - hlixCursr->jumpTreeNext->opnBrsOutIndx + 1) >= 
+                       (seq->minLenOfHlix * 3) && !cmpntCursr->bundleFlag && 
+                       !hlixCursr->jumpTreeNext->bundleFlag)) && 
+                     (!cmpntCursr->bundleFlag && (cmpntCursr->mismatchFlag[0][0] != 
+                      cmpntCursr->opnBrsOutIndx || cmpntCursr->opnBrsInnIndx - cmpntCursr->opnBrsOutIndx + 1 != 
+                      seq->minLenOfHlix)))) { 
+                  // if this check point is passed, the following will be 'REPLACE OLD HELIX BY NEW ONE'
+                  crik->linkedmms = 0;
+                  break;
+                }
+              } else if(hlixCursr->jumpTreeNext->opnBrsInnIndx - 
+                        hlixCursr->jumpTreeNext->opnBrsOutIndx != (seq->minLenOfHlix - 1)) {
+                crik->linkedmms = 0;
+                break;
+              }
+            } else {
+              crik->linkedmms = 0;
+            }
+            dispLL(seq,crik,todd,toddP);
             cmpntCursr->intrvlCntr = todd->intrvlCntr;
             dispLL(seq,crik,todd,toddP);
-            if (hlixCursr) {
-              disp(seq,DISP_ALL,"            (lvlOfRecur, branchngIndx, intrvlCntr)\n"); disp(seq,DISP_ALL,"hlixInStru: (%10d, %12d, %10d)\n", hlixCursr->lvlOfRecur, hlixCursr->hlixBranchngIndx1, hlixCursr->intrvlCntr); disp(seq,DISP_ALL,"intrvlMsgr: (%10d, %12d, %10d)\n", intrvlMsgr->lvlOfRecur, intrvlMsgr->hlixBranchngIndx1, cmpntCursr->intrvlCntr);
 
-              if ((hlixCursr->lvlOfRecur == intrvlMsgr->lvlOfRecur + 1) && // || REPLACE OLD HELIX BY NEW ONE
-                  (hlixCursr->hlixBranchngIndx1 == intrvlMsgr->hlixBranchngIndx1) && // ||
-                  (hlixCursr->intrvlCntr == todd->intrvlCntr)) { // || it takes three parameters to ensure that the present helix to be erased is indeed from the same level
+            if (seq->numCovari) { 
+              // update constraint flags (currently, only V1 and covariance are included)
+              flagUB = seq->numCovari + seq->numV1Pairng;
+              tempInt = calloc(flagUB, sizeof(int16_t));
 
-                int maxMismatches = 0;
-                int numMismatches = 0;
-                if (!cmpntCursr->bundleFlag) {
-                  maxMismatches = 1;
-                  int q;
-                  for (q = 0; q < seq->maxNumMismatch; q++) {
-                    if (cmpntCursr->mismatchFlag[q][0] == -1) {
-                      maxMismatches = 0;
-                    } else {
-                      numMismatches++;
-                    }
-                  }
+              for (j = 0; j < flagUB; j++) {
+                if (!cmpntCursr->mustPairFlag[j] && hlixCursr->mustPairFlag[j]) { 
+                  // replace old hlix will lose a covariance pair or v1 pairing in helix
+                  crik->struMustPairFlag[j] = 0;
+                } // end inner if
+                dispLL(seq,crik,todd,toddP);
+
+                // if there's no issue of losing covariance pair, then the new flag set should contain all flags
+                tempInt[j] = (cmpntCursr->mustPairFlag[j] || crik->struMustPairFlag[j]); 
+              } // end for
+
+              free(crik->struMustPairFlag);
+              crik->struMustPairFlag = tempInt; // replace old flags set by new one
+            } // end outer if
+
+            // unhook the reference to old helix, and hook reference to the new helix. 
+            // erase the record of the old helix, so that it may be used again somewhere else
+            cmpntCursr->jumpTreeNext = hlixCursr->jumpTreeNext;
+            hlixCursr->jumpTreeNext = NULL;
+            hlixCursr->outsideIntrvlLB = -1;
+            hlixCursr->outsideIntrvlUB = -1;
+            crik->hlixInStru = cmpntCursr;
+            hlixCursr = crik->hlixInStru;
+
+            // write in the new helix
+            hlixCursr->outsideIntrvlLB = todd->intrvlLB;
+            hlixCursr->outsideIntrvlUB = todd->intrvlUB;
+            hlixCursr->lvlOfRecur = intrvlMsgr->lvlOfRecur + 1;
+            hlixCursr->hlixBranchngIndx1 = intrvlMsgr->hlixBranchngIndx1;
+
+            int rstoFlag = 0;
+            if (todd->RSTO && !is_there_concern_on_ring_formation_of_linked_list(seq, crik, todd)) {
+              disp(seq,DISP_ALL,"            special On Q %d-%d\n", todd->RSTO->opnBrsInnIndx,
+                                                                    todd->RSTO->closeBrsInnIndx);
+              crik->interval = todd->RSTO;
+              rstoFlag = 1;
+              rstoCount++;
+              disp(seq,DISP_ALL,"Interval restore todd on queue!\n");
+            } // end outer if
+
+            dispLL(seq,crik,todd,toddP);
+
+// || make sure there'r enough helices (equal or larger than the min requirement)// || make sure there'r enough hairpins (equal or larger than the min requirement)
+            if ((crik->numHlix >= seq->minNumHlix) && (crik->numHP >= seq->minNumHP)) { 
+              for (k = 0; k < flagUB; k++)
+// || make sure all the must pair nucleotides are paired, otherwise this structure isn't qualified, and nothing will happen
+                if (!crik->struMustPairFlag[k]) { 
+                  V1FailFlag = 1;
+                  break; // || no point to continue looping, since this structure is disqualified for sure
+                } // end if
+
+              dispLL(seq,crik,todd,toddP);
+
+              if (!V1FailFlag) { // make sure all V1 nucleotides are paired
+// if this point is reached, that means this structure contains enough helices and hairpins, and all the V1 pairs are paird
+                crik->numStru++; 
+                if (seq->bundle) { // count unbundled structures
+                  countAndPrintStructures(seq, crik);
+                  crik->linkedmms = 0;
+                } else {
+                  disp_stru(seq, crik, 11); // for report  (official use)
+                  dispStru(seq,crik,11); // for display (debug use)
+                  crik->linkedmms = 0;
                 }
+              } // end inner 1 if
+            } // end outer if
 
-                if (hlixCursr && cmpntCursr && hlixCursr->jumpTreeNext && 
-                    (hlixCursr->jumpTreeNext->opnBrsInnIndx - cmpntCursr->opnBrsOutIndx	== -1) && // || l*p + k rule in the case of add new hlix w/o removing old one
-                    (hlixCursr->jumpTreeNext->closeBrsInnIndx - cmpntCursr->closeBrsOutIndx == 1)) {
-                  int q;
-                  if (!hlixCursr->jumpTreeNext->bundleFlag) {
-                    for (q = 0; q < seq->maxNumMismatch; q++) {
-                      if (hlixCursr->jumpTreeNext->mismatchFlag[q][0] != -1) {
-                        numMismatches++;
-                      }
-                    }
-                  }
+            todd->intrvlInsFormdFlag = 0;
+            jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
 
-                  crik->linkedmms += numMismatches;
-                  if (crik->linkedmms > seq->maxNumMismatch) {
+          } else {     // ADD A NEW HELIX, NO HELIX IS REMOVED
+            cmpntCursr->intrvlCntr = todd->intrvlCntr;
+            dispLL(seq,crik,todd,toddP);
+
+            for (j = 0; j < flagUB; j++) // || update constraint flags, since no helix is removed, no need to uncheck any box, but just add new checks
+              if (cmpntCursr->mustPairFlag[j]) 
+                crik->struMustPairFlag[j] = 1; // || covari flag got '1'   <==================== Must Pair (covari or V1)
+            cmpntCursr->jumpTreeNext = hlixCursr;      // ||
+            crik->numHlix++;                           // ||
+            crik->hlixInStru = cmpntCursr;             // ||
+            hlixCursr = crik->hlixInStru;              // ||
+            hlixCursr->outsideIntrvlLB = todd->intrvlLB; // || write new one
+            hlixCursr->outsideIntrvlUB = todd->intrvlUB; // ||
+            hlixCursr->lvlOfRecur = intrvlMsgr->lvlOfRecur + 1;             // ||
+            hlixCursr->hlixBranchngIndx1 = intrvlMsgr->hlixBranchngIndx1;     // ||
+
+            int maxMismatches = 0;
+            int numMismatches = 0;
+            if (!hlixCursr->bundleFlag) {
+              maxMismatches = 1;
+              int q;
+              for (q = 0; q < seq->maxNumMismatch; q++) {
+                if (hlixCursr->mismatchFlag[q][0] == -1) {
+                  maxMismatches = 0;
+                } else {
+                  numMismatches++;
+                }
+              }
+            }
+
+            int skip = 0;
+            if((hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->opnBrsOutIndx == -1) && // || l*p + k rule in the case of add new hlix w/o removing old one
+               (hlixCursr->jumpTreeNext->closeBrsInnIndx - hlixCursr->closeBrsOutIndx == 1) && 
+               !hlixCursr->jumpTreeNext->bundleFlag) {
+              int q;
+              for (q = 0; q < seq->maxNumMismatch; q++) {
+                if(hlixCursr->jumpTreeNext->mismatchFlag[q][0] != -1) {
+                  numMismatches++;
+                }
+              }
+              crik->linkedmms += numMismatches;
+              if (crik->linkedmms > seq->maxNumMismatch) {
+                skip = 1;
+              }
+            } else {
+              crik->linkedmms = 0;
+            }
+
+            if ((hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->opnBrsOutIndx == -1) && // || l*p + k rule in the case of add new hlix w/o removing old one
+                (hlixCursr->jumpTreeNext->closeBrsInnIndx - hlixCursr->closeBrsOutIndx == 1) && 
+                seq->maxNumMismatch > 0 && 
+                (hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->jumpTreeNext->opnBrsOutIndx != 
+                 (seq->minLenOfHlix - 1)) && 
+                ((hlixCursr->jumpTreeNext->mismatchFlag[seq->maxNumMismatch - 1][0] != 
+                  hlixCursr->jumpTreeNext->opnBrsInnIndx || maxMismatches) || 
+                 ((hlixCursr->opnBrsInnIndx	- hlixCursr->jumpTreeNext->opnBrsOutIndx + 1) >= 
+                  (seq->minLenOfHlix * 3) && !hlixCursr->bundleFlag && !hlixCursr->jumpTreeNext->bundleFlag)) &&
+                (!hlixCursr->bundleFlag && (hlixCursr->mismatchFlag[0][0] != hlixCursr->opnBrsOutIndx || 
+                                            hlixCursr->opnBrsInnIndx - hlixCursr->opnBrsOutIndx + 1	!= 
+                                            seq->minLenOfHlix))) { // ||
+              crik->linkedmms = 0;
+
+            } else if((hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->opnBrsOutIndx == -1) && // || l*p + k rule in the case of add new hlix w/o removing old one
+                      (hlixCursr->jumpTreeNext->closeBrsInnIndx - hlixCursr->closeBrsOutIndx == 1) && 
+                      (hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->jumpTreeNext->opnBrsOutIndx != 
+                       (seq->minLenOfHlix - 1)) && 
+                      seq->maxNumMismatch == 0) {
+              crik->linkedmms = 0;
+            } else if (skip) {
+              crik->linkedmms = 0;
+            } else {
+// || make sure there'r enough helices (equal or larger than the min requirement)// || make sure there'r enough hairpins (equal or larger than the min requirement)
+              if ((crik->numHlix >= seq->minNumHlix) && (crik->numHP >= seq->minNumHP)) { 
+                for (k = 0; k < flagUB; k++)
+                  if (!crik->struMustPairFlag[k])
+                    V1FailFlag = 1; // || make sure all the must pair nucleotides are paired, otherwise this structure isn't qualified, and nothing will happen
+
+                if (!V1FailFlag) { // || if this point is reached, that means this structure contains enough helices and hairpins, and all the V1 pairs are paird
+                  crik->numStru++;
+                  if(seq->bundle) { // count unbundled structures
+                    countAndPrintStructures(seq, crik);
                     crik->linkedmms = 0;
-                    break;
-                  }
-
-                  if (seq->maxNumMismatch > 0) {
-                    if (((hlixCursr->jumpTreeNext->opnBrsInnIndx - 
-                          hlixCursr->jumpTreeNext->opnBrsOutIndx != (seq->minLenOfHlix - 1)) && 
-                         ((hlixCursr->jumpTreeNext->mismatchFlag[seq->maxNumMismatch-1][0] != 
-                           hlixCursr->jumpTreeNext->opnBrsInnIndx || maxMismatches) || 
-                          ((cmpntCursr->opnBrsInnIndx - hlixCursr->jumpTreeNext->opnBrsOutIndx + 1) >= 
-                           (seq->minLenOfHlix * 3) && !cmpntCursr->bundleFlag && 
-                           !hlixCursr->jumpTreeNext->bundleFlag)) && 
-                         (!cmpntCursr->bundleFlag && (cmpntCursr->mismatchFlag[0][0] != 
-                          cmpntCursr->opnBrsOutIndx || cmpntCursr->opnBrsInnIndx - cmpntCursr->opnBrsOutIndx + 1 != 
-                          seq->minLenOfHlix)))) { // || if this check point is passed, the following will be 'REPLACE OLD HELIX BY NEW ONE'
-                      crik->linkedmms = 0;
-                      break;
-                    }
-                  } else if(hlixCursr->jumpTreeNext->opnBrsInnIndx - 
-                            hlixCursr->jumpTreeNext->opnBrsOutIndx != (seq->minLenOfHlix - 1)) {
+                  } else {
+                    disp_stru(seq, crik, 11); // for report  (official use)
+                    dispStru(seq,crik,11); // for display (debug use)
                     crik->linkedmms = 0;
-                    break;
                   }
-                } else {
-                  crik->linkedmms = 0;
-                }
-//    printf("chkpnt 11\n");
-                dispLL(seq,crik,todd,toddP);
-                cmpntCursr->intrvlCntr = todd->intrvlCntr;
-                dispLL(seq,crik,todd,toddP);
+                } // end inner 1 if
+              } // end outer if
+              todd->intrvlInsFormdFlag = 0;
 
-                if (seq->numCovari) { // || || update constraint flags (currently, only V1 and covariance are included)
-                  flagUB = seq->numCovari + seq->numV1Pairng; // || ||
-                  tempInt = calloc(flagUB, sizeof(int16_t)); // || ||
 
-                  for (j = 0; j < flagUB; j++) {      // || ||
-                    if (!cmpntCursr->mustPairFlag[j] && hlixCursr->mustPairFlag[j]) { // || || replace old hlix will lose a covariance pair or v1 pairing in helix
-                      crik->struMustPairFlag[j] = 0; // || ||
-                    } // end inner if                                                                  // || ||
-//     printf("chkpnt 12\n");
-                    dispLL(seq,crik,todd,toddP);
+              jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
+            }  // end if (used by l*p + k feature)
+          }  // end if B2
 
-                    tempInt[j] = (cmpntCursr->mustPairFlag[j] || crik->struMustPairFlag[j]); // || || if there's no issue of losing covariance pair, then the new flag set should contain all flags
-                  } // end for                                                                       // || ||
+        } else { // || NO CHANGE OF HELIX : to prevent duplicate (currently there's no helix in structure)
+          cmpntCursr = cmpntCursr->cmpntListNext;
+          continue;
+        } // end if B1 1
 
-                  free(crik->struMustPairFlag);       // || ||
-                  crik->struMustPairFlag = tempInt; // || || replace old flags set by new one
-                } // end outer if                                                                  // || \/
+      } else {
+        disp(seq,DISP_ALL,"hlix tail exceeds intrvl UB: %d >= %d\n", cmpntCursr->closeBrsOutIndx, 
+                                                                     todd->intrvlUB); 
+        disp(seq,DISP_ALL,"chk pnt 8       \n"); 
+        dispLL(seq,crik,todd,toddP); 
+        disp(seq,DISP_ALL,"Head bak to jump_stage_2 recur lv: %d->%d\n", todd->lvlOfRecur, todd->lvlOfRecur);
+        break; // should be break, not continue, since we are sure there's no more helix in this component whose tail will fit in
+      }      // end if gnd lvl 1
+      dispLL(seq,crik,todd,toddP); 
+      disp(seq,DISP_ALL,"Exiting 'jump_stage_3', recur lv: %d->%d\n", intrvlMsgr->lvlOfRecur, 
+                                                                      intrvlMsgr->lvlOfRecur);
+      cmpntCursr = cmpntCursr->cmpntListNext; // when reaching this point, either the futher potential recursions have been exhausted
+    }      // end inner while
+    i++;
 
-                cmpntCursr->jumpTreeNext = hlixCursr->jumpTreeNext; // || || unhook the reference to old helix, and hook reference to the new helix. erase the record of the old helix, so that it may be used again somewhere else
-                hlixCursr->jumpTreeNext = NULL; // || || clear the old helix
-                hlixCursr->outsideIntrvlLB = -1;       // || ||
-                hlixCursr->outsideIntrvlUB = -1;       // || ||
-                crik->hlixInStru = cmpntCursr; // || ||
-                hlixCursr = crik->hlixInStru;           // || ||
-                hlixCursr->outsideIntrvlLB = todd->intrvlLB; // || || write in the new helix
-                hlixCursr->outsideIntrvlUB = todd->intrvlUB; // || ||
-                hlixCursr->lvlOfRecur = intrvlMsgr->lvlOfRecur + 1;                            // || ||
-                hlixCursr->hlixBranchngIndx1 = intrvlMsgr->hlixBranchngIndx1;  // || ||
-
-                int rstoFlag = 0;								// ||
-                if (todd->RSTO && !is_there_concern_on_ring_formation_of_linked_list(seq, crik, todd)) {
-                  disp(seq,DISP_ALL,"            special On Q %d-%d\n",todd->RSTO->opnBrsInnIndx, todd->RSTO->closeBrsInnIndx);
-                  crik->interval = todd->RSTO;
-                  rstoFlag = 1;
-                  rstoCount++;
-                  disp(seq,DISP_ALL,"Interval restore todd on queue!\n");
-                } // end outer if                                                                    // \/
-//    printf("chkpnt 14\n");
-                dispLL(seq,crik,todd,toddP);
-
-                if ((crik->numHlix >= seq->minNumHlix) && // || make sure there'r enough helices (equal or larger than the min requirement)
-                    (crik->numHP >= seq->minNumHP)) { // || make sure there'r enough hairpins (equal or larger than the min requirement)
-                  for (k = 0; k < flagUB; k++)           // ||
-                    if (!crik->struMustPairFlag[k]) { // || make sure all the must pair nucleotides are paired, otherwise this structure isn't qualified, and nothing will happen
-                      V1FailFlag = 1;                // ||
-                      break; // || no point to continue looping, since this structure is disqualified for sure
-                    } // end if                                   // ||
-//    printf("chkpnt 15\n");
-                  dispLL(seq,crik,todd,toddP);
-
-                  if (!V1FailFlag) { // || make sure all V1 nucleotides are paired                                                                       // ||
-                    crik->numStru++; // || if this point is reached, that means this structure contains enough helices and hairpins, and all the V1 pairs are paird
-                    if (seq->bundle) { // count unbundled structures
-                      countAndPrintStructures(seq, crik);
-                      crik->linkedmms = 0;
-                    } else {
-                      disp_stru(seq, crik, 11); // for report  (official use)
-                      dispStru(seq,crik,11); // for display (debug use)
-                      crik->linkedmms = 0;
-                    }
-                  } // end inner 1 if                           // ||
-                } // end outer if                             // \/
-
-                todd->intrvlInsFormdFlag = 0;
-                jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
-
-              } else {     // ADD A NEW HELIX, NO HELIX IS REMOVED
-                cmpntCursr->intrvlCntr = todd->intrvlCntr;
-                dispLL(seq,crik,todd,toddP);
-
-                for (j = 0; j < flagUB; j++) // || update constraint flags, since no helix is removed, no need to uncheck any box, but just add new checks
-                  if (cmpntCursr->mustPairFlag[j]) 
-                    crik->struMustPairFlag[j] = 1; // || covari flag got '1'   <==================== Must Pair (covari or V1)
-                cmpntCursr->jumpTreeNext = hlixCursr;      // ||
-                crik->numHlix++;                           // ||
-                crik->hlixInStru = cmpntCursr;             // ||
-                hlixCursr = crik->hlixInStru;              // ||
-                hlixCursr->outsideIntrvlLB = todd->intrvlLB; // || write new one
-                hlixCursr->outsideIntrvlUB = todd->intrvlUB; // ||
-                hlixCursr->lvlOfRecur = intrvlMsgr->lvlOfRecur + 1;             // ||
-                hlixCursr->hlixBranchngIndx1 = intrvlMsgr->hlixBranchngIndx1;     // ||
-
-                int maxMismatches = 0;
-                int numMismatches = 0;
-                if (!hlixCursr->bundleFlag) {
-                  maxMismatches = 1;
-                  int q;
-                  for (q = 0; q < seq->maxNumMismatch; q++) {
-                    if (hlixCursr->mismatchFlag[q][0] == -1) {
-                      maxMismatches = 0;
-                    } else {
-                      numMismatches++;
-                    }
-                  }
-                }
-
-                int skip = 0;
-                if((hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->opnBrsOutIndx == -1) && // || l*p + k rule in the case of add new hlix w/o removing old one
-                   (hlixCursr->jumpTreeNext->closeBrsInnIndx - hlixCursr->closeBrsOutIndx == 1) && 
-                   !hlixCursr->jumpTreeNext->bundleFlag) {
-                  int q;
-                  for (q = 0; q < seq->maxNumMismatch; q++) {
-                    if(hlixCursr->jumpTreeNext->mismatchFlag[q][0] != -1) {
-                      numMismatches++;
-                    }
-                  }
-                  crik->linkedmms += numMismatches;
-                  if (crik->linkedmms > seq->maxNumMismatch) {
-                    skip = 1;
-                  }
-                } else {
-                  crik->linkedmms = 0;
-                }
-
-                if ((hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->opnBrsOutIndx == -1) && // || l*p + k rule in the case of add new hlix w/o removing old one
-                    (hlixCursr->jumpTreeNext->closeBrsInnIndx - hlixCursr->closeBrsOutIndx == 1) && 
-                    seq->maxNumMismatch > 0 && 
-                    (hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->jumpTreeNext->opnBrsOutIndx != 
-                     (seq->minLenOfHlix - 1)) && 
-                    ((hlixCursr->jumpTreeNext->mismatchFlag[seq->maxNumMismatch - 1][0] != 
-                      hlixCursr->jumpTreeNext->opnBrsInnIndx || maxMismatches) || 
-                     ((hlixCursr->opnBrsInnIndx	- hlixCursr->jumpTreeNext->opnBrsOutIndx + 1) >= 
-                      (seq->minLenOfHlix * 3) && !hlixCursr->bundleFlag && !hlixCursr->jumpTreeNext->bundleFlag)) &&
-                    (!hlixCursr->bundleFlag && (hlixCursr->mismatchFlag[0][0] != hlixCursr->opnBrsOutIndx || 
-                                                hlixCursr->opnBrsInnIndx - hlixCursr->opnBrsOutIndx + 1	!= 
-                                                seq->minLenOfHlix))) { // ||
-                  crik->linkedmms = 0;
-
-                } else if((hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->opnBrsOutIndx == -1) && // || l*p + k rule in the case of add new hlix w/o removing old one
-                          (hlixCursr->jumpTreeNext->closeBrsInnIndx - hlixCursr->closeBrsOutIndx == 1) && 
-                          (hlixCursr->jumpTreeNext->opnBrsInnIndx - hlixCursr->jumpTreeNext->opnBrsOutIndx != 
-                           (seq->minLenOfHlix - 1)) && 
-                          seq->maxNumMismatch == 0) {
-                  crik->linkedmms = 0;
-                } else if (skip) {
-                  crik->linkedmms = 0;
-                } else {
-
-                  if ((crik->numHlix >= seq->minNumHlix) && // || make sure there'r enough helices (equal or larger than the min requirement)
-                      (crik->numHP >= seq->minNumHP)) { // || make sure there'r enough hairpins (equal or larger than the min requirement)
-                    for (k = 0; k < flagUB; k++)       // ||
-                      if (!crik->struMustPairFlag[k])
-                        V1FailFlag = 1; // || make sure all the must pair nucleotides are paired, otherwise this structure isn't qualified, and nothing will happen
-
-                    if (!V1FailFlag) { // || if this point is reached, that means this structure contains enough helices and hairpins, and all the V1 pairs are paird                                                                      // ||
-                      crik->numStru++;               // ||
-                      if(seq->bundle) { // count unbundled structures
-                        countAndPrintStructures(seq, crik);
-                        crik->linkedmms = 0;
-                      } else {
-                        disp_stru(seq, crik, 11); // for report  (official use)
-                        dispStru(seq,crik,11); // for display (debug use)
-                        crik->linkedmms = 0;
-                      }
-                    } // end inner 1 if                           // ||
-                  } // end outer if                             // \/
-                  todd->intrvlInsFormdFlag = 0;
-                  jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
-                }  // end if (used by l*p + k feature)
-              }  // end if B2
-
-            } else { // || NO CHANGE OF HELIX : to prevent duplicate (currently there's no helix in structure)
-              cmpntCursr = cmpntCursr->cmpntListNext;        // ||
-              continue;                                      // \/
-            } // end if B1 1
-
-          }  // for inner bundle use
-
-        } else {
-          disp(seq,DISP_ALL,"hlix tail exceeds intrvl UB: %d >= %d\n", cmpntCursr->closeBrsOutIndx, todd->intrvlUB); disp(seq,DISP_ALL,"chk pnt 8       \n"); dispLL(seq,crik,todd,toddP); disp(seq,DISP_ALL,"Head bak to jump_stage_2 recur lv: %d->%d\n", todd->lvlOfRecur, todd->lvlOfRecur);
-          break; // should be break, not continue, since we are sure there's no more helix in this component whose tail will fit in
-        }      // end if gnd lvl 1
-        dispLL(seq,crik,todd,toddP); disp(seq,DISP_ALL,"Exiting 'jump_stage_3', recur lv: %d->%d\n", intrvlMsgr->lvlOfRecur, intrvlMsgr->lvlOfRecur );
-        cmpntCursr = cmpntCursr->cmpntListNext; // when reaching this point, either the futher potential recursions have been exhausted
-      }      // end inner while
-      i++;
-
-    } // end while 2                                      // all legitimate cmpnt types have been exhausted, which is the end of this hairpin
-  }  // for outer bundle use
+  } // end while 2                                      // all legitimate cmpnt types have been exhausted, which is the end of this hairpin
 
   if (intrvlMsgr->intrvlTypFlag == BEH_INTRVL)
     crik->numHP--; // that concluded this round of hairpin quest, since the legitimate cmpnt types have been exhausted

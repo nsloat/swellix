@@ -50,7 +50,7 @@
 #include "statistics.h"
 #ifdef _MPI
 #include <mpi.h>
-//#include "mpi_make_bundle_list.h"
+#include "mpi_jump_tree.h"
 #endif
 
 int rank, wsize;
@@ -440,8 +440,7 @@ int make_interval_look_up_table(config* seq, global* crik)
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-int make_bundle_list(config* seq, global* crik)
-{
+int make_bundle_list(config* seq, global* crik) {
   disp(seq,DISP_ALL,"################################################################################################  Entering 'make_bundle_st'\n");
 
   initialize_eden(seq, crik);
@@ -449,6 +448,69 @@ int make_bundle_list(config* seq, global* crik)
   dispEden(seq, crik);
   return 0;
 }  // end make_bundle_list
+
+void make_bundled_cmpntList(config* seq, global* crik) {
+  int j;
+  int k;
+
+  // remove components that are less than max bundle len
+  for (j = 0; j < seq->strLen; j++) {
+    knob* cmpntCursr = crik->cmpntList[j].knob;
+    knob* prev = crik->cmpntList[j].knob;
+    k = 0;
+    while (cmpntCursr) {
+      int len = cmpntCursr->closeBrsOutIndx - cmpntCursr->opnBrsOutIndx + 1;
+      int maxBundleLen = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
+      if (len <= maxBundleLen) {
+        if (k == 0) { // first element needs to be deleted
+          knob* toDelete = cmpntCursr;
+          crik->cmpntList[j].knob = cmpntCursr->cmpntListNext;
+          toDelete->cmpntListNext = NULL;
+          cmpntCursr = crik->cmpntList[j].knob;
+          free(toDelete);
+          crik->numCmpnt--;
+          crik->cmpntList[j].cnt--;
+          continue;
+        } else { // this current element needs to be deleted, in the middle of the list
+          knob* toDelete = cmpntCursr;
+          prev->cmpntListNext = cmpntCursr->cmpntListNext;
+          toDelete->cmpntListNext = NULL;
+          cmpntCursr = prev->cmpntListNext;
+          free(toDelete);
+          crik->numCmpnt--;
+          crik->cmpntList[j].cnt--;
+          continue;
+        }
+      }
+
+      prev = cmpntCursr;
+      cmpntCursr = cmpntCursr->cmpntListNext;
+      k++;
+    }
+  }
+
+  for (j = 0; j < seq->strLen; j++) {
+    for (k = seq->strLen-1; k > j; k--) {
+      if (crik->eden[j][k].dumiNode) {
+        crik->eden[j][k].dumiNode->cmpntListNext = crik->cmpntList[j].knob;
+        crik->cmpntList[j].knob = crik->eden[j][k].dumiNode;
+        crik->cmpntList[j].cnt++;
+        crik->numCmpnt++;
+      }
+    }
+  }
+  display_components(seq, crik, 1);
+//	  printf("# of components in cmpntList after adding bundles: %d\n", (int)crik->numCmpnt);
+  disp(seq,DISP_LV1,"# of components after adding bundles: %d\n",(int)crik->numCmpnt);
+  // reset the component list occupied type list
+  crik->numCmpntTypOcupid = 0;
+  for (j = 0; j < seq->strLen; j++) {
+    if (crik->cmpntList[j].knob) {
+      crik->cmpntListOcupidTyp[crik->numCmpntTypOcupid] = j;
+      crik->numCmpntTypOcupid++;
+    }
+  }
+}
 
 //*****************************************************************************
 // Function : Make Jump Tree
@@ -463,85 +525,44 @@ int make_bundle_list(config* seq, global* crik)
 //          : 3rd dimension - hgtK : height k, number of cmpnt types which may fit into the interval
 //*****************************************************************************
 int make_jump_tree(config* seq, global* crik, int start, int end) {
-//  if(rank==0) {
     disp(seq,DISP_ALL,"################################################################################################  Entering 'make_jump_tree'\n");
     disp(seq,DISP_ALL,"Recursion level starts at zero from here\n");
-//  }
 
   local* todd = init_todd(crik);
   int16_t    i;
-  int16_t    hlixBranchngIndx1 = 0;                                          // all branches of hlix are rooted (numbered) from make_jump_tree()
+  int16_t    hlixBranchngIndx1 = 0; // all branches of hlix are rooted (numbered) from make_jump_tree()
 
   crik->hlixInStru = NULL;
-  crik->intrvlCntr = 0;                                                      // this reset is necessary because it's just used by make_bundle_list()
+  crik->intrvlCntr = 0; // this reset is necessary because it's just used by make_bundle_list()
 
   // Combine bundles into component list if necessary
-  if (seq->bundle) {
-    int j;
-    int k;
-
-    // remove components that are less than max bundle len
-    for (j = 0; j < seq->strLen; j++) {
-      knob* cmpntCursr = crik->cmpntList[j].knob;
-      knob* prev = crik->cmpntList[j].knob;
-      k = 0;
-      while (cmpntCursr) {
-        int len = cmpntCursr->closeBrsOutIndx - cmpntCursr->opnBrsOutIndx + 1;
-        int maxBundleLen = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
-        if (len <= maxBundleLen) {
-          if (k == 0) { // first element needs to be deleted
-            knob* toDelete = cmpntCursr;
-            crik->cmpntList[j].knob = cmpntCursr->cmpntListNext;
-            toDelete->cmpntListNext = NULL;
-            cmpntCursr = crik->cmpntList[j].knob;
-            free(toDelete);
-            crik->numCmpnt--;
-            crik->cmpntList[j].cnt--;
-            continue;
-          } else { // this current element needs to be deleted, in the middle of the list
-            knob* toDelete = cmpntCursr;
-            prev->cmpntListNext = cmpntCursr->cmpntListNext;
-            toDelete->cmpntListNext = NULL;
-            cmpntCursr = prev->cmpntListNext;
-            free(toDelete);
-            crik->numCmpnt--;
-            crik->cmpntList[j].cnt--;
-            continue;
-          }
-        }
-
-        prev = cmpntCursr;
-        cmpntCursr = cmpntCursr->cmpntListNext;
-        k++;
-      }
-    }
-
-    for (j = 0; j < seq->strLen; j++) {
-      for (k = seq->strLen-1; k > j; k--) {
-        if (crik->eden[j][k].dumiNode) {
-          crik->eden[j][k].dumiNode->cmpntListNext = crik->cmpntList[j].knob;
-          crik->cmpntList[j].knob = crik->eden[j][k].dumiNode;
-          crik->cmpntList[j].cnt++;
-          crik->numCmpnt++;
-        }
-      }
-    }
-//    if(rank==0) {
-      display_components(seq, crik, 1);
-//	  printf("# of components in cmpntList after adding bundles: %d\n", (int)crik->numCmpnt);
-      disp(seq,DISP_LV1,"# of components after adding bundles: %d\n",(int)crik->numCmpnt);
-//   }
-    // reset the component list occupied type list
-    crik->numCmpntTypOcupid = 0;
-    for (j = 0; j < seq->strLen; j++) {
-      if (crik->cmpntList[j].knob) {
-        crik->cmpntListOcupidTyp[crik->numCmpntTypOcupid] = j;
-        crik->numCmpntTypOcupid++;
-      }
-    }
-  }
+  if(seq->bundle)
+    make_bundled_cmpntList(seq, crik);
 
   int keepgoing;
+
+#ifdef _MPI
+
+  struct mpi_crik {
+    
+  };
+
+
+  knob* cmpnts[crik->numCmpnts];
+  int counter; = 0;
+  for(i = 0; i < crik->numCmpntTypOcupid; i++) {
+    cmpnts[counter] = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
+    while(cmpnts[counter].cmpntListNext != NULL) {
+      cmpnts[counter+1] = cmpnts[counter].cmpntListNext;
+      counter++;
+    }
+  }
+  if(counter != crik->numCmpnts) {printf("seems to be a conflict in cmpntList & numCmpnts\n");}
+
+  while(status 
+  
+
+#else
 
   // scan thru the whole cmpnt list
   for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
@@ -583,6 +604,8 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
       }  // end while
     }
   }      // end for
+
+#endif
 
   exit_curr_recur(seq,crik, todd);
 

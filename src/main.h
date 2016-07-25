@@ -263,9 +263,9 @@ typedef struct { // Define: the parameter book-keeper of global nature (only one
   int64_t      numCmpnt;            // number of component               : keep track of the size of 'crik->cmpntList', used in making components
   int64_t      numJumpIns;          // number of jump inside             : used in 'make_jump_bush' to see how many combinations were made for jump-inside
   int64_t      numJumpBeh;          // number of jump behind             :               "                     "                   "           jump-behind
-  uint64_t      numStru;             // number of structures              : the total count of the structures (or if bundling is on, total structures with bundles)
-  uint64_t      numUnbundledStru;    // number of total unbundled structures : the total count of all the possible structures
-  uint64_t      numBundles; 	    // number of bundles				 : total number of bundles
+  uint64_t     numStru;             // number of structures              : the total count of the structures (or if bundling is on, total structures with bundles)
+  uint64_t     numUnbundledStru;    // number of total unbundled structures : the total count of all the possible structures
+  uint64_t     numBundles; 	    // number of bundles				 : total number of bundles
   int16_t      lvlOfRecur;          // level of recursion                : depth of roots into recursion loops from ground level
   int16_t      closeBrsInnIndx;     // close  "   inner   "              : close       "            
   int16_t      closeBrsOutIndx;     // close  "   outer   "              : close       "            

@@ -29,7 +29,7 @@ MPIFLAGS +=-D_MPI
 endif
 
 
-CFLAGS=-g #-Wall
+CFLAGS=-g -Wall
 #CFLAGS+=-D_EXECDIR='"$(EXECDIR)"'
 #CFLAGS+=-fopenmp
 
