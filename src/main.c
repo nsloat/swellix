@@ -543,10 +543,8 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 
 #ifdef _MPI
 
-  struct mpi_crik {
-    
-  };
-
+//  struct mpi_crik {  
+//  };
 
   knob* cmpnts[crik->numCmpnts];
   int counter; = 0;
@@ -557,10 +555,15 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
       counter++;
     }
   }
-  if(counter != crik->numCmpnts) {printf("seems to be a conflict in cmpntList & numCmpnts\n");}
+  if(counter != crik->numCmpnts) {printf("MPI_ERR seems to be a conflict in cmpntList & numCmpnts on rank %d\n", rank);}
 
-  while(status 
-  
+  int cmpntTracker[counter];
+  for(i = 0; i < counter; i++) cmpntTracker[i] = 0;
+  int finished = 0;
+
+  while(!finished) {
+    
+  }
 
 #else
 
