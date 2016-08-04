@@ -1,3 +1,4 @@
+#ifdef _MPI
 #ifndef __MPI_JUMP_TREE
 #define __MPI_JUMP_TREE
 
@@ -25,3 +26,4 @@ void send_work(/*params*/, int to);
 
 
 #endif // __MPI_JUMP_TREE
+#endif

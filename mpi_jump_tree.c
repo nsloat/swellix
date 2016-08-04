@@ -1,3 +1,5 @@
+#ifdef _MPI
+
 #include "mpi_jump_tree.h"
 
 extern int rank, wsize;
@@ -16,3 +18,5 @@ void get_mpi_globals() {
 
 void make_jump_tree_parallel(config* seq, global* crik) {
 }
+
+#endif

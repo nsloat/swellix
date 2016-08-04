@@ -28,15 +28,12 @@ ifeq (mpicc, $(myCC))
 MPIFLAGS +=-D_MPI
 endif
 
-
 CFLAGS=-g -Wall
 #CFLAGS+=-D_EXECDIR='"$(EXECDIR)"'
 #CFLAGS+=-fopenmp
 
-
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
-
 
 RNAFLAGS=-L$(LIBDIR) -lRNA -lm -I$(INCLUDEDIR) -I$(INCLUDEDIR)ViennaRNA -D_PARAM='"$(PARAMFILE)"'
 
@@ -89,7 +86,7 @@ $(OBJDIR)/main_common.o: main_common.c main.h
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"'  
 
-$(OBJDIR)/mpi_bundle_list.o: mpi_bundle_list.c mpi_bundle_list.h main.h bundle_list.h
+$(OBJDIR)/mpi_jump_tree.o: mpi_jump_tree.c mpi_jump_tree.h main.h jump_tree.h
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"'  
 

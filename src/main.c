@@ -50,7 +50,7 @@
 #include "statistics.h"
 #ifdef _MPI
 #include <mpi.h>
-#include "mpi_jump_tree.h"
+//#include "mpi_jump_tree.h"
 #endif
 
 int rank, wsize;
