@@ -962,6 +962,7 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
 
               free(crik->struMustPairFlag);
               crik->struMustPairFlag = tempInt; // replace old flags set by new one
+              crik->mustPairLength = flagUB;
             } // end outer if
 
             // unhook the reference to old helix, and hook reference to the new helix. 

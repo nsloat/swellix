@@ -323,12 +323,12 @@ global* initialize_crik(config* seq)
 {                                                                                              disp(seq,DISP_ALL,"################################################################################################  Enterng 'initialize_crik'\n");
   global* crik = malloc(sizeof(global));                                                 // Crick the Book-keeper, our handy right-hand man #1
   crik->linkedmms         = 0;
-  crik->struLinked	  = 0;
-  crik->numJumpIns        = 0;
-  crik->hackCounter       = 0;
-  crik->skippedStru	  = 0;
-  crik->numJumpBeh        = 0;
-  crik->sizeOfIntrvl      = 0;
+//  crik->struLinked	  = 0;
+//  crik->numJumpIns        = 0;
+//  crik->hackCounter       = 0;
+//  crik->skippedStru	  = 0;
+//  crik->numJumpBeh        = 0;
+//  crik->sizeOfIntrvl      = 0;
   crik->lvlOfRecur        = 0;
   crik->numCmpnt          = 0;
   crik->numHP             = 1;
@@ -338,7 +338,7 @@ global* initialize_crik(config* seq)
   crik->numUnbundledStru  = 0;
   crik->specialRstoFlag   = 0;
   crik->intrvlCntr        = 0;                                                                 // it's like batch number, used to distinguish one batch from another
-  crik->rstoOnCueFlag     = 0;
+//  crik->rstoOnCueFlag     = 0;
   crik->intrvlCntr        = 0;
   crik->opnBrsStop        = seq->strLen - ((seq->minLenOfHlix - 1) << 1) - seq->minPairngDist; // farthest location the opnBrsOutIndx may reach
   crik->numCmpntTyp       = seq->strLen;
@@ -350,8 +350,10 @@ global* initialize_crik(config* seq)
   crik->interval          = NULL;
   crik->hlixInStru        = NULL;
 
-  if(seq->constraintActive)
-    crik->struMustPairFlag = calloc((seq->numCovari + seq->numV1Pairng), sizeof(int16_t));     // used to track the covariance pairs the current structure contains  crik->numStru = 0;
+  if(seq->constraintActive) {
+    crik->struMustPairFlag = calloc((seq->numCovari + seq->numV1Pairng), sizeof(int16_t));     // used to track the covariance pairs the current structure contains  
+  crik->mustPairLength = seq->numCovari + seq->numV1Pairng;
+  crik->numStru = 0;
 
   return crik;
 }  // end initialize_crik
@@ -546,24 +548,24 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 //  struct mpi_crik {  
 //  };
 
+
   knob* cmpnts[crik->numCmpnts];
   int counter; = 0;
   for(i = 0; i < crik->numCmpntTypOcupid; i++) {
     cmpnts[counter] = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
+    cmpnts[counter]->newCLindex = counter;
     while(cmpnts[counter].cmpntListNext != NULL) {
-      cmpnts[counter+1] = cmpnts[counter].cmpntListNext;
+      cmpnts[counter+1] = cmpnts[counter]->cmpntListNext;
+      cmpnts[counter+1]->newCLindex = counter+1;
       counter++;
     }
   }
-  if(counter != crik->numCmpnts) {printf("MPI_ERR seems to be a conflict in cmpntList & numCmpnts on rank %d\n", rank);}
+  if(counter != crik->numCmpnts) {printf("in main.c:make_jump_tree: MPI ERR - seems to be a conflict in cmpntList & numCmpnts on rank %d\n", rank);}
 
   int cmpntTracker[counter];
   for(i = 0; i < counter; i++) cmpntTracker[i] = 0;
-  int finished = 0;
-
-  while(!finished) {
-    
-  }
+  
+  make_jump_tree_parallel(seq, crik, cmpnts, cmpntTracker);
 
 #else
 
