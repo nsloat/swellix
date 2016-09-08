@@ -50,7 +50,7 @@
 #include "statistics.h"
 #ifdef _MPI
 #include <mpi.h>
-//#include "mpi_jump_tree.h"
+#include "mpi_jump_tree.h"
 #endif
 
 int rank, wsize;
@@ -326,7 +326,7 @@ global* initialize_crik(config* seq)
 //  crik->struLinked	  = 0;
 //  crik->numJumpIns        = 0;
 //  crik->hackCounter       = 0;
-//  crik->skippedStru	  = 0;
+  crik->skippedStru	      = 0;
 //  crik->numJumpBeh        = 0;
 //  crik->sizeOfIntrvl      = 0;
   crik->lvlOfRecur        = 0;
@@ -350,7 +350,7 @@ global* initialize_crik(config* seq)
   crik->interval          = NULL;
   crik->hlixInStru        = NULL;
 
-  if(seq->constraintActive) {
+  if(seq->constraintActive)
     crik->struMustPairFlag = calloc((seq->numCovari + seq->numV1Pairng), sizeof(int16_t));     // used to track the covariance pairs the current structure contains  
   crik->mustPairLength = seq->numCovari + seq->numV1Pairng;
   crik->numStru = 0;
@@ -455,6 +455,7 @@ void make_bundled_cmpntList(config* seq, global* crik) {
   int j;
   int k;
 
+printf("# of components in cmpntList before adding bundles: %ld\n", crik->numCmpnt);
   // remove components that are less than max bundle len
   for (j = 0; j < seq->strLen; j++) {
     knob* cmpntCursr = crik->cmpntList[j].knob;
@@ -502,8 +503,8 @@ void make_bundled_cmpntList(config* seq, global* crik) {
     }
   }
   display_components(seq, crik, 1);
-//	  printf("# of components in cmpntList after adding bundles: %d\n", (int)crik->numCmpnt);
-  disp(seq,DISP_LV1,"# of components after adding bundles: %d\n",(int)crik->numCmpnt);
+printf("# of components in cmpntList after adding bundles: %ld\n", crik->numCmpnt);
+  disp(seq,DISP_LV1,"# of components after adding bundles: %ld\n", crik->numCmpnt);
   // reset the component list occupied type list
   crik->numCmpntTypOcupid = 0;
   for (j = 0; j < seq->strLen; j++) {
@@ -549,23 +550,25 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 //  };
 
 
-  knob* cmpnts[crik->numCmpnts];
-  int counter; = 0;
+  knob* cmpnts[crik->numCmpnt];
+  int counter = 0;
   for(i = 0; i < crik->numCmpntTypOcupid; i++) {
     cmpnts[counter] = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
     cmpnts[counter]->newCLindex = counter;
-    while(cmpnts[counter].cmpntListNext != NULL) {
+    while(cmpnts[counter]->cmpntListNext != NULL) {
       cmpnts[counter+1] = cmpnts[counter]->cmpntListNext;
       cmpnts[counter+1]->newCLindex = counter+1;
       counter++;
     }
   }
-  if(counter != crik->numCmpnts) {printf("in main.c:make_jump_tree: MPI ERR - seems to be a conflict in cmpntList & numCmpnts on rank %d\n", rank);}
+  if(counter != crik->numCmpnt) {printf("in main.c:make_jump_tree: MPI ERR - seems to be a conflict in cmpntList & numCmpnts on rank %d: \nnumCmpnt == %ld, counter == %d\n", rank, crik->numCmpnt, counter);}
+
+  crik->numCmpnt = counter;
 
   int cmpntTracker[counter];
   for(i = 0; i < counter; i++) cmpntTracker[i] = 0;
   
-  make_jump_tree_parallel(seq, crik, cmpnts, cmpntTracker);
+  make_jump_tree_parallel(seq, crik, todd, cmpnts, cmpntTracker);
 
 #else
 
@@ -788,6 +791,7 @@ void display_structures(config* seq, global* crik, int8_t locationMark)
     locationMark++;    // purely dummy operation
   }  // end if
 }  // end display_structures
+
 
 //*****************************************************************************
 // Function : Display Linked List

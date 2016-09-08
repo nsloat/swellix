@@ -50,7 +50,7 @@ dev-swellix.exe: $(OBJS)
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
-$(OBJDIR)/main.o: main.c main.h init_general.h init_constraint.h paren_lookup_table.h component_list.h interval_lookup_table.h bundle_list.h jump_tree.h unit_tests.h close_up.h statistics.h
+$(OBJDIR)/main.o: main.c main.h init_general.h init_constraint.h paren_lookup_table.h component_list.h interval_lookup_table.h bundle_list.h jump_tree.h unit_tests.h close_up.h statistics.h mpi_jump_tree.h
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
@@ -78,7 +78,7 @@ $(OBJDIR)/interval_lookup_table.o: interval_lookup_table.c interval_lookup_table
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"'  
 
-$(OBJDIR)/jump_tree.o: jump_tree.c jump_tree.h main.h close_up.h unit_tests.h statistics.h
+$(OBJDIR)/jump_tree.o: jump_tree.c jump_tree.h main.h close_up.h unit_tests.h statistics.h mpi_jump_tree.h
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"'  
 
@@ -131,7 +131,7 @@ mpi-disp: myCC=mpicc
 mpi-disp: MPIFLAGS+=-D_MPI
 mpi-disp: CFLAGS+=-D_display
 mpi-disp: pre-build-mpi
-mpi-disp: dev-swellix-mpi.exe
+mpi-disp: dev-swellix.exe
 
 vienna:
 	cd ViennaRNA-2.2.5; \

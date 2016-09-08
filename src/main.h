@@ -294,7 +294,7 @@ typedef struct { // Define: the parameter book-keeper of global nature (only one
 //  int8_t       rstoOnCueFlag;       // restore on cue flag               : to prevent duplicate due to interval restore
   int8_t       specialRstoFlag;     // special restore flag              : accompany with specialRstoIntrvl, mark the presence of this i
 //  int8_t       hackCounter;         // hack counter                      : for use in make_jump_tree recursion HACK!
-//  int16_t      skippedStru;         // debugging purposes				 : number of structures skipped during bundling
+  int16_t      skippedStru;         // debugging purposes				 : number of structures skipped during bundling
 //  int8_t       struLinked;          // boolean for whether or not the previous helix is linked to current helix
   int8_t       linkedmms;           // number of linked mismatches
   knob*        mpiCList;            // array-ified component list for easier cross-PE communication
@@ -319,7 +319,7 @@ struct local { // Define: the parameter book-keeper of local nature (one per rec
   int16_t    lukUpCmpntTypLB;    // look-up component type lower bound:          "            "
   int8_t     intrvlInsFormdFlag; // inside interval formed            : to inform behind intrvl to raise intrvlBothFormdFlag, if behind interval may be formed, too
   int16_t    lvlOfRecur;         // level of recursion
-//  local*     next;
+  local*     next;
 };
 
 int          close_up(config* seq, global* crik);
