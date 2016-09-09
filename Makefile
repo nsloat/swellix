@@ -28,7 +28,7 @@ ifeq (mpicc, $(myCC))
 MPIFLAGS +=-D_MPI
 endif
 
-CFLAGS=-g -Wall
+CFLAGS=-g #-Wall
 #CFLAGS+=-D_EXECDIR='"$(EXECDIR)"'
 #CFLAGS+=-fopenmp
 
@@ -122,16 +122,16 @@ disp: myCC=cc
 disp: pre-build
 disp: dev-swellix.exe
 
-mpi: myCC=mpicc
+mpi: myCC=cc
 mpi: MPIFLAGS+=-D_MPI
 mpi: pre-build-mpi
 mpi: dev-swellix-mpi.exe
 
-mpi-disp: myCC=mpicc
+mpi-disp: myCC=cc
 mpi-disp: MPIFLAGS+=-D_MPI
 mpi-disp: CFLAGS+=-D_display
 mpi-disp: pre-build-mpi
-mpi-disp: dev-swellix.exe
+mpi-disp: dev-swellix-mpi.exe
 
 vienna:
 	cd ViennaRNA-2.2.5; \

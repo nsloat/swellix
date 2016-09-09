@@ -1024,8 +1024,8 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
               int to = is_work_needed();
               if(to != -1) {
                 send_work(crik, todd, to);
-              }
-            }
+              } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
+            } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
 #else
             jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
 #endif
@@ -1125,8 +1125,8 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
                 int to = is_work_needed();
                 if(to != -1) {
                   send_work(crik, todd, to);
-                }
-              }            
+                } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
+              } else jump_stage_1_set_intrvl(seq, crik, todd, 0); 
 #else
               jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
 #endif

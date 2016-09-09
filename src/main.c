@@ -566,7 +566,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
   crik->numCmpnt = counter;
 
   int cmpntTracker[counter];
-  for(i = 0; i < counter; i++) cmpntTracker[i] = 0;
+  for(i = 0; i < counter; i++) cmpntTracker[i] = cmpnts[i]->newCLindex;
   
   make_jump_tree_parallel(seq, crik, todd, cmpnts, cmpntTracker);
 

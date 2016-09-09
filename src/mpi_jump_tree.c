@@ -1,6 +1,7 @@
 #ifdef _MPI
 
 #include "mpi_jump_tree.h"
+#include "jump_tree.h"
 #include <stdlib.h>
 #include <mpi.h>
 
@@ -79,7 +80,13 @@ printf("pe %d received msg %d in stage 1 mpi\n", rank, msg);
 printf("pe %d cleared the first mpi stage\n", rank);
   mpi_stage = mpi_stage_2;
 
-  get_work(-1, seq, crik, todd);
+  if(rank == 0) get_work(0, seq, crik, todd);
+  else {
+    int message[4] = {rank, 0, 0, 0};
+    MPI_Ssend(message, 4, MPI_INT, mpi_to, MPI_REQUEST_WORK_2, MPI_COMM_WORLD);
+    get_work(-1, seq, crik, todd);
+  }
+
   while(!isDone) {
     jump_stage_1_set_intrvl(seq, crik, todd, 0); 
     get_work(0, seq, crik, todd);
@@ -228,7 +235,7 @@ void get_work(int amount, config* seq, global* crik, local* todd) {
       message[2] = 0;
       message[3] = 0;
 
-      if(message[0] = 0) {
+      if(message[0] == 0) {
         // If it came from PE 0, he wants extra info.
         message[1] += parallel_sent_work_left;
         message[2] += parallel_work_sent;
@@ -267,7 +274,7 @@ int pack_swellix_structure(global* crik, int* msg) {
     cursr = cursr->jumpTreeNext;
   }
 
-  return count+1;
+  return count;//+1;
 }
 
 void unpack_swellix_structure(global* crik, int* msg, int count) {
@@ -437,18 +444,21 @@ void send_work(global* crik, local* todd, int to) {
 
   if(to < rank) parallel_sent_work_left = 1;
 
-  int* message;
+  int* message = NULL;
   int cmpnts = pack_swellix_structure(crik, message);
   MPI_Send(message, cmpnts, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
-  /*message = */memset(message, 0, cmpnts);
+//  message = memset(message, 0, cmpnts);
+  int i;
+  for(i = 0; i < cmpnts; i++){ message[i] = 0; }
 
 // DO OTHER VITAL INFO TRANSMISSION HERE
-  /*TODO: create serialization of knob types*/
-  /*TODO: send relevant todd information*/
-  /*TODO: send relevant crik information*/
+  /*TODO: create serialization of knob types DONE*/
+  /*TODO: send relevant todd information DONE*/
+  /*TODO: send relevant crik information DONE*/
   int msg_size = pack_todd(todd, message);
   MPI_Send(message, msg_size, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
-  /*message = */memset(message, 0, msg_size);
+//  message = memset(message, 0, msg_size);
+  for(i = 0; i < cmpnts; i++){ message[i] = 0; }
 
   msg_size = pack_crikInfo(crik, message);
   MPI_Send(message, msg_size, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
