@@ -3,7 +3,7 @@
 #SBATCH -p normal
 #
 # S B A T C H -N 1
-# S B A T C H --exclusive
+#SBATCH --exclusive
 #SBATCH -n 2
 #SBATCH --ntasks-per-node 2
 #SBATCH --output=/home/nsloat/swellix/mpitest/fullMPI_%J.o
