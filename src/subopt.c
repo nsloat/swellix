@@ -28,6 +28,7 @@ int MISMATCHES;
 LabeledStructures* mylab; //pointer to the labeledstructure object to use
 LabeledStructures* mylabs; //target array of objects to build up
 int* mylabsSize;
+int* mylabsMax;
 config* seq;
 
 int slide_those_windows(char* subSeq, 
@@ -39,7 +40,8 @@ int slide_those_windows(char* subSeq,
                         int asymm, 
                         config* pseq, 
                         LabeledStructures* labs,
-                        int* labsSize) {
+                        int* labsSize,
+                        int* labsMax) {
 
 //printf("new slide windows call\n");
 
@@ -59,6 +61,7 @@ int slide_those_windows(char* subSeq,
 
     mylabs = labs;
     mylabsSize = labsSize;
+    mylabsMax = labsMax;
 
     mylab = &mylabs[*mylabsSize];//malloc(sizeof(LabeledStructures));
 //    initLabeledStructures(mylab);
@@ -95,6 +98,10 @@ int slide_those_windows(char* subSeq,
     //write out final labeled structures computed for this window
     if(mylab->title[0] != '\0') {
 //      mylabs[(*mylabsSize)++] = mylab;
+      if(*mylabsSize == *mylabsMax) {
+        *mylabsMax += seq->strLen*100;
+        mylabs = (LabeledStructures*)realloc(mylabs, *mylabsMax);
+      }
       (*mylabsSize)++;
     } else {
 //      freeLabeledStructures(&mylab);
@@ -890,6 +897,10 @@ void saveLabeledStructure(int end, int width, char* structure, int helices, char
 //printf("making bundles for %s\n%s", mylab->title, mylab->structures);
           if(mylab->title[0] != '\0') {
 //            mylabs[(*mylabsSize)++] = mylab;
+            if(*mylabsSize == *mylabsMax) {
+               *mylabsMax += seq->strLen*100;
+              mylabs = (LabeledStructures*)realloc(mylabs, *mylabsMax);
+            }
             (*mylabsSize)++;
           } else {
             //freeLabeledStructures(&mylab);

@@ -1019,16 +1019,16 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
             } // end outer if
 
             todd->intrvlInsFormdFlag = 0;
-#ifdef _MPI
+/*#ifdef _MPI
             if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1)) {
               int to = is_work_needed();
               if(to != -1) {
                 send_work(crik, todd, to);
               } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
             } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
-#else
+#else*/
             jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
-#endif
+//#endif
           } else {     // ADD A NEW HELIX, NO HELIX IS REMOVED
             cmpntCursr->intrvlCntr = todd->intrvlCntr;
             dispLL(seq,crik,todd,toddP);
@@ -1120,16 +1120,16 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
               } // end outer if
               todd->intrvlInsFormdFlag = 0;
 
-#ifdef _MPI
+/*#ifdef _MPI
               if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1)) {
                 int to = is_work_needed();
                 if(to != -1) {
                   send_work(crik, todd, to);
                 } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
               } else jump_stage_1_set_intrvl(seq, crik, todd, 0); 
-#else
+#else*/
               jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
-#endif
+//#endif
             }  // end if (used by l*p + k feature)
           }  // end if B2
 

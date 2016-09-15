@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
       }
       if(seq->algoMode > MODE_INTAB) {
         if(rank==0)disp(seq,DISP_LV1,"started jump tree...\n");
-	make_jump_tree(seq, crik, start, end);
+          make_jump_tree(seq, crik, start, end);
         if(rank==0)disp(seq,DISP_LV1,"completed\n");
       }
     }    // end if 2
@@ -544,6 +544,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 
   int keepgoing;
 
+
 #ifdef _MPI
 
 //  struct mpi_crik {  
@@ -574,6 +575,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 
   // scan thru the whole cmpnt list
   for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
+//  for(i = 0; i < crik->numCmpntTypOcupid; i++) {
     // grab one component on the component type indicated by crik->cmpntListOcupidTyp[i]
     todd->cmpntLLCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
     keepgoing = 1;

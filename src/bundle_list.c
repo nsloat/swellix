@@ -376,8 +376,9 @@ void run_sliding_windows(config* seq, global* crik) {
   tmm = seq->maxNumMismatch;
   asymmetry = 0;
 
-  LabeledStructures* labs = calloc(seq->strLen*300, sizeof(LabeledStructures*));
+  LabeledStructures* labs = calloc(seq->strLen*100, sizeof(LabeledStructures*));
   int labsSize = 0;
+  int labsMax = seq->strLen*100;
 
   int index;
   char* subSeq = calloc(window+1, sizeof(char));
@@ -390,7 +391,7 @@ void run_sliding_windows(config* seq, global* crik) {
     substrLen = index-stroffset > window ? window : index-stroffset;
     strncpy(subSeq, seq->ltr+stroffset, substrLen);
     strncpy(subMod, mods+stroffset, substrLen);
-    slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, labs, &labsSize);
+    slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, labs, &labsSize, &labsMax);
   }
 
 #ifdef _MPI
