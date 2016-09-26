@@ -127,7 +127,7 @@ mpi: MPIFLAGS+=-D_MPI
 mpi: pre-build-mpi
 mpi: dev-swellix-mpi.exe
 
-mpi-disp: myCC=mpicc
+mpi-disp: myCC=cc
 mpi-disp: MPIFLAGS+=-D_MPI
 mpi-disp: CFLAGS+=-D_display
 mpi-disp: pre-build-mpi

@@ -544,7 +544,6 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 
   int keepgoing;
 
-
 #ifdef _MPI
 
 //  struct mpi_crik {  
@@ -556,9 +555,10 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
   for(i = 0; i < crik->numCmpntTypOcupid; i++) {
     cmpnts[counter] = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
     cmpnts[counter]->newCLindex = counter;
-    while(cmpnts[counter]->cmpntListNext != NULL) {
-      cmpnts[counter+1] = cmpnts[counter]->cmpntListNext;
-      cmpnts[counter+1]->newCLindex = counter+1;
+    counter++;
+    while(cmpnts[counter-1]->cmpntListNext != NULL) {
+      cmpnts[counter] = cmpnts[counter-1]->cmpntListNext;
+      cmpnts[counter]->newCLindex = counter;
       counter++;
     }
   }

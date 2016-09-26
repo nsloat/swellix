@@ -25,23 +25,26 @@ void get_mpi_globals() {
 
 void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpnts, int* cmpntTracker) {
   MPI_Status ms;
+  MPI_Request mr;
   int16_t hlixBranchngIndx1 = 0;
 
   mpi_stage = mpi_stage_1;
-  int index = 0;
+  int index;
   int msg = -1;
 printf("pe %d entered make_jump_tree_parallel\n",rank);
   if(rank == 0) {
-    for(index = 0; index < crik->numCmpnt; index++) {
+    for(index = crik->numCmpnt-1; index >= 0; index--) {
       MPI_Probe(MPI_ANY_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
       MPI_Recv(&msg, 1, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
       MPI_Send(&index, 1, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD);
     }
+
     for(index = 1; index < wsize; index++) {
-      MPI_Probe(MPI_ANY_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
-      MPI_Recv(&msg, 1, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
+//      MPI_Probe(MPI_ANY_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
+      MPI_Isend(&msg, 1, MPI_INT, index, mpi_change_stage, MPI_COMM_WORLD, &mr);
+      MPI_Irecv(&msg, 1, MPI_INT, index, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &mr);
       msg = -1;
-      MPI_Send(&msg, 1, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD);
+      MPI_Isend(&msg, 1, MPI_INT, index, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &mr);
     }
   } else {
     MPI_Sendrecv_replace(&msg, 1, MPI_INT, 0, MPI_REQUEST_WORK_1, 0, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
@@ -140,6 +143,10 @@ int parallel_work_sent = 0;
 int is_work_needed() {
   MPI_Status ms;
   int flag = 0;
+  int chstg = 0;
+  MPI_Iprobe(0, mpi_change_stage, MPI_COMM_WORLD, &chstg, &ms);
+  if(chstg) { MPI_Recv(&chstg, 1, MPI_INT, 0, mpi_change_stage, MPI_COMM_WORLD, &ms); mpi_stage = mpi_stage_2; }
+
   MPI_Iprobe(mpi_from, MPI_REQUEST_WORK_2, MPI_COMM_WORLD, &flag, &ms);
 
   if(flag) {

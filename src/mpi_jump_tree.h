@@ -33,6 +33,7 @@ void unpack_swellix_structure(global* crik, int* msg, int count);
 
 #define mpi_stage_1 5
 #define mpi_stage_2 6
+#define mpi_change_stage 7
 
 #endif // __MPI_JUMP_TREE
 #endif
