@@ -226,7 +226,7 @@ typedef struct { // Define: the main type of specimen (sequence) to be tested
   int8_t     unbundle;		// unbundle			     : unbundling flag -- for debugging/verifying combinatorial completeness of bundling mechanism.
   int8_t     statMode;          // statistics mode                   : the state of this flag determines which statistical calculations are performed
   int8_t     maxdist;
-  float      maxenergy;
+  float      minenergy;
   char*      mfe;
   int8_t     motif;
   int        motifCount;

@@ -97,7 +97,8 @@ int main(int argc, char** argv) {
   }
   init_vrna(seq->ltr);
   float energy = get_mfe_structure(seq->ltr, seq->mfe);
-  seq->maxenergy = energy;
+  const int INF = 10000000;
+  seq->minenergy = INF;
 
   global* crik = initialize_crik(seq);
 
@@ -126,15 +127,15 @@ int main(int argc, char** argv) {
 
 #ifdef _MPI
   uint64_t sumStructures = 0, sumUBStructures = 0, maxDist = 0, motifCount = 0;
-  float maxEng = 0.0;
+  float minEng = 0.0;
 //  MPI_Reduce(&crik->numBundles, &sumBundles, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numStru, &sumStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numUnbundledStru, &sumUBStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&seq->maxenergy, &maxEng, 1, MPI_FLOAT, MPI_MAX, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&seq->minenergy, &minEng, 1, MPI_FLOAT, MPI_MIN, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->maxdist, &maxDist, 1, MPI_INT, MPI_MAX, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->motifCount, &motifCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   if(rank==0) {
-    seq->maxenergy = maxEng;
+    seq->minenergy = minEng;
     seq->maxdist = maxDist;
     seq->motifCount = motifCount;
     crik->numUnbundledStru = sumUBStructures;
@@ -250,7 +251,7 @@ int initialize_sequence_by_settng_memory(config* seq)
   seq->insIntrvlMinSize = seq->minPairngDist + seq->minLenOfHlix * 2;
   seq->behIntrvlMinSize = seq->minPairngDist + seq->minLenOfHlix * 2;
   seq->maxdist = 0;
-  seq->maxenergy = 0;
+  seq->minenergy = 0;
    
   return 0;
 }  // end initialize_sequence_by_settng_memory
@@ -544,7 +545,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 
   int keepgoing;
 
-#ifdef _MPI
+/*#ifdef _MPI
 
 //  struct mpi_crik {  
 //  };
@@ -571,7 +572,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
   
   make_jump_tree_parallel(seq, crik, todd, cmpnts, cmpntTracker);
 
-#else
+#else*/
 
   // scan thru the whole cmpnt list
   for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
@@ -615,7 +616,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
     }
   }      // end for
 
-#endif
+//#endif
 
   exit_curr_recur(seq,crik, todd);
 

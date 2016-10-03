@@ -67,10 +67,10 @@ void update_stats(config* seq) {
       update_max_distance(seq);
       break;
     case STAT_MAX_FREE_ENERGY:
-      update_max_energy(seq);
+      update_min_energy(seq);
       break;
     case STAT_ALL:
-      update_max_energy(seq);
+      update_min_energy(seq);
       update_max_distance(seq);
       break;
     default:
@@ -87,12 +87,12 @@ void update_stats(config* seq) {
 //
 //
 //******************************************************************************
-void update_max_energy(config* seq) {
+void update_min_energy(config* seq) {
   if(evalc == NULL) //vrna_fold_compound_free(evalc);
     evalc = vrna_fold_compound(seq->ltr, &md, VRNA_OPTION_EVAL_ONLY);
   energy = vrna_eval_structure(evalc, seq->dotNParen);
-  if(energy > seq->maxenergy) {
-    seq->maxenergy = energy;
+  if(energy < seq->minenergy) {
+    seq->minenergy = energy;
   }
 }
 
@@ -184,11 +184,11 @@ void print_stats(config* seq) {
       fprintf(seq->dispFile, "Max RNAdistance: %d\n", seq->maxdist);
       break;
     case STAT_MAX_FREE_ENERGY:
-      fprintf(seq->dispFile, "Max Free Energy: %.4f\n", seq->maxenergy);
+      fprintf(seq->dispFile, "Min Free Energy: %.4f\n", seq->minenergy);
       break;
     case STAT_ALL:
       fprintf(seq->dispFile, "Max RNAdistance: %d\n", seq->maxdist);
-      fprintf(seq->dispFile, "Max Free Energy: %.4f\n", seq->maxenergy);
+      fprintf(seq->dispFile, "Min Free Energy: %.4f\n", seq->minenergy);
       break;
     default:
       break;

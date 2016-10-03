@@ -122,12 +122,12 @@ disp: myCC=cc
 disp: pre-build
 disp: dev-swellix.exe
 
-mpi: myCC=cc
+mpi: myCC=mpicc
 mpi: MPIFLAGS+=-D_MPI
 mpi: pre-build-mpi
 mpi: dev-swellix-mpi.exe
 
-mpi-disp: myCC=cc
+mpi-disp: myCC=mpicc
 mpi-disp: MPIFLAGS+=-D_MPI
 mpi-disp: CFLAGS+=-D_display
 mpi-disp: pre-build-mpi
