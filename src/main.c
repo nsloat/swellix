@@ -573,10 +573,10 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
   make_jump_tree_parallel(seq, crik, todd, cmpnts, cmpntTracker);
 
 #else*/
-
+if(rank == 0) {
   // scan thru the whole cmpnt list
-  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
-//  for(i = 0; i < crik->numCmpntTypOcupid; i++) {
+//  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
+  for(i = 0; i < crik->numCmpntTypOcupid; i++) {
     // grab one component on the component type indicated by crik->cmpntListOcupidTyp[i]
     todd->cmpntLLCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
     keepgoing = 1;
@@ -619,6 +619,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 //#endif
 
   exit_curr_recur(seq,crik, todd);
+}
 
   return 0;
 }  // end make_jump_tree
