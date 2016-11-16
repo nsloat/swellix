@@ -16,9 +16,9 @@ void get_mpi_globals();
 int is_work_needed();
 void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpnts, int* cmpntTracker);
 void send_work(global* crik, local* todd, int to);
-void unpack_todd(global* crik, local* todd, int* msg);
+void unpack_todd(global* crik, local* todd, int** msg);
 void unpack_structure(global* crik, int* msg, int count);
-void unpack_crikInfo(global* crik, int* msg);
+void unpack_crikInfo(global* crik, int** msg);
 void unpack_swellix_structure(global* crik, int* msg, int count);
 
 #define MPI_REQUEST_WORK_1 (1)

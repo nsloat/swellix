@@ -27,6 +27,7 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
   MPI_Status ms;
   MPI_Request mr;
   int16_t hlixBranchngIndx1 = 0;
+  get_mpi_globals();
 
   mpi_stage = mpi_stage_1;
   int index;
@@ -41,7 +42,7 @@ printf("pe %d entered make_jump_tree_parallel\n",rank);
 
     for(index = 1; index < wsize; index++) {
 //      MPI_Probe(MPI_ANY_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
-      MPI_Isend(&msg, 1, MPI_INT, index, mpi_change_stage, MPI_COMM_WORLD, &mr);
+//      MPI_Isend(&mpi_stage_2, 1, MPI_INT, index, mpi_change_stage, MPI_COMM_WORLD, &mr);
       MPI_Irecv(&msg, 1, MPI_INT, index, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &mr);
       msg = -1;
       MPI_Isend(&msg, 1, MPI_INT, index, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &mr);
@@ -139,22 +140,27 @@ void fold_all_parallel(state_stack *stack)
 int parallel_sent_work_left = 0;
 int parallel_work_received = 0;
 int parallel_work_sent = 0;
+//int state_changed = 0;
 
 int is_work_needed() {
   MPI_Status ms;
   int flag = 0;
-  int chstg = 0;
-  MPI_Iprobe(0, mpi_change_stage, MPI_COMM_WORLD, &chstg, &ms);
-  if(chstg) { MPI_Recv(&chstg, 1, MPI_INT, 0, mpi_change_stage, MPI_COMM_WORLD, &ms); mpi_stage = mpi_stage_2; }
+//  int chstg = 0;
+//  MPI_Iprobe(0, mpi_change_stage, MPI_COMM_WORLD, &chstg, &ms);
+//  if(chstg) { MPI_Recv(&chstg, 1, MPI_INT, 0, mpi_change_stage, MPI_COMM_WORLD, &ms); mpi_stage = mpi_stage_2; }
 
   MPI_Iprobe(mpi_from, MPI_REQUEST_WORK_2, MPI_COMM_WORLD, &flag, &ms);
 
   if(flag) {
+//    if(!state_changed) {
+//      MPI_Recv(&mpi_stage, 1, MPI_INT, 0, mpi_change_stage, MPI_COMM_WORLD, &ms);
+//      state_changed++;
+//    }
     int message[4];
     MPI_Recv(message, 4, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_2, MPI_COMM_WORLD, &ms);
 
     // should I send work?
-    if(mpi_stage == mpi_stage_2 && mpi_workleft) {
+    if(/*mpi_stage == mpi_stage_2 && mpi_workleft*/1) { //temporarily hardcode the processes to always send work if there is a request
       return message[0];
     }
 
@@ -184,10 +190,11 @@ void prepare_to_work(MPI_Status ms, config* seq, global* crik, local* todd) {
   MPI_Probe(ms.MPI_SOURCE, MPI_WORK, MPI_COMM_WORLD, &ms);
   MPI_Get_count(&ms, MPI_INT, &num_elements);
 
-  message = realloc(message, num_elements*sizeof(int));
+  message = (int*)realloc(message, num_elements*sizeof(int));
+if(message == NULL) printf("in pe %d: houston, we have a problem\n", rank);
 
   MPI_Recv(message, num_elements, MPI_INT, ms.MPI_SOURCE, MPI_WORK, MPI_COMM_WORLD, &ms);
-  unpack_todd(crik, todd, message);
+  unpack_todd(crik, todd, &message);
 
   MPI_Probe(ms.MPI_SOURCE, MPI_WORK, MPI_COMM_WORLD, &ms);
   MPI_Get_count(&ms, MPI_INT, &num_elements);
@@ -195,7 +202,7 @@ void prepare_to_work(MPI_Status ms, config* seq, global* crik, local* todd) {
   message = realloc(message, num_elements*sizeof(int));
 
   MPI_Recv(message, num_elements, MPI_INT, ms.MPI_SOURCE, MPI_WORK, MPI_COMM_WORLD, &ms);
-  unpack_crikInfo(crik, message);
+  unpack_crikInfo(crik, &message);
 
   free(message);
 }
@@ -260,7 +267,9 @@ void get_work(int amount, config* seq, global* crik, local* todd) {
   }
 }
 
-int pack_swellix_structure(global* crik, int* msg) {
+int pack_swellix_structure(global* crik, int** msg) {
+  int* dmsg = *msg;
+
   int count = 0;
   knob* cursr = crik->hlixInStru;
   while(cursr->jumpTreeNext != NULL) {
@@ -269,14 +278,15 @@ int pack_swellix_structure(global* crik, int* msg) {
     cursr = cursr->jumpTreeNext;
   }
 
-  msg = (int*)malloc(count*sizeof(int));
+  dmsg = (int*)malloc((count+1)*sizeof(int));
+  *msg = dmsg;
   cursr = crik->hlixInStru;
 
   count = 0;
   while(cursr != NULL) {
     // now construct array of ints to be sent across PEs and then deconstructed back
     // into an in-progress structure on the other end.
-    msg[count] = cursr->newCLindex;
+    dmsg[count] = cursr->newCLindex;
     count++;
     cursr = cursr->jumpTreeNext;
   }
@@ -290,11 +300,11 @@ void unpack_swellix_structure(global* crik, int* msg, int count) {
   knob* head;
   int i = 0;
   while(i < count) {
-    // if the first node, mark it as the head and set the curser to it as well. in the case
+    // if the first node, mark it as the head and set the cursor to it as well. in the case
     // that there happens to be only 1 node, mark the end of the linked list with NULL.
-    if(i == 0) { head = &(crik->mpiCList[msg[i]]); cursr = head; cursr->jumpTreeNext = NULL; }
+    if(i == 0) { head = crik->mpiCList[msg[i]]; cursr = head; cursr->jumpTreeNext = NULL; }
     // all subsequent nodes get attached to 
-    else { cursr->jumpTreeNext = &(crik->mpiCList[msg[i]]); cursr = cursr->jumpTreeNext; }
+    else { cursr->jumpTreeNext = crik->mpiCList[msg[i]]; cursr = cursr->jumpTreeNext; }
     i++;
   }
   // at the end, make sure to finish the linked list off properly by marking the end
@@ -305,6 +315,8 @@ void unpack_swellix_structure(global* crik, int* msg, int count) {
 }
 
 int pack_intervalKnob(knob* intrvl, int* msg) {
+//  int* dmsg = *msg;
+
   knob* cur = intrvl;
 
   msg[0] = cur->intrvlCntr;
@@ -329,33 +341,38 @@ int pack_intervalKnob(knob* intrvl, int* msg) {
   return 1;
 }
 
-int pack_todd(local* todd, int* msg) {
+int pack_todd(local* todd, int** msg) {      //TODO: CHECK FOR MSG LOSING MEMORY
   // the data sent regarding one todd object is static, so we can hard code the message length
   // the KNOB_SIZE_INT is the number of integers that can be used to send the necessary information
   // about a todd-owned knob interval object
-  msg = realloc(msg, (1 + 3*KNOB_SIZE_INT + 7)*sizeof(int));
+
+  int* dmsg = *msg; // dmsg = dereferenced msg
+
+  dmsg = realloc(dmsg, (1 + 3*KNOB_SIZE_INT + 7)*sizeof(int));
 
   knob* cur;
   
-  msg[0] = todd->cmpntLLCursr->newCLindex;
-  msg[1] = todd->intrvlIns ? pack_intervalKnob(todd->intrvlIns, &msg[2]) : 0;
+  dmsg[0] = todd->cmpntLLCursr->newCLindex;
+  dmsg[1] = todd->intrvlIns ? pack_intervalKnob(todd->intrvlIns, &(dmsg[2])) : 0;
 
-  msg[1+1*KNOB_SIZE_INT] = todd->intrvlBeh ? pack_intervalKnob(todd->intrvlBeh, &msg[2+1*KNOB_SIZE_INT]) : 0;
+  dmsg[1+1*KNOB_SIZE_INT] = todd->intrvlBeh ? pack_intervalKnob(todd->intrvlBeh, &(dmsg[2+1*KNOB_SIZE_INT])) : 0;
 
-  msg[1+2*KNOB_SIZE_INT] = todd->RSTO ? pack_intervalKnob(todd->RSTO, &msg[2+2*KNOB_SIZE_INT]) : 0;
+  dmsg[1+2*KNOB_SIZE_INT] = todd->RSTO ? pack_intervalKnob(todd->RSTO, &(dmsg[2+2*KNOB_SIZE_INT])) : 0;
 
-  msg[1+3*KNOB_SIZE_INT] = todd->intrvlCntr;
-  msg[2+3*KNOB_SIZE_INT] = todd->intrvlUB;
-  msg[3+3*KNOB_SIZE_INT] = todd->intrvlLB;
-  msg[4+3*KNOB_SIZE_INT] = todd->lukUpCmpntTypUB;
-  msg[5+3*KNOB_SIZE_INT] = todd->lukUpCmpntTypLB;
-  msg[6+3*KNOB_SIZE_INT] = todd->intrvlInsFormdFlag;
-  msg[7+3*KNOB_SIZE_INT] = todd->lvlOfRecur;
+  dmsg[1+3*KNOB_SIZE_INT] = todd->intrvlCntr;
+  dmsg[2+3*KNOB_SIZE_INT] = todd->intrvlUB;
+  dmsg[3+3*KNOB_SIZE_INT] = todd->intrvlLB;
+  dmsg[4+3*KNOB_SIZE_INT] = todd->lukUpCmpntTypUB;
+  dmsg[5+3*KNOB_SIZE_INT] = todd->lukUpCmpntTypLB;
+  dmsg[6+3*KNOB_SIZE_INT] = todd->intrvlInsFormdFlag;
+  dmsg[7+3*KNOB_SIZE_INT] = todd->lvlOfRecur;
 
   return 1 + 3*KNOB_SIZE_INT + 7;
 }
 
 knob* unpack_intervalKnob(knob* intrvl, int* msg) {
+//  int* dmsg = *msg;
+
   knob* cur = intrvl;
 
   cur->intrvlCntr = msg[0];
@@ -380,69 +397,74 @@ knob* unpack_intervalKnob(knob* intrvl, int* msg) {
   return cur;
 }
 
-void unpack_todd(global* crik, local* todd, int* msg) {
-  todd->cmpntLLCursr = &(crik->mpiCList[msg[0]]);
-  todd->intrvlIns = msg[1] ? unpack_intervalKnob(todd->intrvlIns, &msg[2]) : NULL;
-  todd->intrvlBeh = msg[1+1*KNOB_SIZE_INT] ? unpack_intervalKnob(todd->intrvlBeh, &msg[2+1*KNOB_SIZE_INT]) : NULL;
-  todd->RSTO = msg[1+2*KNOB_SIZE_INT] ? unpack_intervalKnob(todd->intrvlIns, &msg[2+2*KNOB_SIZE_INT]) : NULL;
-  todd->intrvlCntr = msg[1+3*KNOB_SIZE_INT];
-  todd->intrvlUB = msg[2+3*KNOB_SIZE_INT];
-  todd->intrvlLB = msg[3+3*KNOB_SIZE_INT];
-  todd->lukUpCmpntTypUB = msg[4+3*KNOB_SIZE_INT];
-  todd->lukUpCmpntTypLB = msg[5+3*KNOB_SIZE_INT];
-  todd->intrvlInsFormdFlag = msg[6+3*KNOB_SIZE_INT];
-  todd->lvlOfRecur = msg[7+3*KNOB_SIZE_INT];
+void unpack_todd(global* crik, local* todd, int** msg) {
+  int* dmsg = *msg;
+
+  todd->cmpntLLCursr = crik->mpiCList[dmsg[0]];
+  todd->intrvlIns = dmsg[1] ? unpack_intervalKnob(todd->intrvlIns, &dmsg[2]) : NULL;
+  todd->intrvlBeh = dmsg[1+1*KNOB_SIZE_INT] ? unpack_intervalKnob(todd->intrvlBeh, &dmsg[2+1*KNOB_SIZE_INT]) : NULL;
+  todd->RSTO = dmsg[1+2*KNOB_SIZE_INT] ? unpack_intervalKnob(todd->intrvlIns, &dmsg[2+2*KNOB_SIZE_INT]) : NULL;
+  todd->intrvlCntr = dmsg[1+3*KNOB_SIZE_INT];
+  todd->intrvlUB = dmsg[2+3*KNOB_SIZE_INT];
+  todd->intrvlLB = dmsg[3+3*KNOB_SIZE_INT];
+  todd->lukUpCmpntTypUB = dmsg[4+3*KNOB_SIZE_INT];
+  todd->lukUpCmpntTypLB = dmsg[5+3*KNOB_SIZE_INT];
+  todd->intrvlInsFormdFlag = dmsg[6+3*KNOB_SIZE_INT];
+  todd->lvlOfRecur = dmsg[7+3*KNOB_SIZE_INT];
 }
 
-int pack_crikInfo(global* crik, int* msg) {
+int pack_crikInfo(global* crik, int** msg) {
+  int* dmsg = *msg;
+
   int length = crik->mustPairLength + 17;
-  msg = realloc(msg, length*sizeof(int));
+  dmsg = realloc(dmsg, length*sizeof(int));
 
   int i = 1;
-  msg[0] = crik->mustPairLength;
-  while(i < crik->mustPairLength+1) { msg[i] = crik->struMustPairFlag[i-1]; i++; }
-  msg[i++] = crik->intrvlCntr;
-  msg[i++] = crik->lvlOfRecur;
-  msg[i++] = crik->closeBrsInnIndx;
-  msg[i++] = crik->closeBrsOutIndx;
-  msg[i++] = crik->closeBrsWidth;
-  msg[i++] = crik->closeParenIndx;
-  msg[i++] = crik->closeBrsCursr;
-  msg[i++] = crik->numHlix;
-  msg[i++] = crik->numHP;
-  msg[i++] = crik->opnBrsCursr;
-  msg[i++] = crik->opnBrsInnIndx;
-  msg[i++] = crik->opnBrsOutIndx;
-  msg[i++] = crik->opnBrsStop;
-  msg[i++] = crik->opnBrsWidth;
-  msg[i++] = crik->opnParenIndx;
-  msg[i++] = crik->linkedmms;
+  dmsg[0] = crik->mustPairLength;
+  while(i < crik->mustPairLength+1) { dmsg[i] = crik->struMustPairFlag[i-1]; i++; }
+  dmsg[i++] = crik->intrvlCntr;
+  dmsg[i++] = crik->lvlOfRecur;
+  dmsg[i++] = crik->closeBrsInnIndx;
+  dmsg[i++] = crik->closeBrsOutIndx;
+  dmsg[i++] = crik->closeBrsWidth;
+  dmsg[i++] = crik->closeParenIndx;
+  dmsg[i++] = crik->closeBrsCursr;
+  dmsg[i++] = crik->numHlix;
+  dmsg[i++] = crik->numHP;
+  dmsg[i++] = crik->opnBrsCursr;
+  dmsg[i++] = crik->opnBrsInnIndx;
+  dmsg[i++] = crik->opnBrsOutIndx;
+  dmsg[i++] = crik->opnBrsStop;
+  dmsg[i++] = crik->opnBrsWidth;
+  dmsg[i++] = crik->opnParenIndx;
+  dmsg[i++] = crik->linkedmms;
 
   return length;
 }
 
-void unpack_crikInfo(global* crik, int* msg) {
+void unpack_crikInfo(global* crik, int** msg) {
+  int* dmsg = *msg;
 
   int i = 1;
-  crik->mustPairLength = msg[0];
-  crik->struMustPairFlag = realloc(crik->struMustPairFlag, crik->mustPairLength*sizeof(int));
-  while(i < crik->mustPairLength+1) { crik->struMustPairFlag[i-1] = msg[i]; i++; }
-  crik->intrvlCntr = msg[i++];
-  crik->lvlOfRecur = msg[i++];
-  crik->closeBrsInnIndx = msg[i++];
-  crik->closeBrsOutIndx = msg[i++];
-  crik->closeBrsWidth = msg[i++];
-  crik->closeParenIndx = msg[i++];
-  crik->closeBrsCursr = msg[i++];
-  crik->numHlix = msg[i++];
-  crik->numHP = msg[i++];
-  crik->opnBrsCursr = msg[i++];
-  crik->opnBrsInnIndx = msg[i++];
-  crik->opnBrsOutIndx = msg[i++];
-  crik->opnBrsStop = msg[i++];
-  crik->opnBrsWidth = msg[i++];
-  crik->opnParenIndx = msg[i++];
-  crik->linkedmms = msg[i];
+  crik->mustPairLength = dmsg[0];
+//  crik->struMustPairFlag = realloc(crik->struMustPairFlag, crik->mustPairLength*sizeof(int));
+  while(i < crik->mustPairLength+1) { crik->struMustPairFlag[i-1] = dmsg[i]; i++; }
+  crik->intrvlCntr = dmsg[i++];
+  crik->lvlOfRecur = dmsg[i++];
+  crik->closeBrsInnIndx = dmsg[i++];
+  crik->closeBrsOutIndx = dmsg[i++];
+  crik->closeBrsWidth = dmsg[i++];
+  crik->closeParenIndx = dmsg[i++];
+  crik->closeBrsCursr = dmsg[i++];
+  crik->numHlix = dmsg[i++];
+  crik->numHP = dmsg[i++];
+  crik->opnBrsCursr = dmsg[i++];
+  crik->opnBrsInnIndx = dmsg[i++];
+  crik->opnBrsOutIndx = dmsg[i++];
+  crik->opnBrsStop = dmsg[i++];
+  crik->opnBrsWidth = dmsg[i++];
+  crik->opnParenIndx = dmsg[i++];
+  crik->linkedmms = dmsg[i];
   crik->interval = NULL;
 }
 
@@ -452,7 +474,7 @@ void send_work(global* crik, local* todd, int to) {
   if(to < rank) parallel_sent_work_left = 1;
 
   int* message = NULL;
-  int cmpnts = pack_swellix_structure(crik, message);
+  int cmpnts = pack_swellix_structure(crik, &message);
   MPI_Send(message, cmpnts, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
 //  message = memset(message, 0, cmpnts);
   int i;
@@ -462,12 +484,12 @@ void send_work(global* crik, local* todd, int to) {
   /*TODO: create serialization of knob types DONE*/
   /*TODO: send relevant todd information DONE*/
   /*TODO: send relevant crik information DONE*/
-  int msg_size = pack_todd(todd, message);
+  int msg_size = pack_todd(todd, &message);  //TODO: CHECK FOR LOSS OF INFORMATION IN PACK_TODD BEFORE SEND
   MPI_Send(message, msg_size, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
 //  message = memset(message, 0, msg_size);
   for(i = 0; i < cmpnts; i++){ message[i] = 0; }
 
-  msg_size = pack_crikInfo(crik, message);
+  msg_size = pack_crikInfo(crik, &message);
   MPI_Send(message, msg_size, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
 }
 

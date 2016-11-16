@@ -456,7 +456,7 @@ void make_bundled_cmpntList(config* seq, global* crik) {
   int j;
   int k;
 
-printf("# of components in cmpntList before adding bundles: %ld\n", crik->numCmpnt);
+//printf("# of components in cmpntList before adding bundles: %ld\n", crik->numCmpnt);
   // remove components that are less than max bundle len
   for (j = 0; j < seq->strLen; j++) {
     knob* cmpntCursr = crik->cmpntList[j].knob;
@@ -504,8 +504,8 @@ printf("# of components in cmpntList before adding bundles: %ld\n", crik->numCmp
     }
   }
   display_components(seq, crik, 1);
-printf("# of components in cmpntList after adding bundles: %ld\n", crik->numCmpnt);
-  disp(seq,DISP_LV1,"# of components after adding bundles: %ld\n", crik->numCmpnt);
+//printf("# of components in cmpntList after adding bundles: %ld\n", crik->numCmpnt);
+//  disp(seq,DISP_LV1,"# of components after adding bundles: %ld\n", crik->numCmpnt);
   // reset the component list occupied type list
   crik->numCmpntTypOcupid = 0;
   for (j = 0; j < seq->strLen; j++) {
@@ -545,7 +545,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 
   int keepgoing;
 
-/*#ifdef _MPI
+#ifdef _MPI
 
 //  struct mpi_crik {  
 //  };
@@ -563,16 +563,17 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
       counter++;
     }
   }
-  if(counter != crik->numCmpnt) {printf("in main.c:make_jump_tree: MPI ERR - seems to be a conflict in cmpntList & numCmpnts on rank %d: \nnumCmpnt == %ld, counter == %d\n", rank, crik->numCmpnt, counter);}
+//  if(counter != crik->numCmpnt) {printf("in main.c:make_jump_tree: MPI ERR - seems to be a conflict in cmpntList & numCmpnts on rank %d: \nnumCmpnt == %ld, counter == %d\n", rank, crik->numCmpnt, counter);}
 
   crik->numCmpnt = counter;
 
   int cmpntTracker[counter];
   for(i = 0; i < counter; i++) cmpntTracker[i] = cmpnts[i]->newCLindex;
   
+  crik->mpiCList = cmpnts;
   make_jump_tree_parallel(seq, crik, todd, cmpnts, cmpntTracker);
 
-#else*/
+#else
 if(rank == 0) {
   // scan thru the whole cmpnt list
 //  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
@@ -616,10 +617,10 @@ if(rank == 0) {
     }
   }      // end for
 
-//#endif
+#endif
 
   exit_curr_recur(seq,crik, todd);
-}
+//}
 
   return 0;
 }  // end make_jump_tree
