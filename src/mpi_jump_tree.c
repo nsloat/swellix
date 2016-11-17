@@ -349,6 +349,7 @@ int pack_todd(local* todd, int** msg) {      //TODO: CHECK FOR MSG LOSING MEMORY
   int* dmsg = *msg; // dmsg = dereferenced msg
 
   dmsg = realloc(dmsg, (1 + 3*KNOB_SIZE_INT + 7)*sizeof(int));
+  *msg = dmsg;
 
   knob* cur;
   
@@ -418,6 +419,7 @@ int pack_crikInfo(global* crik, int** msg) {
 
   int length = crik->mustPairLength + 17;
   dmsg = realloc(dmsg, length*sizeof(int));
+  *msg = dmsg;
 
   int i = 1;
   dmsg[0] = crik->mustPairLength;
@@ -491,6 +493,8 @@ void send_work(global* crik, local* todd, int to) {
 
   msg_size = pack_crikInfo(crik, &message);
   MPI_Send(message, msg_size, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
+
+  free(message);
 }
 
 #endif

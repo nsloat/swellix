@@ -29,7 +29,7 @@ void unpack_swellix_structure(global* crik, int* msg, int count);
 
 #define KNOB_SIZE_INT (19)
 
-#define CHUNK_SIZE 64
+#define CHUNK_SIZE 128
 
 #define mpi_stage_1 5
 #define mpi_stage_2 6
