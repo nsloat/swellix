@@ -32,7 +32,7 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
   mpi_stage = mpi_stage_1;
   int index;
   int msg = -1;
-printf("pe %d entered make_jump_tree_parallel\n",rank);
+//printf("pe %d entered make_jump_tree_parallel\n",rank);
   if(rank == 0) {
     for(index = crik->numCmpnt-1; index >= 0; index--) {
       MPI_Probe(MPI_ANY_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
@@ -52,7 +52,7 @@ printf("pe %d entered make_jump_tree_parallel\n",rank);
 
     while(msg >=  0) {
 //      int flag = 0;
-printf("pe %d received msg %d in stage 1 mpi\n", rank, msg);
+//printf("pe %d received msg %d in stage 1 mpi\n", rank, msg);
       todd->cmpntLLCursr = cmpnts[cmpntTracker[msg]];
 
       hlixBranchngIndx1++;
@@ -81,7 +81,7 @@ printf("pe %d received msg %d in stage 1 mpi\n", rank, msg);
       MPI_Sendrecv_replace(&msg, 1, MPI_INT, 0, MPI_REQUEST_WORK_1, 0, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
     }
   }
-printf("pe %d cleared the first mpi stage\n", rank);
+//printf("pe %d cleared the first mpi stage\n", rank);
   mpi_stage = mpi_stage_2;
 
   if(rank == 0) get_work(0, seq, crik, todd);
@@ -179,8 +179,12 @@ int is_work_needed() {
 void prepare_to_work(MPI_Status ms, config* seq, global* crik, local* todd) {
   parallel_work_received++;
 
+//  int i;
+//  for(i = 0; i < 100000000; i++) {}
+
   int num_elements;
   MPI_Get_count(&ms, MPI_INT, &num_elements);
+printf("pwr: %d, pe %d -> pe %d: %d elements\n", parallel_work_received, ms.MPI_SOURCE, rank, num_elements);
 
   int *message = (int*)malloc((num_elements+1)*sizeof(int));
 

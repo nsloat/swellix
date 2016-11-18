@@ -86,6 +86,10 @@ int book_out(config* seq, global* crik)
 		printf("%d, ", crik->cmpntListOcupidTyp[i]);
 	}
  */
+#ifdef _MPI
+  extern int rank;
+  if(rank == 0)
+#endif
   if (DISP) {
       fprintf(seq->dispFile,"\nNumber of Components = %ld\n\n", crik->numCmpnt);
       printf("Occupied Compnent List:");
