@@ -41,7 +41,7 @@ RNAFLAGS=-L$(LIBDIR) -lRNA -lm -I$(INCLUDEDIR) -I$(INCLUDEDIR)ViennaRNA -D_PARAM
 
 VIENNADIRS=`ls -I rna\_turner2004\.par $(EXECDIR)viennabuild`
 
-.PHONY: serial disp mpi mpi-disp pre-build-mpi pre-build
+.PHONY: serial ddisp cdisp disp mpi mpi-disp pre-build-mpi pre-build
 
 serial: pre-build
 serial: dev-swellix.exe
@@ -117,6 +117,13 @@ pre-build:
 clean:
 	rm $(OBJS)
 
+cdisp: clean
+cdisp: disp
+
+ddisp: CFLAGS+=-g 
+ddisp: myCC=cc
+ddisp: disp
+
 disp: CFLAGS+=-D_display
 disp: myCC=cc
 disp: pre-build
@@ -138,6 +145,10 @@ vienna:
 	./configure $(RNACONF); \
 	make; \
 	make install
+
+#dev-swellix.exe: $(OBJS)
+#	@echo myCC = $(shell which $(myCC))
+#	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
 test:
 	cc -g -o exe--swellixTest $(CFILES) -W -Wall -g3 -D _display 

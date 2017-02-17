@@ -69,6 +69,9 @@ int rank, wsize;
 //          : 1. initialize_sequence_by_getting_argument() from command line
 //          : 2. initialize_sequence_by_getting_constraints() from conf file
 //*****************************************************************************
+
+extern uint64_t rstoCount1;
+extern uint64_t rstoCount2;
 int main(int argc, char** argv) {
 
   int start, end, span, rem;
@@ -90,7 +93,7 @@ int main(int argc, char** argv) {
   start = rank*span;
   end = (rank == wsize-1) ? start+span+rem : start+span;
 
-  printf("rank %i working on (%i, %i)\n", rank, start, end);
+//  printf("rank %i working on (%i, %i)\n", rank, start, end);
 
   if(rank == 0) {
     printf("%s\n",seq->ltr);
@@ -124,26 +127,57 @@ int main(int argc, char** argv) {
       }
     }    // end if 2
   }      // end if 1
-
+uint64_t rstoCount1_display = 0;
+uint64_t rstoCount2_display = 0;
+uint64_t tobrstoCount_display = 0;
+uint64_t g_x1Display = 0;
+uint64_t behSwpCountDisp;
+uint64_t behNormCountDisp;
+extern uint64_t behSwpCount;
+extern uint64_t behNormCount;
+extern uint64_t tobrstoCount;
 #ifdef _MPI
-  uint64_t sumStructures = 0, sumUBStructures = 0, maxDist = 0, motifCount = 0;
+  uint64_t sumStructures = 0, sumUBStructures = 0, maxDist = 0, motifCount = 0, rstoCounter = 0, rstoErrCount = 0;
   float minEng = 0.0;
-//  MPI_Reduce(&crik->numBundles, &sumBundles, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&tobrstoCount, &tobrstoCount_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&g_x1, &g_x1Display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&behSwpCount, &behSwpCountDisp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&behNormCount, &behNormCountDisp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numStru, &sumStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numUnbundledStru, &sumUBStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->minenergy, &minEng, 1, MPI_FLOAT, MPI_MIN, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->maxdist, &maxDist, 1, MPI_INT, MPI_MAX, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->motifCount, &motifCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+//  crik->rstoCounter += rstoCount;
+  MPI_Reduce(&rstoCount1, &rstoCount1_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&rstoCount2, &rstoCount2_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&crik->rstoCounter, &rstoCounter, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&crik->rstoErrCounter, &rstoErrCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   if(rank==0) {
     seq->minenergy = minEng;
     seq->maxdist = maxDist;
     seq->motifCount = motifCount;
     crik->numUnbundledStru = sumUBStructures;
     crik->numStru = sumStructures;
+    crik->rstoCounter = rstoCounter;
+//    crik->rstoCounter += rstoCount;
+    crik->rstoErrCounter = rstoErrCount;
+    g_x1 = g_x1Display;
   }
-#endif
-  
-  if(rank==0)print_results(seq, crik);
+#else
+  rstoCount1_display = rstoCount1;
+  rstoCount2_display = rstoCount2;
+  tobrstoCount_display = tobrstoCount;
+  g_x1Display = g_x1;
+  behSwpCountDisp = behSwpCount;
+  behNormCountDisp = behNormCount;
+  //crik->rstoCounter+=rstoCount;
+#endif  
+  if(rank==0) {
+    print_results(seq, crik);
+    printf("rstoCount1: %ld\nrstoCount2: %ld\ncrik->rstoCounter: %ld\n", rstoCount1_display, rstoCount2_display, crik->rstoCounter);
+    printf("tobrstoCount: %ld\nbehSwpCount: %ld\nbehNormCount: %ld", tobrstoCount_display, behSwpCountDisp, behNormCountDisp);
+  }
   close_up(seq, crik);
 
 #ifdef _MPI
@@ -326,7 +360,8 @@ global* initialize_crik(config* seq)
   crik->linkedmms         = 0;
 //  crik->struLinked	  = 0;
 //  crik->numJumpIns        = 0;
-//  crik->hackCounter       = 0;
+  crik->rstoCounter       = 0;
+  crik->rstoErrCounter    = 0;
   crik->skippedStru	      = 0;
 //  crik->numJumpBeh        = 0;
 //  crik->sizeOfIntrvl      = 0;
@@ -574,7 +609,7 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
   make_jump_tree_parallel(seq, crik, todd, cmpnts, cmpntTracker);
 
 #else
-if(rank == 0) {
+//if(rank == 0) {
   // scan thru the whole cmpnt list
 //  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
   for(i = 0; i < crik->numCmpntTypOcupid; i++) {
@@ -652,6 +687,8 @@ void print_results(config* seq, global* crik)
       fprintf(seq->dispFile, "skipped structures: %d\n", crik->skippedStru);
       fprintf(seq->dispFile, "g_x1 = %lld\n", g_x1);
       fprintf(seq->dispFile, "g_x2 = %lld\n", g_x2);
+      fprintf(seq->dispFile, "Interval Restorations: %ld\n", crik->rstoCounter);
+      //fprintf(seq->dispFile, "RSTO error count: %ld\n", crik->rstoErrCounter);
     }
   }  // end outer if
 }  // end print_results

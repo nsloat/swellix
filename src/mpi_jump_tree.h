@@ -27,9 +27,9 @@ void unpack_swellix_structure(global* crik, int* msg, int count);
 #define MPI_DIE (4)
 //#define MPI_WORK_LEFT (1)
 
-#define KNOB_SIZE_INT (19)
+#define KNOB_SIZE_INT (18)
 
-#define CHUNK_SIZE 128
+#define CHUNK_SIZE 32
 
 #define mpi_stage_1 5
 #define mpi_stage_2 6

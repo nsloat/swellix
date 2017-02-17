@@ -39,11 +39,17 @@ char* NODE_TYPE_TO_STRING[] = { "HEAD", "CURR", "TAIL" };
 
 //Counts the number of calls made to jump_stage_1(). Used to stop recursion after a set number of calls
 //when running the GNU Debugger.
-int numOfCalls = 0;
+int numOfCalls = 0, behind = 0;
 int numCalls = 0;
 int jst2Count = 0;
 int exitCount = 0;
-int rstoCount = 0;
+uint64_t rstoCount1 = 0;
+uint64_t rstoCount2 = 0;
+uint64_t tobrstoCount = 0;
+uint64_t behSwpCount = 0;
+uint64_t behNormCount = 0;
+int RSTOflag = 0;
+extern int rank;
 
 //*****************************************************************************
 // Function : Assign New Helices Links
@@ -440,7 +446,7 @@ int exit_curr_recur(config* seq, global* crik, local* todd) {
         todd)) {
       disp(seq,DISP_ALL,"            special On Q %d-%d\n",todd->RSTO->opnBrsInnIndx, todd->RSTO->closeBrsInnIndx);
       crik->interval = todd->RSTO;
-      rstoCount++;
+      rstoCount1++;
       disp(seq,DISP_ALL,"Interval restore todd on queue!\n");
     }  // end inner if
   }    // end outer if
@@ -594,7 +600,7 @@ int is_intrvl_2b_rsto(global* crik, local* toddP, int8_t recurRoute) {
       else
         rstoCursr = rstoCursr->jumpTreeNext; // scan thru all the rsto list to make sure there's no duplicate
     }  // end while
-
+tobrstoCount++;
     return 1;      // in WHILE_SESSION, and no duplicate. So, to be restored
   } else {
     return 0;             // not even in WHILE_SESSION, out of consideration
@@ -695,9 +701,9 @@ int jump_stage_1_set_intrvl(config* seq, global* crik, local* todd, int16_t bund
 
   //Counts the number of calls for debugging purposes can be deleted safely if necessary (see top of file)
   numOfCalls++;
-
+behind = 0;
   disp(seq,DISP_ALL,"Entering 'jump_stage_1', ");
-  g_x1++;
+  //g_x1++;
   dispLL(seq,crik,todd,NULL);
 
   knob* insCursr = todd->intrvlIns;
@@ -750,9 +756,11 @@ int jump_stage_1_set_intrvl(config* seq, global* crik, local* todd, int16_t bund
     todd->intrvlBeh->closeBrsInnIndx = tempUB;                         // ||
     if (todd->intrvlInsFormdFlag) {                                    // ||
       swap_ins_n_beh_intrvl(seq, crik, todd);
+behSwpCount++;
       dispLL(seq,crik,todd,0);
     } else {                                                           // ||
       insert_beh_intrvl_normally(seq, crik, todd);
+behNormCount++;
       dispLL(seq,crik,todd,0);
     } // end inner if 2                                                                         // ||
   } // end outer if                                                                           // \/
@@ -763,7 +771,7 @@ int jump_stage_1_set_intrvl(config* seq, global* crik, local* todd, int16_t bund
     else
       break;
   }
-
+behind = 1;
   while (crik->interval) // exhaust all intervals present in crik->interval (while session)
     jump_stage_2_fit_hlix(seq, crik, todd, WHILE_SESSION); // <---------- RECURSION this way
 
@@ -885,6 +893,8 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
             // REPLACE OLD HELIX BY NEW ONE : it takes three parameters to ensure that 
             // the present helix to be erased is indeed from the same level
 
+            g_x1++;
+
             int maxMismatches = 0;
             int numMismatches = 0;
             if (!cmpntCursr->bundleFlag) {
@@ -987,7 +997,7 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
                                                                     todd->RSTO->closeBrsInnIndx);
               crik->interval = todd->RSTO;
               rstoFlag = 1;
-              rstoCount++;
+              rstoCount2++;
               disp(seq,DISP_ALL,"Interval restore todd on queue!\n");
             } // end outer if
 
@@ -1020,10 +1030,15 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
 
             todd->intrvlInsFormdFlag = 0;
 #ifdef _MPI
-            if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1)) {
+            if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1) && !behind) {
               int to = is_work_needed();
               if(to != -1) {
+if(crik->interval && crik->interval->jumpTreeNext) {
+  if(crik->interval->parentIntrvlCntr == crik->interval->jumpTreeNext->parentIntrvlCntr)
+  printf("top two intervals on stack are from same parent\n");
+}
                 send_work(crik, todd, to);
+//printf("pe %d -> pe %d @ jump_tree.c:1027\n", rank, to);
               } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
             } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
 #else
@@ -1121,9 +1136,14 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
               todd->intrvlInsFormdFlag = 0;
 
 #ifdef _MPI
-              if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1)) {
+              if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1) && !behind) {
                 int to = is_work_needed();
                 if(to != -1) {
+//printf("pe %d -> pe %d @ jump_tree.c:1128\n", rank, to);
+if(crik->interval && crik->interval->jumpTreeNext) {
+  if(crik->interval->parentIntrvlCntr == crik->interval->jumpTreeNext->parentIntrvlCntr)
+  printf("top two intervals on stack are from same parent\n");
+}
                   send_work(crik, todd, to);
                 } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
               } else jump_stage_1_set_intrvl(seq, crik, todd, 0); 
@@ -1230,16 +1250,21 @@ int remove_intrvl(config* seq, global* crik, local* toddP, int8_t recurRoute) {
   if(is_intrvl_2b_rsto(crik, toddP, recurRoute) && 
       !is_there_concern_on_ring_formation_of_linked_list(seq, crik, toddP)) {
     disp(seq,DISP_ALL,"intrvl [%d-%d] left behind, 2b rsto\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx);
+    crik->rstoCounter++;
     if (rstoCursr) {
       while (rstoCursr->jumpTreeNext)
         rstoCursr = rstoCursr->jumpTreeNext; // || RESTORE!! scan to locate the tail of toddP->RSTO
       rstoCursr->jumpTreeNext = crik->interval; // || hook the whole crik->interval on!
+      RSTOflag = 1;
+
     } else if (crik->interval) {                                       // ||
       toddP->RSTO = crik->interval; // || toddP->RSTO is empty, therefore no need for scan
+      RSTOflag = 1;
     } else {                                                           // ||
       toddP->RSTO = NULL;                                            // ||
     } // end if                                                           // ||
     crik->interval = crik->interval->jumpTreeNext; // \/ left behind the first node of crik->interval
+    if(!toddP) crik->rstoErrCounter++;
   } else {
     disp(seq,DISP_ALL,"intrvl [%d-%d] removed\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx );
     temp = crik->interval->jumpTreeNext; // || NO RESTORE  just go ahead and remove this interval

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <mpi.h>
 
-extern int rank, wsize, hlixBranchngIndx1;
+extern int rank, wsize, hlixBranchngIndx1, numOfCalls;
 int mpi_from, mpi_to, mpi_stage, mpi_workleft;
 int isDone = 0;
 
@@ -61,6 +61,7 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
       // from here, a complex series of recursion starts here    <----- CORE OF SWELLIX
       take_cmpnt_list_normal_path(seq, crik, todd, hlixBranchngIndx1);
 
+      free(todd->RSTO);
       todd->RSTO = NULL;
 
       todd->intrvlIns->opnBrsInnIndx      = -1;
@@ -93,6 +94,22 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
 
   while(!isDone) {
     jump_stage_1_set_intrvl(seq, crik, todd, 0); 
+      free(todd->RSTO);
+      todd->RSTO = NULL;
+
+      todd->intrvlIns->opnBrsInnIndx      = -1;
+      todd->intrvlIns->closeBrsInnIndx    = -1;
+      todd->intrvlIns->lvlOfRecur         = -1;
+      todd->intrvlIns->intrvlInsFormdFlag = 0;
+      todd->intrvlIns->jumpTreeNext       = NULL;
+      todd->intrvlIns->intrvlCntr         = 0;
+
+      todd->intrvlBeh->opnBrsInnIndx      = -1;
+      todd->intrvlBeh->closeBrsInnIndx    = -1;
+      todd->intrvlBeh->lvlOfRecur         = -1;
+      todd->intrvlBeh->intrvlInsFormdFlag = 0;
+      todd->intrvlBeh->jumpTreeNext       = NULL;
+      todd->intrvlBeh->intrvlCntr         = 0;
     get_work(0, seq, crik, todd);
   }
 
@@ -142,6 +159,8 @@ int parallel_work_received = 0;
 int parallel_work_sent = 0;
 //int state_changed = 0;
 
+extern int RSTOflag;
+
 int is_work_needed() {
   MPI_Status ms;
   int flag = 0;
@@ -151,7 +170,7 @@ int is_work_needed() {
 
   MPI_Iprobe(mpi_from, MPI_REQUEST_WORK_2, MPI_COMM_WORLD, &flag, &ms);
 
-  if(flag) {
+  if(flag && !RSTOflag) {
 //    if(!state_changed) {
 //      MPI_Recv(&mpi_stage, 1, MPI_INT, 0, mpi_change_stage, MPI_COMM_WORLD, &ms);
 //      state_changed++;
@@ -160,10 +179,10 @@ int is_work_needed() {
     MPI_Recv(message, 4, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_2, MPI_COMM_WORLD, &ms);
 
     // should I send work?
-    if(/*mpi_stage == mpi_stage_2 && mpi_workleft*/1) { //temporarily hardcode the processes to always send work if there is a request
+    if(/*mpi_stage == mpi_stage_2 && mpi_workleft mpi_stage != mpi_stage_2*/1) {
       return message[0];
     }
-
+/*
     // or should I pass the message along?
     if(message[0] == 0) {
       message[2] += 10000;
@@ -171,8 +190,9 @@ int is_work_needed() {
 
     // CHECK THIS SEND FOR DEADLOCK-PRONE-NESS
     MPI_Send(message, 4, MPI_INT, mpi_to, MPI_REQUEST_WORK_2, MPI_COMM_WORLD);
+*/
   }
-
+  RSTOflag = 0;
   return -1;
 }
 
@@ -184,7 +204,7 @@ void prepare_to_work(MPI_Status ms, config* seq, global* crik, local* todd) {
 
   int num_elements;
   MPI_Get_count(&ms, MPI_INT, &num_elements);
-printf("pwr: %d, pe %d -> pe %d: %d elements\n", parallel_work_received, ms.MPI_SOURCE, rank, num_elements);
+//printf("pwr: %d, pe %d -> pe %d: %d elements\n", parallel_work_received, ms.MPI_SOURCE, rank, num_elements);
 
   int *message = (int*)malloc((num_elements+1)*sizeof(int));
 
@@ -219,6 +239,7 @@ void prepare_to_die() {
 
 void get_work(int amount, config* seq, global* crik, local* todd) {
   int message[4] = { rank, 0, 0, 0 };
+  numOfCalls = 0;
 
   if(amount != -1) {
     if(rank == 0) {
@@ -282,7 +303,7 @@ int pack_swellix_structure(global* crik, int** msg) {
     cursr = cursr->jumpTreeNext;
   }
 
-  dmsg = (int*)malloc((count+1)*sizeof(int));
+  dmsg = (int*)malloc(((2*count)+1)*sizeof(int));
   *msg = dmsg;
   cursr = crik->hlixInStru;
 
@@ -292,6 +313,8 @@ int pack_swellix_structure(global* crik, int** msg) {
     // into an in-progress structure on the other end.
     dmsg[count] = cursr->newCLindex;
     count++;
+dmsg[count] = cursr->intrvlCntr;
+count++;
     cursr = cursr->jumpTreeNext;
   }
 
@@ -303,13 +326,23 @@ void unpack_swellix_structure(global* crik, int* msg, int count) {
   knob* cursr;
   knob* head;
   int i = 0;
+// TODO: optimize by moving first node conditional outside of loop
   while(i < count) {
     // if the first node, mark it as the head and set the cursor to it as well. in the case
     // that there happens to be only 1 node, mark the end of the linked list with NULL.
-    if(i == 0) { head = crik->mpiCList[msg[i]]; cursr = head; cursr->jumpTreeNext = NULL; }
-    // all subsequent nodes get attached to 
-    else { cursr->jumpTreeNext = crik->mpiCList[msg[i]]; cursr = cursr->jumpTreeNext; }
-    i++;
+    if(i == 0) { 
+      head = crik->mpiCList[msg[i]]; 
+      cursr = head; 
+      cursr->intrvlCntr = msg[i+1];
+      cursr->jumpTreeNext = NULL; 
+    }
+    // all subsequent nodes get attached
+    else { 
+      cursr->jumpTreeNext = crik->mpiCList[msg[i]]; 
+      cursr = cursr->jumpTreeNext; 
+      cursr->intrvlCntr = msg[i+1];
+    }
+    i+=2;
   }
   // at the end, make sure to finish the linked list off properly by marking the end
   // with a NULL "next" pointer
@@ -345,40 +378,58 @@ int pack_intervalKnob(knob* intrvl, int* msg) {
   return 1;
 }
 
-int pack_todd(local* todd, int** msg) {      //TODO: CHECK FOR MSG LOSING MEMORY
-  // the data sent regarding one todd object is static, so we can hard code the message length
+int pack_todd(local* todd, int** msg) { 
+  // the data sent regarding one todd object is static, so we can hard code the message length.
   // the KNOB_SIZE_INT is the number of integers that can be used to send the necessary information
-  // about a todd-owned knob interval object
+  // about a todd-owned knob interval object.
 
   int* dmsg = *msg; // dmsg = dereferenced msg
 
-  dmsg = realloc(dmsg, (1 + 3*KNOB_SIZE_INT + 7)*sizeof(int));
+  dmsg = realloc(dmsg, (4 + 3*KNOB_SIZE_INT + 7)*sizeof(int));
   *msg = dmsg;
 
   knob* cur;
+  int i = 0;
   
-  dmsg[0] = todd->cmpntLLCursr->newCLindex;
-  dmsg[1] = todd->intrvlIns ? pack_intervalKnob(todd->intrvlIns, &(dmsg[2])) : 0;
+  dmsg[i++] = todd->cmpntLLCursr->newCLindex;
+  dmsg[i] = todd->intrvlIns ? pack_intervalKnob(todd->intrvlIns, &(dmsg[i + 1])) : 0;
+  i += KNOB_SIZE_INT + 1;
 
-  dmsg[1+1*KNOB_SIZE_INT] = todd->intrvlBeh ? pack_intervalKnob(todd->intrvlBeh, &(dmsg[2+1*KNOB_SIZE_INT])) : 0;
+  dmsg[i] = todd->intrvlBeh ? pack_intervalKnob(todd->intrvlBeh, &(dmsg[i+1])) : 0;
+  i += KNOB_SIZE_INT + 1;
+//if(!todd->RSTO) printf("todd->RSTO = NULL in pack_todd: pe %d\n", rank);
+  dmsg[i] = todd->RSTO ? pack_intervalKnob(todd->RSTO, &(dmsg[i+1])) : 0;
+/*if(dmsg[i]) {
+  int j = 0;
+  printf("[ ");
+  for(j; j<KNOB_SIZE_INT-1; j++) {
+    printf("%d, ", dmsg[j+i+1]);
+  }
+  printf("%d ]\n", dmsg[j+i+2]);
+}*/
+  i += KNOB_SIZE_INT + 1;
+  dmsg[i++] = todd->intrvlCntr;
+  dmsg[i++] = todd->intrvlUB;
+  dmsg[i++] = todd->intrvlLB;
+  dmsg[i++] = todd->lukUpCmpntTypUB;
+  dmsg[i++] = todd->lukUpCmpntTypLB;
+  dmsg[i++] = todd->intrvlInsFormdFlag;
+  dmsg[i++] = todd->lvlOfRecur;
 
-  dmsg[1+2*KNOB_SIZE_INT] = todd->RSTO ? pack_intervalKnob(todd->RSTO, &(dmsg[2+2*KNOB_SIZE_INT])) : 0;
-
-  dmsg[1+3*KNOB_SIZE_INT] = todd->intrvlCntr;
-  dmsg[2+3*KNOB_SIZE_INT] = todd->intrvlUB;
-  dmsg[3+3*KNOB_SIZE_INT] = todd->intrvlLB;
-  dmsg[4+3*KNOB_SIZE_INT] = todd->lukUpCmpntTypUB;
-  dmsg[5+3*KNOB_SIZE_INT] = todd->lukUpCmpntTypLB;
-  dmsg[6+3*KNOB_SIZE_INT] = todd->intrvlInsFormdFlag;
-  dmsg[7+3*KNOB_SIZE_INT] = todd->lvlOfRecur;
-
-  return 1 + 3*KNOB_SIZE_INT + 7;
+  return 4 + 3*KNOB_SIZE_INT + 7;
 }
 
 knob* unpack_intervalKnob(knob* intrvl, int* msg) {
 //  int* dmsg = *msg;
 
-  knob* cur = intrvl;
+  knob* cur;
+  if(!intrvl) {
+    cur = malloc(sizeof(knob));
+    cur->jumpTreeNext = NULL;
+    cur->bundleListNext = NULL;
+    cur->cmpntListNext = NULL;
+  }
+  else cur = intrvl;
 
   cur->intrvlCntr = msg[0];
   cur->bundleCntr = msg[1];
@@ -404,24 +455,32 @@ knob* unpack_intervalKnob(knob* intrvl, int* msg) {
 
 void unpack_todd(global* crik, local* todd, int** msg) {
   int* dmsg = *msg;
+  int i = 0;
 
-  todd->cmpntLLCursr = crik->mpiCList[dmsg[0]];
-  todd->intrvlIns = dmsg[1] ? unpack_intervalKnob(todd->intrvlIns, &dmsg[2]) : NULL;
-  todd->intrvlBeh = dmsg[1+1*KNOB_SIZE_INT] ? unpack_intervalKnob(todd->intrvlBeh, &dmsg[2+1*KNOB_SIZE_INT]) : NULL;
-  todd->RSTO = dmsg[1+2*KNOB_SIZE_INT] ? unpack_intervalKnob(todd->intrvlIns, &dmsg[2+2*KNOB_SIZE_INT]) : NULL;
-  todd->intrvlCntr = dmsg[1+3*KNOB_SIZE_INT];
-  todd->intrvlUB = dmsg[2+3*KNOB_SIZE_INT];
-  todd->intrvlLB = dmsg[3+3*KNOB_SIZE_INT];
-  todd->lukUpCmpntTypUB = dmsg[4+3*KNOB_SIZE_INT];
-  todd->lukUpCmpntTypLB = dmsg[5+3*KNOB_SIZE_INT];
-  todd->intrvlInsFormdFlag = dmsg[6+3*KNOB_SIZE_INT];
-  todd->lvlOfRecur = dmsg[7+3*KNOB_SIZE_INT];
+  todd->cmpntLLCursr       = crik->mpiCList[dmsg[i++]];
+
+  todd->intrvlIns          = dmsg[i] ? unpack_intervalKnob(todd->intrvlIns, &(dmsg[i + 1])) : NULL;
+  i += KNOB_SIZE_INT + 1;
+
+  todd->intrvlBeh          = dmsg[i] ? unpack_intervalKnob(todd->intrvlBeh, &(dmsg[i + 1])) : NULL;
+  i += KNOB_SIZE_INT + 1;
+
+  todd->RSTO               = dmsg[i + 1] ? unpack_intervalKnob(todd->RSTO, &(dmsg[i + 1])) : NULL;
+  i += KNOB_SIZE_INT + 1;
+
+  todd->intrvlCntr         = dmsg[i++];
+  todd->intrvlUB           = dmsg[i++];
+  todd->intrvlLB           = dmsg[i++];
+  todd->lukUpCmpntTypUB    = dmsg[i++];
+  todd->lukUpCmpntTypLB    = dmsg[i++];
+  todd->intrvlInsFormdFlag = dmsg[i++];
+  todd->lvlOfRecur         = dmsg[i];
 }
 
 int pack_crikInfo(global* crik, int** msg) {
   int* dmsg = *msg;
 
-  int length = crik->mustPairLength + 17;
+  int length = crik->mustPairLength + 17 + KNOB_SIZE_INT + 1;
   dmsg = realloc(dmsg, length*sizeof(int));
   *msg = dmsg;
 
@@ -444,6 +503,11 @@ int pack_crikInfo(global* crik, int** msg) {
   dmsg[i++] = crik->opnBrsWidth;
   dmsg[i++] = crik->opnParenIndx;
   dmsg[i++] = crik->linkedmms;
+  if(crik->interval) { 
+    dmsg[i++] = 1; 
+    pack_intervalKnob(crik->interval, &(dmsg[i]));
+  }
+  else dmsg[i++] = 0;  
 
   return length;
 }
@@ -470,12 +534,13 @@ void unpack_crikInfo(global* crik, int** msg) {
   crik->opnBrsStop = dmsg[i++];
   crik->opnBrsWidth = dmsg[i++];
   crik->opnParenIndx = dmsg[i++];
-  crik->linkedmms = dmsg[i];
-  crik->interval = NULL;
+  crik->linkedmms = dmsg[i++];
+  if(dmsg[i++]) crik->interval = unpack_intervalKnob(crik->interval, &(dmsg[i]));
 }
 
 void send_work(global* crik, local* todd, int to) {
   parallel_work_sent++;
+  numOfCalls = 0;
 
   if(to < rank) parallel_sent_work_left = 1;
 
