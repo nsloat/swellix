@@ -113,8 +113,10 @@ void update_motif_count(config* seq) {
 //printf("updating motif count\n");
   char* s = seq->motifStruc;               // motif structure dot-parenthesis form
   char* l = seq->motifSeq;                 // motif sequence "letter" form
+  char gen = 'N';                          // counts as any nucleotide
+  char ag = 'R';                           // counts as either A or G
   char dnc = 'x';                          // "do not care" character
-  char wcp = 'N';                          // Watson-Crick pair character
+  char wcp = 'W';                          // Watson-Crick pair character
   int mlen = strlen(s);                    // length of motif string
   char* L = seq->ltr;                      // target sequence "letter" form
   char* S = seq->dotNParen;                // target sequence dot-parenthesis form
@@ -130,7 +132,7 @@ void update_motif_count(config* seq) {
     while((s[k] != dnc) && (k < mlen)) { // if this loop exits normally, then either the 5' side of a bulge
                                          // motif matched or the whole hairpin motif matched.
 //printf("S: %s\ns: %s\nL: %s\nl: %s\nentered 5' match section\n", S, s, L, l);
-      if((s[k] != S[i+k]) || ((l[k] != L[i+k]) && (l[k] != wcp))) { match = 0; break; }
+      if((s[k] != S[i+k]) || ( (l[k] != L[i+k]) && (l[k] != wcp )) ) { match = 0; break; }
 
       k++;
     }
