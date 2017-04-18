@@ -133,7 +133,7 @@ void set_motif(config* seq, int8_t arg, int argc, char** argv) {
   if(++arg == argc)
     cmd_line_err(argv, arg);
   else {
-//    fprintf(seq->dispFile,"\nmotif read from cmdline    : %s\n", argv[arg]);
+    //if(rank == 0) fprintf(seq->dispFile,"\nmotif read from cmdline    : %s\n", argv[arg]);
     char* tmp;
     char* tok = strtok(argv[arg], "&");
     

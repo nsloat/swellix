@@ -41,7 +41,8 @@ char* NODE_TYPE_TO_STRING[] = { "HEAD", "CURR", "TAIL" };
 //when running the GNU Debugger.
 int numOfCalls = 0, behind = 0;
 int numCalls = 0;
-int jst2Count = 0;
+uint64_t js2c1 = 0;
+uint64_t js2c2 = 0;
 int exitCount = 0;
 uint64_t rstoCount1 = 0;
 uint64_t rstoCount2 = 0;
@@ -710,8 +711,8 @@ behind = 0;
   knob* hlixCursr = crik->hlixInStru;
   int16_t tempLB;
   int16_t tempUB;
-
-  bundlePathFlag++;
+//DEBUG
+//if(crik->interval) printf("DBG (%d, %d) BPF %d\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx, bundlePathFlag);
   // || MAKE JUMP INSIDE INTERVAL
   todd->intrvlIns->intrvlInsFormdFlag = 0;                              // ||
   todd->intrvlInsFormdFlag = 0;                                          // ||
@@ -746,9 +747,9 @@ behind = 0;
       (seq->intrvlLukUpTable[tempLB][tempUB][0] < 0) || // || chk intrvl look-up table to see if this interval is on the table, if not, there's no cmpnt to fit
       (seq->intrvlLukUpTable[tempLB][tempUB][1] < 0) || is_duplicate_intrvl(crik, tempLB, tempUB)) {
     disp(seq,DISP_ALL,"No beh intvl made, either introvl too narrow, intrvl doesn't not fit or is duplicate\n");
-  } else if ((crik->interval && // || This is used to fix the issue of identical crik->interval node mixed with todd->beh node
+  } else if (/*(crik->interval && // || This is used to fix the issue of identical crik->interval node mixed with todd->beh node
               crik->interval->jumpTreeNext && todd->intrvlBeh->opnBrsInnIndx
-              == crik->interval->jumpTreeNext->opnBrsInnIndx) || crik->interval == todd->intrvlBeh) {
+              == crik->interval->jumpTreeNext->opnBrsInnIndx) || crik->interval == todd->intrvlBeh*/0) {
     disp(seq,DISP_LV3,"Error, ring formation of linked list detected\n");
     printf("infinite linked list\n");
   } else {                                                               // ||
@@ -767,13 +768,19 @@ behNormCount++;
 
   while (crik->interval && crik->hlixInStru) {
     if (crik->hlixInStru->intrvlCntr == crik->interval->intrvlCntr)
+{
+js2c1++;
       jump_stage_2_fit_hlix(seq, crik, todd, FIRST_SESSION); // <----------RECURSION this way (1st session)
+}
     else
       break;
   }
-behind = 1;
+//behind = 1;
   while (crik->interval) // exhaust all intervals present in crik->interval (while session)
+{
+js2c2++;
     jump_stage_2_fit_hlix(seq, crik, todd, WHILE_SESSION); // <---------- RECURSION this way
+}
 
   dispLL(seq,crik,todd,NULL);
   return 0;
@@ -796,7 +803,7 @@ behind = 1;
 // Note     : for speed up purpose, this function is rather long
 //*****************************************************************************
 int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurRoute) {
-  jst2Count++;
+  //jst2Count++;
   disp(seq,DISP_ALL,"Enterng 'jump_stage_2', recur lv: %d->%d\n", crik->interval->lvlOfRecur, (crik->interval->lvlOfRecur + 1) ); disp(seq,DISP_ALL,"location source = %s\n", CALLER_FLAG_TO_STRING[recurRoute]);
   local* todd = NULL;
   todd = init_todd(crik);
@@ -1038,11 +1045,11 @@ if(crik->interval && crik->interval->jumpTreeNext) {
   printf("top two intervals on stack are from same parent\n");
 }
                 send_work(crik, todd, to);
-//printf("pe %d -> pe %d @ jump_tree.c:1027\n", rank, to);
-              } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
-            } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
+//if(crik->interval) printf("DBG (%d, %d) SND 1\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx);
+              } else jump_stage_1_set_intrvl(seq, crik, todd, 1);
+            } else jump_stage_1_set_intrvl(seq, crik, todd, 1);
 #else
-            jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
+            jump_stage_1_set_intrvl(seq, crik, todd, 1); // regular path, w/o inside interval restoration
 #endif
           } else {     // ADD A NEW HELIX, NO HELIX IS REMOVED
             cmpntCursr->intrvlCntr = todd->intrvlCntr;
@@ -1144,11 +1151,12 @@ if(crik->interval && crik->interval->jumpTreeNext) {
   if(crik->interval->parentIntrvlCntr == crik->interval->jumpTreeNext->parentIntrvlCntr)
   printf("top two intervals on stack are from same parent\n");
 }
+//if(crik->interval) printf("DBG (%d, %d) SND 2\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx);
                   send_work(crik, todd, to);
-                } else jump_stage_1_set_intrvl(seq, crik, todd, 0);
-              } else jump_stage_1_set_intrvl(seq, crik, todd, 0); 
+                } else jump_stage_1_set_intrvl(seq, crik, todd, 2);
+              } else jump_stage_1_set_intrvl(seq, crik, todd, 2); 
 #else
-              jump_stage_1_set_intrvl(seq, crik, todd, 0); // regular path, w/o inside interval restoration
+              jump_stage_1_set_intrvl(seq, crik, todd, 2); // regular path, w/o inside interval restoration
 #endif
             }  // end if (used by l*p + k feature)
           }  // end if B2

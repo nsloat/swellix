@@ -4,7 +4,7 @@ source ~/.bashrc
 
 EXPDIR=$(pwd)
 
-S="/u/eot/sloat/swellix/swellix.exe"
+S="/u/eot/sloat/swellix/dev-swellix.exe"
 S_PBS="/u/eot/sloat/swellix/template.pbs"
 
 for DIR in $(ls -d ./*/)
@@ -14,13 +14,22 @@ for DIR in $(ls -d ./*/)
     OUTPATH=$EXPDIR"/"$DIR
 
 #    NUMPROC=$(($(wc -m $EXPDIR"/"$DIR"/"$INFILE | awk '{print $1}') - 1))
-    NUMPROC=1
-    PPN=1
-    NODES=1
+#    SEQLEN=$(($(cat $DIR$INFILE | wc -m)-1))
+#    NUMPROC=$SEQLEN
+#    PPN=16
+#    NODES=$((($NUMPROC + $PPN - 1)/$PPN))
+NUMPROC=1
+PPN=1
+NODES=1
+
+echo $INFILE
+echo $NUMPROC
+echo $NODES
+
     for MHL in $(seq 2 6)
       do
       SWELLARGS="-b -l "$MHL" -i "$EXPDIR"/"$DIR$INFILE
-      JOBNAME="px4_mhl"$MHL"_"$(echo $INFILE | awk -F "." '{ print $1 }')
+      JOBNAME="px4_mhl"$MHL"_"$(echo $INFILE | awk -F "." '{ print $1 }')"_serial"
 #    CMS=$(echo $SEQDIR | awk '{print gensub(/^([0-9]*)_CMs.*$/, "\\1", "g")}')
 #               echo $SEQDIR, $CMS
 #    i=$(ls -l "./data/"$SEQDIR | grep .swlx | wc -l)
@@ -37,6 +46,7 @@ for DIR in $(ls -d ./*/)
           s!\*PPN\*!'"$PPN"'!g;
           s!\*EXEC\*!'"$S"'!g;
           s!\*SWELLARGS\*!'"$SWELLARGS"'!g' $S_PBS > swellix.pbs
+
       qsub swellix.pbs
 
     done

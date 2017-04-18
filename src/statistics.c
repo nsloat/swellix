@@ -129,10 +129,22 @@ void update_motif_count(config* seq) {
     match = 1;
     k = 0;
     m = mlen-1;
+    char sChar;
+    char SChar;
+    char lChar;
+    char LChar;
     while((s[k] != dnc) && (k < mlen)) { // if this loop exits normally, then either the 5' side of a bulge
                                          // motif matched or the whole hairpin motif matched.
 //printf("S: %s\ns: %s\nL: %s\nl: %s\nentered 5' match section\n", S, s, L, l);
-      if((s[k] != S[i+k]) || ( (l[k] != L[i+k]) && (l[k] != wcp )) ) { match = 0; break; }
+        sChar = s[k]; SChar = S[i+k]; lChar = l[k]; LChar = L[i+k];
+        /* first logical check: make sure the dot-parenthesis character from motif matches the one from the structure
+         * second check: find out if the motif nucleotide character doesn't match the structure one and check of the motif character is supposed to represent any general nucleotide. if the motif nt doesn't match the structure sequence and if the motif character doesn't represent any nt, proceed to logical check 3.
+         * third check: find out if the motif 
+*/
+        if((sChar != SChar) || 
+            ((lChar != LChar && lChar != gen) && 
+              ((sChar == '.' && lChar == wcp) || 
+                (lChar == ag && (LChar != 'A' && LChar != 'G'))))) { match = 0; break; }
 
       k++;
     }
@@ -147,27 +159,31 @@ void update_motif_count(config* seq) {
         m = mlen-1;
         k = kmem;
         while(s[m] != dnc) { // until hitting the "don't care" symbol, try to match the 3' side of the motif.
-          if((s[m] != S[j-mlen+m+1]) || ((l[m] != L[j-mlen+m+1]) && (l[m] != wcp))) { match = 0; break; }
+        sChar = s[m]; SChar = S[j-(mlen-m-1)]; lChar = l[m]; LChar = L[j-(mlen-m-1)];
+        if((sChar != SChar) || 
+            ((lChar != LChar && lChar != gen) && 
+              ((sChar == '.' && lChar == wcp) || 
+                (lChar == ag && (LChar != 'A' && LChar != 'G'))))) { match = 0; break; }
           m--;
         }
         if(match) {
           int opn = 0, cls = 0;
-          while(i+k < j-mlen+m+1) { // check the "don't care" section for balanced pairing to ensure that
-                                    // the motif matches are actually paired together accordingly.
+          while(i+k <= j-mlen+m+1) { // check the "don't care" section for balanced pairing to ensure that
+                                     // the motif matches are actually paired together accordingly.
             opn = ((S[i+k] == '(') || (S[j-mlen+m+1] == '(')) ? opn+1 : opn;
             cls = ((S[i+k] == ')') || (S[j-mlen+m+1] == ')')) ? cls+1 : cls;
             k++;
             m--;
           }
-          if(opn == cls) { seq->motifCount++; return; } 
+          if(opn == cls) { seq->motifCount++; match &= 0; } 
         }
         j--;
       }
-      i++; continue; // an edge case could present where the above logic counts a valid motif during the final
-                     // iteration of the j loop. this edge case would count a motif above and exit the loop with
-                     // match == 1, then the following conditional statement would increment the motif count again.
+      i++;  // an edge case could present where the above logic counts a valid motif during the final
+            // iteration of the j loop. this edge case would count a motif above and exit the loop with
+            // match == 1, then the following conditional statement would increment the motif count again.
     }
-    if(match) { seq->motifCount++; return; }
+    if(match) { seq->motifCount++; }
     i++;
   }
 }

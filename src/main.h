@@ -229,7 +229,7 @@ typedef struct { // Define: the main type of specimen (sequence) to be tested
   float      minenergy;
   char*      mfe;
   int8_t     motif;
-  int        motifCount;
+  uint64_t   motifCount;
   char*      motifSeq;
   char*      motifStruc;
   int8_t     maxNumBlg;         // maximum number of bulge           : maximum count of bulges per helix
@@ -256,15 +256,12 @@ typedef struct { // Define: the parameter book-keeper of global nature (only one
   thuong**     eden;                // eden                              : data type is mini_jump_tree n by n 2D plane with many trees, where n is sequence length, to store the bundle list, as short cut substitute of component list
   edgeList*    cmpntList;           // component list                    : store the list of all components, which is based on the structure of edge list of the graph theory
   knob*        interval;            // interval                          : used to run the recursion inside and behind
-//  knob*        rstoIntrvl;          // restore interval                  : used to keep the intervals left behind
   knob*        hlixInStru;          // helices in structure              : final helices for print out
   int16_t*     struMustPairFlag;    // structure must-pair flag          : used to track all the covariance pairs V1 pairing pairs present in the structure
   int          mustPairLength;      // must-pair flag array length
   int16_t*     cmpntListOcupidTyp;  // component list occupied type      : record which types are occupied, so searching for loop may be faster for interval seeking
   int64_t      intrvlCntr;          // interval counter                  : act like batch number, used to distinguish one batch from another, to facilitate proper new/old helix addition/removal
   int64_t      numCmpnt;            // number of component               : keep track of the size of 'crik->cmpntList', used in making components
-//  int64_t      numJumpIns;          // number of jump inside             : used in 'make_jump_bush' to see how many combinations were made for jump-inside
-//  int64_t      numJumpBeh;          // number of jump behind             :               "                     "                   "           jump-behind
   uint64_t     numStru;             // number of structures              : the total count of the structures (or if bundling is on, total structures with bundles)
   uint64_t     numUnbundledStru;    // number of total unbundled structures : the total count of all the possible structures
   uint64_t     numBundles; 	    // number of bundles				 : total number of bundles
@@ -284,14 +281,10 @@ typedef struct { // Define: the parameter book-keeper of global nature (only one
   int16_t      opnBrsStop;
   int16_t      opnBrsWidth;         // open   "   width                  : size of open  brace
   int16_t      opnParenIndx;        // open parenthesis index            : location of open parenthesis cadidate 
-//  int16_t      sizeOfIntrvl;
   int16_t      test1ErrTotal;       // test 1 error total                : sum parentheses balance test error total occurences
   int16_t      test2ErrTotal;       // test 2 error total                : sum loop size test error total occurences
   int16_t      test3ErrTotal;       // test 3 error total                : sum helix overlap test error total occurences
   int16_t      test4ErrTotal;       // test 4 error total                : sum ????? test error total occurences
-//  int8_t       numBlg;              // number of bulges
-//  int8_t       numMis;              // number of mismatches
-//  int8_t       rstoOnCueFlag;       // restore on cue flag               : to prevent duplicate due to interval restore
   int8_t       specialRstoFlag;     // special restore flag              : accompany with specialRstoIntrvl, mark the presence of this i
   uint64_t       rstoCounter;
   uint64_t     rstoErrCounter;
@@ -303,17 +296,10 @@ typedef struct { // Define: the parameter book-keeper of global nature (only one
 
 struct local { // Define: the parameter book-keeper of local nature (one per recursion)
   knob*      cmpntLLCursr;       // component linked list cursor
-//  knob*      jumpLLCursr;        // jump linked list cursor
   knob*      intrvlIns;          // interval inside
   knob*      intrvlBeh;          // interval behind
-//  knob*      jumpBLLCursr;       // jump behind linked list cursor
-//  knob*      intrvl2BRsto;       // interval to be restored           : currently removed from crik->interval, but will be hooked back in soon
-//  knob*      intrvlBengRsto;     // interval being restored           : passed from intrvl2BRsto of previous recursion level (one level up)
   knob*      RSTO;
   int64_t    intrvlCntr;
-//  int16_t    cmpntTypCursr;
-//  int16_t    jumpIntCursr;       // jump integer cursor
-//  int16_t    jumpBIntCursr;      // jump behind integer cursor
   int16_t    intrvlUB;           // interval upper bound
   int16_t    intrvlLB;           // interval lower bound
   int16_t    lukUpCmpntTypUB;    // look-up component type upper bound: used in jump_stage_2_fit_hlix

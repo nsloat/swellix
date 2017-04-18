@@ -72,6 +72,9 @@ int rank, wsize;
 
 extern uint64_t rstoCount1;
 extern uint64_t rstoCount2;
+extern uint64_t js2c1;
+extern uint64_t js2c2;
+
 int main(int argc, char** argv) {
 
   int start, end, span, rem;
@@ -129,6 +132,8 @@ int main(int argc, char** argv) {
   }      // end if 1
 uint64_t rstoCount1_display = 0;
 uint64_t rstoCount2_display = 0;
+uint64_t js2c1_disp = 0;
+uint64_t js2c2_disp= 0;
 uint64_t tobrstoCount_display = 0;
 uint64_t g_x1Display = 0;
 uint64_t behSwpCountDisp;
@@ -151,6 +156,8 @@ extern uint64_t tobrstoCount;
 //  crik->rstoCounter += rstoCount;
   MPI_Reduce(&rstoCount1, &rstoCount1_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&rstoCount2, &rstoCount2_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&js2c1, &js2c1_disp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&js2c2, &js2c2_disp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->rstoCounter, &rstoCounter, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->rstoErrCounter, &rstoErrCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   if(rank==0) {
@@ -167,6 +174,8 @@ extern uint64_t tobrstoCount;
 #else
   rstoCount1_display = rstoCount1;
   rstoCount2_display = rstoCount2;
+  js2c1_disp = js2c1;
+  js2c2_disp = js2c2;
   tobrstoCount_display = tobrstoCount;
   g_x1Display = g_x1;
   behSwpCountDisp = behSwpCount;
@@ -176,7 +185,8 @@ extern uint64_t tobrstoCount;
   if(rank==0) {
     print_results(seq, crik);
     printf("rstoCount1: %ld\nrstoCount2: %ld\ncrik->rstoCounter: %ld\n", rstoCount1_display, rstoCount2_display, crik->rstoCounter);
-    printf("tobrstoCount: %ld\nbehSwpCount: %ld\nbehNormCount: %ld", tobrstoCount_display, behSwpCountDisp, behNormCountDisp);
+    printf("tobrstoCount: %ld\nbehSwpCount: %ld\nbehNormCount: %ld\n", tobrstoCount_display, behSwpCountDisp, behNormCountDisp);
+    printf("js2c1: %ld\njs2c2: %ld\n", js2c1_disp, js2c2_disp);
   }
   close_up(seq, crik);
 

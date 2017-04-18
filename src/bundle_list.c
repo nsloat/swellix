@@ -386,6 +386,7 @@ void run_sliding_windows(config* seq, global* crik) {
   int start, stroffset, substrLen;
   for(index = istart; index < iend+1; index++) {
 //  for(index = 0; index < seq->strLen+1; index++) {
+printf("pe %d running window %d\n", rank, index);
     start = index-window-1;
     stroffset = start+1 > 0 ? start+1 : 0;
     substrLen = index-stroffset > window ? window : index-stroffset;

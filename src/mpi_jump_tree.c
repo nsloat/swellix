@@ -20,21 +20,22 @@ void get_mpi_globals() {
   }
 }
 
-//int commit_datatypes() {
-//}
-
 void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpnts, int* cmpntTracker) {
   MPI_Status ms;
   MPI_Request mr;
   int16_t hlixBranchngIndx1 = 0;
   get_mpi_globals();
 
+//MPI_Barrier(MPI_COMM_WORLD);
+//double wstart = MPI_Wtime();
+//double nodeRuntime = 0;
+
   mpi_stage = mpi_stage_1;
   int index;
   int msg = -1;
 //printf("pe %d entered make_jump_tree_parallel\n",rank);
   if(rank == 0) {
-    for(index = crik->numCmpnt-1; index >= 0; index--) {
+    for(index = 0; index < crik->numCmpnt; index++) {
       MPI_Probe(MPI_ANY_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
       MPI_Recv(&msg, 1, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
       MPI_Send(&index, 1, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD);
@@ -49,10 +50,11 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
     }
   } else {
     MPI_Sendrecv_replace(&msg, 1, MPI_INT, 0, MPI_REQUEST_WORK_1, 0, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
-
+//double nodestart;
     while(msg >=  0) {
-//      int flag = 0;
 //printf("pe %d received msg %d in stage 1 mpi\n", rank, msg);
+//nodestart = MPI_Wtime();
+
       todd->cmpntLLCursr = cmpnts[cmpntTracker[msg]];
 
       hlixBranchngIndx1++;
@@ -78,11 +80,15 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
       todd->intrvlBeh->jumpTreeNext       = NULL;
       todd->intrvlBeh->intrvlCntr         = 0;
 
-//      MPI_Probe(0, MPI_REQUEST_WORK_1
+//nodeRuntime += MPI_Wtime() - nodestart;
+
       MPI_Sendrecv_replace(&msg, 1, MPI_INT, 0, MPI_REQUEST_WORK_1, 0, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
     }
+
   }
-//printf("pe %d cleared the first mpi stage\n", rank);
+//MPI_Barrier(MPI_COMM_WORLD);
+//if(rank != 0) printf("pe %d => %f%% usage\n", rank, nodeRuntime/(MPI_Wtime()-wstart));
+
   mpi_stage = mpi_stage_2;
 
   if(rank == 0) get_work(0, seq, crik, todd);
@@ -110,6 +116,7 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
       todd->intrvlBeh->intrvlInsFormdFlag = 0;
       todd->intrvlBeh->jumpTreeNext       = NULL;
       todd->intrvlBeh->intrvlCntr         = 0;
+if(crik->interval) printf("HOLY CANOLI BATMAN, I THINK WE FOUND A SUSPECT\n");
     get_work(0, seq, crik, todd);
   }
 
