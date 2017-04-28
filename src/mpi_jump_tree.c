@@ -89,36 +89,36 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
 //MPI_Barrier(MPI_COMM_WORLD);
 //if(rank != 0) printf("pe %d => %f%% usage\n", rank, nodeRuntime/(MPI_Wtime()-wstart));
 
-  mpi_stage = mpi_stage_2;
-
-  if(rank == 0) get_work(0, seq, crik, todd);
-  else {
-    int message[4] = {rank, 0, 0, 0};
-    MPI_Ssend(message, 4, MPI_INT, mpi_to, MPI_REQUEST_WORK_2, MPI_COMM_WORLD);
-    get_work(-1, seq, crik, todd);
-  }
-
-  while(!isDone) {
-    jump_stage_1_set_intrvl(seq, crik, todd, 0); 
-      free(todd->RSTO);
-      todd->RSTO = NULL;
-
-      todd->intrvlIns->opnBrsInnIndx      = -1;
-      todd->intrvlIns->closeBrsInnIndx    = -1;
-      todd->intrvlIns->lvlOfRecur         = -1;
-      todd->intrvlIns->intrvlInsFormdFlag = 0;
-      todd->intrvlIns->jumpTreeNext       = NULL;
-      todd->intrvlIns->intrvlCntr         = 0;
-
-      todd->intrvlBeh->opnBrsInnIndx      = -1;
-      todd->intrvlBeh->closeBrsInnIndx    = -1;
-      todd->intrvlBeh->lvlOfRecur         = -1;
-      todd->intrvlBeh->intrvlInsFormdFlag = 0;
-      todd->intrvlBeh->jumpTreeNext       = NULL;
-      todd->intrvlBeh->intrvlCntr         = 0;
-if(crik->interval) printf("HOLY CANOLI BATMAN, I THINK WE FOUND A SUSPECT\n");
-    get_work(0, seq, crik, todd);
-  }
+//  mpi_stage = mpi_stage_2;
+//
+//  if(rank == 0) get_work(0, seq, crik, todd);
+//  else {
+//    int message[4] = {rank, 0, 0, 0};
+//    MPI_Ssend(message, 4, MPI_INT, mpi_to, MPI_REQUEST_WORK_2, MPI_COMM_WORLD);
+//    get_work(-1, seq, crik, todd);
+//  }
+//
+//  while(!isDone) {
+//    jump_stage_1_set_intrvl(seq, crik, todd, 0); 
+//      free(todd->RSTO);
+//      todd->RSTO = NULL;
+//
+//      todd->intrvlIns->opnBrsInnIndx      = -1;
+//      todd->intrvlIns->closeBrsInnIndx    = -1;
+//      todd->intrvlIns->lvlOfRecur         = -1;
+//      todd->intrvlIns->intrvlInsFormdFlag = 0;
+//      todd->intrvlIns->jumpTreeNext       = NULL;
+//      todd->intrvlIns->intrvlCntr         = 0;
+//
+//      todd->intrvlBeh->opnBrsInnIndx      = -1;
+//      todd->intrvlBeh->closeBrsInnIndx    = -1;
+//      todd->intrvlBeh->lvlOfRecur         = -1;
+//      todd->intrvlBeh->intrvlInsFormdFlag = 0;
+//      todd->intrvlBeh->jumpTreeNext       = NULL;
+//      todd->intrvlBeh->intrvlCntr         = 0;
+//if(crik->interval) printf("HOLY CANOLI BATMAN, I THINK WE FOUND A SUSPECT\n");
+//    get_work(0, seq, crik, todd);
+//  }
 
 /*
 void fold_parallel(state_stack *stack)

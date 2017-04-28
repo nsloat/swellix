@@ -23,17 +23,17 @@ OBJS = $(CFILES:.c=.o)
 OBJDIR=$(EXECDIR)src
 
 #export MPICC  = mpic
-MPIFLAGS =
-ifeq (mpicc, $(myCC))
-MPIFLAGS +=-D_MPI
-endif
+#MPIFLAGS =
+#ifeq (mpicc, $(myCC))
+#MPIFLAGS +=-D_MPI
+#endif
 
 CFLAGS=-g #-Wall
 #CFLAGS+=-D_EXECDIR='"$(EXECDIR)"'
 #CFLAGS+=-fopenmp
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
- 	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf
+ 	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf --disable-openmp
 
 RNAFLAGS=-L$(LIBDIR) -lRNA -lm -I$(INCLUDEDIR) -I$(INCLUDEDIR)ViennaRNA -D_PARAM='"$(PARAMFILE)"'
 
@@ -129,12 +129,12 @@ disp: myCC=cc
 disp: pre-build
 disp: dev-swellix.exe
 
-mpi: myCC=cc
+mpi: myCC=mpicc
 mpi: MPIFLAGS+=-D_MPI
 mpi: pre-build-mpi
 mpi: dev-swellix-mpi.exe
 
-mpi-disp: myCC=cc
+mpi-disp: myCC=mpicc
 mpi-disp: MPIFLAGS+=-D_MPI
 mpi-disp: CFLAGS+=-D_display
 mpi-disp: pre-build-mpi
