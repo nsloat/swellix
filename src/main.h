@@ -49,7 +49,7 @@ long long g_x2;
 #define DEFAULT_MAX_NUMBER_OF_MISMATCH 0
 #define DEFAULT_MIN_NUMBER_OF_HELIX    0
 #define DEFAULT_MIN_NUMBER_OF_HP       0
-#define CONSTRAINT_SIZE                64    // just an arbitrary number (2^6) large enought to accomodate largest possble number of constraints, used in swellix-initialize_constraint.c
+#define CONSTRAINT_SIZE                64    // just an arbitrary number (2^6) large enought to accomodate largest possble number of constraints, used in init_constraint.c
 #define BAKI_SORT_DIVIDR               8     // bucket sort divider                        : used for bucket sort, to determine the size of each bucket
 
 #ifdef  _display
@@ -140,6 +140,13 @@ enum statMode {
 
 extern char* NODE_TYPE_TO_STRING[];
 
+typedef struct LabeledStructures {
+  int titlesize;    // the size of the title string
+  int buffsize;     // the size of the structures buffer allocated
+  char* title;      // the #x#.lab file name string
+  char* structures; // newline-delimited list of output from the subopt+label process
+} LabeledStructures;
+
 typedef struct knob       knob;
 typedef struct interval   interval;
 typedef struct local      local;
@@ -171,6 +178,7 @@ struct knob { // Define: the linked list, direct adoption from crumple type 'int
   int8_t    rstoOnQFlag;        // restore on queue flag             : whichever interval holding this is rsto intrvl on Q
   int8_t    specialRstoFlag;    // special restore flag              : accompany with specialRstoIntrvl, mark the presence of this interval for special treatment during interval restore
   int8_t    bundleFlag;         // bundle flag                       : used to remind 'display_structure' that this one is from bundle list and therefore handle specially
+  int       newCLindex;         // new component list index          : new, array-based implementation of component list. Better suited for MPI processing.
   knob*     cmpntListNext;      // component list next               : for use in component list 'crik->cmpntList'
   knob*     bundleListNext;     // bundle list next                  : for use in bundle list (eden) for simple (pure nested, not side-by-side) recursion
   knob*     jumpTreeNext;       // jump tree next                    : for use in jump tree to link the intervals
@@ -218,10 +226,10 @@ typedef struct { // Define: the main type of specimen (sequence) to be tested
   int8_t     unbundle;		// unbundle			     : unbundling flag -- for debugging/verifying combinatorial completeness of bundling mechanism.
   int8_t     statMode;          // statistics mode                   : the state of this flag determines which statistical calculations are performed
   int8_t     maxdist;
-  float      maxenergy;
+  float      minenergy;
   char*      mfe;
   int8_t     motif;
-  int        motifCount;
+  uint64_t   motifCount;
   char*      motifSeq;
   char*      motifStruc;
   int8_t     maxNumBlg;         // maximum number of bulge           : maximum count of bulges per helix
@@ -248,17 +256,15 @@ typedef struct { // Define: the parameter book-keeper of global nature (only one
   thuong**     eden;                // eden                              : data type is mini_jump_tree n by n 2D plane with many trees, where n is sequence length, to store the bundle list, as short cut substitute of component list
   edgeList*    cmpntList;           // component list                    : store the list of all components, which is based on the structure of edge list of the graph theory
   knob*        interval;            // interval                          : used to run the recursion inside and behind
-  knob*        rstoIntrvl;          // restore interval                  : used to keep the intervals left behind
   knob*        hlixInStru;          // helices in structure              : final helices for print out
   int16_t*     struMustPairFlag;    // structure must-pair flag          : used to track all the covariance pairs V1 pairing pairs present in the structure
+  int          mustPairLength;      // must-pair flag array length
   int16_t*     cmpntListOcupidTyp;  // component list occupied type      : record which types are occupied, so searching for loop may be faster for interval seeking
   int64_t      intrvlCntr;          // interval counter                  : act like batch number, used to distinguish one batch from another, to facilitate proper new/old helix addition/removal
   int64_t      numCmpnt;            // number of component               : keep track of the size of 'crik->cmpntList', used in making components
-  int64_t      numJumpIns;          // number of jump inside             : used in 'make_jump_bush' to see how many combinations were made for jump-inside
-  int64_t      numJumpBeh;          // number of jump behind             :               "                     "                   "           jump-behind
-  uint64_t      numStru;             // number of structures              : the total count of the structures (or if bundling is on, total structures with bundles)
-  uint64_t      numUnbundledStru;    // number of total unbundled structures : the total count of all the possible structures
-  uint64_t      numBundles; 	    // number of bundles				 : total number of bundles
+  uint64_t     numStru;             // number of structures              : the total count of the structures (or if bundling is on, total structures with bundles)
+  uint64_t     numUnbundledStru;    // number of total unbundled structures : the total count of all the possible structures
+  uint64_t     numBundles; 	    // number of bundles				 : total number of bundles
   int16_t      lvlOfRecur;          // level of recursion                : depth of roots into recursion loops from ground level
   int16_t      closeBrsInnIndx;     // close  "   inner   "              : close       "            
   int16_t      closeBrsOutIndx;     // close  "   outer   "              : close       "            
@@ -275,34 +281,25 @@ typedef struct { // Define: the parameter book-keeper of global nature (only one
   int16_t      opnBrsStop;
   int16_t      opnBrsWidth;         // open   "   width                  : size of open  brace
   int16_t      opnParenIndx;        // open parenthesis index            : location of open parenthesis cadidate 
-  int16_t      sizeOfIntrvl;
   int16_t      test1ErrTotal;       // test 1 error total                : sum parentheses balance test error total occurences
   int16_t      test2ErrTotal;       // test 2 error total                : sum loop size test error total occurences
   int16_t      test3ErrTotal;       // test 3 error total                : sum helix overlap test error total occurences
   int16_t      test4ErrTotal;       // test 4 error total                : sum ????? test error total occurences
-  int8_t       numBlg;              // number of bulges
-  int8_t       numMis;              // number of mismatches
-  int8_t       rstoOnCueFlag;       // restore on cue flag               : to prevent duplicate due to interval restore
   int8_t       specialRstoFlag;     // special restore flag              : accompany with specialRstoIntrvl, mark the presence of this i
-  int8_t       hackCounter;         // hack counter                      : for use in make_jump_tree recursion HACK!
+  uint64_t       rstoCounter;
+  uint64_t     rstoErrCounter;
   int16_t      skippedStru;         // debugging purposes				 : number of structures skipped during bundling
-  int8_t       struLinked;          // boolean for whether or not the previous helix is linked to current helix
+//  int8_t       struLinked;          // boolean for whether or not the previous helix is linked to current helix
   int8_t       linkedmms;           // number of linked mismatches
+  knob**       mpiCList;            // array-ified component list pointers for easier cross-PE communication
 } global;
 
 struct local { // Define: the parameter book-keeper of local nature (one per recursion)
   knob*      cmpntLLCursr;       // component linked list cursor
-  knob*      jumpLLCursr;        // jump linked list cursor
   knob*      intrvlIns;          // interval inside
   knob*      intrvlBeh;          // interval behind
-  knob*      jumpBLLCursr;       // jump behind linked list cursor
-  knob*      intrvl2BRsto;       // interval to be restored           : currently removed from crik->interval, but will be hooked back in soon
-  knob*      intrvlBengRsto;     // interval being restored           : passed from intrvl2BRsto of previous recursion level (one level up)
   knob*      RSTO;
   int64_t    intrvlCntr;
-  int16_t    cmpntTypCursr;
-  int16_t    jumpIntCursr;       // jump integer cursor
-  int16_t    jumpBIntCursr;      // jump behind integer cursor
   int16_t    intrvlUB;           // interval upper bound
   int16_t    intrvlLB;           // interval lower bound
   int16_t    lukUpCmpntTypUB;    // look-up component type upper bound: used in jump_stage_2_fit_hlix

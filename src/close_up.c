@@ -201,7 +201,7 @@ int free_recycle_bin(config* seq)
   if(seq->numCovari){
     toddCursr = seq->recycleBin;
     while(toddCursr){
-      free(toddCursr->intrvl2BRsto);
+//      free(toddCursr->intrvl2BRsto);
       free(toddCursr->intrvlIns);
       free(toddCursr->intrvlBeh);
       temp = toddCursr;

@@ -86,6 +86,10 @@ int book_out(config* seq, global* crik)
 		printf("%d, ", crik->cmpntListOcupidTyp[i]);
 	}
  */
+#ifdef _MPI
+  extern int rank;
+  if(rank == 0)
+#endif
   if (DISP) {
       fprintf(seq->dispFile,"\nNumber of Components = %ld\n\n", crik->numCmpnt);
       printf("Occupied Compnent List:");
@@ -316,8 +320,8 @@ int brace_is_formed(config* seq, global* crik, knob* newNode, int16_t* mustPairF
 
   crik->opnBrsCursr = 0;                                                       // open brace cursor : used to probe each nucleotide
   crik->closeBrsCursr = 0;                                                       // close  "      "   :        "        "        "
-  crik->numBlg    = 0;
-  crik->numMis    = 0;
+//  crik->numBlg    = 0;
+//  crik->numMis    = 0;
 
   while(is_worth_exploring(crik, noBrsFlag)){
     crik->opnParenIndx = crik->opnBrsOutIndx + crik->opnBrsCursr;

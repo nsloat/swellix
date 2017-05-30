@@ -1,0 +1,6 @@
+_pmiu_daemon(SIGCHLD): [NID 02701] [c4-8c0s6n1] [Thu Jul  7 07:50:18 2016] PE RANK 4 exit signal Segmentation fault
+_pmiu_daemon(SIGCHLD): [NID 02700] [c4-8c0s6n0] [Thu Jul  7 07:50:18 2016] PE RANK 1 exit signal Segmentation fault
+[NID 02700] 2016-07-07 07:50:18 Apid 45340417: initiated application termination
+real 3.26
+user 0.46
+sys 0.06

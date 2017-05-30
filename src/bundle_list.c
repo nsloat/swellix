@@ -44,6 +44,10 @@
 #include "bundle_list.h"
 #include "subopt.h"
 
+#ifdef _MPI
+#include "mpi.h"
+#endif
+
 //*****************************************************************************
 // Function : Initialize Eden
 // Caller   : make_bundle_list()
@@ -53,17 +57,16 @@
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-int initialize_eden(config* seq, global* crik)
-{
-	disp(seq,DISP_ALL,"Enterng 'initialize_eden'");
-	int16_t i;
+int initialize_eden(config* seq, global* crik) {
+  disp(seq,DISP_ALL,"Enterng 'initialize_eden'");
+  int16_t i;
 
-	crik->eden = calloc(seq->strLen, sizeof(thuong*));      // the main plain of 'edge list' to store all the bundle fruits
+  crik->eden = calloc(seq->strLen, sizeof(thuong*));      // the main plain of 'edge list' to store all the bundle fruits
                                                           // arbitrarily assgin some number of rooms to accomodate unknown number of bundle plans
-	for(i = 0 ; i < seq->strLen ; i++)
-		crik->eden[i] = calloc(seq->strLen, sizeof(thuong));
+  for(i = 0 ; i < seq->strLen ; i++)
+    crik->eden[i] = calloc(seq->strLen, sizeof(thuong));
 
-	return 0;
+  return 0;
 }  // end initialize_eden
 
 //*****************************************************************************
@@ -80,37 +83,37 @@ int initialize_eden(config* seq, global* crik)
 // Display  : error message, if necessary
 //*****************************************************************************
 int get_mismatches(char* structure, int openOut, int openIn, int closeOut, int closeIn, int16_t** mismatch) {
-	int i;
-	// Find any mismatches
-	int j = 0;
-	int toReturn = 0;
-	for (i = openOut; i <= openIn; i++) {
-		if (i < 0) {
-			mismatch[j][0] = i;
-			j++;
-		} else if (structure[i] == '.') {
-	//		fprintf(seq->dispFile, "j = %d\n", j);
-			mismatch[j][0] = i;
-			j++;
+  int i;
+  // Find any mismatches
+  int j = 0;
+  int toReturn = 0;
+  for (i = openOut; i <= openIn; i++) {
+    if (i < 0) {
+      mismatch[j][0] = i;
+      j++;
+    } else if (structure[i] == '.') {
+//		fprintf(seq->dispFile, "j = %d\n", j);
+      mismatch[j][0] = i;
+      j++;
 
-			if (i == openOut+1 || i == openIn-1) {
-				toReturn = 1;
-			}
-		}
-	}
+      if (i == openOut+1 || i == openIn-1) {
+        toReturn = 1;
+      }
+    }
+  }
 
-	j = 0;
-	for (i = closeOut; i >= closeIn; i--) {
-		if (i >= (int)strlen(structure)) {
-			mismatch[j][1] = i;
-			j++;
-		} else if (structure[i] == '.') {
-			mismatch[j][1] = i;
-			j++;
-		}
-	}
+  j = 0;
+  for (i = closeOut; i >= closeIn; i--) {
+    if (i >= (int)strlen(structure)) {
+      mismatch[j][1] = i;
+      j++;
+    } else if (structure[i] == '.') {
+      mismatch[j][1] = i;
+      j++;
+    }
+  }
 
-	return toReturn;
+  return toReturn;
 }
 
 //*****************************************************************************
@@ -122,8 +125,8 @@ int get_mismatches(char* structure, int openOut, int openIn, int closeOut, int c
 // Display  : error message, if necessary
 //*****************************************************************************
 void remove_outer_pair(char* structure, int start, int end) {
-	structure[start] = '.';
-	structure[end] = '.';
+  structure[start] = '.';
+  structure[end] = '.';
 }
 
 //*****************************************************************************
@@ -134,9 +137,9 @@ void remove_outer_pair(char* structure, int start, int end) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-void add_dumi_node(config* seq, global* crik, char* filename) {
+void add_dumi_node(config* seq, global* crik, LabeledStructures* lab) {
 	int begin, end;
-	filename_to_indices(filename, &begin, &end);
+	filename_to_indices(lab->title, &begin, &end);
 	knob* dumi;
 	int16_t hlixLen = (end - begin + 1 - seq->minPairngDist) >> 1;
 
@@ -185,97 +188,120 @@ void remove_duplicates(char* filename) {
 /* Function to test whether two nodes are equal */
 int nodes_equal(knob* first, knob* second) {
 
-	// Compare combined helices as well
-	knob* firstCursr = first;
-	int openIn1 = first->opnBrsInnIndx;
-	int openOut1 = first->opnBrsOutIndx;
-	int closeIn1 = first->closeBrsInnIndx;
-	int closeOut1 = first->closeBrsOutIndx;
-	int formed = 0;
-	firstCursr = firstCursr->bundleListNext;
-	while(firstCursr) {
-		if (openOut1 - firstCursr->opnBrsInnIndx == 1 && firstCursr->closeBrsInnIndx - closeOut1 == 1) {
-			openOut1 = firstCursr->opnBrsOutIndx;
-			closeOut1 = firstCursr->closeBrsOutIndx;
-			formed = 1;
+  // Compare combined helices as well
+  knob* firstCursr = first;
+  int openIn1 = first->opnBrsInnIndx;
+  int openOut1 = first->opnBrsOutIndx;
+  int closeIn1 = first->closeBrsInnIndx;
+  int closeOut1 = first->closeBrsOutIndx;
+  int formed = 0;
+  firstCursr = firstCursr->bundleListNext;
+  while(firstCursr) {
+    if (openOut1 - firstCursr->opnBrsInnIndx == 1 && firstCursr->closeBrsInnIndx - closeOut1 == 1) {
+      openOut1 = firstCursr->opnBrsOutIndx;
+      closeOut1 = firstCursr->closeBrsOutIndx;
+      formed = 1;
 
-		//	printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
+//	printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
 
-		} else if (firstCursr->opnBrsOutIndx - openIn1 == 1 && closeIn1 - firstCursr->closeBrsOutIndx == 1) {
-			openIn1 = firstCursr->opnBrsInnIndx;
-			closeIn1 = firstCursr->closeBrsInnIndx;
-			formed = 1;
+    } else if (firstCursr->opnBrsOutIndx - openIn1 == 1 && closeIn1 - firstCursr->closeBrsOutIndx == 1) {
+      openIn1 = firstCursr->opnBrsInnIndx;
+      closeIn1 = firstCursr->closeBrsInnIndx;
+      formed = 1;
 
-	//		printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
+//		printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
 
-		} else if (!formed) {
-			openIn1 = firstCursr->opnBrsInnIndx;
-			openOut1 = firstCursr->opnBrsOutIndx;
-			closeIn1 = firstCursr->closeBrsInnIndx;
-			closeOut1 = firstCursr->closeBrsOutIndx;
-		}
+    } else if (!formed) {
+      openIn1 = firstCursr->opnBrsInnIndx;
+      openOut1 = firstCursr->opnBrsOutIndx;
+      closeIn1 = firstCursr->closeBrsInnIndx;
+      closeOut1 = firstCursr->closeBrsOutIndx;
+    }
 
-		firstCursr = firstCursr->bundleListNext;
-	}
+    firstCursr = firstCursr->bundleListNext;
+  }
 
-	knob* secondCursr = second;
-	int openIn2 = second->opnBrsInnIndx;
-	int openOut2 = second->opnBrsOutIndx;
-	int closeIn2 = second->closeBrsInnIndx;
-	int closeOut2 = second->closeBrsOutIndx;
-	formed = 0;
-	secondCursr = secondCursr->bundleListNext;
-	while(secondCursr) {
-		if (openOut2 - secondCursr->opnBrsInnIndx == 1 && secondCursr->closeBrsInnIndx - closeOut2 == 1) {
-			openOut2 = secondCursr->opnBrsOutIndx;
-			closeOut2 = secondCursr->closeBrsOutIndx;
-			formed = 1;
+  knob* secondCursr = second;
+  int openIn2 = second->opnBrsInnIndx;
+  int openOut2 = second->opnBrsOutIndx;
+  int closeIn2 = second->closeBrsInnIndx;
+  int closeOut2 = second->closeBrsOutIndx;
+  formed = 0;
+  secondCursr = secondCursr->bundleListNext;
+  while(secondCursr) {
+    if (openOut2 - secondCursr->opnBrsInnIndx == 1 && secondCursr->closeBrsInnIndx - closeOut2 == 1) {
+      openOut2 = secondCursr->opnBrsOutIndx;
+      closeOut2 = secondCursr->closeBrsOutIndx;
+      formed = 1;
 
-		//	printf("formed: %d|%d-%d|%d\n", openOut2, openIn2, closeIn2, closeOut2);
+//	printf("formed: %d|%d-%d|%d\n", openOut2, openIn2, closeIn2, closeOut2);
 
-		} else if (!formed) {
-			openIn2 = secondCursr->opnBrsInnIndx;
-			openOut2 = secondCursr->opnBrsOutIndx;
-			closeIn2 = secondCursr->closeBrsInnIndx;
-			closeOut2 = secondCursr->closeBrsOutIndx;
-		}
+    } else if (!formed) {
+      openIn2 = secondCursr->opnBrsInnIndx;
+      openOut2 = secondCursr->opnBrsOutIndx;
+      closeIn2 = secondCursr->closeBrsInnIndx;
+      closeOut2 = secondCursr->closeBrsOutIndx;
+    }
 
-		secondCursr = secondCursr->bundleListNext;
-	}
+    secondCursr = secondCursr->bundleListNext;
+  }
 
-	int escaped1 = 0;
-	int escaped2 = 0;
-	while (first && second) {
-		if ((first->opnBrsInnIndx == second->opnBrsInnIndx && first->opnBrsOutIndx == second->opnBrsOutIndx && first->closeBrsInnIndx == second->closeBrsInnIndx && first->closeBrsOutIndx == second->closeBrsOutIndx)
-				|| (openOut1 == openOut2 && openIn1 == openIn2 && closeIn1 == closeIn2 && closeOut1 == closeOut2)) {
-			if (!escaped1 && openOut1 == openOut2 && openIn1 == openIn2 && closeIn1 == closeIn2 && closeOut1 == closeOut2) {
-				while (first && first->opnBrsOutIndx >= openOut1 && first->closeBrsOutIndx <= closeOut1 && first->opnBrsInnIndx <= openIn1
-						&& first->closeBrsInnIndx >= closeIn1) {
-					first = first->bundleListNext;
-				}
-				escaped1 = 1;
-			} else {
-				first = first->bundleListNext;
-			}
+  int escaped1 = 0;
+  int escaped2 = 0;
+  while (first && second) {
+    if ((first->opnBrsInnIndx == second->opnBrsInnIndx && 
+         first->opnBrsOutIndx == second->opnBrsOutIndx && 
+         first->closeBrsInnIndx == second->closeBrsInnIndx && 
+         first->closeBrsOutIndx == second->closeBrsOutIndx) || 
+        (openOut1 == openOut2 && 
+         openIn1 == openIn2 && 
+         closeIn1 == closeIn2 && 
+         closeOut1 == closeOut2)) {
 
-			if (!escaped2 && openOut1 == openOut2 && openIn1 == openIn2 && closeIn1 == closeIn2 && closeOut1 == closeOut2) {
-				while (second && second->opnBrsOutIndx >= openOut2 && second->closeBrsOutIndx <= closeOut2 && second->opnBrsInnIndx <= openIn2
-									&& second->closeBrsInnIndx >= closeIn2) {
-					second = second->bundleListNext;
-				}
-			} else {
-				second = second->bundleListNext;
-			}
+      if (!escaped1 && 
+          openOut1 == openOut2 && 
+          openIn1 == openIn2 && 
+          closeIn1 == closeIn2 && 
+          closeOut1 == closeOut2) {
 
-			if ((first && !second) || (!first && second)) {
-				return 0;
-			}
-		} else {
-			return 0;
-		}
-	}
+        while (first && 
+               first->opnBrsOutIndx >= openOut1 && 
+               first->closeBrsOutIndx <= closeOut1 && 
+               first->opnBrsInnIndx <= openIn1 && 
+               first->closeBrsInnIndx >= closeIn1) {
+          first = first->bundleListNext;
+        }
+        escaped1 = 1;
+      } else {
+        first = first->bundleListNext;
+      }
 
-	return 1;
+      if (!escaped2 && 
+          openOut1 == openOut2 && 
+          openIn1 == openIn2 && 
+          closeIn1 == closeIn2 && 
+          closeOut1 == closeOut2) {
+
+        while (second && 
+               second->opnBrsOutIndx >= openOut2 && 
+               second->closeBrsOutIndx <= closeOut2 && 
+               second->opnBrsInnIndx <= openIn2 && 
+               second->closeBrsInnIndx >= closeIn2) {
+          second = second->bundleListNext;
+        }
+      } else {
+        second = second->bundleListNext;
+      }
+
+      if ((first && !second) || (!first && second)) {
+        return 0;
+      }
+    } else {
+      return 0;
+    }
+  }
+
+  return 1;
 }
 
 /* Function to remove duplicates from a unsorted linked list */
@@ -321,99 +347,232 @@ int remove_duplicates_LL(ToL* start)
 // Display  : error message, if necessary
 //*****************************************************************************
 void run_sliding_windows(config* seq, global* crik) {
-	
-	int pid = getpid();	     // Used for creating unique directories of structures so that many instances of Swellix can be run 
-				     // at once without interfering with the others' data.
 
-	char idstring[50];
-	char bundleDir[256];
+  extern int rank, wsize;
+  int istart, iend, span, rem;
 
-	int pidlength = sprintf(idstring, "%d", pid);
-
-	char mods[seq->strLen+1];
-	mods[seq->strLen] = '\0';
-
-	int i;
-	for (i = 0; i < seq->strLen; i++)
-		mods[i] = '.';
-	for (i = 0; i < seq->numS1Pairng; i++) {
-		mods[seq->s1Pairng[i]] = 'X';
-	}
-
-	int16_t window, tmm, asymmetry;
-	window = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
-	if (window > seq->strLen) window = seq->strLen;
-	tmm = seq->maxNumMismatch;
-	asymmetry = 0;
-
-	// Get ready to run sliding windows
-	char cwd[1024];
-
-	char command[128];
-	sprintf(command, "mkdir %slabeled/%i", _BUNDLE, pid);
-        system(command);
-
-        int index;
-        char* subSeq = calloc(window+1, sizeof(char));
-        char* subMod = calloc(window+1, sizeof(char));
-#pragma omp parallel for private(subSeq, subMod)
-        for(index = 0; index < seq->strLen+1; index++) {
-          int start = index-window-1;
-          int stroffset = start+1 > 0 ? start+1 : 0;
-          int substrLen = index-stroffset > window ? window : index-stroffset;
-          strncpy(subSeq, seq->ltr+stroffset, substrLen);
-          strncpy(subMod, mods+stroffset, substrLen);
-          slide_those_windows(subSeq, subMod, pid, start, seq->ltr, mods, window, seq->minLenOfHlix, tmm, asymmetry, seq->maxNumMismatch, _BUNDLE);
-        }
-
-        free(subSeq);
-        free(subMod);
-
-	sprintf(bundleDir, "%slabeled/%d", _BUNDLE, pid);
-	if (chdir(bundleDir) == -1) {
-		fprintf(seq->dispFile, "Error changing to bundleDir: %s!\n", bundleDir);
-		exit(1);
-	}
-	system("ls > list.txt"); // get list of labeled files to read from
+//printf("rank = %d, wsize = %d\n", rank, wsize);
+  span = (seq->strLen)/(wsize);
+  rem = seq->strLen % wsize;
+  istart = rank*span;
+  iend = (rank == wsize-1) ? istart+span+rem : istart+span-1;
+//printf("seq->strLen = %d, span = %d, rem = %d\n", seq->strLen, span, rem);
 
 
-	FILE* infile;
-	infile = fopen(strcat(bundleDir, "/list.txt"), "r");
+  // Get ready to run sliding windows
+  char mods[seq->strLen+1];
+  mods[seq->strLen] = '\0';
 
-	if (infile == NULL) {
-		fprintf(stderr, "Can't open file list.txt!\n");
-		exit(1);
-	}
+  int i;
+  for (i = 0; i < seq->strLen; i++)
+    mods[i] = '.';
+  for (i = 0; i < seq->numS1Pairng; i++) {
+    mods[seq->s1Pairng[i]] = 'X';
+  }
 
-	bundleDir[strlen(bundleDir)-9-pidlength] = '\0';
+  int16_t window, tmm, asymmetry;
+  window = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
+  if (window > seq->strLen) window = seq->strLen;
+  tmm = seq->maxNumMismatch;
+  asymmetry = 0;
 
-	char filename[50];
-	while (fscanf(infile, "%s", filename) != EOF) {
-		if (isalpha(filename[0]) || filename == NULL) // not a labeled file
-			continue;
+  LabeledStructures* labs = calloc(seq->strLen*100, sizeof(LabeledStructures*));
+  int labsSize = 0;
+  int labsMax = seq->strLen*100;
 
-		// add a new node to represent a new bundle
-		add_dumi_node(seq, crik, filename);
+  int index;
+  char* subSeq = calloc(window+1, sizeof(char));
+  char* subMod = calloc(window+1, sizeof(char));
+  int start, stroffset, substrLen;
+  for(index = istart; index < iend+1; index++) {
+//  for(index = 0; index < seq->strLen+1; index++) {
+//printf("pe %d running window %d\n", rank, index);
+    start = index-window-1;
+    stroffset = start+1 > 0 ? start+1 : 0;
+    substrLen = index-stroffset > window ? window : index-stroffset;
+    strncpy(subSeq, seq->ltr+stroffset, substrLen);
+    strncpy(subMod, mods+stroffset, substrLen);
+    slide_those_windows(subSeq, subMod, start, mods, window, tmm, asymmetry, seq, labs, &labsSize, &labsMax);
+  }
 
-		// remove duplicates from labeled file
-		remove_duplicates(filename);
+#ifdef _MPI
+  // Create MPI datatype to pass LabeledStructures structs across PEs
+  MPI_Datatype mpi_labeled_structures;
+  MPI_Datatype types[3] = {MPI_INT, MPI_INT, MPI_UB}; //due to the dynamically allocated arrays in the structs
+                                                      //MPI needs to take the integer fields plus however much more
+                                                      //memory the struct takes up.
+  int blocklens[3] = {1, 1, 1};
+  LabeledStructures setup;
+  MPI_Aint displacements[3];
+  displacements[0] = (MPI_Aint)&setup.titlesize - (MPI_Aint)&setup;
+  displacements[1] = (MPI_Aint)&setup.buffsize - (MPI_Aint)&setup;
+  displacements[2] = (MPI_Aint)sizeof(setup);
+  MPI_Type_create_struct(3, blocklens, displacements, types, &mpi_labeled_structures);
+  MPI_Type_commit(&mpi_labeled_structures);
 
-		// is a labeled file, so open it and convert text to structures
-		make_bundles(seq, crik, filename);
-	}
+  /*
+    The way this parallelization works is that all PEs do their own bundling on a pseudo-evenly distributed
+    chunk of the input RNA sequence. After each PE finishes its own portion of the sliding windows step, said PE
+    needs to transmit its data to all other PEs so they can construct their own appropriate data locally. For this,
+    MPI_Allgatherv will be used to handle the (probable) case that not all PEs finish with the same number of 
+    LabeledStructures instances populated.
+  */
 
-	fclose(infile);
+  // We need to sum up the total number of LabeledStructures instances that got filled with data.
+  int totalLabs = 0;
+//printf("PE %d has %d labs\n", rank, labsSize);
+  MPI_Allreduce(&labsSize, &totalLabs, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+//printf("totalLabs = %d\n", totalLabs);
 
-	sprintf(command, "rm -r %s%d", bundleDir, pid);
-	system(command);
+  // Now, gather the local counts of LabeledStructures instances from each PE an store them 
+  // in an array for Allgatherv.
+  int counts[wsize];
+  MPI_Allgather(&labsSize, 1, MPI_INT, counts, 1, MPI_INT, MPI_COMM_WORLD);
 
-	// remove duplicates from linked list
-	int j;
-	for (i = 0; i < seq->strLen-seq->minLenOfHlix; i++) {
-		for (j = seq->minLenOfHlix; j < seq->strLen; j++) {
-			crik->eden[i][j].numStru -= remove_duplicates_LL(crik->eden[i][j].stemNode);
-		}
-	}
+  // Construct an array to store the displacement of each PEs data in the final complete array as per Allgatherv.
+  int* displs = calloc(wsize, sizeof(int));
+  for(index = 1; index < wsize; index++)
+    displs[index] = displs[index-1] + counts[index-1];
+
+//  printf("PE %d has displs:\n", rank);
+//  for(index = 0; index < wsize; index++)
+//    printf("%d, ", displs[index]);
+//  printf("\n");
+
+  // Allocate space for the complete array of LabeledStructures instances, using the sum totalLabs from above to
+  // allocate just enough memory as needed.
+  LabeledStructures* completeLabs = (LabeledStructures*)calloc(totalLabs, sizeof(LabeledStructures));
+  
+//  for(index = 0; index < totalLabs; index++) {
+//    completeLabs[index].titlesize = 64;
+//    completeLabs[index].buffsize = 4096;
+//  }
+//1if(rank == 0)printf("before allgatherv, PE 0 at index 0 has title %s and titlesize %d\nand completeLabs titlesize %d\n", labs[0].title, labs[0].titlesize, completeLabs[0].titlesize);
+
+  // Now, from each PEs local labs array, gather the respective elements and construct a complete array in each
+  // PE according to our count and displacement arrays from above.
+  MPI_Allgatherv(labs, labsSize, mpi_labeled_structures, 
+                 completeLabs, counts, displs, mpi_labeled_structures, 
+                 MPI_COMM_WORLD);
+
+  // Since the structs we sent contain dynamically allocated character arrays, we need to now allocate memory for
+  // these cstrings in each PE's memory. In addition, on each PE we need to copy over the actual cstring values to
+  // the appropriate places in the completeLabs array.
+  for(index = 0; index < totalLabs; index++) {
+    completeLabs[index].title = (char*)calloc(completeLabs[index].titlesize, sizeof(char));
+    completeLabs[index].structures = (char*)calloc(completeLabs[index].buffsize, sizeof(char));
+    if(index >= displs[rank] && index < displs[rank]+counts[rank]) {
+      strcpy(completeLabs[index].title, labs[index-displs[rank]].title);
+      if(completeLabs[index].buffsize != labs[index-displs[rank]].buffsize) {
+        completeLabs[index].buffsize = labs[index-displs[rank]].buffsize;
+        completeLabs[index].structures = (char*)realloc(completeLabs[index].structures, completeLabs[index].buffsize);
+      }
+      strcpy(completeLabs[index].structures, labs[index-displs[rank]].structures);
+    }
+  }
+
+//if(rank == 0)printf("after allgatherv, PE 0 at index 0 has title %s and titlesize %d\n", completeLabs[0].title, completeLabs[0].titlesize);
+//printf("allgatherv completed\n");
+
+  // Finally, to complete the transmission of the data between all of the PEs, each PE needs to send its own local
+  // information to the other PEs in their completeLabs struct arrays.
+  LabeledStructures* ptr;
+  for(index = 0; index < totalLabs; index++) {
+    ptr = &completeLabs[index];
+    if(index < displs[rank] || index >= displs[rank] + counts[rank]) {
+      initLabeledStructures(ptr);
+    }
+    int root, i = 0;
+    while(i < wsize) {
+      // Use the displacements and counts to figure out which PE should be the source for this index in the
+      // completeLabs array.
+      if(index >= displs[i] && index < displs[i]+counts[i]) root = i;
+      i++;
+    }
+    // As of now, the titlesize doesn't ever change and isn't really used, so I suppose this Bcast isn't vital.
+//    MPI_Bcast(&ptr->titlesize, 1, MPI_INT, root, MPI_COMM_WORLD);
+
+//printf("set up root %d for index %d\n", root, index);
+//if(rank == root)printf("PE %d has title %s and titlesize %d\n", root, ptr->title, ptr->titlesize);
+
+    MPI_Bcast(ptr->title, ptr->titlesize, MPI_CHAR, root, MPI_COMM_WORLD);
+
+//printf("first bcast, root %d\n", root);
+
+    MPI_Bcast(&ptr->buffsize, 1, MPI_INT, root, MPI_COMM_WORLD);
+
+//printf("second bcast, root %d\n", root);
+
+    if(rank != root && ptr->buffsize > 4096) ptr->structures = (char*)realloc(ptr->structures, ptr->buffsize);
+    MPI_Bcast(ptr->structures, ptr->buffsize, MPI_CHAR, root, MPI_COMM_WORLD);
+
+//printf("last bcast, root %d\n", root);
+
+  }
+
+//printf("bcast series completed\n");
+
+  // Now that the information has been distributed across all PEs, let each PE construct its bundles locally using
+  // the full array of LabeledStructures instances.
+  for(index = 0; index < totalLabs; index++) {
+    add_dumi_node(seq, crik, &completeLabs[index]);
+    make_bundles(seq, crik, &completeLabs[index]);
+    free(completeLabs[index].title);
+    free(completeLabs[index].structures);
+
+    free(labs[index].title);
+    free(labs[index].structures);
+  }
+  
+  free(completeLabs);
+  MPI_Type_free(&mpi_labeled_structures);
+
+#else
+
+  // The default (serial) behavior: the process should have populated labs with all possible LabeledStructures
+  // so just make the bundles as above with the MPI-accumulated completeLabs array.
+  for(index = 0; index < labsSize; index++) {
+    add_dumi_node(seq, crik, &labs[index]);
+    make_bundles(seq, crik, &labs[index]);
+    free(labs[index].title);
+    free(labs[index].structures);
+  }
+
+#endif
+
+  free(labs);
+  free(subSeq);
+  free(subMod);
+
+
+  // remove duplicates from linked list
+  int j;
+  for (i = 0; i < seq->strLen-seq->minLenOfHlix; i++) {
+    for (j = seq->minLenOfHlix; j < seq->strLen; j++) {
+      crik->eden[i][j].numStru -= remove_duplicates_LL(crik->eden[i][j].stemNode);
+    }
+  }
+}
+
+void initLabeledStructures(LabeledStructures *lab) {
+  lab->titlesize = 64;
+  lab->title = (char*)calloc(lab->titlesize, sizeof(char));
+  lab->buffsize = 4096;  // default buffsize to 4kB arbitrarily
+  lab->structures = (char*)calloc(lab->buffsize, sizeof(char)); 
+}
+
+void resetLabeledStructures(LabeledStructures* lab, char* newtitle) {
+  lab->title = memset(lab->title, '\0', lab->titlesize);
+  lab->structures = memset(lab->structures, '\0', lab->buffsize);
+  if(newtitle != NULL) strcat(lab->title, newtitle);
+}
+
+void freeLabeledStructures(LabeledStructures **lab) {
+  free((*lab)->title);
+  free((*lab)->structures);
+
+  free(*lab);
+  *lab = NULL;
 }
 
 //*****************************************************************************
@@ -517,33 +676,18 @@ void add_b_node(global* crik, knob* refBNode, int16_t masterLB, int16_t masterUB
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-void make_bundles(config* seq, global* crik, char* filename) {
-  FILE* infile;
-
-  char cwd[1024];
-  if (getcwd(cwd, sizeof(cwd)) != NULL) {
-    //printf("make_bundles infile: %s/%s\n", cwd, filename);
-    infile = fopen(filename, "r");
-  } else {
-    fprintf(seq->dispFile, "Error getting current working directory while trying to open labeled files.");
-    exit(1);
-  }
-
-  if (infile == NULL) {
-    fprintf(stderr, "Can't open file %s!\n", filename);
-    exit(1);
-  }
-
+void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
 
   int begin, end;
-  char line[1024];
+  char* tok;
   int maxBasePairs = 0;
   int8_t repFlag;
+  tok = strtok(lab->structures, "\n");
 
-  while (fscanf(infile, "%s", line) != EOF) {
+  while (tok != NULL) {
     char structure[999999]; // arbitrary length. probably won't be longer than this. if it is, won't complete in reasonable time anyway
     char s1[20], s2[20], s3[20], remainder[50];
-    sscanf(line, "%[^,],%[^,],%[^,],%[^,],%s", s1, s2, structure, s3, remainder);
+    sscanf(tok, "%[^,],%[^,],%[^,],%[^,],%s", s1, s2, structure, s3, remainder);
 		
     repFlag = FALSE;
     int helices = atoi(s3);
@@ -551,7 +695,7 @@ void make_bundles(config* seq, global* crik, char* filename) {
     while(structure[index] != '\0') {
       if(structure[index++] == '(') numPairs++;
     }
-    if(numPairs > maxBasePairs) { 
+    if(numPairs > maxBasePairs) {
       repFlag = TRUE;
       maxBasePairs = numPairs;
     }
@@ -577,7 +721,7 @@ void make_bundles(config* seq, global* crik, char* filename) {
 
       char a1[20], a2[20], a3[20], a4[20];
       sscanf(remainder, "%[^/]/%[^|]|%[^/]/%[^,],%s", a1, a2, a3, a4, remainder);
-      filename_to_indices(filename, &begin, &end);
+      filename_to_indices(lab->title, &begin, &end);
       openOut = atoi(a1) + begin;
       openIn = atoi(a2) + begin;
       closeIn = atoi(a3) + begin;
@@ -630,10 +774,8 @@ void make_bundles(config* seq, global* crik, char* filename) {
           mismatch[j][0] += begin; // calibrate the mismatch indices so they match the actual sequence
           mismatch[j][1] += begin;
 
-          if (seq->parenLukUpTable[mismatch[j][0]][mismatch[j][1]]) { // this mismatch can actually pair. skip
-			//			fprintf(seq->dispFile, "mismatch[j][0]: %d, mismatch[j][1]: %d\n", mismatch[j][0], mismatch[j][1]);
-            skip = 1;
-          }
+          skip = seq->parenLukUpTable[mismatch[j][0]][mismatch[j][1]]; // this mismatch can actually pair. skip
+//fprintf(seq->dispFile, "mismatch[j][0]: %d, mismatch[j][1]: %d\n", mismatch[j][0], mismatch[j][1]);
         }
       }
 
@@ -715,14 +857,14 @@ void make_bundles(config* seq, global* crik, char* filename) {
       free(mismatch);
     }
     if(repFlag) crik->eden[LB][UB].repNode = crik->eden[LB][UB].stemNode->branchNode; 
+
+    tok = strtok(NULL, "\n");
   }
 
   if (!crik->eden[begin][end].stemNode) {
     crik->eden[begin][end].dumiNode = NULL;
     crik->eden[begin][end].numStru = 0;
   }
-
-  fclose(infile);
 }
 
 //*****************************************************************************

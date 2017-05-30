@@ -29,6 +29,8 @@
 #include "main.h"
 #include "init_general.h"
 
+extern int rank;
+
 //*****************************************************************************
 // Function : Initialize Command Line Argument Default Values
 // Caller   : initialize_sequence_by_getting_argument()
@@ -131,38 +133,38 @@ void set_motif(config* seq, int8_t arg, int argc, char** argv) {
   if(++arg == argc)
     cmd_line_err(argv, arg);
   else {
-//    fprintf(seq->dispFile,"\nmotif read from cmdline    : %s\n", argv[arg]);
+    if(rank == 0) fprintf(seq->dispFile,"\nmotif read from cmdline    : %s\n", argv[arg]);
     char* tmp;
     char* tok = strtok(argv[arg], "&");
     
     unsigned int len1 = strlen(tok);
-    seq->motifSeq = calloc(len1+1, sizeof(char));
-    strcpy(seq->motifSeq, tok);
+    seq->motifStruc = calloc(len1+1, sizeof(char));
+    strcpy(seq->motifStruc, tok);
     tok = strtok(NULL, "&");
-    char* tok1 = strtok(seq->motifSeq, "x");
+    char* tok1 = strtok(seq->motifStruc, "x");
     if(len1 != strlen(tok1)) { 
       tmp = tok1; 
       tok1 = strtok(NULL, "x"); 
-      sprintf(seq->motifSeq, "%sx%s", tmp, tok1);
-      len1 = strlen(seq->motifSeq);
+      sprintf(seq->motifStruc, "%sx%s", tmp, tok1);
+      len1 = strlen(seq->motifStruc);
     }
 
     if(tok == NULL) { 
       fprintf(stderr,"\nERROR:\nAn error occurred with the formatting of the command-line motif.\nCheck for quotation marks around the motif and ensure that a '&' separates the\nletters from the dot-parenthesis structure.\nRun Swellix with -h to see the motif reference input.\n\n");
-      free(seq->motifSeq);
+      free(seq->motifStruc);
       fclose(seq->srcFile);
       free(seq);
       exit(1);//      print_usage();
     }
     unsigned int len2 = strlen(tok);
-    seq->motifStruc = calloc(len2+1, sizeof(char));
-    strcpy(seq->motifStruc, tok);
-    tok1 = strtok(seq->motifStruc, "x");
+    seq->motifSeq = calloc(len2+1, sizeof(char));
+    strcpy(seq->motifSeq, tok);
+    tok1 = strtok(seq->motifSeq, "x");
     if(len2 != strlen(tok1)) { 
       tmp = tok1; 
       tok1 = strtok(NULL, "x"); 
-      sprintf(seq->motifStruc, "%sx%s", tmp, tok1);
-      len2 = strlen(seq->motifStruc);
+      sprintf(seq->motifSeq, "%sx%s", tmp, tok1);
+      len2 = strlen(seq->motifSeq);
     }
 
     if(len1 != len2) {
@@ -173,7 +175,7 @@ void set_motif(config* seq, int8_t arg, int argc, char** argv) {
       free(seq);
       exit(1);//      print_usage();
     }
-    printf("motif stored: xxxxxxx%sxxxxxxx\n              xxxxxxx%sxxxxxxx\n", seq->motifSeq, seq->motifStruc);
+    if(rank==0) printf("motif stored: xxxxxxx%sxxxxxxx\n              xxxxxxx%sxxxxxxx\n", seq->motifSeq, seq->motifStruc);
   }
 }
 

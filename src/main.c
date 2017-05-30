@@ -50,8 +50,10 @@
 #include "statistics.h"
 #ifdef _MPI
 #include <mpi.h>
-//#include "mpi_make_bundle_list.h"
+#include "mpi_jump_tree.h"
 #endif
+
+int rank, wsize;
 
 //*****************************************************************************
 // Function : Main
@@ -67,9 +69,15 @@
 //          : 1. initialize_sequence_by_getting_argument() from command line
 //          : 2. initialize_sequence_by_getting_constraints() from conf file
 //*****************************************************************************
+
+extern uint64_t rstoCount1;
+extern uint64_t rstoCount2;
+extern uint64_t js2c1;
+extern uint64_t js2c2;
+
 int main(int argc, char** argv) {
 
-  int rank, wsize, start, end, span, rem;
+  int start, end, span, rem;
 #ifdef _MPI
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
@@ -88,43 +96,15 @@ int main(int argc, char** argv) {
   start = rank*span;
   end = (rank == wsize-1) ? start+span+rem : start+span;
 
-/*#ifdef _MPI
-  switch (rank) {
-    case 0:
-      start = 0; end = 2;
-      break;
-    case 1:
-      start = 2; end = 4;
-      break;
-    case 2:
-      start = 4; end = 7;
-      break;
-    case 3:
-      start = 7; end = 11;
-      break;
-    case 4:
-      start = 11; end = 16;
-      break;
-    case 5:
-      start = 16; end = 22;
-      break;
-    case 6:
-      start = 22; end = 31;
-      break;
-    case 7:
-      start = 31; end = 42;
-      break;
-  }
-#endif*/
-
-  printf("rank %i working on (%i, %i)\n", rank, start, end);
+//  printf("rank %i working on (%i, %i)\n", rank, start, end);
 
   if(rank == 0) {
     printf("%s\n",seq->ltr);
-    init_vrna(seq->ltr);
-    float energy = get_mfe_structure(seq->ltr, seq->mfe);
-    seq->maxenergy = energy;
   }
+  init_vrna(seq->ltr);
+  float energy = get_mfe_structure(seq->ltr, seq->mfe);
+  const int INF = 10000000;
+  seq->minenergy = INF;
 
   global* crik = initialize_crik(seq);
 
@@ -145,31 +125,69 @@ int main(int argc, char** argv) {
       }
       if(seq->algoMode > MODE_INTAB) {
         if(rank==0)disp(seq,DISP_LV1,"started jump tree...\n");
-	make_jump_tree(seq, crik, start, end);
+          make_jump_tree(seq, crik, start, end);
         if(rank==0)disp(seq,DISP_LV1,"completed\n");
       }
     }    // end if 2
   }      // end if 1
-
+uint64_t rstoCount1_display = 0;
+uint64_t rstoCount2_display = 0;
+uint64_t js2c1_disp = 0;
+uint64_t js2c2_disp= 0;
+uint64_t tobrstoCount_display = 0;
+uint64_t g_x1Display = 0;
+uint64_t behSwpCountDisp;
+uint64_t behNormCountDisp;
+extern uint64_t behSwpCount;
+extern uint64_t behNormCount;
+extern uint64_t tobrstoCount;
 #ifdef _MPI
-  uint64_t sumStructures = 0, sumUBStructures = 0, maxDist = 0, motifCount = 0;
-  double maxEng = 0.0;
-//  MPI_Reduce(&crik->numBundles, &sumBundles, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+  uint64_t sumStructures = 0, sumUBStructures = 0, maxDist = 0, motifCount = 0, rstoCounter = 0, rstoErrCount = 0;
+  float minEng = 0.0;
+  MPI_Reduce(&tobrstoCount, &tobrstoCount_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&g_x1, &g_x1Display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&behSwpCount, &behSwpCountDisp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&behNormCount, &behNormCountDisp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numStru, &sumStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numUnbundledStru, &sumUBStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&seq->maxenergy, &maxEng, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&seq->minenergy, &minEng, 1, MPI_FLOAT, MPI_MIN, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->maxdist, &maxDist, 1, MPI_INT, MPI_MAX, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->motifCount, &motifCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+//  crik->rstoCounter += rstoCount;
+  MPI_Reduce(&rstoCount1, &rstoCount1_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&rstoCount2, &rstoCount2_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&js2c1, &js2c1_disp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&js2c2, &js2c2_disp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&crik->rstoCounter, &rstoCounter, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+  MPI_Reduce(&crik->rstoErrCounter, &rstoErrCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   if(rank==0) {
-    seq->maxenergy = maxEng;
+    seq->minenergy = minEng;
     seq->maxdist = maxDist;
     seq->motifCount = motifCount;
     crik->numUnbundledStru = sumUBStructures;
     crik->numStru = sumStructures;
+    crik->rstoCounter = rstoCounter;
+//    crik->rstoCounter += rstoCount;
+    crik->rstoErrCounter = rstoErrCount;
+    g_x1 = g_x1Display;
   }
-#endif
-  
-  if(rank==0)print_results(seq, crik);
+#else
+  rstoCount1_display = rstoCount1;
+  rstoCount2_display = rstoCount2;
+  js2c1_disp = js2c1;
+  js2c2_disp = js2c2;
+  tobrstoCount_display = tobrstoCount;
+  g_x1Display = g_x1;
+  behSwpCountDisp = behSwpCount;
+  behNormCountDisp = behNormCount;
+  //crik->rstoCounter+=rstoCount;
+#endif  
+  if(rank==0) {
+    print_results(seq, crik);
+    printf("rstoCount1: %ld\nrstoCount2: %ld\ncrik->rstoCounter: %ld\n", rstoCount1_display, rstoCount2_display, crik->rstoCounter);
+    printf("tobrstoCount: %ld\nbehSwpCount: %ld\nbehNormCount: %ld\n", tobrstoCount_display, behSwpCountDisp, behNormCountDisp);
+    printf("js2c1: %ld\njs2c2: %ld\n", js2c1_disp, js2c2_disp);
+  }
   close_up(seq, crik);
 
 #ifdef _MPI
@@ -250,7 +268,9 @@ config* initialize_sequence_by_getting_argument(int argc, char** argv) {
     }  // end if
   }    // end for
 
-  if(seq->maxNumMismatch >= seq->minLenOfHlix){                                                               fprintf(stderr, "Mismatch too huge. Minimum helix length '-l'  has to be larger than maximum mismatch counts '-mm'\n");
+  if(seq->maxNumMismatch >= seq->minLenOfHlix) {
+    fprintf(stderr, "Mismatch too huge. Minimum helix length '-l' "
+                    "has to be larger than maximum mismatch counts '-mm'\n");
     exit(1);
   }  // end if
 
@@ -275,7 +295,7 @@ int initialize_sequence_by_settng_memory(config* seq) {
   seq->insIntrvlMinSize = seq->minPairngDist + seq->minLenOfHlix * 2;
   seq->behIntrvlMinSize = seq->minPairngDist + seq->minLenOfHlix * 2;
   seq->maxdist = 0;
-  seq->maxenergy = 0;
+  seq->minenergy = 0;
    
   return 0;
 }  // end initialize_sequence_by_settng_memory
@@ -351,12 +371,13 @@ global* initialize_crik(config* seq) {
 
   global* crik = malloc(sizeof(global));                                                 // Crick the Book-keeper, our handy right-hand man #1
   crik->linkedmms         = 0;
-  crik->struLinked	  = 0;
-  crik->numJumpIns        = 0;
-  crik->hackCounter       = 0;
-  crik->skippedStru	  = 0;
-  crik->numJumpBeh        = 0;
-  crik->sizeOfIntrvl      = 0;
+//  crik->struLinked	  = 0;
+//  crik->numJumpIns        = 0;
+  crik->rstoCounter       = 0;
+  crik->rstoErrCounter    = 0;
+  crik->skippedStru	      = 0;
+//  crik->numJumpBeh        = 0;
+//  crik->sizeOfIntrvl      = 0;
   crik->lvlOfRecur        = 0;
   crik->numCmpnt          = 0;
   crik->numHP             = 1;
@@ -366,7 +387,7 @@ global* initialize_crik(config* seq) {
   crik->numUnbundledStru  = 0;
   crik->specialRstoFlag   = 0;
   crik->intrvlCntr        = 0;                                                                 // it's like batch number, used to distinguish one batch from another
-  crik->rstoOnCueFlag     = 0;
+//  crik->rstoOnCueFlag     = 0;
   crik->intrvlCntr        = 0;
   crik->opnBrsStop        = seq->strLen - ((seq->minLenOfHlix - 1) << 1) - seq->minPairngDist; // farthest location the opnBrsOutIndx may reach
   crik->numCmpntTyp       = seq->strLen;
@@ -379,7 +400,9 @@ global* initialize_crik(config* seq) {
   crik->hlixInStru        = NULL;
 
   if(seq->constraintActive)
-    crik->struMustPairFlag = calloc((seq->numCovari + seq->numV1Pairng), sizeof(int16_t));     // used to track the covariance pairs the current structure contains  crik->numStru = 0;
+    crik->struMustPairFlag = calloc((seq->numCovari + seq->numV1Pairng), sizeof(int16_t));     // used to track the covariance pairs the current structure contains  
+  crik->mustPairLength = seq->numCovari + seq->numV1Pairng;
+  crik->numStru = 0;
 
   return crik;
 }  // end initialize_crik
@@ -474,8 +497,7 @@ int make_interval_look_up_table(config* seq, global* crik) {
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-int make_bundle_list(config* seq, global* crik)
-{
+int make_bundle_list(config* seq, global* crik) {
   disp(seq,DISP_ALL,"################################################################################################  Entering 'make_bundle_st'\n");
 
   initialize_eden(seq, crik);
@@ -483,6 +505,70 @@ int make_bundle_list(config* seq, global* crik)
   dispEden(seq, crik);
   return 0;
 }  // end make_bundle_list
+
+void make_bundled_cmpntList(config* seq, global* crik) {
+  int j;
+  int k;
+
+//printf("# of components in cmpntList before adding bundles: %ld\n", crik->numCmpnt);
+  // remove components that are less than max bundle len
+  for (j = 0; j < seq->strLen; j++) {
+    knob* cmpntCursr = crik->cmpntList[j].knob;
+    knob* prev = crik->cmpntList[j].knob;
+    k = 0;
+    while (cmpntCursr) {
+      int len = cmpntCursr->closeBrsOutIndx - cmpntCursr->opnBrsOutIndx + 1;
+      int maxBundleLen = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
+      if (len <= maxBundleLen) {
+        if (k == 0) { // first element needs to be deleted
+          knob* toDelete = cmpntCursr;
+          crik->cmpntList[j].knob = cmpntCursr->cmpntListNext;
+          toDelete->cmpntListNext = NULL;
+          cmpntCursr = crik->cmpntList[j].knob;
+          free(toDelete);
+          crik->numCmpnt--;
+          crik->cmpntList[j].cnt--;
+          continue;
+        } else { // this current element needs to be deleted, in the middle of the list
+          knob* toDelete = cmpntCursr;
+          prev->cmpntListNext = cmpntCursr->cmpntListNext;
+          toDelete->cmpntListNext = NULL;
+          cmpntCursr = prev->cmpntListNext;
+          free(toDelete);
+          crik->numCmpnt--;
+          crik->cmpntList[j].cnt--;
+          continue;
+        }
+      }
+
+      prev = cmpntCursr;
+      cmpntCursr = cmpntCursr->cmpntListNext;
+      k++;
+    }
+  }
+
+  for (j = 0; j < seq->strLen; j++) {
+    for (k = seq->strLen-1; k > j; k--) {
+      if (crik->eden[j][k].dumiNode) {
+        crik->eden[j][k].dumiNode->cmpntListNext = crik->cmpntList[j].knob;
+        crik->cmpntList[j].knob = crik->eden[j][k].dumiNode;
+        crik->cmpntList[j].cnt++;
+        crik->numCmpnt++;
+      }
+    }
+  }
+  display_components(seq, crik, 1);
+//printf("# of components in cmpntList after adding bundles: %ld\n", crik->numCmpnt);
+//  disp(seq,DISP_LV1,"# of components after adding bundles: %ld\n", crik->numCmpnt);
+  // reset the component list occupied type list
+  crik->numCmpntTypOcupid = 0;
+  for (j = 0; j < seq->strLen; j++) {
+    if (crik->cmpntList[j].knob) {
+      crik->cmpntListOcupidTyp[crik->numCmpntTypOcupid] = j;
+      crik->numCmpntTypOcupid++;
+    }
+  }
+}
 
 //*****************************************************************************
 // Function : Make Jump Tree
@@ -496,107 +582,73 @@ int make_bundle_list(config* seq, global* crik)
 //          : 2nd dimension - colJ : column j, upper              "                        "
 //          : 3rd dimension - hgtK : height k, number of cmpnt types which may fit into the interval
 //*****************************************************************************
-int make_jump_tree(config* seq, global* crik, int start, int end)
-{                                                                            disp(seq,DISP_ALL,"################################################################################################  Entering 'make_jump_tree'\n");
-  local* todd = init_todd(crik);                                         disp(seq,DISP_ALL,"Recursion level starts at zero from here\n");
+int make_jump_tree(config* seq, global* crik, int start, int end) {
+    disp(seq,DISP_ALL,"################################################################################################  Entering 'make_jump_tree'\n");
+    disp(seq,DISP_ALL,"Recursion level starts at zero from here\n");
+
+  local* todd = init_todd(crik);
   int16_t    i;
-  int16_t    hlixBranchngIndx1 = 0;                                          // all branches of hlix are rooted (numbered) from make_jump_tree()
+  int16_t    hlixBranchngIndx1 = 0; // all branches of hlix are rooted (numbered) from make_jump_tree()
 
   crik->hlixInStru = NULL;
-  crik->intrvlCntr = 0;                                                      // this reset is necessary because it's just used by make_bundle_list()
+  crik->intrvlCntr = 0; // this reset is necessary because it's just used by make_bundle_list()
 
   // Combine bundles into component list if necessary
-  if (seq->bundle) {
-    int j;
-    int k;
-
-    // remove components that are less than max bundle len
-    for (j = 0; j < seq->strLen; j++) {
-      knob* cmpntCursr = crik->cmpntList[j].knob;
-      knob* prev = crik->cmpntList[j].knob;
-      k = 0;
-      while (cmpntCursr) {
-        int len = cmpntCursr->closeBrsOutIndx - cmpntCursr->opnBrsOutIndx + 1;
-        int maxBundleLen = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
-        if (len <= maxBundleLen) {
-          if (k == 0) { // first element needs to be deleted
-            knob* toDelete = cmpntCursr;
-            crik->cmpntList[j].knob = cmpntCursr->cmpntListNext;
-            toDelete->cmpntListNext = NULL;
-            cmpntCursr = crik->cmpntList[j].knob;
-            free(toDelete);
-            crik->numCmpnt--;
-            crik->cmpntList[j].cnt--;
-            continue;
-          } else { // this current element needs to be deleted, in the middle of the list
-            knob* toDelete = cmpntCursr;
-            prev->cmpntListNext = cmpntCursr->cmpntListNext;
-            toDelete->cmpntListNext = NULL;
-            cmpntCursr = prev->cmpntListNext;
-            free(toDelete);
-            crik->numCmpnt--;
-            crik->cmpntList[j].cnt--;
-            continue;
-          }
-        }
-
-        prev = cmpntCursr;
-        cmpntCursr = cmpntCursr->cmpntListNext;
-        k++;
-      }
-    }
-
-    for (j = 0; j < seq->strLen; j++) {
-      for (k = seq->strLen-1; k > j; k--) {
-        if (crik->eden[j][k].dumiNode) {
-          crik->eden[j][k].dumiNode->cmpntListNext = crik->cmpntList[j].knob;
-          crik->cmpntList[j].knob = crik->eden[j][k].dumiNode;
-          crik->cmpntList[j].cnt++;
-          crik->numCmpnt++;
-        }
-      }
-    }
-    display_components(seq, crik, 1);
-//	  printf("# of components in cmpntList after adding bundles: %d\n", (int)crik->numCmpnt);
-    disp(seq,DISP_LV1,"# of components after adding bundles: %d\n",(int)crik->numCmpnt);
-//	  printf("main line 472 crik->numCmpntTypOcupid = %d\n", crik->numCmpntTypOcupid);
-    // reset the component list occupied type list
-    crik->numCmpntTypOcupid = 0;
-    for (j = 0; j < seq->strLen; j++) {
-      if (crik->cmpntList[j].knob) {
-        crik->cmpntListOcupidTyp[crik->numCmpntTypOcupid] = j;
-        crik->numCmpntTypOcupid++;
-      }
-    }
-//	  printf("main line 481 crik->numCmpntTypOcupid = %d\n", crik->numCmpntTypOcupid);
-  }
+  if(seq->bundle)
+    make_bundled_cmpntList(seq, crik);
 
   int keepgoing;
 
-  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++){                            // scan thru the whole cmpnt list
-    todd->cmpntLLCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;  // grab one component on the component type indicated by crik->cmpntListOcupidTyp[i]
+#ifdef _MPI
+
+//  struct mpi_crik {  
+//  };
+
+
+  knob* cmpnts[crik->numCmpnt];
+  int counter = 0;
+  for(i = 0; i < crik->numCmpntTypOcupid; i++) {
+    cmpnts[counter] = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
+    cmpnts[counter]->newCLindex = counter;
+    counter++;
+    while(cmpnts[counter-1]->cmpntListNext != NULL) {
+      cmpnts[counter] = cmpnts[counter-1]->cmpntListNext;
+      cmpnts[counter]->newCLindex = counter;
+      counter++;
+    }
+  }
+//  if(counter != crik->numCmpnt) {printf("in main.c:make_jump_tree: MPI ERR - seems to be a conflict in cmpntList & numCmpnts on rank %d: \nnumCmpnt == %ld, counter == %d\n", rank, crik->numCmpnt, counter);}
+
+  crik->numCmpnt = counter;
+
+  int cmpntTracker[counter];
+  for(i = 0; i < counter; i++) cmpntTracker[i] = cmpnts[i]->newCLindex;
+  
+  crik->mpiCList = cmpnts;
+  make_jump_tree_parallel(seq, crik, todd, cmpnts, cmpntTracker);
+
+#else
+//if(rank == 0) {
+  // scan thru the whole cmpnt list
+//  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
+  for(i = 0; i < crik->numCmpntTypOcupid; i++) {
+    // grab one component on the component type indicated by crik->cmpntListOcupidTyp[i]
+    todd->cmpntLLCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
     keepgoing = 1;
 
-    if(time_to_quit(seq, todd))                                        // check if it's worth it to go thru the rest of the components
-      keepgoing = 0;
-    else if(keepgoing)
-      while(todd->cmpntLLCursr){                                             disp(seq,DISP_ALL,"at 'make_jump_tree' while loop, lvl 0 hlix selected\n");
-        hlixBranchngIndx1++;                                                 disp(seq,DISP_ALL,"{%2d-%-2d{    }%2d-%-2d}\n", todd->cmpntLLCursr->opnBrsOutIndx, todd->cmpntLLCursr->opnBrsInnIndx, todd->cmpntLLCursr->closeBrsInnIndx, todd->cmpntLLCursr->closeBrsOutIndx);
+    // check if it's worth it to go thru the rest of the components
+    if(!time_to_quit(seq, todd)) {
+      while(todd->cmpntLLCursr) {
+        disp(seq,DISP_ALL,"at 'make_jump_tree' while loop, lvl 0 hlix selected\n");
+        disp(seq,DISP_ALL,"{%2d-%-2d{    }%2d-%-2d}\n", todd->cmpntLLCursr->opnBrsOutIndx, 
+                                                        todd->cmpntLLCursr->opnBrsInnIndx, 
+                                                        todd->cmpntLLCursr->closeBrsInnIndx, 
+                                                        todd->cmpntLLCursr->closeBrsOutIndx);
+        hlixBranchngIndx1++;
         clear_old_hlix_link(crik);
 
-      	  /*
-          // If bundling is on, check to see if component length is < max bundle len and skip if it is
-          if (seq->bundle) {
-        	  int len = todd->cmpntLLCursr->closeBrsOutIndx - todd->cmpntLLCursr->opnBrsOutIndx + 1;
-        	  int maxBundleLen = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 4) - 1;
-        	  if (len <= maxBundleLen && !bundle_is_available(seq, crik, todd)) {
-        		  todd->cmpntLLCursr = todd->cmpntLLCursr->cmpntListNext;
-        		  continue;
-        	  }
-          }
-          */
-
-        take_cmpnt_list_normal_path(seq, crik, todd, hlixBranchngIndx1);    // from here, a complex series of recursion starts here    <----- CORE OF SWELLIX
+        // from here, a complex series of recursion starts here    <----- CORE OF SWELLIX
+        take_cmpnt_list_normal_path(seq, crik, todd, hlixBranchngIndx1);
 
         todd->RSTO = NULL;
 
@@ -616,9 +668,13 @@ int make_jump_tree(config* seq, global* crik, int start, int end)
 
         todd->cmpntLLCursr = todd->cmpntLLCursr->cmpntListNext;
       }  // end while
+    }
   }      // end for
 
+#endif
+
   exit_curr_recur(seq,crik, todd);
+//}
 
   return 0;
 }  // end make_jump_tree
@@ -650,6 +706,8 @@ void print_results(config* seq, global* crik)
       fprintf(seq->dispFile, "skipped structures: %d\n", crik->skippedStru);
       fprintf(seq->dispFile, "g_x1 = %lld\n", g_x1);
       fprintf(seq->dispFile, "g_x2 = %lld\n", g_x2);
+      fprintf(seq->dispFile, "Interval Restorations: %ld\n", crik->rstoCounter);
+      //fprintf(seq->dispFile, "RSTO error count: %ld\n", crik->rstoErrCounter);
     }
   }  // end outer if
 }  // end print_results
@@ -794,6 +852,7 @@ void display_structures(config* seq, global* crik, int8_t locationMark)
     locationMark++;    // purely dummy operation
   }  // end if
 }  // end display_structures
+
 
 //*****************************************************************************
 // Function : Display Linked List

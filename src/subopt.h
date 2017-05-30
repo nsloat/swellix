@@ -1,7 +1,7 @@
 #ifndef __SWELLIX_SUBOPT_H
 #define __SWELLIX_SUBOPT_H
 
-
+#include "main.h"
 
 typedef struct {
     int noLP;
@@ -62,7 +62,7 @@ typedef struct state_struct {
 
 #define MIN_PAIR_DIST 3
 
-int slide_those_windows(char* subSeq, char* subMod, int pid, int start, char* sequence, char* mods, int window, int minHelixLEN, int tmms, int asymm, int maxNumMMs, char* bundledir);
+int slide_those_windows(char* subSeq, char* subMod, int start, char* mods, int window, int tmms, int asymm, config* seq, LabeledStructures* labs, int* labsSize, int* labsMax);
 
 void start(char *seq, int *constraints);
 void start_with_constraints(state *s, int i);
@@ -101,6 +101,6 @@ state *interpret_message(int *ints);
 /* int next_idle_node(); */
 
 
-int label_struct(char* structure, int start, char* outprefix);
+int label_struct(char* structure, int start);
 
 #endif // __SWELLIX_SUBOPT_H

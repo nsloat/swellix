@@ -1,0 +1,127 @@
+----------------------------------------
+Begin Torque Prologue on nid25355
+at Wed Apr 12 16:24:59 CDT 2017
+Job Id:			6504816.bw
+Username:		sloat
+Group:			EOT_baep
+Job name:		px4_mhl3_trna-1EHZ_serial
+Requested resources:	neednodes=1:ppn=32:xe,nodes=1:ppn=32:xe,walltime=48:00:00
+Queue:			normal
+Account:		baep
+End Torque Prologue:  0.050 elapsed
+----------------------------------------
+
+
+
+
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+started paren lookup table...
+completed paren lookup table
+started component list
+
+Number of Components = 239
+
+Occupied Compnent List:0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 44, 45, 48, 49, 50, 51, 52, 53, 55, 56, 
+completed component list
+started interval lookup table...
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 6
+pe 0 running window 7
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 11
+pe 0 running window 12
+pe 0 running window 13
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 20
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 25
+pe 0 running window 26
+pe 0 running window 27
+pe 0 running window 28
+pe 0 running window 29
+pe 0 running window 30
+pe 0 running window 31
+pe 0 running window 32
+pe 0 running window 33
+pe 0 running window 34
+pe 0 running window 35
+pe 0 running window 36
+pe 0 running window 37
+pe 0 running window 38
+pe 0 running window 39
+pe 0 running window 40
+pe 0 running window 41
+pe 0 running window 42
+pe 0 running window 43
+pe 0 running window 44
+pe 0 running window 45
+pe 0 running window 46
+pe 0 running window 47
+pe 0 running window 48
+pe 0 running window 49
+pe 0 running window 50
+pe 0 running window 51
+pe 0 running window 52
+pe 0 running window 53
+pe 0 running window 54
+pe 0 running window 55
+pe 0 running window 56
+pe 0 running window 57
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 60
+pe 0 running window 61
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 69
+pe 0 running window 70
+pe 0 running window 71
+pe 0 running window 72
+pe 0 running window 73
+pe 0 running window 74
+pe 0 running window 75
+pe 0 running window 76
+completed bundle list
+started jump tree...
+completed
+
+
+Components: 215
+Bundles: 56
+Bundled structures: 563026
+Total structures: 1197654
+skipped structures: 0
+g_x1 = 452473
+g_x2 = 953178
+Interval Restorations: 6450
+rstoCount1: 6450
+rstoCount2: 28209
+crik->rstoCounter: 6450
+tobrstoCount: 6450
+behSwpCount: 2327
+behNormCount: 19857Application 55928286 resources: utime ~5s, stime ~1s, Rss ~21616, inblocks ~9447, outblocks ~22929
+real 7.61
+user 0.49
+sys 0.38
