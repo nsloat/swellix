@@ -1,0 +1,6804 @@
+----------------------------------------
+Begin Torque Prologue on nid25428
+at Mon May  8 21:07:28 CDT 2017
+Job Id:			6667430.bw
+Username:		sloat
+Group:			EOT_baep
+Job name:		px4_mhl6_trna-1EHZ_par_j1
+Requested resources:	neednodes=5:ppn=32:xe,nodes=5:ppn=32:xe,walltime=48:00:00
+Queue:			normal
+Account:		baep
+End Torque Prologue:  0.051 elapsed
+----------------------------------------
+
+
+
+
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+GCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+started paren lookup table...
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+
+Number of Components = 14
+
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+Number of Components = 14
+
+started interval lookup table...
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+completed component list
+started interval lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+started paren lookup table...
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+completed paren lookup table
+started component list
+
+Number of Components = 14
+
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+completed component list
+Number of Components = 14
+
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+
+started interval lookup table...
+Number of Components = 14
+
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+completed component list
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+completed component list
+started interval lookup table...
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+completed component list
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+Number of Components = 14
+
+started interval lookup table...
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+completed component list
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+
+Number of Components = 14
+
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+started interval lookup table...
+
+Number of Components = 14
+
+Number of Components = 14
+
+
+
+Number of Components = 14
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+completed component list
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+started interval lookup table...
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+completed component list
+Number of Components = 14
+
+started interval lookup table...
+completed component list
+
+started interval lookup table...
+started interval lookup table...
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+started interval lookup table...
+completed component list
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+completed component list
+
+started interval lookup table...
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+
+started interval lookup table...
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+completed component list
+Number of Components = 14
+
+started interval lookup table...
+Number of Components = 14
+
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+Number of Components = 14
+
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+completed component list
+started interval lookup table...
+
+started interval lookup table...
+started interval lookup table...
+
+
+Number of Components = 14
+
+Number of Components = 14
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+completed component list
+started interval lookup table...
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+completed component list
+
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+completed component list
+Number of Components = 14
+
+completed component list
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+
+
+
+started interval lookup table...
+Number of Components = 14
+
+started interval lookup table...
+Number of Components = 14
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+completed component list
+started interval lookup table...
+started interval lookup table...
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+completed component list
+Number of Components = 14
+
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+
+Number of Components = 14
+
+Number of Components = 14
+
+
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+started interval lookup table...
+started interval lookup table...
+completed component list
+
+started interval lookup table...
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+completed component list
+Number of Components = 14
+
+started interval lookup table...
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+
+Number of Components = 14
+
+Number of Components = 14
+
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+started interval lookup table...
+completed component list
+started interval lookup table...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+
+Number of Components = 14
+
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+started interval lookup table...
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+pe 0 running window 0
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 1
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+completed interval lookup table
+completed interval lookup table
+started bundle list...
+pe 0 running window 2
+started bundle list...
+pe 0 running window 1
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 0
+pe 0 running window 3
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 4
+pe 0 running window 3
+pe 0 running window 3
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 1
+pe 0 running window 0
+pe 0 running window 5
+pe 0 running window 4
+pe 0 running window 3
+pe 0 running window 6
+pe 0 running window 2
+pe 0 running window 2
+pe 0 running window 0
+pe 0 running window 7
+pe 0 running window 0
+pe 0 running window 5
+pe 0 running window 4
+pe 0 running window 4
+pe 0 running window 8
+pe 0 running window 6
+pe 0 running window 3
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 5
+pe 0 running window 7
+pe 0 running window 0
+pe 0 running window 9
+pe 0 running window 5
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 0
+pe 0 running window 10
+pe 0 running window 7
+pe 0 running window 9
+pe 0 running window 0
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 10
+pe 0 running window 1
+pe 0 running window 3
+pe 0 running window 7
+pe 0 running window 9
+pe 0 running window 11
+pe 0 running window 2
+pe 0 running window 1
+completed interval lookup table
+pe 0 running window 10
+started bundle list...
+pe 0 running window 8
+pe 0 running window 4
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 2
+pe 0 running window 9
+pe 0 running window 12
+pe 0 running window 1
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 10
+pe 0 running window 1
+pe 0 running window 6
+pe 0 running window 3
+pe 0 running window 11
+pe 0 running window 5
+pe 0 running window 5
+pe 0 running window 2
+pe 0 running window 2
+pe 0 running window 7
+pe 0 running window 6
+pe 0 running window 6
+pe 0 running window 4
+pe 0 running window 8
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 3
+pe 0 running window 7
+pe 0 running window 12
+pe 0 running window 9
+pe 0 running window 3
+pe 0 running window 7
+pe 0 running window 0
+pe 0 running window 8
+pe 0 running window 10
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 4
+pe 0 running window 12
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 6
+pe 0 running window 10
+pe 0 running window 5
+pe 0 running window 1
+pe 0 running window 7
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 5
+pe 0 running window 8
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 14
+pe 0 running window 11
+pe 0 running window 6
+pe 0 running window 13
+pe 0 running window 6
+pe 0 running window 15
+pe 0 running window 7
+pe 0 running window 2
+pe 0 running window 7
+pe 0 running window 9
+pe 0 running window 12
+pe 0 running window 0
+pe 0 running window 12
+pe 0 running window 8
+pe 0 running window 3
+pe 0 running window 9
+pe 0 running window 8
+pe 0 running window 10
+pe 0 running window 14
+pe 0 running window 10
+pe 0 running window 9
+pe 0 running window 4
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 15
+pe 0 running window 1
+pe 0 running window 10
+pe 0 running window 3
+pe 0 running window 13
+pe 0 running window 14
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 6
+pe 0 running window 2
+pe 0 running window 4
+pe 0 running window 15
+pe 0 running window 11
+pe 0 running window 7
+pe 0 running window 11
+pe 0 running window 16
+pe 0 running window 11
+pe 0 running window 8
+pe 0 running window 3
+pe 0 running window 12
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 9
+pe 0 running window 6
+pe 0 running window 12
+pe 0 running window 10
+pe 0 running window 4
+pe 0 running window 12
+pe 0 running window 7
+pe 0 running window 12
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 8
+pe 0 running window 5
+pe 0 running window 12
+pe 0 running window 3
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 13
+pe 0 running window 9
+pe 0 running window 11
+pe 0 running window 6
+pe 0 running window 10
+pe 0 running window 13
+pe 0 running window 4
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 13
+pe 0 running window 7
+pe 0 running window 2
+pe 0 running window 5
+pe 0 running window 13
+completed interval lookup table
+pe 0 running window 6
+pe 0 running window 11
+pe 0 running window 8
+pe 0 running window 12
+pe 0 running window 3
+started bundle list...
+pe 0 running window 7
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 8
+pe 0 running window 4
+pe 0 running window 14
+pe 0 running window 12
+pe 0 running window 16
+pe 0 running window 9
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 10
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 14
+pe 0 running window 14
+pe 0 running window 6
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 15
+pe 0 running window 7
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 12
+pe 0 running window 15
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 12
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 13
+pe 0 running window 11
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 13
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 12
+pe 0 running window 16
+pe 0 running window 0
+pe 0 running window 14
+pe 0 running window 17
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 16
+pe 0 running window 1
+pe 0 running window 14
+pe 0 running window 17
+pe 0 running window 15
+pe 0 running window 2
+pe 0 running window 16
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 14
+pe 0 running window 17
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 5
+pe 0 running window 6
+pe 0 running window 17
+pe 0 running window 7
+pe 0 running window 16
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 11
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 12
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 1
+pe 0 running window 0
+pe 0 running window 2
+pe 0 running window 1
+completed interval lookup table
+completed interval lookup table
+started bundle list...
+started bundle list...
+completed interval lookup table
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 3
+started bundle list...
+pe 0 running window 2
+completed interval lookup table
+pe 0 running window 1
+started bundle list...
+pe 0 running window 2
+completed interval lookup table
+pe 0 running window 3
+started bundle list...
+pe 0 running window 4
+completed interval lookup table
+pe 0 running window 3
+pe 0 running window 2
+
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+completed component list
+started interval lookup table...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+completed interval lookup table
+pe 0 running window 0
+started bundle list...
+started bundle list...
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 1
+pe 0 running window 1
+pe 0 running window 3
+pe 0 running window 2
+pe 0 running window 2
+pe 0 running window 0
+pe 0 running window 2
+pe 0 running window 4
+pe 0 running window 3
+pe 0 running window 3
+pe 0 running window 3
+pe 0 running window 5
+pe 0 running window 0
+pe 0 running window 6
+pe 0 running window 4
+pe 0 running window 4
+pe 0 running window 1
+pe 0 running window 4
+pe 0 running window 7
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 8
+pe 0 running window 5
+pe 0 running window 5
+pe 0 running window 5
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 9
+pe 0 running window 6
+pe 0 running window 6
+pe 0 running window 0
+pe 0 running window 3
+pe 0 running window 7
+pe 0 running window 1
+pe 0 running window 7
+pe 0 running window 1
+completed interval lookup table
+pe 0 running window 0
+pe 0 running window 10
+pe 0 running window 4
+pe 0 running window 7
+pe 0 running window 0
+pe 0 running window 8
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 5
+pe 0 running window 2
+started bundle list...
+pe 0 running window 11
+pe 0 running window 9
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 3
+pe 0 running window 10
+pe 0 running window 1
+pe 0 running window 3
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 3
+pe 0 running window 2
+pe 0 running window 2
+pe 0 running window 4
+pe 0 running window 2
+pe 0 running window 9
+pe 0 running window 7
+pe 0 running window 12
+pe 0 running window 3
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 10
+pe 0 running window 11
+pe 0 running window 8
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 5
+pe 0 running window 4
+pe 0 running window 9
+pe 0 running window 6
+pe 0 running window 6
+pe 0 running window 4
+pe 0 running window 10
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 12
+pe 0 running window 7
+pe 0 running window 6
+pe 0 running window 7
+pe 0 running window 5
+pe 0 running window 5
+pe 0 running window 13
+pe 0 running window 8
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 6
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 9
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+pe 0 running window 17
+pe 0 running window 13
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 16
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 17
+pe 0 running window 18
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+completed interval lookup table
+started bundle list...
+pe 0 running window 1
+pe 0 running window 2
+completed interval lookup table
+completed interval lookup table
+started bundle list...
+started bundle list...
+pe 0 running window 3
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+pe 0 running window 4
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+completed interval lookup table
+started bundle list...
+started bundle list...
+pe 0 running window 1
+completed interval lookup table
+started bundle list...
+pe 0 running window 2
+completed interval lookup table
+started bundle list...
+completed interval lookup table
+started bundle list...
+pe 0 running window 3
+pe 0 running window 4
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+completed interval lookup table
+completed interval lookup table
+started bundle list...
+started bundle list...
+pe 0 running window 0
+pe 0 running window 5
+pe 0 running window 7
+pe 0 running window 12
+pe 0 running window 7
+pe 0 running window 10
+pe 0 running window 9
+pe 0 running window 13
+pe 0 running window 6
+pe 0 running window 7
+pe 0 running window 10
+pe 0 running window 8
+pe 0 running window 8
+pe 0 running window 0
+pe 0 running window 12
+pe 0 running window 7
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 9
+pe 0 running window 11
+pe 0 running window 10
+pe 0 running window 8
+pe 0 running window 10
+pe 0 running window 9
+pe 0 running window 14
+pe 0 running window 13
+pe 0 running window 10
+pe 0 running window 11
+pe 0 running window 1
+pe 0 running window 9
+pe 0 running window 15
+pe 0 running window 8
+pe 0 running window 12
+pe 0 running window 10
+pe 0 running window 13
+pe 0 running window 11
+pe 0 running window 14
+pe 0 running window 9
+pe 0 running window 2
+pe 0 running window 11
+pe 0 running window 12
+pe 0 running window 11
+pe 0 running window 15
+pe 0 running window 10
+pe 0 running window 3
+pe 0 running window 11
+pe 0 running window 12
+pe 0 running window 13
+pe 0 running window 12
+pe 0 running window 4
+pe 0 running window 12
+pe 0 running window 14
+pe 0 running window 11
+pe 0 running window 12
+pe 0 running window 5
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 6
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 7
+pe 0 running window 13
+pe 0 running window 12
+pe 0 running window 15
+pe 0 running window 8
+pe 0 running window 13
+pe 0 running window 13
+pe 0 running window 9
+pe 0 running window 16
+pe 0 running window 10
+pe 0 running window 13
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 14
+pe 0 running window 11
+pe 0 running window 16
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 12
+pe 0 running window 15
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 6
+pe 0 running window 7
+completed interval lookup table
+pe 0 running window 1
+started bundle list...
+completed interval lookup table
+pe 0 running window 8
+started bundle list...
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 2
+pe 0 running window 0
+pe 0 running window 3
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 11
+pe 0 running window 0
+pe 0 running window 4
+pe 0 running window 1
+pe 0 running window 0
+pe 0 running window 5
+pe 0 running window 1
+pe 0 running window 1
+pe 0 running window 6
+pe 0 running window 5
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 12
+pe 0 running window 7
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 8
+pe 0 running window 3
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 2
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 7
+pe 0 running window 9
+pe 0 running window 1
+pe 0 running window 3
+pe 0 running window 3
+pe 0 running window 13
+pe 0 running window 8
+pe 0 running window 10
+pe 0 running window 1
+pe 0 running window 4
+pe 0 running window 0
+pe 0 running window 3
+pe 0 running window 1
+completed interval lookup table
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 4
+pe 0 running window 11
+pe 0 running window 4
+pe 0 running window 3
+pe 0 running window 0
+pe 0 running window 9
+pe 0 running window 3
+pe 0 running window 5
+pe 0 running window 1
+pe 0 running window 10
+pe 0 running window 4
+pe 0 running window 6
+pe 0 running window 5
+pe 0 running window 2
+pe 0 running window 14
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 12
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+pe 0 running window 5
+completed interval lookup table
+completed interval lookup table
+started bundle list...
+pe 0 running window 6
+completed interval lookup table
+started bundle list...
+started bundle list...
+pe 0 running window 7
+pe 0 running window 8
+pe 0 running window 1
+completed interval lookup table
+completed interval lookup table
+started bundle list...
+pe 0 running window 0
+started bundle list...
+pe 0 running window 2
+pe 0 running window 9
+completed interval lookup table
+pe 0 running window 10
+started bundle list...
+pe 0 running window 3
+pe 0 running window 1
+pe 0 running window 4
+pe 0 running window 11
+pe 0 running window 0
+pe 0 running window 2
+completed interval lookup table
+pe 0 running window 5
+started bundle list...
+pe 0 running window 0
+pe 0 running window 6
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 3
+pe 0 running window 12
+pe 0 running window 7
+pe 0 running window 1
+pe 0 running window 8
+pe 0 running window 4
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 9
+pe 0 running window 1
+pe 0 running window 5
+pe 0 running window 1
+pe 0 running window 10
+pe 0 running window 3
+pe 0 running window 0
+pe 0 running window 13
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 1
+pe 0 running window 4
+pe 0 running window 0
+pe 0 running window 0
+pe 0 running window 6
+pe 0 running window 2
+pe 0 running window 5
+pe 0 running window 7
+pe 0 running window 3
+pe 0 running window 11
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 0
+pe 0 running window 14
+pe 0 running window 8
+pe 0 running window 2
+pe 0 running window 2
+pe 0 running window 4
+pe 0 running window 3
+pe 0 running window 5
+pe 0 running window 15
+pe 0 running window 9
+pe 0 running window 6
+pe 0 running window 12
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 3
+pe 0 running window 2
+pe 0 running window 1
+pe 0 running window 7
+pe 0 running window 3
+pe 0 running window 5
+pe 0 running window 1
+pe 0 running window 8
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 2
+pe 0 running window 4
+pe 0 running window 9
+pe 0 running window 1
+pe 0 running window 4
+pe 0 running window 7
+pe 0 running window 13
+pe 0 running window 5
+pe 0 running window 3
+pe 0 running window 5
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 10
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 9
+pe 0 running window 0
+pe 0 running window 16
+pe 0 running window 7
+pe 0 running window 5
+pe 0 running window 6
+pe 0 running window 10
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 11
+pe 0 running window 3
+pe 0 running window 7
+pe 0 running window 1
+pe 0 running window 9
+pe 0 running window 7
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 11
+pe 0 running window 10
+pe 0 running window 14
+pe 0 running window 7
+pe 0 running window 4
+pe 0 running window 9
+pe 0 running window 2
+pe 0 running window 12
+pe 0 running window 8
+pe 0 running window 8
+pe 0 running window 15
+pe 0 running window 5
+pe 0 running window 12
+pe 0 running window 10
+pe 0 running window 11
+pe 0 running window 6
+pe 0 running window 9
+pe 0 running window 9
+pe 0 running window 3
+pe 0 running window 10
+pe 0 running window 7
+pe 0 running window 10
+pe 0 running window 7
+pe 0 running window 8
+pe 0 running window 11
+pe 0 running window 4
+pe 0 running window 12
+pe 0 running window 8
+pe 0 running window 13
+pe 0 running window 9
+pe 0 running window 13
+pe 0 running window 11
+pe 0 running window 10
+pe 0 running window 9
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 10
+pe 0 running window 6
+pe 0 running window 12
+pe 0 running window 1
+pe 0 running window 16
+pe 0 running window 7
+pe 0 running window 12
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 2
+pe 0 running windope 0 running window 5
+pe 0 running window 15
+pe 0 running window 1
+pe 0 running window 6
+pe 0 running window 11
+pe 0 running window 7
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 7
+pe 0 running window 2
+pe 0 running window 3
+pe 0 running window 8
+pe 0 running window 8
+pe 0 running window 4
+pe 0 running window 7
+pe 0 running window 5
+pe 0 running window 13
+pe 0 running window 9
+pe 0 running window 9
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 10
+pe 0 running window 6
+pe 0 running window 10
+pe 0 running window 12
+pe 0 running window 4
+pe 0 running window 8
+pe 0 running window 7
+pe 0 running window 6
+pe 0 running window 16
+pe 0 running window 5
+pe 0 running window 8
+pe 0 running window 5
+pe 0 running window 7
+pe 0 running window 11
+pe 0 running window 6
+pe 0 running window 9
+pe 0 running window 11
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 14
+pe 0 running window 10
+pe 0 running window 10
+pe 0 running window 13
+pe 0 running window 9
+pe 0 running window 12
+pe 0 running window 15
+pe 0 running window 10
+pe 0 running window 12
+pe 0 running window 5
+started bundle list...
+pe 0 running window 6
+pe 0 running window 11
+pe 0 running window 11
+pe 0 running window 4
+pe 0 running window 7
+pe 0 running window 11
+pe 0 running window 2
+pe 0 running window 8
+pe 0 running window 13
+pe 0 running window 5
+pe 0 running window 1
+pe 0 running window 6
+pe 0 running window 13
+pe 0 running window 12
+pe 0 running window 9
+pe 0 running window 12
+pe 0 running window 3
+pe 0 running window 10
+pe 0 running window 14
+pe 0 running window 2
+pe 0 running window 12
+pe 0 running window 7
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 4
+pe 0 running window 8
+pe 0 running window 3
+pe 0 running window 6
+pe 0 running window 11
+pe 0 running window 9
+pe 0 running window 7
+pe 0 running window 4
+pe 0 running window 13
+pe 0 running window 5
+pe 0 running window 14
+pe 0 running window 10
+pe 0 running window 13
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 6
+pe 0 running window 13
+pe 0 running window 15
+pe 0 running window 12
+pe 0 running window 14
+pe 0 running window 8
+pe 0 running window 5
+pe 0 running window 7
+pe 0 running window 6
+pe 0 running window 11
+pe 0 running window 15
+pe 0 running window 9
+pe 0 running window 8
+pe 0 running window 7
+pe 0 running window 10
+pe 0 running window 16
+pe 0 running window 8
+completed interval lookup table
+pe 0 running window 9
+pe 0 running window 14
+pe 0 running window 13
+pe 0 running window 10
+started bundle list...
+pe 0 running window 9
+pe 0 running window 14
+pe 0 running window 11
+pe 0 running window 10
+pe 0 running window 15
+pe 0 running window 17
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 7
+pe 0 running window 11
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 0
+pe 0 running window 12
+pe 0 running window 8
+pe 0 running window 11
+pe 0 running window 12
+pe 0 running window 16
+pe 0 running window 9
+pe 0 running window 12
+pe 0 running window 14
+pe 0 running window 10
+pe 0 running window 1
+pe 0 running window 12
+pe 0 running window 15
+pe 0 running window 2
+pe 0 running window 13
+pe 0 running window 13
+pe 0 running window 16
+pe 0 running window 3
+pe 0 running window 16
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 16
+pe 0 running window 4
+pe 0 running window 13
+pe 0 running window 5
+pe 0 running window 12
+pe 0 running window 6
+pe 0 running window 17
+pe 0 running window 0
+pe 0 running window 7
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 8
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 9
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 10
+pe 0 running window 1
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 15
+pe 0 running window 2
+pe 0 running window 11
+pe 0 running window 3
+pe 0 running window 17
+pe 0 running window 12
+w 8
+pe 0 running window 12
+pe 0 running window 11
+pe 0 running window 10
+pe 0 running window 3
+pe 0 running window 9
+pe 0 running window 4
+pe 0 running window 14
+pe 0 running window 10
+pe 0 running window 12
+pe 0 running window 14
+pe 0 running window 4
+pe 0 running window 15
+pe 0 running window 12
+pe 0 running window 11
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 13
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 5
+pe 0 running window 6
+pe 0 running window 14
+pe 0 running window 6
+pe 0 running window 3
+pe 0 running window 7
+pe 0 running window 17
+pe 0 running window 13
+pe 0 running window 7
+pe 0 running window 8
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 8
+pe 0 running window 4
+pe 0 running window 3
+started bundle list...
+completed interval lookup table
+pe 0 running window 4
+started bundle list...
+completed interval lookup table
+completed interval lookup table
+pe 0 running window 3
+pe 0 running window 4
+started bundle list...
+pe 0 running window 5
+pe 0 running window 0
+started bundle list...
+pe 0 running window 4
+pe 0 running window 6
+pe 0 running window 5
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 6
+pe 0 running window 7
+pe 0 running window 6
+pe 0 running window 5
+pe 0 running window 7
+pe 0 running window 8
+pe 0 running window 5
+pe 0 running window 7
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 1
+pe 0 running window 6
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 7
+pe 0 running window 9
+pe 0 running window 7
+pe 0 running window 2
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 8
+pe 0 running window 0
+pe 0 running window 10
+pe 0 running window 10
+pe 0 running window 0
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 3
+pe 0 running window 0
+pe 0 running window 10
+pe 0 running window 0
+pe 0 running window 9
+pe 0 running window 0
+pe 0 running window 11
+pe 0 running window 10
+pe 0 running window 4
+pe 0 running window 11
+pe 0 running window 1
+pe 0 running window 11
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 12
+pe 0 running window 1
+pe 0 running window 3
+pe 0 running window 3
+pe 0 running window 1
+pe 0 running window 12
+pe 0 running window 2
+pe 0 running window 4
+pe 0 running window 4
+pe 0 running window 7
+pe 0 running window 2
+pe 0 running window 3
+pe 0 running window 13
+pe 0 running window 0
+pe 0 running window 11
+pe 0 running window 12
+pe 0 running window 13
+pe 0 running window 5
+pe 0 running window 5
+pe 0 running window 3
+pe 0 running window 6
+pe 0 running window 6
+pe 0 running window 12
+pe 0 running window 1
+pe 0 running windope 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 19
+pe 0 running window 20
+pe 0 running window 20
+w 7
+pe 0 running window 0
+pe 0 running window 7
+pe 0 running window 4
+pe 0 running window 13
+pe 0 running window 4
+pe 0 running window 1
+pe 0 running window 14
+pe 0 running window 8
+pe 0 running window 8
+pe 0 running window 2
+pe 0 running window 5
+pe 0 running window 15
+pe 0 running window 5
+pe 0 running window 2
+pe 0 running window 14
+pe 0 running window 9
+pe 0 running window 9
+pe 0 running window 6
+pe 0 running window 13
+pe 0 running window 15
+pe 0 running window 10
+pe 0 running window 10
+pe 0 running window 7
+pe 0 running window 6
+pe 0 running window 1
+pe 0 running window 3
+pe 0 running window 8
+pe 0 running window 14
+pe 0 running window 3
+pe 0 running window 7
+pe 0 running window 2
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 8
+pe 0 running window 11
+pe 0 running window 11
+pe 0 running window 10
+pe 0 running window 9
+pe 0 running window 9
+pe 0 running window 4
+pe 0 running window 16
+pe 0 running window 10
+pe 0 running window 10
+pe 0 running window 15
+pe 0 running window 3
+pe 0 running window 14
+pe 0 running window 4
+pe 0 running window 12
+pe 0 running window 12
+pe 0 running window 16
+pe 0 running window 5
+pe 0 running window 4
+pe 0 running window 11
+pe 0 running window 15
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 11
+pe 0 running window 6
+pe 0 running window 6
+pe 0 running window 5
+pe 0 running window 2
+pe 0 running window 6
+pe 0 running window 7
+pe 0 running window 7
+pe 0 running window 12
+pe 0 running window 7
+pe 0 running window 12
+pe 0 running window 8
+pe 0 running window 13
+pe 0 running window 13
+pe 0 running window 12
+pe 0 running window 12
+pe 0 running window 3
+pe 0 running window 9
+pe 0 running window 8
+pe 0 running window 8
+pe 0 running window 16
+pe 0 running window 10
+pe 0 running window 1
+pe 0 running window 9
+pe 0 running window 4
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 13
+pe 0 running window 10
+pe 0 running window 13
+pe 0 running window 2
+pe 0 running window 16
+pe 0 running window 5
+pe 0 running window 11
+pe 0 running window 6
+pe 0pe 0 running window 9
+pe 0 running window 12
+pe 0 running window 12
+pe 0 running window 10
+pe 0 running window 9
+pe 0 running window 5
+pe 0 running window 10
+pe 0 running window 6
+pe 0 running window 16
+pe 0 running window 14
+pe 0 running window 14
+pe 0 running window 7
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 11
+pe 0 running window 15
+pe 0 running window 15
+pe 0 running window 11
+pe 0 running window 13
+pe 0 running window 13
+pe 0 running window 8
+pe 0 running window 14
+pe 0 running window 14
+pe 0 running window 9
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 12
+pe 0 running window 10
+pe 0 running window 12
+pe 0 running window 15
+pe 0 running window 11
+pe 0 running window 16
+pe 0 running window 14
+pe 0 running window 13
+pe 0 running window 16
+pe 0 running window 13
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 12
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 13
+pe 0 running window 14
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 4
+pe 0 running window 16
+pe 0 running window 5
+pe 0 running window 14
+pe 0 running window 6
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 7
+pe 0 running window 17
+pe 0 running window 13
+pe 0 running window 17
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 17
+pe 0 running window 11
+pe 0 running window 17
+pe 0 running window 14
+pe 0 running window 17
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 12
+pe 0 running window 17
+pe 0 running window 13
+pe 0 running window 16
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 14
+pe 0 running window 17
+pe 0 running window 15
+pe 0 running window 18
+pe 0 running window 17
+pe 0 running window 16
+pe 0 running window 18
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 17
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 17
+ running window 13
+pe 0 running window 13
+pe 0 running window 3
+pe 0 running window 7
+pe 0 running window 11
+pe 0 running window 11
+pe 0 running window 14
+pe 0 running window 8
+pe 0 running window 14
+pe 0 running window 4
+pe 0 running window 12
+pe 0 running window 15
+pe 0 running window 9
+pe 0 running window 15
+pe 0 running window 10
+pe 0 running window 5
+pe 0 running window 12
+pe 0 running window 12
+pe 0 running window 6
+pe 0 running window 14
+pe 0 running window 7
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 8
+pe 0 running window 11
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 14
+pe 0 running window 13
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 15
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 13
+pe 0 running window 12
+pe 0 running window 16
+pe 0 running window 11
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 13
+pe 0 running window 12
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 14
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 15
+pe 0 running window 15
+pe 0 running window 13
+pe 0 running window 14
+pe 0 running window 17
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 17
+pe 0 running window 16
+pe 0 running window 16
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 16
+pe 0 running window 16
+
+pe 0 running window 17
+pe 0 running window 17
+Number of Components = 14
+
+Occupied Compnent List:0, 1, 2, 5, 11, 14, 21, 
+completed component list
+started interval lookup table...
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running windowpe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 20
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+ 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+completed interval lookup table
+started bundle list...
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 0
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 3
+pe 0 running window 4
+pe 0 running window 5
+pe 0 running window 6
+pe 0 running window 7
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 10
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 11
+pe 0 running window 12
+pe 0 running window 20
+pe 0 running window 13
+pe 0 running window 20
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 16
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 18
+pe 0 running window 17
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 21
+pe 0 running window 18
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 19
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+pe 0 running window 18
+completed interval lookup table
+started bundle list...
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 0
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 1
+pe 0 running window 2
+pe 0 running window 19
+pe 0 running window 3
+pe 0 running window 19
+pe 0 running window 4
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 5
+pe 0 running window 6
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 7
+pe 0 running window 8
+pe 0 running window 9
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 19
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 10
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 11
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 12
+pe 0 running window 19
+pe 0 running window 13
+pe 0 running window 20
+pe 0 running window 18
+pe 0 running window 19
+pe 0 running window 20
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 19
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 14
+pe 0 running window 15
+pe 0 running window 20
+pe 0 running window 16
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 19
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 17
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 20
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 20
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 18
+pe 0 running window 21
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 20
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 22
+pe 0 running window 19
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 22
+pe 0 running window 20
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 21
+pe 0 running window 21
+pe 0 running window 22
+pe 0 running window 23
+pe 0 running window 22
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 23
+pe 0 running window 22
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 23
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 24
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 25
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 26
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 27
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 28
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 29
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 30
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 31
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 32
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 33
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 34
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 35
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 36
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 37
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 38
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 39
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 40
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 41
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 42
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 43
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 44
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 45
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 46
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 47
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 48
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 49
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 50
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 51
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 52
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 53
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 54
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 55
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 56
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 57
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 58
+pe 0 running window 59
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 60
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 61
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 62
+pe 0 running window 63
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 64
+pe 0 running window 65
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 66
+pe 0 running window 68
+pe 0 running window 67
+pe 0 running window 68
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 69
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 70
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 71
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 72
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 73
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 74
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 75
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+pe 0 running window 76
+completed bundle list
+started jump tree...
+completed
+
+
+Components: 13
+Bundles: 5
+Bundled structures: 33
+Total structures: 37
+skipped structures: 0
+g_x1 = 12
+g_x2 = 22
+Interval Restorations: 0
+rstoCount1: 0
+rstoCount2: 0
+crik->rstoCounter: 0
+tobrstoCount: 0
+behSwpCount: 0
+behNormCount: 1[NID 03597] 2017-05-08 21:49:35 Apid 56293160: initiated application termination
+Application 56293160 exit signals: Killed
+Application 56293160 resources: utime ~2523s, stime ~27s, Rss ~21616, inblocks ~44027, outblocks ~114629
+real 2526.35
+user 0.71
+sys 0.28

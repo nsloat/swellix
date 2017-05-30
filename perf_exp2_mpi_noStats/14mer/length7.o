@@ -1,0 +1,97 @@
+----------------------------------------
+Begin Torque Prologue on nid27640
+at Mon Oct 17 15:26:42 CDT 2016
+Job Id:			5609861.bw
+Username:		sloat
+Group:			EOT_baep
+Job name:		pe2_mpiBundle
+Requested resources:	neednodes=1:ppn=32:xe,nodes=1:ppn=32:xe,walltime=48:00:00
+Queue:			normal
+Account:		baep
+End Torque Prologue:  0.109 elapsed
+----------------------------------------
+
+
+
+
+_MPI defined
+rank 6 working on (12, 14)
+rank 2 working on (4, 6)
+rank 0 working on (0, 2)
+rank 3 working on (6, 8)
+GCUCUAAAAGAGAG
+rank 4 working on (8, 10)
+rank 5 working on (10, 12)
+rank 1 working on (2, 4)
+
+Number of Components = 0
+
+Occupied Compnent List:
+
+Number of Components = 0
+
+Occupied Compnent List:
+
+Number of Components = 0
+
+Occupied Compnent List:
+started paren lookup table...
+
+completed paren lookup table
+started component list
+Number of Components = 0
+
+
+Occupied Compnent List:
+Number of Components = 0
+
+Occupied Compnent List:
+completed component list
+started interval lookup table...
+completed interval lookup table
+started bundle list...
+
+
+Number of Components = 0
+
+Number of Components = 0
+
+Occupied Compnent List:
+Occupied Compnent List:
+# of components in cmpntList before adding bundles: 0
+# of components in cmpntList before adding bundles: 0
+# of components in cmpntList after adding bundles: 0
+# of components in cmpntList before adding bundles: 0
+# of components in cmpntList before adding bundles: 0
+# of components in cmpntList before adding bundles: 0
+# of components in cmpntList before adding bundles: 0
+# of components in cmpntList after adding bundles: 0
+# of components after adding bundles: 0
+# of components in cmpntList after adding bundles: 0
+# of components in cmpntList after adding bundles: 0
+# of components after adding bundles: 0
+# of components after adding bundles: 0
+# of components in cmpntList after adding bundles: 0
+# of components in cmpntList after adding bundles: 0
+# of components after adding bundles: 0
+# of components after adding bundles: 0
+# of components after adding bundles: 0
+completed bundle list
+started jump tree...
+# of components in cmpntList before adding bundles: 0
+# of components in cmpntList after adding bundles: 0
+# of components after adding bundles: 0
+completed
+
+
+Components: 0
+Bundles: 0
+Bundled structures: 0
+Total structures: 0
+skipped structures: 0
+g_x1 = 0
+g_x2 = 0
+Application 48875174 resources: utime ~2s, stime ~2s, Rss ~21928, inblocks ~14294, outblocks ~22532
+real 4.27
+user 0.45
+sys 0.21

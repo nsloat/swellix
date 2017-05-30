@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -l nodes=4:ppn=32:xe
+#PBS -l walltime=24:00:00
+# walltime format HH:MM:SS
+
+#PBS -N fp_l2_n32_j1
+#PBS -j oe
+#PBS -o /scratch/eot/sloat/
+
+cd $PBS_O_WORKDIR
+echo Running FULLY Dynamic Parallel Swellix on trna-1EHZ - MHL 2
+time -p aprun -n 76 -N 19 /u/eot/sloat/swellix/swellix-mpi.exe -i /u/eot/sloat/swellix/trna-1EHZ.seq -b -l 2 -d 1
+
+#echo Running Serial Swellix on trna-1EHZ - MHL 2
+#time -p aprun -n 1 /u/eot/sloat/swellix/dev-swellix.exe -i /u/eot/sloat/swellix/trna-1EHZ.seq -b -l 2 -d 1

@@ -24,7 +24,7 @@ OBJDIR=$(EXECDIR)src
 
 #export MPICC  = mpic
 #MPIFLAGS =
-#ifeq (mpicc, $(myCC))
+#ifeq (cc, $(myCC))
 #MPIFLAGS +=-D_MPI
 #endif
 
@@ -129,12 +129,12 @@ disp: myCC=cc
 disp: pre-build
 disp: dev-swellix.exe
 
-mpi: myCC=mpicc
+mpi: myCC=cc
 mpi: MPIFLAGS+=-D_MPI
 mpi: pre-build-mpi
 mpi: dev-swellix-mpi.exe
 
-mpi-disp: myCC=mpicc
+mpi-disp: myCC=cc
 mpi-disp: MPIFLAGS+=-D_MPI
 mpi-disp: CFLAGS+=-D_display
 mpi-disp: pre-build-mpi

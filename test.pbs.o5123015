@@ -1,0 +1,44 @@
+----------------------------------------
+Begin Torque Prologue on nid25356
+at Thu Jul  7 07:50:14 CDT 2016
+Job Id:			5123015.bw
+Username:		sloat
+Group:			EOT_baep
+Job name:		test.pbs
+Requested resources:	neednodes=2:ppn=32:xe,nodes=2:ppn=32:xe,walltime=00:20:00
+Queue:			normal
+Account:		baep
+End Torque Prologue:  0.108 elapsed
+----------------------------------------
+
+
+
+
+_MPI defined
+motif stored: xxxxxxxCUxAGxxxxxxx
+              xxxxxxx((x))xxxxxxx
+motif stored: xxxxxxxCUxAGxxxxxxx
+motif stored: xxxxxxxCUxAGxxxxxxx
+              xxxxxxx((x))xxxxxxx
+              xxxxxxx((x))xxxxxxx
+motif stored: xxxxxxxCUxAGxxxxxxx
+              xxxxxxx((x))xxxxxxx
+motif stored: xxxxxxxCUxAGxxxxxxx
+              xxxxxxx((x))xxxxxxx
+motif stored: xxxxxxxCUxAGxxxxxxx
+motif stored: xxxxxxxCUxAGxxxxxxx
+              xxxxxxx((x))xxxxxxx
+              xxxxxxx((x))xxxxxxx
+rank 0 working on (0, 1)
+GCUCUAAAAGAGAG
+rank 2 working on (2, 3)
+rank 1 working on (1, 2)
+rank 3 working on (3, 4)
+motif stored: xxxxxxxCUxAGxxxxxxx
+              xxxxxxx((x))xxxxxxx
+rank 5 working on (5, 6)
+rank 7 working on (7, 14)
+rank 6 working on (6, 7)
+rank 4 working on (4, 5)
+Application 45340417 exit codes: 139
+Application 45340417 resources: utime ~0s, stime ~2s, Rss ~11472, inblocks ~17862, outblocks ~44882

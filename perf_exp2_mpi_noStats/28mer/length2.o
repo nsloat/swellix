@@ -1,0 +1,265 @@
+----------------------------------------
+Begin Torque Prologue on nid27565
+at Mon Oct 17 15:26:48 CDT 2016
+Job Id:			5609865.bw
+Username:		sloat
+Group:			EOT_baep
+Job name:		pe2_mpiBundle
+Requested resources:	neednodes=1:ppn=32:xe,nodes=1:ppn=32:xe,walltime=48:00:00
+Queue:			normal
+Account:		baep
+End Torque Prologue:  0.088 elapsed
+----------------------------------------
+
+
+
+
+_MPI defined
+rank 26 working on (26, 27)
+rank 9 working on (9, 10)
+rank 13 working on (13, 14)
+rank 16 working on (16, 17)
+rank 2 working on (2, 3)
+rank 0 working on (0, 1)
+rank 19 working on (19, 20)
+GCUCUAAAAGAGAGGCUCUAAAAGAGAG
+rank 22 working on (22, 23)
+rank 18 working on (18, 19)
+rank 6 working on (6, 7)
+rank 3 working on (3, 4)
+rank 14 working on (14, 15)
+rank 15 working on (15, 16)
+rank 20 working on (20, 21)
+rank 21 working on (21, 22)
+rank 25 working on (25, 26)
+rank 27 working on (27, 28)
+rank 11 working on (11, 12)
+rank 7 working on (7, 8)
+rank 12 working on (12, 13)
+rank 8 working on (8, 9)
+rank 4 working on (4, 5)
+rank 24 working on (24, 25)
+rank 10 working on (10, 11)
+rank 5 working on (5, 6)
+rank 23 working on (23, 24)
+rank 17 working on (17, 18)
+rank 1 working on (1, 2)
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+
+Number of Components = 53
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+
+
+Number of Components = 53
+
+Number of Components = 53
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+
+Number of Components = 53
+
+Number of Components = 53
+
+Number of Components = 53
+
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Number of Components = 53
+
+
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Number of Components = 53
+
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Number of Components = 53
+
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+
+
+Number of Components = 53
+
+Number of Components = 53
+
+Number of Components = 53
+
+
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+
+Number of Components = 53
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+
+
+Number of Components = 53
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+started paren lookup table...
+completed paren lookup table
+started component list
+
+Number of Components = 53
+
+Occupied Compnent List:0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 17, 
+completed component list
+started interval lookup table...
+completed interval lookup table
+started bundle list...
+# of components in cmpntList before adding bundles: 53
+completed bundle list
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+started jump tree...
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+# of components in cmpntList before adding bundles: 53
+# of components in cmpntList after adding bundles: 40
+# of components after adding bundles: 40
+completed
+
+
+Components: 40
+Bundles: 28
+Bundled structures: 374
+Total structures: 833
+skipped structures: 0
+g_x1 = 6
+g_x2 = 5
+Application 48875182 resources: utime ~39s, stime ~7s, Rss ~9864, inblocks ~31572, outblocks ~22534
+real 4.63
+user 0.46
+sys 0.17

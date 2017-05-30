@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -l nodes=*NODES*:ppn=32:xe
+#PBS -l walltime=48:00:00
+#PBS -N pe2_mpiBundle
+#PBS -j oe
+#PBS -o *OUTPATH*.o
+#PBS -M nsloat@ou.edu
+
+
+cd $PBS_O_WORKDIR
+time -p aprun -n *NP* -N *NPERNODE* *EXEC* *ARGS*

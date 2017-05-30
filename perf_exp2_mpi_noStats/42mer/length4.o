@@ -1,0 +1,377 @@
+----------------------------------------
+Begin Torque Prologue on nid25263
+at Mon Oct 17 15:26:23 CDT 2016
+Job Id:			5609876.bw
+Username:		sloat
+Group:			EOT_baep
+Job name:		pe2_mpiBundle
+Requested resources:	neednodes=2:ppn=32:xe,nodes=2:ppn=32:xe,walltime=48:00:00
+Queue:			normal
+Account:		baep
+End Torque Prologue:  1.140 elapsed
+----------------------------------------
+
+
+
+
+_MPI defined
+rank 18 working on (18, 19)
+rank 32 working on (32, 33)
+rank 39 working on (39, 40)
+rank 36 working on (36, 37)
+rank 21 working on (21, 22)
+rank 22 working on (22, 23)
+rank 40 working on (40, 41)
+rank 8 working on (8, 9)
+rank 15 working on (15, 16)
+rank 14 working on (14, 15)
+rank 2 working on (2, 3)
+rank 17 working on (17, 18)
+rank 19 working on (19, 20)
+rank 3 working on (3, 4)
+rank 10 working on (10, 11)
+rank 9 working on (9, 10)
+rank 4 working on (4, 5)
+rank 5 working on (5, 6)
+rank 6 working on (6, 7)
+rank 12 working on (12, 13)
+rank 13 working on (13, 14)
+rank 1 working on (1, 2)
+rank 0 working on (0, 1)
+rank 7 working on (7, 8)
+rank 20 working on (20, 21)
+GCUCUAAAAGAGAGGCUCUAAAAGAGAGGCUCUAAAAGAGAG
+rank 16 working on (16, 17)
+rank 11 working on (11, 12)
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+started paren lookup table...
+completed paren lookup table
+started component list
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+completed component list
+started interval lookup table...
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+completed interval lookup table
+started bundle list...
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+rank 25 working on (25, 26)
+rank 41 working on (41, 42)
+rank 26 working on (26, 27)
+rank 24 working on (24, 25)
+rank 30 working on (30, 31)
+rank 35 working on (35, 36)
+rank 27 working on (27, 28)
+rank 28 working on (28, 29)
+rank 33 working on (33, 34)
+rank 29 working on (29, 30)
+rank 38 working on (38, 39)
+rank 37 working on (37, 38)
+rank 23 working on (23, 24)
+rank 31 working on (31, 32)
+rank 34 working on (34, 35)
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+
+Number of Components = 17
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+
+Number of Components = 17
+
+Occupied Compnent List:1, 8, 10, 13, 15, 22, 29, 
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+completed bundle list
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components after adding bundles: 17
+started jump tree...
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding completed
+bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList before adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+# of components in cmpntList after adding bundles: 17
+# of components after adding bundles: 17
+
+
+Components: 17
+Bundles: 15
+Bundled structures: 67
+Total structures: 91
+skipped structures: 0
+g_x1 = 49
+g_x2 = 45
+Application 48875150 resources: utime ~28s, stime ~30s, Rss ~21956, inblocks ~53007, outblocks ~45066
+real 4.73
+user 0.45
+sys 0.23

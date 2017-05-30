@@ -13,14 +13,14 @@ for DIR in $(ls -d ./*/)
     WALLTIME="48:00:00"
     OUTPATH=$EXPDIR"/"$DIR
 
-#    NUMPROC=$(($(wc -m $EXPDIR"/"$DIR"/"$INFILE | awk '{print $1}') - 1))
-#    SEQLEN=$(($(cat $DIR$INFILE | wc -m)-1))
-#    NUMPROC=$SEQLEN
-#    PPN=16
-#    NODES=$((($NUMPROC + $PPN - 1)/$PPN))
-NUMPROC=1
-PPN=1
-NODES=1
+    NUMPROC=$(($(wc -m $EXPDIR"/"$DIR"/"$INFILE | awk '{print $1}') - 1))
+    SEQLEN=$(($(cat $DIR$INFILE | wc -m)-1))
+    NUMPROC=$SEQLEN
+    PPN=16
+    NODES=$((($NUMPROC + $PPN - 1)/$PPN))
+#NUMPROC=1
+#PPN=1
+#NODES=1
 
 echo $INFILE
 echo $NUMPROC
@@ -28,8 +28,8 @@ echo $NODES
 
     for MHL in $(seq 2 6)
       do
-      SWELLARGS="-b -l "$MHL" -i "$EXPDIR"/"$DIR$INFILE
-      JOBNAME="px4_mhl"$MHL"_"$(echo $INFILE | awk -F "." '{ print $1 }')"_serial"
+      SWELLARGS="-d 1 -b -l "$MHL" -i "$EXPDIR"/"$DIR$INFILE
+      JOBNAME="px4_mhl"$MHL"_"$(echo $INFILE | awk -F "." '{ print $1 }')"_par_j1"
 #    CMS=$(echo $SEQDIR | awk '{print gensub(/^([0-9]*)_CMs.*$/, "\\1", "g")}')
 #               echo $SEQDIR, $CMS
 #    i=$(ls -l "./data/"$SEQDIR | grep .swlx | wc -l)
