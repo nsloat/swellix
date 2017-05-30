@@ -22,12 +22,6 @@ OBJS = $(CFILES:.c=.o)
 
 OBJDIR=$(EXECDIR)src
 
-#export MPICC  = mpic
-#MPIFLAGS =
-#ifeq (cc, $(myCC))
-#MPIFLAGS +=-D_MPI
-#endif
-
 CFLAGS=-g #-Wall
 #CFLAGS+=-D_EXECDIR='"$(EXECDIR)"'
 #CFLAGS+=-fopenmp

@@ -6,12 +6,15 @@
 #include "subopt.h"
 #include "bundle_list.h"
 
-
+#if 0
+{
 #ifdef _MPI
 
 #include <mpi.h>
 
 #endif // _MPI
+}
+#endif
 
 options OPTIONS;
 char saveto[128];
@@ -534,13 +537,6 @@ void print_soln(state *s){
         if (OPTIONS.count%10000 == 0) print( "%d \n", OPTIONS.count);
         return;
     }
-#if 0
-{
-#if defined(_MPI)
-    print( "%d: ", mpi_rank);
-#endif // _MPI
-}
-#endif
 
     int i;
     char a[s->length+1];
@@ -671,26 +667,7 @@ int * pack_state(state * S)
 
     return out;
 }
-#if 0
-{
-#if defined(_MPI)
-int *wait_for_state()
-{
-    int num_elements, * ints;
-    MPI_Status ms = {0}, out_ms = {0};
 
-    // get many ints, from MPI
-    MPI_Probe(MPI_RANK_MASTER, MPI_FIVE, MPI_COMM_WORLD, &ms);
-    MPI_Get_count(&ms, MPI_INT, &num_elements);
-    ints = malloc(sizeof(int)*num_elements);
-    MPI_Recv(ints, num_elements, MPI_INT, MPI_RANK_MASTER,
-             ms.MPI_TAG, MPI_COMM_WORLD, &out_ms);
-
-    return ints;
-}
-#endif
-}
-#endif
 state *interpret_message(int *ints)
 {
     state * S = malloc(sizeof(state));
