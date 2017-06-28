@@ -1,6 +1,0 @@
-#!/bin/bash
-#PBS -l nodes=2:ppn=32:xe
-#PBS -l walltime=00:20:00
-
-cd $PBS_O_WORKDIR
-time -p aprun -n 8 -N 4 -S 1 ./swellix-mpi.exe -i ./14.seq -M "((x))&CUxAG" -s a
