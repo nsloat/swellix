@@ -9,11 +9,13 @@ THE VIENNA PACKAGE:<br>
 Swellix uses some utilities provided in the ViennaRNA package for computing thermodynamics and RNA distance in structures.
 When you download Swellix, you should get a copy of Vienna: ViennaRNA-2.2.5.tar
 To configure Swellix in a simple way, you'll first need to decompress the ViennaRNA tarball in the same directory as
-the Swellix Makefile:
-    tar -xf ViennaRNA-2.2.5.tar
+the Swellix Makefile:<br>
+```
+tar -xf ViennaRNA-2.2.5.tar
+```
 
 You should now have a new directory called "ViennaRNA-2.2.5." The next step is to compile the ViennaRNA
-library:
+library:<br>
     make vienna
 
 This should populate the viennabuild directory with the resources that Swellix will use during computation. Inside of this
