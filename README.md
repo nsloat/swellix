@@ -79,10 +79,10 @@ Swellix RNA sequence input must be formatted properly before being run in the pr
 GUIDELINES/RULES:
 The first rule is the simplest, and we'll call it the 'One Line Rule'. Any input sequence should occupy only one line. This
 may not be obvious, but this rule doesn't place a restriction on the length of your input sequence. All this rule means is
-that you shouldn't be typing your input and press 'Enter' to go to a new line. 
+that you shouldn't be typing your input and press `Enter` to go to a new line. 
 
 e.g.
-Say you have some arbitrary sequence 'GCUCUAAAAGAGAG.' A problematic way to input your sequence would be:
+Say you have some arbitrary sequence `GCUCUAAAAGAGAG`. A problematic way to input your sequence would be:
 GCUCUAA
 AAGAGAG
 This is because it contains a new line indicator after the first 7 nucleotides. Swellix can't tell if the two lines are
@@ -97,28 +97,30 @@ converted back to their corresponding A, C, G, or U.
 
 e.g.
 Imagine that you have a sequence to run which contains some place-holding characters. For example, let the sequence look
-like 'GCUCU--AAAAGA---GAG'.
+like `GCUCU--AAAAGA---GAG`.
 Since Swellix doesn't know what to do with these hyphens, you must first strip them from the sequence and then adhere to
 the previous one line rule. So, when sending this sequence to Swellix it should look exactly like the previous example:
-'GCUCUAAAAGAGAG'.
+`GCUCUAAAAGAGAG`.
 
 e.g.
 Now consider the case where there is some number of modified nucleotides which constrain the folding of the RNA. Let the
-sequence be 'GCUCU"AAAKAGAG', where '"' represents the 1-methyladenosine modification and 'K' represents the
+sequence be `GCUCU"AAAKAGAG`, where `"` represents the 1-methyladenosine modification and `K` represents the
 1-methylguanosine modification. (these modifications are arbitrarily chosen for the example)
 We've stated that Swellix can't handle these characters properly on its own, so we need to first convert them to their
-unmodified characters. So the sequence will once again look like 'GCUCUAAAAGAGAG' to Swellix. 
+unmodified characters. So the sequence will once again look like `GCUCUAAAAGAGAG` to Swellix. 
 
 
 Fourth: Basic Execution
 ------------------------------------------------------------------------------------------
-Swellix can accept input in two ways: standard input, and an input file specified with the -i flag. In addition, you can
+Swellix can accept input in two ways: standard input, and an input file specified with the `-i` flag. In addition, you can
 specify most folding constraints via the commandline. For the others, you must provide them in you configuration file.
 
 
 STANDARD INPUT:
 To use standard input, simply pipe a sequence to Swellix like so:
-	echo "GCUCUAAAAGAGAG" | /path/to/swellix/exe--swellix [desired constraints]
+```
+echo "GCUCUAAAAGAGAG" | /path/to/swellix/exe--swellix [desired constraints]
+```
 where the desired constraints are some optional combination of the flags defined at the bottom of this file.
 
 
@@ -128,13 +130,13 @@ is read into the program. In the other, you can instruct Swellix to continue rea
 defined constraints. For the second case, we'll refer to that file as a configuration file since it is providing Swellix
 with more information than just the sequence.
 
-In general, to use a plain input file you need the -i flag and the path to the file.
+In general, to use a plain input file you need the `-i` flag and the path to the file.
 ```
 /path/to/swellix/exe--swellix -i sequence.txt [desired constraints]
 ```
 
 However, if you would like to provide a configuration file with certain folding constraints, you will also need to include
-the -k flag. You will still use the -i flag and the path to your config file.
+the `-k` flag. You will still use the `-i` flag and the path to your config file.
 ```
 /path/to/swellix/exe--swellix -k -i sequence.swlx [constraints not in config file]
 ```
@@ -144,45 +146,9 @@ There are many constraints that can be imposed just by command line arguments. T
 config file is that you can specify constraints such as individual nucleotide pairing restrictions. For example, you can
 tell Swellix that any particular nucleotide absolutely must pair to form a valid structure. The constraints provided must
 be in a strict format for the time being. The specific formatting rules and an example of a properly written config file
-is provided. It is called 'configTutorial.swlx'. In this file, we use the same sequence as above but illustrate how to 
+is provided. It is called `configTutorial.swlx`. In this file, we use the same sequence as above but illustrate how to 
 specify constraints.
 
 ### NOTE
 If the case arises where you have provided input via both standard input and an input file, the sequence defined by the
 input file will override the sequence provided by standard input.
-
-
-Command line arguments
-------------------------------------------------------------------------------------------
-This is the same usage table that is printed if you call Swellix with the help flag (-h).
-
-
-Usage: exe--swellix  [-#]  [-b] [-u] [-bhdm]  [-d [1~5 or a]]  [-h]  [-i INFILE]  [-k]  [-l]  [-m [c, i, n, s]]  [-mm]  [-noGU]  [-noSZG]  [-o OUTFILE]  [-p]
-
-Compact Option  Complete Option                        Description                                                           Default Value
--# | -hlx#m | --minimum_number_of_helices    (count) : Specify minimum number of helices to form a complete pair structure   [0]          
--b | -bundle|                                        : Activate the bundling mechanism to reduce similar structures          [FALSE]      
--u | -unbund|                                        : Unbundling of bundles for printout of complete solution set           [FALSE]      
-     -bhdm  | --minimum_btwn_helix_distance  (size)  : Minimum between helix distance. used primarily in STMV                [0]          
--d | -dsply | --degree_of_detailed_display           : Print option. (only meaningful if compile cmd make dispOn is used)    [3]          
-                                         all     | a : Print all, for detailed debugging purpose.                                         
-                                         level 5 | 5 :                                                                                    
-                                         level 4 | 4 : Print debugging information at different checkpoints in addition to level 3 output                                                                                   
-                                         level 3 | 3 : Print more detailed output about data structures in addition to level 2 output                                    
-                                         level 2 | 2 : Print pair structures in addition to level 1 output                             
-                                         level 1 | 1 : Print basic statistics data & errors, if any                                  
--h | -help                                           : Prints this message and exits.                                                     
--i FILE                                              : Defines an input file, containing a sequence.                         [stdin]      
--k |        | -constraint                            : Introduce constraints from configuration file                         [FALSE]      
-                                                     : Only give number of covariance pairs in command line, no detail                    
--l | -hlxlm | --minimum_length_of_helix      (size)  : Specify minimum number of nucleotides to form a complete helix        [1]          
--m | -mode  | --mode_of_algorithm                    : Specify the way to do calculation                                     [stru]       
-                component              | cmpnt | c   : Compute for component only                                                         
-                interval_look_up_table | intab | i   : For interval look-up table level                                                   
-                none                           | n   : Do nothing                                                                         
-                structure              | stru  | s   : Compute for all structures                                                         
-     -mm    | --maximum_number_of_mismatches (count) : Specify Maximum number of mismatches inside any helix                 [0]          
-     -noGU  | --no_G_U_allowed                       : Disallows G-U pairing                                                 [FALSE]      
-     -noSZG | --no_sizing_allowed                    : Don't extend (swell) the size of the helix unless bulge presents      [FALSE]      
--o FILE                                              : Defines an output file, to overwrite with solutions.                  [stdout]     
--p | -hp#m  | --minimum_number_of_hairpins   (count) : Specify minimum number of hairpins to form a complete pair structure  [0]  
