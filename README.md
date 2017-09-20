@@ -1,11 +1,11 @@
 # swellix
-In this document, we'll cover some of the basics of computing with Swellix.
+Here, we'll cover some of the basics of computing with Swellix.
 
 
 First: Compiling Dependencies
 ------------------------------------------------------------------------------------------
 
-THE VIENNA PACKAGE:
+THE VIENNA PACKAGE:<br>
 Swellix uses some utilities provided in the ViennaRNA package for computing thermodynamics and RNA distance in structures.
 When you download Swellix, you should get a copy of Vienna: ViennaRNA-2.2.5.tar
 To configure Swellix in a simple way, you'll first need to decompress the ViennaRNA tarball in the same directory as
