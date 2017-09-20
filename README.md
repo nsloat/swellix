@@ -111,7 +111,7 @@ We've stated that Swellix can't handle these characters properly on its own, so 
 unmodified characters. So the sequence will once again look like `GCUCUAAAAGAGAG` to Swellix. 
 
 
-Fourth: Basic Execution
+Fourth: Providing Input to Swellix
 ------------------------------------------------------------------------------------------
 Swellix can accept input in two ways: standard input, and an input file specified with the `-i` flag. In addition, you can
 specify most folding constraints via the commandline. For the others, you must provide them in you configuration file.
