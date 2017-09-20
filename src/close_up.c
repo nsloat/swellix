@@ -90,11 +90,9 @@ int free_cmpnt_list(config* seq, global* crik)
 
   for(i = 0 ; i < crik->numCmpntTypOcupid; i++){                                          // || clean the entire edge list
     cmpntCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
-//    cmpntCursr = crik->cmpntList[i].knob;                                           // ||
     while(cmpntCursr){                                                               // || || clean entire branch on a particular backbone point
       temp = cmpntCursr->cmpntListNext;                                               // || ||
       for(j = 0 ; j < seq->maxNumMismatch ; j++) free(cmpntCursr->mismatchFlag[j]);  // || || || clean constraints
-      //free(cmpntCursr->mismatchFlag);                                                // || || ||
       free(cmpntCursr->mustPairFlag);                                                // || || \/
       if(!cmpntCursr->bundleFlag) { free(cmpntCursr);                                                              // || || 
       }	else {
@@ -201,7 +199,6 @@ int free_recycle_bin(config* seq)
   if(seq->numCovari){
     toddCursr = seq->recycleBin;
     while(toddCursr){
-//      free(toddCursr->intrvl2BRsto);
       free(toddCursr->intrvlIns);
       free(toddCursr->intrvlBeh);
       temp = toddCursr;

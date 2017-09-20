@@ -70,11 +70,6 @@ int rank, wsize;
 //          : 2. initialize_sequence_by_getting_constraints() from conf file
 //*****************************************************************************
 
-extern uint64_t rstoCount1;
-extern uint64_t rstoCount2;
-extern uint64_t js2c1;
-extern uint64_t js2c2;
-
 int main(int argc, char** argv) {
 
   int start, end, span, rem;
@@ -82,7 +77,6 @@ int main(int argc, char** argv) {
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
   MPI_Comm_size(MPI_COMM_WORLD,&wsize);
-  if(rank==0)printf("_MPI defined\n");
 #else
   rank = 0; wsize = 1;
 #endif
@@ -95,8 +89,6 @@ int main(int argc, char** argv) {
   rem = seq->strLen % wsize;
   start = rank*span;
   end = (rank == wsize-1) ? start+span+rem : start+span;
-
-//  printf("rank %i working on (%i, %i)\n", rank, start, end);
 
   if(rank == 0) {
     printf("%s\n",seq->ltr);
@@ -130,63 +122,26 @@ int main(int argc, char** argv) {
       }
     }    // end if 2
   }      // end if 1
-uint64_t rstoCount1_display = 0;
-uint64_t rstoCount2_display = 0;
-uint64_t js2c1_disp = 0;
-uint64_t js2c2_disp= 0;
-uint64_t tobrstoCount_display = 0;
-uint64_t g_x1Display = 0;
-uint64_t behSwpCountDisp;
-uint64_t behNormCountDisp;
-extern uint64_t behSwpCount;
-extern uint64_t behNormCount;
-extern uint64_t tobrstoCount;
+
 #ifdef _MPI
-  uint64_t sumStructures = 0, sumUBStructures = 0, maxDist = 0, motifCount = 0, rstoCounter = 0, rstoErrCount = 0;
+  uint64_t sumStructures = 0, sumUBStructures = 0, maxDist = 0, motifCount = 0;
   float minEng = 0.0;
-  MPI_Reduce(&tobrstoCount, &tobrstoCount_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&g_x1, &g_x1Display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&behSwpCount, &behSwpCountDisp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&behNormCount, &behNormCountDisp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numStru, &sumStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&crik->numUnbundledStru, &sumUBStructures, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->minenergy, &minEng, 1, MPI_FLOAT, MPI_MIN, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->maxdist, &maxDist, 1, MPI_INT, MPI_MAX, 0, MPI_COMM_WORLD);
   MPI_Reduce(&seq->motifCount, &motifCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-//  crik->rstoCounter += rstoCount;
-  MPI_Reduce(&rstoCount1, &rstoCount1_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&rstoCount2, &rstoCount2_display, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&js2c1, &js2c1_disp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&js2c2, &js2c2_disp, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&crik->rstoCounter, &rstoCounter, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
-  MPI_Reduce(&crik->rstoErrCounter, &rstoErrCount, 1, MPI_UNSIGNED_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
   if(rank==0) {
     seq->minenergy = minEng;
     seq->maxdist = maxDist;
     seq->motifCount = motifCount;
     crik->numUnbundledStru = sumUBStructures;
     crik->numStru = sumStructures;
-    crik->rstoCounter = rstoCounter;
-//    crik->rstoCounter += rstoCount;
-    crik->rstoErrCounter = rstoErrCount;
-    g_x1 = g_x1Display;
   }
-#else
-  rstoCount1_display = rstoCount1;
-  rstoCount2_display = rstoCount2;
-  js2c1_disp = js2c1;
-  js2c2_disp = js2c2;
-  tobrstoCount_display = tobrstoCount;
-  g_x1Display = g_x1;
-  behSwpCountDisp = behSwpCount;
-  behNormCountDisp = behNormCount;
-  //crik->rstoCounter+=rstoCount;
 #endif  
+
   if(rank==0) {
     print_results(seq, crik);
-    printf("rstoCount1: %ld\nrstoCount2: %ld\ncrik->rstoCounter: %ld\n", rstoCount1_display, rstoCount2_display, crik->rstoCounter);
-    printf("tobrstoCount: %ld\nbehSwpCount: %ld\nbehNormCount: %ld\n", tobrstoCount_display, behSwpCountDisp, behNormCountDisp);
-    printf("js2c1: %ld\njs2c2: %ld\n", js2c1_disp, js2c2_disp);
   }
   close_up(seq, crik);
 
@@ -233,7 +188,6 @@ config* initialize_sequence_by_getting_argument(int argc, char** argv) {
       else          	                    seq->minBtwnHlixDist = atoi(argv[arg]);                           // minimum between helix distance. used primarily in STMV
     else if   (!strcmp("-d", argv[arg])     || !strcmp("-dsply", argv[arg]) || !strcmp("--degree_of_detailed_display", argv[arg])){
       set_degree_of_detailed_disp(seq, arg++, argc, argv);
-//      arg++;
     } else if (!strcmp("-h", argv[arg])     || !strcmp("-help",  argv[arg]) )
       print_usage();
     else if (!strcmp("-i",   argv[arg]))                                                                      // take in the sequence data
@@ -245,7 +199,6 @@ config* initialize_sequence_by_getting_argument(int argc, char** argv) {
       else          	                    seq->minLenOfHlix = atoi(argv[arg]);                              // min nucleotides to form a complete helix
     else if   (!strcmp("-m", argv[arg])     || !strcmp("-mode", argv[arg]) || !strcmp("--mode_of_algorithm", argv[arg])){
       set_mode_of_algo(seq, arg++, argc, argv);
-//      arg++;
     } else if (!strcmp("-mm", argv[arg])    || !strcmp("--maximum_number_of_mismatches", argv[arg]))    
       if(++arg == argc || !atoi(argv[arg])) cmd_line_err(argv, arg);
       else          	                    seq->maxNumMismatch = atoi(argv[arg]);                            // maximum count of mismatches per helix 
@@ -254,7 +207,6 @@ config* initialize_sequence_by_getting_argument(int argc, char** argv) {
     else if   (!strcmp("-noSZG", argv[arg]) || !strcmp("--no_sizing_allowed", argv[arg]))                     // disallows swelling helix unless necessary
       seq->noSZG = TRUE;
     else if   (!strcmp("-o",      argv[arg++])) {                                                               // designate the printing destination
-//      arg++;
       char *ofile = calloc(1, strlen(argv[arg]) + 15);
       memcpy(ofile, argv[arg], strlen(argv[arg]));
       seq->dispFile = fopen(ofile, "w");
@@ -311,7 +263,6 @@ int initialize_sequence_by_settng_memory(config* seq) {
 int initialize_sequence_by_gettng_constraint(config* seq) {
 
   disp(seq,DISP_ALL,"Entering 'init_seq_constraint'\n");
-  //if(seq->srcFile == stdin)  return 0;
   if(!seq->constraintActive) return 0;
 
   char*  constraints = calloc(1000, sizeof(char));
@@ -371,13 +322,9 @@ global* initialize_crik(config* seq) {
 
   global* crik = malloc(sizeof(global));                                                 // Crick the Book-keeper, our handy right-hand man #1
   crik->linkedmms         = 0;
-//  crik->struLinked	  = 0;
-//  crik->numJumpIns        = 0;
   crik->rstoCounter       = 0;
   crik->rstoErrCounter    = 0;
   crik->skippedStru	      = 0;
-//  crik->numJumpBeh        = 0;
-//  crik->sizeOfIntrvl      = 0;
   crik->lvlOfRecur        = 0;
   crik->numCmpnt          = 0;
   crik->numHP             = 1;
@@ -387,7 +334,6 @@ global* initialize_crik(config* seq) {
   crik->numUnbundledStru  = 0;
   crik->specialRstoFlag   = 0;
   crik->intrvlCntr        = 0;                                                                 // it's like batch number, used to distinguish one batch from another
-//  crik->rstoOnCueFlag     = 0;
   crik->intrvlCntr        = 0;
   crik->opnBrsStop        = seq->strLen - ((seq->minLenOfHlix - 1) << 1) - seq->minPairngDist; // farthest location the opnBrsOutIndx may reach
   crik->numCmpntTyp       = seq->strLen;
@@ -425,7 +371,6 @@ int make_parenthesis_look_up_table(config* seq) {
   int16_t rowI;
 
   seq->parenLukUpTable = malloc(sizeof(*seq->parenLukUpTable) * seq->strLen);   // set up the backbone for the rows of the table
-  //fprintf(seq->dispFile,"%s\n", seq->ltr);
                                                                                 disp(seq,DISP_LV3,"Parenthesis\n");
                                                                                 disp(seq,DISP_LV3,"Look-up Table: \n");
 										disp(seq,DISP_LV3,"                 %s\n", seq->ltr);
@@ -510,7 +455,6 @@ void make_bundled_cmpntList(config* seq, global* crik) {
   int j;
   int k;
 
-//printf("# of components in cmpntList before adding bundles: %ld\n", crik->numCmpnt);
   // remove components that are less than max bundle len
   for (j = 0; j < seq->strLen; j++) {
     knob* cmpntCursr = crik->cmpntList[j].knob;
@@ -558,8 +502,7 @@ void make_bundled_cmpntList(config* seq, global* crik) {
     }
   }
   display_components(seq, crik, 1);
-//printf("# of components in cmpntList after adding bundles: %ld\n", crik->numCmpnt);
-//  disp(seq,DISP_LV1,"# of components after adding bundles: %ld\n", crik->numCmpnt);
+
   // reset the component list occupied type list
   crik->numCmpntTypOcupid = 0;
   for (j = 0; j < seq->strLen; j++) {
@@ -601,10 +544,6 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 
 #ifdef _MPI
 
-//  struct mpi_crik {  
-//  };
-
-
   knob* cmpnts[crik->numCmpnt];
   int counter = 0;
   for(i = 0; i < crik->numCmpntTypOcupid; i++) {
@@ -617,7 +556,6 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
       counter++;
     }
   }
-//  if(counter != crik->numCmpnt) {printf("in main.c:make_jump_tree: MPI ERR - seems to be a conflict in cmpntList & numCmpnts on rank %d: \nnumCmpnt == %ld, counter == %d\n", rank, crik->numCmpnt, counter);}
 
   crik->numCmpnt = counter;
 
@@ -628,9 +566,8 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
   make_jump_tree_parallel(seq, crik, todd, cmpnts, cmpntTracker);
 
 #else
-//if(rank == 0) {
+
   // scan thru the whole cmpnt list
-//  for(i = start ; i < crik->numCmpntTypOcupid && i < end; i++) {
   for(i = 0; i < crik->numCmpntTypOcupid; i++) {
     // grab one component on the component type indicated by crik->cmpntListOcupidTyp[i]
     todd->cmpntLLCursr = crik->cmpntList[crik->cmpntListOcupidTyp[i]].knob;
@@ -674,7 +611,6 @@ int make_jump_tree(config* seq, global* crik, int start, int end) {
 #endif
 
   exit_curr_recur(seq,crik, todd);
-//}
 
   return 0;
 }  // end make_jump_tree
@@ -704,10 +640,6 @@ void print_results(config* seq, global* crik)
 
     if (DISP) {  // if compiled with dispOn, print these statistics
       fprintf(seq->dispFile, "skipped structures: %d\n", crik->skippedStru);
-      fprintf(seq->dispFile, "g_x1 = %lld\n", g_x1);
-      fprintf(seq->dispFile, "g_x2 = %lld\n", g_x2);
-      fprintf(seq->dispFile, "Interval Restorations: %ld\n", crik->rstoCounter);
-      //fprintf(seq->dispFile, "RSTO error count: %ld\n", crik->rstoErrCounter);
     }
   }  // end outer if
 }  // end print_results
@@ -832,7 +764,7 @@ void display_structures(config* seq, global* crik, int8_t locationMark)
     asciiHlixNotation++;
     hlixCursr = hlixCursr->jumpTreeNext;
   }  // end while
-//printf("update_stats from display_structures\n");
+
   update_stats(seq);
 
   if(seq->dispMinPrio < DISP_LV1){

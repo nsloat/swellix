@@ -26,14 +26,11 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
   int16_t hlixBranchngIndx1 = 0;
   get_mpi_globals();
 
-//MPI_Barrier(MPI_COMM_WORLD);
-//double wstart = MPI_Wtime();
-//double nodeRuntime = 0;
+  const int mpistage2 = mpi_stage_2;
 
   mpi_stage = mpi_stage_1;
   int index;
   int msg = -1;
-//printf("pe %d entered make_jump_tree_parallel\n",rank);
   if(rank == 0) {
     for(index = 0; index < crik->numCmpnt; index++) {
       MPI_Probe(MPI_ANY_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
@@ -42,19 +39,14 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
     }
 
     for(index = 1; index < wsize; index++) {
-//      MPI_Probe(MPI_ANY_SOURCE, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
-//      MPI_Isend(&mpi_stage_2, 1, MPI_INT, index, mpi_change_stage, MPI_COMM_WORLD, &mr);
+//      MPI_Isend(&mpistage2, 1, MPI_INT, index, mpi_change_stage, MPI_COMM_WORLD, &mr);
       MPI_Irecv(&msg, 1, MPI_INT, index, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &mr);
       msg = -1;
       MPI_Isend(&msg, 1, MPI_INT, index, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &mr);
     }
   } else {
     MPI_Sendrecv_replace(&msg, 1, MPI_INT, 0, MPI_REQUEST_WORK_1, 0, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
-//double nodestart;
     while(msg >=  0) {
-//printf("pe %d received msg %d in stage 1 mpi\n", rank, msg);
-//nodestart = MPI_Wtime();
-
       todd->cmpntLLCursr = cmpnts[cmpntTracker[msg]];
 
       hlixBranchngIndx1++;
@@ -80,82 +72,46 @@ void make_jump_tree_parallel(config* seq, global* crik, local* todd, knob** cmpn
       todd->intrvlBeh->jumpTreeNext       = NULL;
       todd->intrvlBeh->intrvlCntr         = 0;
 
-//nodeRuntime += MPI_Wtime() - nodestart;
-
       MPI_Sendrecv_replace(&msg, 1, MPI_INT, 0, MPI_REQUEST_WORK_1, 0, MPI_REQUEST_WORK_1, MPI_COMM_WORLD, &ms);
     }
-
   }
-//MPI_Barrier(MPI_COMM_WORLD);
-//if(rank != 0) printf("pe %d => %f%% usage\n", rank, nodeRuntime/(MPI_Wtime()-wstart));
 
-//  mpi_stage = mpi_stage_2;
-//
-//  if(rank == 0) get_work(0, seq, crik, todd);
-//  else {
-//    int message[4] = {rank, 0, 0, 0};
-//    MPI_Ssend(message, 4, MPI_INT, mpi_to, MPI_REQUEST_WORK_2, MPI_COMM_WORLD);
-//    get_work(-1, seq, crik, todd);
-//  }
-//
-//  while(!isDone) {
-//    jump_stage_1_set_intrvl(seq, crik, todd, 0); 
-//      free(todd->RSTO);
-//      todd->RSTO = NULL;
-//
-//      todd->intrvlIns->opnBrsInnIndx      = -1;
-//      todd->intrvlIns->closeBrsInnIndx    = -1;
-//      todd->intrvlIns->lvlOfRecur         = -1;
-//      todd->intrvlIns->intrvlInsFormdFlag = 0;
-//      todd->intrvlIns->jumpTreeNext       = NULL;
-//      todd->intrvlIns->intrvlCntr         = 0;
-//
-//      todd->intrvlBeh->opnBrsInnIndx      = -1;
-//      todd->intrvlBeh->closeBrsInnIndx    = -1;
-//      todd->intrvlBeh->lvlOfRecur         = -1;
-//      todd->intrvlBeh->intrvlInsFormdFlag = 0;
-//      todd->intrvlBeh->jumpTreeNext       = NULL;
-//      todd->intrvlBeh->intrvlCntr         = 0;
-//if(crik->interval) printf("HOLY CANOLI BATMAN, I THINK WE FOUND A SUSPECT\n");
-//    get_work(0, seq, crik, todd);
-//  }
+//    mpi_stage = mpi_stage_2;
 
-/*
-void fold_parallel(state_stack *stack)
-{
-    if (mpi_rank == 0) {
-        new_state(stack);
-        fold_all_parallel(stack);
-        get_work(stack, 0);
-    } else {
-        int message[4] = {mpi_rank, 0, 0, 0};
-        MPI_Ssend(message, 4, MPI_INT, mpi_to, MPI_REQUEST_WORK,
-                  MPI_COMM_WORLD);
-        get_work(stack, -1);
-    }
+//    if(rank == 0) {
+//      printf("pe 0 made it to get_work\n");
+//      get_work(0, seq, crik, todd);
+//    }
+//    else {
+//      int message[4] = {rank, 0, 0, 0};
+//      MPI_Ssend(message, 4, MPI_INT, mpi_to, MPI_REQUEST_WORK_2, MPI_COMM_WORLD);
+//      printf("pe %d made it to get_work\n", rank);
+//      get_work(-1, seq, crik, todd);
+//    }
+//
+//    while(!isDone) {
+//      printf("pe %d started work in stage 2\n", rank);
+//      jump_stage_1_set_intrvl(seq, crik, todd, 0); 
+//        free(todd->RSTO);
+//        todd->RSTO = NULL;
+//
+//        todd->intrvlIns->opnBrsInnIndx      = -1;
+//        todd->intrvlIns->closeBrsInnIndx    = -1;
+//        todd->intrvlIns->lvlOfRecur         = -1;
+//        todd->intrvlIns->intrvlInsFormdFlag = 0;
+//        todd->intrvlIns->jumpTreeNext       = NULL;
+//        todd->intrvlIns->intrvlCntr         = 0;
+//
+//        todd->intrvlBeh->opnBrsInnIndx      = -1;
+//        todd->intrvlBeh->closeBrsInnIndx    = -1;
+//        todd->intrvlBeh->lvlOfRecur         = -1;
+//        todd->intrvlBeh->intrvlInsFormdFlag = 0;
+//        todd->intrvlBeh->jumpTreeNext       = NULL;
+//        todd->intrvlBeh->intrvlCntr         = 0;
+//      printf("pe %d finished work in stage 2\n", rank);
+//      get_work(0, seq, crik, todd);
+//    }
 
-    while (stack->current >= 0) {
-        fold_all_parallel(stack);
-        get_work(stack, 0);
-    }
-}
-
-void fold_all_parallel(state_stack *stack)
-{
-    long counter = 0;
-    while(stack->current >= 0){        
-        if(counter % 64 == 63){
-            int to = is_work_needed(stack);
-            if(to != -1){
-                send_work(stack, to);
-            }
-        }
-        counter++;
-        fold1(stack);
-    }
-}
-*/
-  
 }
 
 // message format:
@@ -164,54 +120,51 @@ void fold_all_parallel(state_stack *stack)
 int parallel_sent_work_left = 0;
 int parallel_work_received = 0;
 int parallel_work_sent = 0;
-//int state_changed = 0;
 
 extern int RSTOflag;
 
 int is_work_needed() {
   MPI_Status ms;
+  MPI_Request mr;
   int flag = 0;
-//  int chstg = 0;
-//  MPI_Iprobe(0, mpi_change_stage, MPI_COMM_WORLD, &chstg, &ms);
-//  if(chstg) { MPI_Recv(&chstg, 1, MPI_INT, 0, mpi_change_stage, MPI_COMM_WORLD, &ms); mpi_stage = mpi_stage_2; }
+  int chstg = 0;
+
+  MPI_Iprobe(0, mpi_change_stage, MPI_COMM_WORLD, &chstg, &ms);
+  if(chstg) { 
+    MPI_Irecv(&chstg, 1, MPI_INT, 0, mpi_change_stage, MPI_COMM_WORLD, &mr);
+    mpi_stage = mpi_stage_2; 
+  }
 
   MPI_Iprobe(mpi_from, MPI_REQUEST_WORK_2, MPI_COMM_WORLD, &flag, &ms);
 
-  if(flag && !RSTOflag) {
-//    if(!state_changed) {
-//      MPI_Recv(&mpi_stage, 1, MPI_INT, 0, mpi_change_stage, MPI_COMM_WORLD, &ms);
-//      state_changed++;
-//    }
+  if(flag) {
+//    printf("pe %d found that work is needed\n", rank);
     int message[4];
     MPI_Recv(message, 4, MPI_INT, ms.MPI_SOURCE, MPI_REQUEST_WORK_2, MPI_COMM_WORLD, &ms);
 
     // should I send work?
-    if(/*mpi_stage == mpi_stage_2 && mpi_workleft mpi_stage != mpi_stage_2*/1) {
+    if(mpi_stage == mpi_stage_2 && mpi_workleft) {
+//      printf("pe %d returning to %d\n", rank, message[0]);
       return message[0];
     }
-/*
     // or should I pass the message along?
     if(message[0] == 0) {
       message[2] += 10000;
     }
 
+ //   printf("pe %d passing request on to %d\n", rank, message[0]);
     // CHECK THIS SEND FOR DEADLOCK-PRONE-NESS
     MPI_Send(message, 4, MPI_INT, mpi_to, MPI_REQUEST_WORK_2, MPI_COMM_WORLD);
-*/
   }
-  RSTOflag = 0;
+
   return -1;
 }
 
 void prepare_to_work(MPI_Status ms, config* seq, global* crik, local* todd) {
   parallel_work_received++;
 
-//  int i;
-//  for(i = 0; i < 100000000; i++) {}
-
   int num_elements;
   MPI_Get_count(&ms, MPI_INT, &num_elements);
-//printf("pwr: %d, pe %d -> pe %d: %d elements\n", parallel_work_received, ms.MPI_SOURCE, rank, num_elements);
 
   int *message = (int*)malloc((num_elements+1)*sizeof(int));
 
@@ -222,7 +175,6 @@ void prepare_to_work(MPI_Status ms, config* seq, global* crik, local* todd) {
   MPI_Get_count(&ms, MPI_INT, &num_elements);
 
   message = (int*)realloc(message, num_elements*sizeof(int));
-if(message == NULL) printf("in pe %d: houston, we have a problem\n", rank);
 
   MPI_Recv(message, num_elements, MPI_INT, ms.MPI_SOURCE, MPI_WORK, MPI_COMM_WORLD, &ms);
   unpack_todd(crik, todd, &message);
@@ -333,7 +285,6 @@ void unpack_swellix_structure(global* crik, int* msg, int count) {
   knob* cursr;
   knob* head;
   int i = 0;
-// TODO: optimize by moving first node conditional outside of loop
   while(i < count) {
     // if the first node, mark it as the head and set the cursor to it as well. in the case
     // that there happens to be only 1 node, mark the end of the linked list with NULL.
@@ -359,8 +310,6 @@ void unpack_swellix_structure(global* crik, int* msg, int count) {
 }
 
 int pack_intervalKnob(knob* intrvl, int* msg) {
-//  int* dmsg = *msg;
-
   knob* cur = intrvl;
 
   msg[0] = cur->intrvlCntr;
@@ -404,16 +353,7 @@ int pack_todd(local* todd, int** msg) {
 
   dmsg[i] = todd->intrvlBeh ? pack_intervalKnob(todd->intrvlBeh, &(dmsg[i+1])) : 0;
   i += KNOB_SIZE_INT + 1;
-//if(!todd->RSTO) printf("todd->RSTO = NULL in pack_todd: pe %d\n", rank);
   dmsg[i] = todd->RSTO ? pack_intervalKnob(todd->RSTO, &(dmsg[i+1])) : 0;
-/*if(dmsg[i]) {
-  int j = 0;
-  printf("[ ");
-  for(j; j<KNOB_SIZE_INT-1; j++) {
-    printf("%d, ", dmsg[j+i+1]);
-  }
-  printf("%d ]\n", dmsg[j+i+2]);
-}*/
   i += KNOB_SIZE_INT + 1;
   dmsg[i++] = todd->intrvlCntr;
   dmsg[i++] = todd->intrvlUB;
@@ -427,8 +367,6 @@ int pack_todd(local* todd, int** msg) {
 }
 
 knob* unpack_intervalKnob(knob* intrvl, int* msg) {
-//  int* dmsg = *msg;
-
   knob* cur;
   if(!intrvl) {
     cur = malloc(sizeof(knob));
@@ -524,7 +462,6 @@ void unpack_crikInfo(global* crik, int** msg) {
 
   int i = 1;
   crik->mustPairLength = dmsg[0];
-//  crik->struMustPairFlag = realloc(crik->struMustPairFlag, crik->mustPairLength*sizeof(int));
   while(i < crik->mustPairLength+1) { crik->struMustPairFlag[i-1] = dmsg[i]; i++; }
   crik->intrvlCntr = dmsg[i++];
   crik->lvlOfRecur = dmsg[i++];
@@ -549,27 +486,25 @@ void send_work(global* crik, local* todd, int to) {
   parallel_work_sent++;
   numOfCalls = 0;
 
+//  printf("sending work\n");
   if(to < rank) parallel_sent_work_left = 1;
 
   int* message = NULL;
   int cmpnts = pack_swellix_structure(crik, &message);
   MPI_Send(message, cmpnts, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
-//  message = memset(message, 0, cmpnts);
   int i;
   for(i = 0; i < cmpnts; i++){ message[i] = 0; }
 
 // DO OTHER VITAL INFO TRANSMISSION HERE
-  /*TODO: create serialization of knob types DONE*/
-  /*TODO: send relevant todd information DONE*/
-  /*TODO: send relevant crik information DONE*/
-  int msg_size = pack_todd(todd, &message);  //TODO: CHECK FOR LOSS OF INFORMATION IN PACK_TODD BEFORE SEND
+  int msg_size = pack_todd(todd, &message);
   MPI_Send(message, msg_size, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
-//  message = memset(message, 0, msg_size);
   for(i = 0; i < cmpnts; i++){ message[i] = 0; }
+//  printf("%d sent the todd\n", rank);
 
   msg_size = pack_crikInfo(crik, &message);
   MPI_Send(message, msg_size, MPI_INT, to, MPI_WORK, MPI_COMM_WORLD);
 
+//  printf("%d finished send work\n", rank);
   free(message);
 }
 

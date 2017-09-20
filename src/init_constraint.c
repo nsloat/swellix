@@ -42,9 +42,8 @@ int init_covari_db(config* seq, FILE* fp)
   char* constraints = calloc(CONSTRAINT_SIZE, sizeof(char));
   int   i = 0;
   int   coVariI, coVariJ, temp;
-                                                                  // printf("chkpnt0\n");
   while( (fscanf(fp, "%s", constraints) != EOF) &&  (constraints[0] != '_') ){                               // verify '(' is present, regard it as hint for a new pair
-    if(constraints[0] == '('){                                    // printf("chkpnt1\n");
+    if(constraints[0] == '('){
       seq->coVari[i] = malloc(sizeof(int) * 2);
       read_in_covari_data(seq, fp, constraints, i);
       i++;
@@ -92,7 +91,7 @@ int init_covari_db(config* seq, FILE* fp)
 int read_in_covari_data(config* seq, FILE* fp, char* constraints, int i)
 {                                                                           disp(seq,DISP_ALL,"Enterng 'read_in_covari_data'\n");
   int j;
-                                                                            // printf("chkpnt2\n");
+
   if(fscanf(fp, "%s\n", constraints) != '0' &&  atoi(constraints) > 0)      // check for a number
     seq->coVari[i][0] = atoi(constraints);
   else if(!strcmp("0", constraints))
@@ -168,7 +167,7 @@ int is_contradict_2_s1_pairng_constraints(config* seq, int i)
 {
   int8_t j = seq->numS1Pairng;
 
-  while(j){                                                        // printf("%d vs (%d,%d)\n", seq->s1Pairng[j-1], seq->coVari[i][0], seq->coVari[i][1]);
+  while(j){
     if( (seq->s1Pairng[j-1] == seq->coVari[i][0]) || (seq->s1Pairng[j-1] == seq->coVari[i][1]) ) return 1;
     j--;
   }  // end while
@@ -189,19 +188,23 @@ int is_covarance_pair_i_defective(config* seq, int coVariI)
   int   coVariIUB = seq->strLen - seq->minPairngDist - 1;
   int   coVariILB = seq->minPairngDist;
 
-  if (seq->coVari[coVariI][0] == seq->coVari[coVariI][1]){                                              fprintf(stderr, "Error on pair #%d: (%d, %d)\n", (coVariI + 1), seq->coVari[coVariI][0], seq->coVari[coVariI][1]);
- 												        fprintf(stderr, "Two numbers should be different.\n");
+  if (seq->coVari[coVariI][0] == seq->coVari[coVariI][1]){
+    fprintf(stderr, "Error on pair #%d: (%d, %d)\n", (coVariI + 1), seq->coVari[coVariI][0], seq->coVari[coVariI][1]);
+    fprintf(stderr, "Two numbers should be different.\n");
     return 1;
-  } else if ( (seq->coVari[coVariI][1] - seq->coVari[coVariI][0]) <= seq->minPairngDist){               fprintf(stderr, "Error on pair #%d: (%d, %d)\n", (coVariI + 1), seq->coVari[coVariI][0], seq->coVari[coVariI][1]);
-          	                                                                                        fprintf(stderr, "Two numbers should be separated by at least minimum loop size of %d.\n", seq->minPairngDist);
+  } else if ( (seq->coVari[coVariI][1] - seq->coVari[coVariI][0]) <= seq->minPairngDist){
+    fprintf(stderr, "Error on pair #%d: (%d, %d)\n", (coVariI + 1), seq->coVari[coVariI][0], seq->coVari[coVariI][1]);
+    fprintf(stderr, "Two numbers should be separated by at least minimum loop size of %d.\n", seq->minPairngDist);
     return 1;
-  } else if ( (seq->coVari[coVariI][0] < 0) || (seq->coVari[coVariI][0] >= coVariIUB) ){                fprintf(stderr, "Error on pair #%d: (%d, %d)\n", (coVariI + 1), seq->coVari[coVariI][0], seq->coVari[coVariI][1]);
-         	                                                                                        fprintf(stderr, "The input number %d is improper. ", seq->coVari[coVariI][0]);
-													fprintf(stderr, "It should be equal or larger than 0, and smaller than %d.\n", coVariIUB);
+  } else if ( (seq->coVari[coVariI][0] < 0) || (seq->coVari[coVariI][0] >= coVariIUB) ){
+    fprintf(stderr, "Error on pair #%d: (%d, %d)\n", (coVariI + 1), seq->coVari[coVariI][0], seq->coVari[coVariI][1]);
+    fprintf(stderr, "The input number %d is improper. ", seq->coVari[coVariI][0]);
+	fprintf(stderr, "It should be equal or larger than 0, and smaller than %d.\n", coVariIUB);
     return 1;
-  } else if ( (seq->coVari[coVariI][1] <= coVariILB) || (seq->coVari[coVariI][1] >= seq->strLen) ){     fprintf(stderr, "Error on pair #%d: (%d, %d)\n", (coVariI + 1), seq->coVari[coVariI][0], seq->coVari[coVariI][1]);
-         	                                                                                        fprintf(stderr, "The input number %d is improper.", seq->coVari[coVariI][1]);
-													fprintf(stderr, "It should be equal or larger than %d, and smaller than %d.\n", coVariILB, seq->strLen);
+  } else if ( (seq->coVari[coVariI][1] <= coVariILB) || (seq->coVari[coVariI][1] >= seq->strLen) ){
+    fprintf(stderr, "Error on pair #%d: (%d, %d)\n", (coVariI + 1), seq->coVari[coVariI][0], seq->coVari[coVariI][1]);
+    fprintf(stderr, "The input number %d is improper.", seq->coVari[coVariI][1]);
+	fprintf(stderr, "It should be equal or larger than %d, and smaller than %d.\n", coVariILB, seq->strLen);
     return 1;
   }  // end if 2
 
@@ -434,11 +437,11 @@ int init_s1_pairng_db(config* seq, FILE* fp)
   int64_t   i = 0;
 
   while(fscanf(fp, "%s", constraints) != EOF && (constraints[0] != '_')){
-    if(constraints[0] == '('){                             // verify '(' is present, regard it as hint f$
-      read_in_s1_pairng_data(seq, fp, constraints, i);     // printf("S1 = %d\n", seq->s1Pairng[i]);
-      i++;                                                 // printf("i = %d\n", i);
+    if(constraints[0] == '('){
+      read_in_s1_pairng_data(seq, fp, constraints, i);
+      i++;
     }  // end if
-  }    // end while                                        // printf("s1 got %d stuff\n", i);
+  }    // end while
 
   seq->s1Pairng = realloc(seq->s1Pairng, i * sizeof(int));
   seq->numS1Pairng = i;
@@ -462,21 +465,23 @@ int read_in_s1_pairng_data(config* seq, FILE* fp, char* constraints, int i)
     seq->s1Pairng[i] = atoi(constraints) - 1;
   else if(!strcmp("0", constraints))
     seq->s1Pairng[i] = 0;
-  else{                                                                     fprintf(stderr, "Error in S1 pairng configuration file\n");
+  else{
+    fprintf(stderr, "Error in S1 pairng configuration file\n");
     printf("%s is not a number\n", constraints);
     exit(1);
   }  // end if 1
   
-  if(seq->s1Pairng[i] >= seq->strLen){                                      fprintf(stderr, "Error, S1 pairng %d shouldn't exceed sequence length %d\n", seq->s1Pairng[i], seq->strLen);
+  if(seq->s1Pairng[i] >= seq->strLen){
+    fprintf(stderr, "Error, S1 pairng %d shouldn't exceed sequence length %d\n", seq->s1Pairng[i], seq->strLen);
     exit(1);
   }  // end if 2
 
   if((constraints[0] = fgetc(fp)) != ')'){                                  // verify ')' is present
-                                                                            printf("Error in S1 pairng configuration file\n");
-                                                                            printf("%c is not desinated symbol ')'\n", constraints[0]);
+    printf("Error in S1 pairng configuration file\n");
+    printf("%c is not desinated symbol ')'\n", constraints[0]);
     exit(1);
   }  // end if 4
-                                                                            // printf("Constraint = %s\n", constraints);
+
   return 0;
 }  // end read_in_s1_pairng_data
 
@@ -500,7 +505,7 @@ int init_max_pairng_dist(config* seq, FILE* fp)
       return 0;
     }  // end if
   }    // end while
-                                                         // printf("maxPairDist = %d\n", seq->maxPairngDist);
+
   free(constraints);
 
   return 0;
@@ -521,14 +526,15 @@ int read_in_max_pairng_dist_data(config* seq, FILE* fp, char* constraints)
     seq->maxPairngDist = atoi(constraints);
   else if(!strcmp("0", constraints))
     seq->maxPairngDist = 0;
-  else{                                                                     printf("Error in max pairng distanceconfiguration file\n");
-                                                                            printf("%s is not a number\n", constraints);
+  else{
+    printf("Error in max pairng distanceconfiguration file\n");
+    printf("%s is not a number\n", constraints);
     exit(1);
   }  // end if 1
 
   if((constraints[0] = fgetc(fp)) != ')'){                                  // verify ')' is present
-                                                                            printf("Error in max pairng dist configuration file\n");
-                                                                            printf("%c is not desinated symbol ')'\n", constraints[0]);
+    printf("Error in max pairng dist configuration file\n");
+    printf("%c is not desinated symbol ')'\n", constraints[0]);
     exit(1);
   }  // end if 4
   return 0;
@@ -554,7 +560,7 @@ int init_min_pairng_dist(config* seq, FILE* fp)
       return 0;
     }  // end if
   }    // end while
-                                                         // printf("minPairDist = %d\n", seq->minPairngDist);
+
   free(constraints);
 
   return 0;
@@ -575,14 +581,15 @@ int read_in_min_pairng_dist_data(config* seq, FILE* fp, char* constraints)
     seq->minPairngDist = atoi(constraints);
   else if(!strcmp("0", constraints))
     seq->minPairngDist = 0;
-  else{                                                                     printf("Error in min pairng distanceconfiguration file\n");
-                                                                            printf("%s is not a number\n", constraints);
+  else{
+    printf("Error in min pairng distanceconfiguration file\n");
+    printf("%s is not a number\n", constraints);
     exit(1);
   }  // end if 1
 
   if((constraints[0] = fgetc(fp)) != ')'){                                  // verify ')' is present
-                                                                            printf("Error in min pairng dist configuration file\n");
-                                                                            printf("%c is not desinated symbol ')'\n", constraints[0]);
+    printf("Error in min pairng dist configuration file\n");
+    printf("%c is not desinated symbol ')'\n", constraints[0]);
     exit(1);
   }  // end if 4
   return 0;
@@ -604,7 +611,7 @@ int init_v1_pairng_db(config* seq, FILE* fp)
 
   while(fscanf(fp, "%s", constraints) != EOF && (constraints[0] != '_')){
     if(constraints[0] == '('){                             // verify '(' is present, regard it as hint f$
-      read_in_v1_pairng_data(seq, fp, constraints, i);     // printf("V1 = %d\n", seq->v1Pairng[i]);
+      read_in_v1_pairng_data(seq, fp, constraints, i);
       i++;
     }  // end if
   }    // end while
@@ -632,17 +639,18 @@ int read_in_v1_pairng_data(config* seq, FILE* fp, char* constraints, int i)
     seq->v1Pairng[i] = atoi(constraints)-1;
   else if(!strcmp("0", constraints))
     seq->v1Pairng[i] = 0;
-  else{                                                                     printf("Error in V1 pairng configuration file\n");
+  else{
+    printf("Error in V1 pairng configuration file\n");
     printf("%s is not a number\n", constraints);
     exit(1);
   }  // end if 1
 
   if((constraints[0] = fgetc(fp)) != ')'){                                  // verify ')' is present
-                                                                            printf("Error in V1 pairng configuration file\n");
-                                                                            printf("%c is not desinated symbol ')'\n", constraints[0]);
+    printf("Error in V1 pairng configuration file\n");
+    printf("%c is not desinated symbol ')'\n", constraints[0]);
     exit(1);
   }  // end if 4
-                                                                            // printf("Constraint = %s\n", constraints);
+
   return 0;
 }  // end read_in_v1_pairng_data
 
@@ -687,13 +695,19 @@ int chk_conflict_against_v1_pairng(config* seq)
 int display_constraints(config* seq)
 {
   int16_t i;
-                                          fprintf(seq->dispFile,"Covari (%d) = ", seq->numCovari);
-  for(i = 0 ; i < seq->numCovari ; i++)   fprintf(seq->dispFile,"(%d,%d), ", seq->coVari[i][0], seq->coVari[i][1]);
-                                          fprintf(seq->dispFile,"\nV1 Prng(%d) = ", seq->numV1Pairng);
-  for(i = 0 ; i < seq->numV1Pairng ; i++) fprintf(seq->dispFile,"%d, ", seq->v1Pairng[i]);
-                                          fprintf(seq->dispFile,"\nS1 Prng(%d) = ", seq->numS1Pairng);
-  for(i = 0 ; i < seq->numS1Pairng ; i++) fprintf(seq->dispFile,"%d, ", seq->s1Pairng[i]);
-                                          fprintf(seq->dispFile,"\nMax/Min pairng Dist = (%d,%d)\n", seq->maxPairngDist, seq->minPairngDist);
+  fprintf(seq->dispFile,"Covari (%d) = ", seq->numCovari);
+  for(i = 0 ; i < seq->numCovari ; i++) {
+    fprintf(seq->dispFile,"(%d,%d), ", seq->coVari[i][0], seq->coVari[i][1]);
+  }
+  fprintf(seq->dispFile,"\nV1 Prng(%d) = ", seq->numV1Pairng);
+  for(i = 0 ; i < seq->numV1Pairng ; i++) {
+    fprintf(seq->dispFile,"%d, ", seq->v1Pairng[i]);
+  }
+  fprintf(seq->dispFile,"\nS1 Prng(%d) = ", seq->numS1Pairng);
+  for(i = 0 ; i < seq->numS1Pairng ; i++) {
+    fprintf(seq->dispFile,"%d, ", seq->s1Pairng[i]);
+  }
+  fprintf(seq->dispFile,"\nMax/Min pairng Dist = (%d,%d)\n", seq->maxPairngDist, seq->minPairngDist);
   return 0;
 }  // end display_constraints
 

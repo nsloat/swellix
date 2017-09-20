@@ -1,8 +1,8 @@
 SHELL := /bin/bash
 
-myCC=cc
+myCC=gcc
 
-EXECUTABLE=dev-swellix.exe
+EXECUTABLE=swellix
 
 EXECDIR = $(PWD)/
 LIBDIR = $(EXECDIR)viennabuild/lib
@@ -12,35 +12,25 @@ PARAMFILE = $(EXECDIR)viennabuild/rna_turner2004.par
 
 VPATH=$(EXECDIR)src/:$(INCLUDEDIR):$(LIBDIR)
 
-# Change this directory according to your filesystem. It doesn't necessarily need to have a large storage
-# capacity. This is used to facilitate the bundling mechanism within Swellix if you choose to activate it.
-BUNDLINGDIRECTORY=/scratch/nsloat/
-
 CFILES = $(wildcard $(EXECDIR)src/*.c)
 
 OBJS = $(CFILES:.c=.o)
 
 OBJDIR=$(EXECDIR)src
 
-CFLAGS=-g #-Wall
-#CFLAGS+=-D_EXECDIR='"$(EXECDIR)"'
-#CFLAGS+=-fopenmp
+CFLAGS=-g
 
 RNACONF = --prefix=$(EXECDIR)viennabuild --without-kinfold --without-forester --without-kinwalker \
  	   --without-perl --without-python --without-doc --without-doc-html --without-doc-pdf --disable-openmp
 
 RNAFLAGS=-L$(LIBDIR) -lRNA -lm -I$(INCLUDEDIR) -I$(INCLUDEDIR)ViennaRNA -D_PARAM='"$(PARAMFILE)"'
 
-#BUNDLINGFLAG=-D_BUNDLE='"$(BUNDLINGDIRECTORY)"'
-
-VIENNADIRS=`ls -I rna\_turner2004\.par $(EXECDIR)viennabuild`
-
 .PHONY: serial ddisp cdisp disp mpi mpi-disp pre-build-mpi pre-build
 
 serial: pre-build
-serial: dev-swellix.exe
+serial: swellix
 
-dev-swellix.exe: $(OBJS)
+swellix: $(OBJS)
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
@@ -100,7 +90,7 @@ $(OBJDIR)/subopt.o: subopt.c subopt.h
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
-dev-swellix-mpi.exe: $(OBJS)
+swellix-mpi: $(OBJS)
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
@@ -121,28 +111,24 @@ ddisp: disp
 disp: CFLAGS+=-D_display
 disp: myCC=cc
 disp: pre-build
-disp: dev-swellix.exe
+disp: swellix
 
-mpi: myCC=cc
+mpi: myCC=mpicc
 mpi: MPIFLAGS+=-D_MPI
 mpi: pre-build-mpi
-mpi: dev-swellix-mpi.exe
+mpi: swellix-mpi
 
-mpi-disp: myCC=cc
+mpi-disp: myCC=mpicc
 mpi-disp: MPIFLAGS+=-D_MPI
 mpi-disp: CFLAGS+=-D_display
 mpi-disp: pre-build-mpi
-mpi-disp: dev-swellix-mpi.exe
+mpi-disp: swellix-mpi
 
 vienna:
 	cd ViennaRNA-2.2.5; \
 	./configure $(RNACONF); \
 	make; \
-	make install
-
-#dev-swellix.exe: $(OBJS)
-#	@echo myCC = $(shell which $(myCC))
-#	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
+	make install;
 
 test:
 	cc -g -o exe--swellixTest $(CFILES) -W -Wall -g3 -D _display 

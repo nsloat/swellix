@@ -12,11 +12,6 @@
 #include <ViennaRNA/eval.h>
 
 
-
-//extern vrna_md_t md;
-//extern vrna_param_t* P;
-//extern vrna_fold_compound_t* vc;
-//extern vrna_fold_compound_t* evalc;
 static vrna_md_t md;
 static vrna_param_t* P;
 static vrna_fold_compound_t* vc;
@@ -37,9 +32,12 @@ int distance;
  *******************************************************************************************************************/
 
 
-void init_vrna(char* sequence) {
+void init_vrna(char* sequence)
+{
   vrna_md_set_default(&md);
-  if(paramfile != NULL) read_parameter_file(paramfile);
+  if(paramfile != NULL) {
+    read_parameter_file(paramfile);
+  }
   P = vrna_params(&md);
   evalc = vrna_fold_compound(sequence, &md, VRNA_OPTION_EVAL_ONLY);
 }
@@ -52,14 +50,16 @@ void init_vrna(char* sequence) {
 //
 //
 //******************************************************************************
-float get_mfe_structure(char* sequence, char* structure) {
-//  if(md == NULL) { printf("error in get_mfe_structure; model uninitialized\n"); return -10000000; }
-  if(vc == NULL) //vrna_fold_compound_free(vc);
+float get_mfe_structure(char* sequence, char* structure)
+{
+  if(vc == NULL) {
     vc = vrna_fold_compound(sequence, &md, VRNA_OPTION_MFE);
+  }
   return vrna_mfe(vc, structure);
 }
 
-void update_stats(config* seq) {
+void update_stats(config* seq)
+{
   switch (seq->statMode) {
     case STAT_DEFAULT:
       break;
@@ -76,7 +76,9 @@ void update_stats(config* seq) {
     default:
       break;
   }
-  if(seq->motif) update_motif_count(seq);
+  if(seq->motif) {
+    update_motif_count(seq);
+  }
 }
 
 //******************************************************************************
@@ -87,9 +89,11 @@ void update_stats(config* seq) {
 //
 //
 //******************************************************************************
-void update_min_energy(config* seq) {
-  if(evalc == NULL) //vrna_fold_compound_free(evalc);
+void update_min_energy(config* seq)
+{
+  if(evalc == NULL) {
     evalc = vrna_fold_compound(seq->ltr, &md, VRNA_OPTION_EVAL_ONLY);
+  }
   energy = vrna_eval_structure(evalc, seq->dotNParen);
   if(energy < seq->minenergy) {
     seq->minenergy = energy;
@@ -104,13 +108,16 @@ void update_min_energy(config* seq) {
 //
 //
 //******************************************************************************
-void update_max_distance(config* seq) {
+void update_max_distance(config* seq)
+{
   distance = vrna_bp_distance(seq->dotNParen, seq->mfe);
-  if(distance > seq->maxdist) seq->maxdist = distance;
+  if(distance > seq->maxdist) {
+    seq->maxdist = distance;
+  }
 }
 
-void update_motif_count(config* seq) {
-//printf("updating motif count\n");
+void update_motif_count(config* seq)
+{
   char* s = seq->motifStruc;               // motif structure dot-parenthesis form
   char* l = seq->motifSeq;                 // motif sequence "letter" form
   char gen = 'N';                          // counts as any nucleotide
@@ -123,7 +130,6 @@ void update_motif_count(config* seq) {
   int slen = seq->strLen;                  // target sequence length
   int match;                               // flag variable to signal a match
   int i = 0, j, k, m;                      // accessory indexing variables
-//  printf("S: %s\n bundle: %i", S, seq->);
 
   while(i <= slen-mlen) {
     match = 1;
@@ -135,12 +141,13 @@ void update_motif_count(config* seq) {
     char LChar;
     while((s[k] != dnc) && (k < mlen)) { // if this loop exits normally, then either the 5' side of a bulge
                                          // motif matched or the whole hairpin motif matched.
-//printf("S: %s\ns: %s\nL: %s\nl: %s\nentered 5' match section\n", S, s, L, l);
         sChar = s[k]; SChar = S[i+k]; lChar = l[k]; LChar = L[i+k];
         /* first logical check: make sure the dot-parenthesis character from motif matches the one from the structure
-         * second check: find out if the motif nucleotide character doesn't match the structure one and check of the motif character is supposed to represent any general nucleotide. if the motif nt doesn't match the structure sequence and if the motif character doesn't represent any nt, proceed to logical check 3.
+         * second check: find out if the motif nucleotide character doesn't match the structure one and check of the motif 
+         *   character is supposed to represent any general nucleotide. if the motif nt doesn't match the structure sequence 
+         *   and if the motif character doesn't represent any nt, proceed to logical check 3.
          * third check: find out if the motif 
-*/
+         */
         if((sChar != SChar) || 
             ((lChar != LChar && lChar != gen) && 
               ((sChar == '.' && lChar == wcp) || 
@@ -149,7 +156,6 @@ void update_motif_count(config* seq) {
       k++;
     }
     if(k < mlen && match) {
-//printf("s: %s\nl: %s\nentered 3' match section\n", s, l);
     // if this condition is still TRUE, then the matched motif was the 5' side 
     // of a variable-length motif and we need to look for the 3' side.
       j = slen-1;
@@ -188,13 +194,21 @@ void update_motif_count(config* seq) {
   }
 }
 
-void cleanup_stats() {
-  if(vc != NULL) vrna_fold_compound_free(vc);
-  if(evalc != NULL) vrna_fold_compound_free(evalc);
-  if(P != NULL) free(P);
+void cleanup_stats()
+{
+  if(vc != NULL) {
+    vrna_fold_compound_free(vc);
+  }
+  if(evalc != NULL) {
+    vrna_fold_compound_free(evalc);
+  }
+  if(P != NULL) {
+    free(P);
+  }
 }
 
-void print_stats(config* seq) {
+void print_stats(config* seq)
+{
   switch (seq->statMode) {
     case STAT_DEFAULT:
       break;
@@ -211,5 +225,7 @@ void print_stats(config* seq) {
     default:
       break;
   }
-  if(seq->motif) fprintf(seq->dispFile, "Motif match count: %d\n", seq->motifCount);
+  if(seq->motif) {
+    fprintf(seq->dispFile, "Motif match count: %ld\n", seq->motifCount);
+  }
 }

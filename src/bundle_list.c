@@ -57,7 +57,8 @@
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-int initialize_eden(config* seq, global* crik) {
+int initialize_eden(config* seq, global* crik) 
+{
   disp(seq,DISP_ALL,"Enterng 'initialize_eden'");
   int16_t i;
 
@@ -82,7 +83,8 @@ int initialize_eden(config* seq, global* crik) {
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-int get_mismatches(char* structure, int openOut, int openIn, int closeOut, int closeIn, int16_t** mismatch) {
+int get_mismatches(char* structure, int openOut, int openIn, int closeOut, int closeIn, int16_t** mismatch)
+{
   int i;
   // Find any mismatches
   int j = 0;
@@ -92,7 +94,6 @@ int get_mismatches(char* structure, int openOut, int openIn, int closeOut, int c
       mismatch[j][0] = i;
       j++;
     } else if (structure[i] == '.') {
-//		fprintf(seq->dispFile, "j = %d\n", j);
       mismatch[j][0] = i;
       j++;
 
@@ -124,7 +125,8 @@ int get_mismatches(char* structure, int openOut, int openIn, int closeOut, int c
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-void remove_outer_pair(char* structure, int start, int end) {
+void remove_outer_pair(char* structure, int start, int end)
+{
   structure[start] = '.';
   structure[end] = '.';
 }
@@ -137,7 +139,8 @@ void remove_outer_pair(char* structure, int start, int end) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-void add_dumi_node(config* seq, global* crik, LabeledStructures* lab) {
+void add_dumi_node(config* seq, global* crik, LabeledStructures* lab)
+{
 	int begin, end;
 	filename_to_indices(lab->title, &begin, &end);
 	knob* dumi;
@@ -163,7 +166,8 @@ void add_dumi_node(config* seq, global* crik, LabeledStructures* lab) {
 	dumi->jumpTreeNext      = NULL;
 }
 
-void filename_to_indices(char* filename, int* begin, int* end) {
+void filename_to_indices(char* filename, int* begin, int* end)
+{
 	char pos[50], len[50], suffix[4];
 	sscanf(filename, "%[^x]x%[^.].%s", pos, len, suffix);
 	*end = atoi(pos);
@@ -171,22 +175,9 @@ void filename_to_indices(char* filename, int* begin, int* end) {
 	*begin = *end - *begin + 1;
 }
 
-void remove_duplicates(char* filename) {
-	char tmp[100];
-	strcpy(tmp, "sort -u ");
-	strcat(tmp, filename);
-	strcat(tmp, " > tmp.txt");
-	system(tmp);
-	strcpy(tmp, "rm ");
-	strcat(tmp, filename);
-	system(tmp);
-	strcpy(tmp, "mv tmp.txt ");
-	strcat(tmp, filename);
-	system(tmp);
-}
-
 /* Function to test whether two nodes are equal */
-int nodes_equal(knob* first, knob* second) {
+int nodes_equal(knob* first, knob* second)
+{
 
   // Compare combined helices as well
   knob* firstCursr = first;
@@ -201,17 +192,13 @@ int nodes_equal(knob* first, knob* second) {
       openOut1 = firstCursr->opnBrsOutIndx;
       closeOut1 = firstCursr->closeBrsOutIndx;
       formed = 1;
-
-//	printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
-
-    } else if (firstCursr->opnBrsOutIndx - openIn1 == 1 && closeIn1 - firstCursr->closeBrsOutIndx == 1) {
+    }
+    else if (firstCursr->opnBrsOutIndx - openIn1 == 1 && closeIn1 - firstCursr->closeBrsOutIndx == 1) {
       openIn1 = firstCursr->opnBrsInnIndx;
       closeIn1 = firstCursr->closeBrsInnIndx;
       formed = 1;
-
-//		printf("formed: %d|%d-%d|%d\n", openOut1, openIn1, closeIn1, closeOut1);
-
-    } else if (!formed) {
+    }
+    else if (!formed) {
       openIn1 = firstCursr->opnBrsInnIndx;
       openOut1 = firstCursr->opnBrsOutIndx;
       closeIn1 = firstCursr->closeBrsInnIndx;
@@ -233,10 +220,8 @@ int nodes_equal(knob* first, knob* second) {
       openOut2 = secondCursr->opnBrsOutIndx;
       closeOut2 = secondCursr->closeBrsOutIndx;
       formed = 1;
-
-//	printf("formed: %d|%d-%d|%d\n", openOut2, openIn2, closeIn2, closeOut2);
-
-    } else if (!formed) {
+    }
+    else if (!formed) {
       openIn2 = secondCursr->opnBrsInnIndx;
       openOut2 = secondCursr->opnBrsOutIndx;
       closeIn2 = secondCursr->closeBrsInnIndx;
@@ -346,18 +331,15 @@ int remove_duplicates_LL(ToL* start)
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-void run_sliding_windows(config* seq, global* crik) {
-
+void run_sliding_windows(config* seq, global* crik)
+{
   extern int rank, wsize;
   int istart, iend, span, rem;
 
-//printf("rank = %d, wsize = %d\n", rank, wsize);
   span = (seq->strLen)/(wsize);
   rem = seq->strLen % wsize;
   istart = rank*span;
   iend = (rank == wsize-1) ? istart+span+rem : istart+span-1;
-//printf("seq->strLen = %d, span = %d, rem = %d\n", seq->strLen, span, rem);
-
 
   // Get ready to run sliding windows
   char mods[seq->strLen+1];
@@ -385,8 +367,6 @@ void run_sliding_windows(config* seq, global* crik) {
   char* subMod = calloc(window+1, sizeof(char));
   int start, stroffset, substrLen;
   for(index = istart; index < iend+1; index++) {
-//  for(index = 0; index < seq->strLen+1; index++) {
-//printf("pe %d running window %d\n", rank, index);
     start = index-window-1;
     stroffset = start+1 > 0 ? start+1 : 0;
     substrLen = index-stroffset > window ? window : index-stroffset;
@@ -420,9 +400,7 @@ void run_sliding_windows(config* seq, global* crik) {
 
   // We need to sum up the total number of LabeledStructures instances that got filled with data.
   int totalLabs = 0;
-//printf("PE %d has %d labs\n", rank, labsSize);
   MPI_Allreduce(&labsSize, &totalLabs, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-//printf("totalLabs = %d\n", totalLabs);
 
   // Now, gather the local counts of LabeledStructures instances from each PE an store them 
   // in an array for Allgatherv.
@@ -434,21 +412,10 @@ void run_sliding_windows(config* seq, global* crik) {
   for(index = 1; index < wsize; index++)
     displs[index] = displs[index-1] + counts[index-1];
 
-//  printf("PE %d has displs:\n", rank);
-//  for(index = 0; index < wsize; index++)
-//    printf("%d, ", displs[index]);
-//  printf("\n");
-
   // Allocate space for the complete array of LabeledStructures instances, using the sum totalLabs from above to
   // allocate just enough memory as needed.
   LabeledStructures* completeLabs = (LabeledStructures*)calloc(totalLabs, sizeof(LabeledStructures));
   
-//  for(index = 0; index < totalLabs; index++) {
-//    completeLabs[index].titlesize = 64;
-//    completeLabs[index].buffsize = 4096;
-//  }
-//1if(rank == 0)printf("before allgatherv, PE 0 at index 0 has title %s and titlesize %d\nand completeLabs titlesize %d\n", labs[0].title, labs[0].titlesize, completeLabs[0].titlesize);
-
   // Now, from each PEs local labs array, gather the respective elements and construct a complete array in each
   // PE according to our count and displacement arrays from above.
   MPI_Allgatherv(labs, labsSize, mpi_labeled_structures, 
@@ -471,9 +438,6 @@ void run_sliding_windows(config* seq, global* crik) {
     }
   }
 
-//if(rank == 0)printf("after allgatherv, PE 0 at index 0 has title %s and titlesize %d\n", completeLabs[0].title, completeLabs[0].titlesize);
-//printf("allgatherv completed\n");
-
   // Finally, to complete the transmission of the data between all of the PEs, each PE needs to send its own local
   // information to the other PEs in their completeLabs struct arrays.
   LabeledStructures* ptr;
@@ -489,28 +453,15 @@ void run_sliding_windows(config* seq, global* crik) {
       if(index >= displs[i] && index < displs[i]+counts[i]) root = i;
       i++;
     }
-    // As of now, the titlesize doesn't ever change and isn't really used, so I suppose this Bcast isn't vital.
-//    MPI_Bcast(&ptr->titlesize, 1, MPI_INT, root, MPI_COMM_WORLD);
-
-//printf("set up root %d for index %d\n", root, index);
-//if(rank == root)printf("PE %d has title %s and titlesize %d\n", root, ptr->title, ptr->titlesize);
 
     MPI_Bcast(ptr->title, ptr->titlesize, MPI_CHAR, root, MPI_COMM_WORLD);
-
-//printf("first bcast, root %d\n", root);
-
     MPI_Bcast(&ptr->buffsize, 1, MPI_INT, root, MPI_COMM_WORLD);
 
-//printf("second bcast, root %d\n", root);
-
-    if(rank != root && ptr->buffsize > 4096) ptr->structures = (char*)realloc(ptr->structures, ptr->buffsize);
+    if(rank != root && ptr->buffsize > 4096) {
+        ptr->structures = (char*)realloc(ptr->structures, ptr->buffsize);
+    }
     MPI_Bcast(ptr->structures, ptr->buffsize, MPI_CHAR, root, MPI_COMM_WORLD);
-
-//printf("last bcast, root %d\n", root);
-
   }
-
-//printf("bcast series completed\n");
 
   // Now that the information has been distributed across all PEs, let each PE construct its bundles locally using
   // the full array of LabeledStructures instances.
@@ -544,7 +495,6 @@ void run_sliding_windows(config* seq, global* crik) {
   free(subSeq);
   free(subMod);
 
-
   // remove duplicates from linked list
   int j;
   for (i = 0; i < seq->strLen-seq->minLenOfHlix; i++) {
@@ -554,20 +504,23 @@ void run_sliding_windows(config* seq, global* crik) {
   }
 }
 
-void initLabeledStructures(LabeledStructures *lab) {
+void initLabeledStructures(LabeledStructures *lab)
+{
   lab->titlesize = 64;
   lab->title = (char*)calloc(lab->titlesize, sizeof(char));
   lab->buffsize = 4096;  // default buffsize to 4kB arbitrarily
   lab->structures = (char*)calloc(lab->buffsize, sizeof(char)); 
 }
 
-void resetLabeledStructures(LabeledStructures* lab, char* newtitle) {
+void resetLabeledStructures(LabeledStructures* lab, char* newtitle) 
+{
   lab->title = memset(lab->title, '\0', lab->titlesize);
   lab->structures = memset(lab->structures, '\0', lab->buffsize);
   if(newtitle != NULL) strcat(lab->title, newtitle);
 }
 
-void freeLabeledStructures(LabeledStructures **lab) {
+void freeLabeledStructures(LabeledStructures **lab)
+{
   free((*lab)->title);
   free((*lab)->structures);
 
@@ -583,9 +536,10 @@ void freeLabeledStructures(LabeledStructures **lab) {
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-knob* init_b_node(int openOut, int openIn, int closeOut, int closeIn, int16_t** mismatch) {
+knob* init_b_node(int openOut, int openIn, int closeOut, int closeIn, int16_t** mismatch)
+{
 	knob* newBNode = calloc(1, sizeof(knob)); // new branch node
-   	 newBNode->mismatchFlag = mismatch;
+    newBNode->mismatchFlag = mismatch;
 	newBNode->opnBrsInnIndx = openIn;
 	newBNode->opnBrsOutIndx = openOut;
 	newBNode->closeBrsInnIndx = closeIn;
@@ -676,7 +630,8 @@ void add_b_node(global* crik, knob* refBNode, int16_t masterLB, int16_t masterUB
 // Return   : none
 // Display  : error message, if necessary
 //*****************************************************************************
-void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
+void make_bundles(config* seq, global* crik, LabeledStructures* lab)
+{
 
   int begin, end;
   char* tok;
@@ -727,10 +682,8 @@ void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
       closeIn = atoi(a3) + begin;
       closeOut = atoi(a4) + begin;
 
-	//		fprintf(seq->dispFile, "%s %d - %d | %d - %d\n", structure, openOut, openIn, closeIn, closeOut);
       int window = (seq->minPairngDist * 2) + (seq->minLenOfHlix * 6) - 1;
       if (closeOut >= seq->strLen || openOut < 0 || closeOut-openOut+1 > window) {
-	//			fprintf(seq->dispFile, "This one skipped. Out of bounds.\n");
         break; // due to terminal mismatches, length is longer than sequence. skip
       }
 
@@ -775,12 +728,10 @@ void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
           mismatch[j][1] += begin;
 
           skip = seq->parenLukUpTable[mismatch[j][0]][mismatch[j][1]]; // this mismatch can actually pair. skip
-//fprintf(seq->dispFile, "mismatch[j][0]: %d, mismatch[j][1]: %d\n", mismatch[j][0], mismatch[j][1]);
         }
       }
 
       if (skip) {
-		//		fprintf(seq->dispFile, "This one skipped.\n");
         if (helices_added > 0) {
           crik->eden[LB][UB].stemNode = crik->eden[LB][UB].stemNode->next;
           crik->eden[LB][UB].numStru--;
@@ -849,7 +800,6 @@ void make_bundles(config* seq, global* crik, LabeledStructures* lab) {
         add_s_b_node(crik, newBnode, openOut, closeOut, mms); // add the new stem and branch nodes
         helices_added++;
       } else {
-//				fprintf(seq->dispFile, "Adding new b node.\n");
         add_b_node(crik, newBnode, LB, UB); // add the new branch to the existing stem
         helices_added++;
       }
@@ -913,11 +863,12 @@ int mark_mismatch(config* seq, knob* BNodeCursr)
   int16_t m;
 
   if(seq->maxNumMismatch)
-    for(m = 0 ; m < seq->maxNumMismatch ; m++)
+    for(m = 0 ; m < seq->maxNumMismatch ; m++) {
       if(BNodeCursr->mismatchFlag[m][1] >= 0){
 	seq->dotNParen[BNodeCursr->mismatchFlag[m][0]] = '_';
 	seq->dotNParen[BNodeCursr->mismatchFlag[m][1]] = '_';
       }  // end inner if
+    }
   return 0;
 }  // end mark_mismatch
 

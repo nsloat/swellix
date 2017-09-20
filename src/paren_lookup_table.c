@@ -42,26 +42,23 @@ int fill_in_parenthesis_look_up_table_row_i(config* seq, int16_t rowI)
   int16_t blankFillngIndx;
 
   seq->parenLukUpTable[rowI] = malloc(sizeof(*seq->parenLukUpTable[rowI]) * seq->strLen);   // set up all columns for the i'th row
-                                                                                            disp(seq,DISP_LV3,"               %d%c", rowI, seq->ltr[rowI]);
+  disp(seq,DISP_LV3,"               %d%c", rowI, seq->ltr[rowI]);
   for(blankFillngIndx = 0 ; blankFillngIndx < pairngLB ; blankFillngIndx++){
-                                                                                            disp(seq,DISP_LV3," "); // fill in empty space
+    disp(seq,DISP_LV3," "); // fill in empty space
   }  // end for 1
-
- // if(seq->strLen - rowI >= seq->minLenOfHlix){                                              disp(seq,DISP_LV3,"%c ", seq->ltr[rowI]);
-//  }  // end if
 
   for(colJ = pairngLB ; colJ < pairngUB ; colJ++){                                          // fill in 0: can't pair, or 1: can pair
     seq->parenLukUpTable[rowI][colJ] = paren_is_formed(seq, rowI, colJ);
-                                                                                            disp(seq,DISP_LV3,"%d",
-											    seq->parenLukUpTable[rowI][colJ]);
+    disp(seq,DISP_LV3,"%d", seq->parenLukUpTable[rowI][colJ]);
   }  // end for 2
 
   while(colJ < seq->strLen){                                                                // fill in the trailing zeros
-    seq->parenLukUpTable[rowI][colJ] = 0;                                                   disp(seq,DISP_LV3,"0");
+    seq->parenLukUpTable[rowI][colJ] = 0;
+    disp(seq,DISP_LV3,"0");
     colJ++;
   }  // end for 3
 
-                                                                                            disp(seq,DISP_LV3,"\n");
+  disp(seq,DISP_LV3,"\n");
   return 0;
 }  // end fill_in_parenthesis_look_up_table_row_i
 

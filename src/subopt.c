@@ -6,16 +6,6 @@
 #include "subopt.h"
 #include "bundle_list.h"
 
-#if 0
-{
-#ifdef _MPI
-
-#include <mpi.h>
-
-#endif // _MPI
-}
-#endif
-
 options OPTIONS;
 char saveto[128];
 char cwd[256];
@@ -34,26 +24,16 @@ int* mylabsSize;
 int* mylabsMax;
 config* seq;
 
-int slide_those_windows(char* subSeq, 
-                        char* subMod, 
-                        int startindex, 
-                        char* mods, 
-                        int window, 
-                        int tmms, 
-                        int asymm, 
-                        config* pseq, 
-                        LabeledStructures* labs,
-                        int* labsSize,
-                        int* labsMax) {
-
-//printf("new slide windows call\n");
+int slide_those_windows(char* subSeq, char* subMod, int startindex, char* mods, int window, 
+                        int tmms, int asymm, config* pseq, LabeledStructures* labs, int* labsSize, int* labsMax)
+{
 
     // These parameters are a direct result of copying the label.c code into this file, so they could be more efficiently integrated
     // and possibly omitted upon further development. As for now, a working version of this change to the algorithm is of utmost importance.
-    //
+
     START = startindex; //indicates the index within the sequence marking the beginning of the window
     SEQ = calloc(strlen(pseq->ltr)+1, sizeof(char));
-    strcpy(SEQ, pseq->ltr);//SEQ = sequence; //the sequence of RNA being analyzed
+    strcpy(SEQ, pseq->ltr); //the sequence of RNA being analyzed
     MODS = calloc(strlen(mods)+1, sizeof(char));
     strcpy(MODS, mods); //the chemical modification data pertaining to the sequence. (i.e. must-pair nt, must not pair nt, etc.)
     WINDOW = window; //the span of the current window
@@ -66,8 +46,7 @@ int slide_those_windows(char* subSeq,
     mylabsSize = labsSize;
     mylabsMax = labsMax;
 
-    mylab = &mylabs[*mylabsSize];//malloc(sizeof(LabeledStructures));
-//    initLabeledStructures(mylab);
+    mylab = &mylabs[*mylabsSize];
     mylab->titlesize = 64;
     mylab->buffsize = 4096;
     mylab->title = (char*)calloc(mylab->titlesize, sizeof(char));
@@ -75,10 +54,8 @@ int slide_those_windows(char* subSeq,
 
     seq = pseq;
 
-//printf("START %i, WINDOW %i, LENGTH %i, TMMS %i, ASYMM %i, MMS %i\n", START, WINDOW, LENGTH, TERMINAL_MISMATCHES, ASYMMETRY, MISMATCHES);
     set_args();
     char* locseq = calloc(strlen(subSeq)+1, sizeof(char));
-//    fscanf(OPTIONS.infile, "%s", seq);
     strcpy(locseq, subSeq);
     int i;
     for(i=0; locseq[i]; i++)
@@ -90,24 +67,19 @@ int slide_those_windows(char* subSeq,
         strcpy(consts, subMod);
         constraints = interpreted_constraints(consts);
         free(consts);
-//printf("I got subseq: %s\nsubmod: %s\n", seq, consts);
     } else {
         constraints = NULL;
     }
-    //print( "%s\n", seq);
     start(locseq, constraints);
-//#endif // _MPI
 
     //write out final labeled structures computed for this window
     if(mylab->title[0] != '\0') {
-//      mylabs[(*mylabsSize)++] = mylab;
       if(*mylabsSize == *mylabsMax) {
         *mylabsMax += seq->strLen*100;
         mylabs = (LabeledStructures*)realloc(mylabs, *mylabsMax);
       }
       (*mylabsSize)++;
     } else {
-//      freeLabeledStructures(&mylab);
       free(mylab->title);
       free(mylab->structures);
       mylab->title = NULL;
@@ -116,18 +88,20 @@ int slide_those_windows(char* subSeq,
       mylab->buffsize = 0;
     }
 
-    if (OPTIONS.count){
-        //print( "%d\n", OPTIONS.count);
+    if (OPTIONS.infile != stdin) {
+      fclose(OPTIONS.infile);
     }
-
-    if (OPTIONS.infile != stdin) fclose(OPTIONS.infile);
-    if (OPTIONS.outfile != stdout) fclose(OPTIONS.outfile);
+    if (OPTIONS.outfile != stdout) {
+      fclose(OPTIONS.outfile);
+    }
 
     free(MODS);
     free(SEQ);
 
     free(locseq);
-    if (constraints) free(constraints);
+    if (constraints) {
+      free(constraints);
+    }
     return 0;
 }
 
@@ -155,8 +129,9 @@ void start(char *seq, int *constraints)
 
 void refine_state(state *s){
 
-    if(!allow_state(s))
+    if(!allow_state(s)) {
         return;
+    }
 
     // This is an optimization step, changing the order
     // in which we walk the tree to improve pruning efficiency.
@@ -250,23 +225,6 @@ void refine_state_locally(state *s)
     s->intervals = temp;
 }
 
-//----------------------------- OPTIMIZATION ---------------------------------//
-
-/* void rearrange_intervals(state *s){ */
-/*     // this is a mildly unintuitive optimization */
-/*     // for no-lonely-pair filtering. NOT CURRENTLY IN USE */
-/*     if (!s->intervals) return; */
-/*     interval * curr = s->intervals; */
-/*     if (curr->flag == SECUNDO){ */
-/*         curr->flag = LOOP; */
-/*         interval *temp; */
-/*         temp = curr->next; */
-/*         curr->next = temp->next; */
-/*         temp->next = curr; */
-/*         s->intervals = temp; */
-/*     } */
-/* } */
-
 //---------------------------- FILTERING PAIRS -------------------------------//
 
 int allow_pair(state *s, int i, int j)
@@ -284,7 +242,9 @@ int allow_pair(state *s, int i, int j)
 
 int can_pair(char a, char b)
 {
-    if (OPTIONS.allpair) return TRUE;
+    if (OPTIONS.allpair) {
+      return TRUE;
+    }
 
     if ((a == 'A' && b == 'U') ||
         (a == 'U' && b == 'A') ||
@@ -304,15 +264,15 @@ int can_pair(char a, char b)
 
 int constrained_to_not_pair(state *s, int i, int j)
 {
-    if ((s->constraints[i] == UNPAIRED_BASE) || (s->constraints[j] == UNPAIRED_BASE)) return TRUE;
+    if ((s->constraints[i] == UNPAIRED_BASE) || (s->constraints[j] == UNPAIRED_BASE)) {
+      return TRUE;
+    }
 	
     return FALSE;
 }
 
 int death_triad(state *s, int i)
 {
-    // TODO Modify this to be a good little puppy about the following cases:
-    // )(( ))( and GU pairs
     if(s->constraints[i] == MODIFIED_BASE &&
        s->structure[i] > i &&
        (i == s->length-1 || s->structure[i+1] > i) &&
@@ -349,7 +309,7 @@ int allow_state(state *s)
 {
     if (!(OPTIONS.noLP && lonely_pair(s)) &&
         (!OPTIONS.helix_number || room_for_helices(s)) &&
-        1){
+        1) {
         return TRUE;
     }
     return FALSE;
@@ -358,13 +318,13 @@ int allow_state(state *s)
 
 int lonely_pair(state *s)
 {
-    // This can totes be optimized, dudes.
-    if (s->intervals == NULL) return FALSE;
+    if (s->intervals == NULL) {
+      return FALSE;
+    }
     suboptinterval* curr = s->intervals;
     for(; curr; curr=curr->next){
         int i = s->intervals->i;
         int j = s->intervals->j;
-        //print( "%d, %d, ", i, j);
         if (j-i < MIN_PAIR_DIST && i > 0){
             int a = i-1;
             int b = s->structure[i-1];
@@ -380,19 +340,17 @@ int lonely_pair(state *s)
             }
         }
     }
-    //print( "\n");
     return FALSE;
 }
 
 
 
 
-int room_for_helices(state *s) {
+int room_for_helices(state *s)
+{
     int badnesses, sizei, sizej, number = helix_count(s);
     suboptinterval * inter;
     int i, j;
-    //print( "\n\n");
-    //print_soln(s);
 
     for(inter = s->intervals; inter; inter = inter->next){
         badnesses = 0;
@@ -443,17 +401,15 @@ int room_for_helices(state *s) {
         }
     }
 
-    // print( "   %d possible helices of len 3", number);
-
     if (number >= OPTIONS.helix_number){
-        //  print( " so I keep it!\n\n\n");
         return TRUE;
     }
     return FALSE;
 }
 
 
-int helix_count(state *s){
+int helix_count(state *s)
+{
     int i = 0, nexti = 0, size, prej, number = 0, badnesses = 0;
 
     while(nexti < s->length){
@@ -534,7 +490,9 @@ void print_soln(state *s){
 
     if(OPTIONS.count){
         OPTIONS.count++;
-        if (OPTIONS.count%10000 == 0) print( "%d \n", OPTIONS.count);
+        if (OPTIONS.count%10000 == 0) {
+          print( "%d \n", OPTIONS.count);
+        }
         return;
     }
 
@@ -550,10 +508,8 @@ void print_soln(state *s){
             a[i] = ')';
         }
     }
-    //    float en = energy_of_struct(s->sequence, a);
-//    print( "%s\n", a);
-	label_struct(a, START);
 
+	label_struct(a, START);
 }
 
 
@@ -587,7 +543,6 @@ void subopt_print_usage()
 
 void set_args()
 {
-
 	OPTIONS.infile = stdin;
 	OPTIONS.outfile = stdout;
 	OPTIONS.noLP = 0;
@@ -601,7 +556,6 @@ void set_args()
 	OPTIONS.helix_number = 0;
 	OPTIONS.helix_size = 0;
 	OPTIONS.statecount = 0;
-
 }
 
 int * interpreted_constraints(char *constraints)
@@ -637,59 +591,6 @@ int * interpreted_constraints(char *constraints)
     }
 
     return ret;
-}
-
-//----------------------------- SERIALIZATION -------------------------------//
-
-// l, struct, n, intervals
-int * pack_state(state * S)
-{
-    int l, num_intervals;
-    int * out = calloc((sizeof *out), (2+(4*S->length)));
-    suboptinterval * i;
-
-    out[0] = S->length;
-
-    int j;
-    for (j=0; j<S->length; j++){
-        out[j+2] = S->structure[j];
-    }
-
-    l = S->length + 2;
-
-    for ( num_intervals = 0, i = S->intervals; i; i = i->next, num_intervals ++ ) {
-        out[l+(num_intervals*3)+0] = i->i;
-        out[l+(num_intervals*3)+1] = i->j;
-        out[l+(num_intervals*3)+2] = i->flag;
-    }
-
-    out[1] = num_intervals;
-
-    return out;
-}
-
-state *interpret_message(int *ints)
-{
-    state * S = malloc(sizeof(state));
-    S->intervals = NULL;
-
-
-    S->length = ints[0];
-
-
-    S->structure = malloc((sizeof(S->structure)*S->length));
-    int i;
-    for (i=0; i<S->length; i++){
-        S->structure[i] = ints[i+2];
-    }
-
-    int num_ints = ints[1];
-
-    for (i = S->length+2+(3*(num_ints-1)); i >= S->length+2; i -= 3) {
-        make_interval(S, ints[i+0], ints[i+1], ints[i+2]);
-    }
-
-    return S;
 }
 
 //#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#/#//
@@ -749,7 +650,8 @@ void intrev(int len, int (*array)[len], int size) {
 	}
 }
 
-char* slice(char* str, int start) {
+char* slice(char* str, int start)
+{
 	int len = strlen(str);
 	if(start < 0) start += len;
 
@@ -758,31 +660,37 @@ char* slice(char* str, int start) {
 	return sliced;
 }
 
-char* strrev(char* str) {
-      char *p1, *p2;
+char* strrev(char* str)
+{
+  char *p1, *p2;
 
-      if (! str || ! *str)
-            return str;
+  if (! str || ! *str)
+    return str;
 
-      int len = strlen(str);
+  int len = strlen(str);
 
-      for (p1 = str, p2 = str + len - 1; p2 > p1; ++p1, --p2)
-      {
-            *p1 ^= *p2;
-            *p2 ^= *p1;
-            *p1 ^= *p2;
-      }
+  for (p1 = str, p2 = str + len - 1; p2 > p1; ++p1, --p2)
+  {
+    *p1 ^= *p2;
+    *p2 ^= *p1;
+    *p1 ^= *p2;
+  }
 
-      for (p1 = str; p1 < str + len; p1++)
-      {
-	    if(*p1 == '(') *p1 = ')';
-	    else if(*p1 == ')') *p1 = '(';
-      }
-	
-      return str;
+  for (p1 = str; p1 < str + len; p1++)
+  {
+    if(*p1 == '(') {
+      *p1 = ')';
+    }
+    else if(*p1 == ')') {
+      *p1 = '(';
+    }
+  }
+
+  return str;
 }
 
-int parse_conf(char* configfile) {
+int parse_conf(char* configfile)
+{
 	FILE* config = fopen(configfile, "r");
 	char* line = NULL;
 	size_t len = 0;
@@ -834,13 +742,18 @@ int parse_conf(char* configfile) {
 	return 0;
 }
 
-int parse_structfile(FILE* infile, char*** linesinfile, int lineReadCap) {
+int parse_structfile(FILE* infile, char*** linesinfile, int lineReadCap)
+{
 	int i;
 
-	if(infile == NULL) return -1;
+	if(infile == NULL) {
+    return -1;
+  }
 
 	*linesinfile = (char**)calloc(lineReadCap, sizeof(char*));
-	for(i = 0; i < lineReadCap; i++) (*linesinfile)[i] = (char*)calloc(WINDOW+2, sizeof(char));
+	for(i = 0; i < lineReadCap; i++) {
+    (*linesinfile)[i] = (char*)calloc(WINDOW+2, sizeof(char));
+  }
 
 	i = 0;
 	while(i < lineReadCap && fgets((*linesinfile)[i], WINDOW+2, infile) != NULL) {
@@ -859,49 +772,45 @@ bool pairable(char c1, char c2) {
 	   (c1 == 'U' && c2 == 'A') ||
 
 	   (c1 == 'G' && c2 == 'U') ||
-	   (c1 == 'U' && c2 == 'G'))
+	   (c1 == 'U' && c2 == 'G')) {
 		return TRUE;
+  }
 	return FALSE;
 }
 
-void saveLabeledStructure(int end, int width, char* structure, int helices, char* helix_info, int wcpairs, int gupairs, int asymmetry, int inner_mismatches, int terminal_mismatches, int chemmod, int thermo) {
+void saveLabeledStructure(int end, int width, char* structure, int helices, char* helix_info, int wcpairs, int gupairs, int asymmetry, int inner_mismatches, int terminal_mismatches, int chemmod, int thermo)
+{
 	char* titleString = calloc(256, sizeof(char));
 	char saveString[256];
+
 	sprintf(titleString, "%dx%d.lab", end, width);
-//printf("new titleString: %s\n", titleString);
-//printf("strcmp(%s, %s) = %d\n", mylab->title, titleString, strcmp(mylab->title, titleString));
-        if(mylab->title && strcmp(mylab->title, titleString) != 0) {
-//printf("making bundles for %s\n%s", mylab->title, mylab->structures);
-          if(mylab->title[0] != '\0') {
-//            mylabs[(*mylabsSize)++] = mylab;
-            if(*mylabsSize == *mylabsMax) {
-               *mylabsMax += seq->strLen*100;
-              mylabs = (LabeledStructures*)realloc(mylabs, *mylabsMax);
-            }
-            (*mylabsSize)++;
-          } else {
-            //freeLabeledStructures(&mylab);
-            free(mylab->title);
-            free(mylab->structures);
-          }
-//printf("resetting mylab %s\n%s\n", mylab->title, mylab->structures);
-          //mylab = malloc(sizeof(LabeledStructures));
-          mylab = &mylabs[*mylabsSize];
-          initLabeledStructures(mylab);
-          resetLabeledStructures(mylab, titleString);
-        }
-        
-	sprintf(saveString, "%d,%d,%s,%d,%s,%d,%d,%d,%d,%d,%d,%d\n", end, width, structure, helices, helix_info, wcpairs, gupairs, asymmetry, inner_mismatches, terminal_mismatches, chemmod, thermo);
-//printf("saving to %s\n%s\n", mylab->title, saveString);
-        if(strlen(mylab->structures)+256 > mylab->buffsize) {
-          mylab->buffsize = mylab->buffsize << 1;
-          mylab->structures = (char*)realloc(mylab->structures, mylab->buffsize);
-        }
-	strcat(mylab->structures, saveString);
-        free(titleString);
+  if(mylab->title && strcmp(mylab->title, titleString) != 0) {
+    if(mylab->title[0] != '\0') {
+      if(*mylabsSize == *mylabsMax) {
+         *mylabsMax += seq->strLen*100;
+        mylabs = (LabeledStructures*)realloc(mylabs, *mylabsMax);
+      }
+      (*mylabsSize)++;
+    } else {
+      free(mylab->title);
+      free(mylab->structures);
+    }
+    mylab = &mylabs[*mylabsSize];
+    initLabeledStructures(mylab);
+    resetLabeledStructures(mylab, titleString);
+  }
+  
+  sprintf(saveString, "%d,%d,%s,%d,%s,%d,%d,%d,%d,%d,%d,%d\n", end, width, structure, helices, helix_info, wcpairs, gupairs, asymmetry, inner_mismatches, terminal_mismatches, chemmod, thermo);
+  if(strlen(mylab->structures)+256 > mylab->buffsize) {
+    mylab->buffsize = mylab->buffsize << 1;
+    mylab->structures = (char*)realloc(mylab->structures, mylab->buffsize);
+  }
+  strcat(mylab->structures, saveString);
+  free(titleString);
 }
 
-int label_struct(char* structure, int start) {
+int label_struct(char* structure, int start)
+{
   int prev_openOut[WINDOW], prev_openIn[WINDOW], prev_closeOut[WINDOW], prev_closeIn[WINDOW];
   int terminal = 0, width = 0;
   int tmmi, tmmi2, tmmi3, k, m, n;
@@ -941,7 +850,6 @@ int label_struct(char* structure, int start) {
               mms[0] = 0;
               int mmsSize = 1;
 	
-              //label.py line 56
               if(((loop - 3)/2 - TERMINAL_MISMATCHES) >= 0 && TERMINAL_MISMATCHES <= mm_counts[0]) {
                 length = tmmi;
                 internal_mismatches = tmmi;
@@ -1007,7 +915,6 @@ int label_struct(char* structure, int start) {
                     int next_tmmi = 0;
                     if(helices == 0) next_tmmi = tmmi2;
                     else next_tmmi = tmmi3;
-                    //label.py line 111
                     if((ins - next_tmmi) >= 0) {
                       if(next_tmmi <= mm_counts[helices+1]) {
                         length = next_tmmi;
@@ -1073,7 +980,6 @@ int label_struct(char* structure, int start) {
                       break;
                     }
                   }
-                // label.py line 172
                 } else if(structure[modified_i] == '.' && structure[j] == ')') {
                   asymmetry++;
                   i--;
@@ -1104,7 +1010,6 @@ int label_struct(char* structure, int start) {
                 }
               }
               exit_loop = TRUE;
-              //label.py line 202
               if(fail) {
                 if(k == MISMATCHES && m == MISMATCHES && n == MISMATCHES) loop_continue = TRUE;
                 exit_loop = FALSE;
@@ -1130,7 +1035,6 @@ int label_struct(char* structure, int start) {
                 int extra_pairs_needed = LENGTH - length;
                 int terminal_mismatches = min((int)((loop-3)/2), extra_pairs_needed);
                 length += min(loop - 3, extra_pairs_needed);
-                // label.py line 251
                 if(length < LENGTH) {
                   terminal = extra_pairs_needed;
                   terminal_mismatches += terminal;
@@ -1188,11 +1092,4 @@ int label_struct(char* structure, int start) {
     }
   }
   return 0;
-}
-
-int label(char* structure, char* outDir, int i) {
-
-	label_struct(structure, i);
-
-	return 0;
 }

@@ -37,18 +37,7 @@ char* CALLER_FLAG_TO_STRING[] = { "FIRST_SESSION", "SECND_SESSION",
 		"WHILE_SESSION", "RSTO_SESSION" };
 char* NODE_TYPE_TO_STRING[] = { "HEAD", "CURR", "TAIL" };
 
-//Counts the number of calls made to jump_stage_1(). Used to stop recursion after a set number of calls
-//when running the GNU Debugger.
-int numOfCalls = 0, behind = 0;
-int numCalls = 0;
-uint64_t js2c1 = 0;
-uint64_t js2c2 = 0;
-int exitCount = 0;
-uint64_t rstoCount1 = 0;
-uint64_t rstoCount2 = 0;
-uint64_t tobrstoCount = 0;
-uint64_t behSwpCount = 0;
-uint64_t behNormCount = 0;
+int numOfCalls = 0;//, behind = 0;
 int RSTOflag = 0;
 extern int rank;
 
@@ -62,7 +51,8 @@ extern int rank;
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int assign_new_hlix_link(global* crik, int16_t hlixBranchngIndx1) {
+int assign_new_hlix_link(global* crik, int16_t hlixBranchngIndx1)
+{
   knob* hlixCursr = crik->hlixInStru;
 
   crik->intrvlCntr++;
@@ -82,7 +72,8 @@ int assign_new_hlix_link(global* crik, int16_t hlixBranchngIndx1) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int clear_old_hlix_link(global* crik) {
+int clear_old_hlix_link(global* crik)
+{
   knob* hlixCursr = crik->hlixInStru;
   knob* temp;
 
@@ -108,7 +99,8 @@ int clear_old_hlix_link(global* crik) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int satisfy_constraint(config* seq, global* crik, local* todd) {
+int satisfy_constraint(config* seq, global* crik, local* todd)
+{
   int16_t i;
   int16_t flagUB = seq->numCovari + seq->numV1Pairng;
   int8_t failFlag = 0;
@@ -132,7 +124,8 @@ int satisfy_constraint(config* seq, global* crik, local* todd) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int countAndPrintStructures(config* seq, global* crik) {
+int countAndPrintStructures(config* seq, global* crik)
+{
   knob* hlixCursr = crik->hlixInStru;
   int num = 1;
   while (hlixCursr) {
@@ -165,7 +158,6 @@ int countAndPrintStructures(config* seq, global* crik) {
   }
 
   crik->numUnbundledStru += num;
-//	printf("#structs: %d ", num);
 
   if(seq->unbundle) {	// UNBUNDLING
     ToL* results;
@@ -228,7 +220,6 @@ int countAndPrintStructures(config* seq, global* crik) {
       disp_stru(seq, crik, 11);                  // for report  (official use)
       update_min_energy(seq);
       update_max_distance(seq);
-      numCalls++;
       dispStru(seq,crik,11);                     // for display (debug use)
       results = results->next;
     }
@@ -237,7 +228,6 @@ int countAndPrintStructures(config* seq, global* crik) {
     crik->hlixInStru = hlixCursr;
     release_tol(resultsCursr);
   } else {
-
     disp_stru(seq, crik, 11);                  // for report  (official use)
     dispStru(seq,crik,11);                     // for display (debug use)
   }
@@ -245,7 +235,8 @@ int countAndPrintStructures(config* seq, global* crik) {
   return num;
 }
 
-knob* copy_b_node_wo_links(knob* node) {
+knob* copy_b_node_wo_links(knob* node)
+{
   knob* newNode = calloc(1, sizeof(knob));
   if (!node)
     newNode = NULL;
@@ -268,7 +259,8 @@ knob* copy_b_node_wo_links(knob* node) {
   return newNode;
 }
 
-knob* copy_b_node(knob* node) {
+knob* copy_b_node(knob* node)
+{
   knob* newNode = NULL;
   if (!node)
     newNode = NULL;
@@ -300,7 +292,8 @@ knob* copy_b_node(knob* node) {
   return newNode;
 }
 
-ToL* copy_tol(ToL* source) {	//deep copy a ToL object
+ToL* copy_tol(ToL* source) //deep copy a ToL object
+{
   ToL* newToL = NULL;
 
   if(source) {
@@ -318,7 +311,8 @@ ToL* copy_tol(ToL* source) {	//deep copy a ToL object
   return newToL;	//the new copy of source
 }
 
-void release_knob(knob* obj) {	//free the memory used by a knob object. 
+void release_knob(knob* obj)	//free the memory used by a knob object. 
+{
   if(obj) {
     if(obj->jumpTreeNext) {
       release_knob(obj->jumpTreeNext);
@@ -329,9 +323,8 @@ void release_knob(knob* obj) {	//free the memory used by a knob object.
   }
 }
 
-
-
-void release_tol(ToL* obj) {
+void release_tol(ToL* obj)
+{
   if(obj) {
     release_knob(obj->branchNode);
     release_tol(obj->next);
@@ -340,7 +333,8 @@ void release_tol(ToL* obj) {
   }
 }
 
-ToL* combine(ToL* first, ToL* second) {
+ToL* combine(ToL* first, ToL* second)
+{
   ToL* combined = NULL;
 
   while (first) {
@@ -379,7 +373,8 @@ ToL* combine(ToL* first, ToL* second) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int eval_prog_n_prt_stru(config* seq, global* crik) {
+int eval_prog_n_prt_stru(config* seq, global* crik)
+{
   if ((crik->numHlix >= seq->minNumHlix) && // This segment of code is visited to see if 'one_helix-one_hairpin structure' is qualified to be a complete structure
       (crik->numHP >= seq->minNumHP)) {
     crik->numStru++;
@@ -406,13 +401,13 @@ int eval_prog_n_prt_stru(config* seq, global* crik) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int exit_curr_recur(config* seq, global* crik, local* todd) {
+int exit_curr_recur(config* seq, global* crik, local* todd)
+{
   disp(seq,DISP_ALL,"Enterng 'exit_curr_recur'\n");
   knob* temp;
   knob* hlixCursr = crik->hlixInStru;
   int16_t flagUB = seq->numCovari + seq->numV1Pairng;
   int16_t i;
-  exitCount++;
 
   /* Bug fix note from Nathan Sloat - July 16, 2015
    * 
@@ -447,15 +442,12 @@ int exit_curr_recur(config* seq, global* crik, local* todd) {
         todd)) {
       disp(seq,DISP_ALL,"            special On Q %d-%d\n",todd->RSTO->opnBrsInnIndx, todd->RSTO->closeBrsInnIndx);
       crik->interval = todd->RSTO;
-      rstoCount1++;
       disp(seq,DISP_ALL,"Interval restore todd on queue!\n");
     }  // end inner if
   }    // end outer if
 
   disp(seq,DISP_ALL,"     ins  intrvl: [%2d,%-2d]\n", todd->intrvlIns->opnBrsInnIndx, todd->intrvlIns->closeBrsInnIndx);
   free(todd->intrvlIns);
-	
-//	if(!hlixCursr && todd->intrvlBeh != todd->RSTO) { free(todd->RSTO); todd->RSTO = NULL; }
 
   disp(seq,DISP_ALL,"     beh  intrvl: [%2d,%-2d]\n", todd->intrvlBeh->opnBrsInnIndx, todd->intrvlBeh->closeBrsInnIndx);
   free(todd->intrvlBeh);
@@ -474,7 +466,8 @@ int exit_curr_recur(config* seq, global* crik, local* todd) {
 // Return   : todd
 // Display  : none
 //*****************************************************************************
-local* init_todd(global* crik) {
+local* init_todd(global* crik)
+{
   local* todd = calloc(1, sizeof(local));
   knob* insCursr;
   knob* behCursr;
@@ -522,7 +515,8 @@ local* init_todd(global* crik) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int insert_beh_intrvl_normally(config* seq __unused, global* crik, local* todd) {
+int insert_beh_intrvl_normally(config* seq __unused, global* crik, local* todd)
+{
   disp(seq,DISP_ALL,"enterng \"insert_beh_intrvl_normally\"\n");
   knob* behCursr = todd->intrvlBeh;
   knob* hlixCursr = crik->hlixInStru;
@@ -555,7 +549,8 @@ int insert_beh_intrvl_normally(config* seq __unused, global* crik, local* todd) 
 // Return   : 0 (no) or 1 (yes)
 // Display  : none
 //*****************************************************************************
-int bundle_is_available(config* seq, global* crik, local* todd) {
+int bundle_is_available(config* seq, global* crik, local* todd)
+{
   return seq->bundle && 
          crik->eden[todd->cmpntLLCursr->opnBrsOutIndx][todd->cmpntLLCursr->closeBrsOutIndx].dumiNode;
 }
@@ -570,7 +565,8 @@ int bundle_is_available(config* seq, global* crik, local* todd) {
 // Return   : 0 (no) or 1 (yes)
 // Display  : none
 //*****************************************************************************
-int is_duplicate_intrvl(global* crik, int16_t intrvlLB, int16_t intrvlUB) {
+int is_duplicate_intrvl(global* crik, int16_t intrvlLB, int16_t intrvlUB)
+{
   if (crik->interval) {
     if ((intrvlLB == crik->interval->opnBrsInnIndx) && 
         (intrvlUB == crik->interval->closeBrsInnIndx))
@@ -588,7 +584,8 @@ int is_duplicate_intrvl(global* crik, int16_t intrvlLB, int16_t intrvlUB) {
 // Return   : 1: yes, 0: no
 // Display  : none
 //*****************************************************************************
-int is_intrvl_2b_rsto(global* crik, local* toddP, int8_t recurRoute) {
+int is_intrvl_2b_rsto(global* crik, local* toddP, int8_t recurRoute)
+{
   knob* rstoCursr;
 
   if (recurRoute == WHILE_SESSION) {
@@ -601,7 +598,6 @@ int is_intrvl_2b_rsto(global* crik, local* toddP, int8_t recurRoute) {
       else
         rstoCursr = rstoCursr->jumpTreeNext; // scan thru all the rsto list to make sure there's no duplicate
     }  // end while
-tobrstoCount++;
     return 1;      // in WHILE_SESSION, and no duplicate. So, to be restored
   } else {
     return 0;             // not even in WHILE_SESSION, out of consideration
@@ -619,7 +615,8 @@ tobrstoCount++;
 // Return   : 1: time to wrap up; 0: not yet, we should keep looking for more structures
 // Display  : none
 //*****************************************************************************
-int time_to_quit(config* seq, local* todd) {
+int time_to_quit(config* seq, local* todd)
+{
   disp(seq,DISP_ALL,"enterng 'time_to_quit");
   int8_t numMustPair = seq->numCovari + seq->numV1Pairng;
   int8_t numV1Pairng = seq->numV1Pairng;
@@ -665,7 +662,8 @@ int time_to_quit(config* seq, local* todd) {
 // Return   : 1 (yes), 0 (no)
 // Display  : none
 //*****************************************************************************
-int is_there_concern_on_ring_formation_of_linked_list(config* seq __unused, global* crik, local* todd) {
+int is_there_concern_on_ring_formation_of_linked_list(config* seq __unused, global* crik, local* todd)
+{
   knob* rstoCursr = todd->RSTO;
   knob* intrvlCursr = crik->interval;
 
@@ -698,21 +696,18 @@ int is_there_concern_on_ring_formation_of_linked_list(config* seq __unused, glob
 // Display  : error messages, if necessary
 // Note     : for speed up purpose, this function is rather long
 //*****************************************************************************
-int jump_stage_1_set_intrvl(config* seq, global* crik, local* todd, int16_t bundlePathFlag) {
-
-  //Counts the number of calls for debugging purposes can be deleted safely if necessary (see top of file)
+int jump_stage_1_set_intrvl(config* seq, global* crik, local* todd, int16_t bundlePathFlag)
+{
   numOfCalls++;
-behind = 0;
+
   disp(seq,DISP_ALL,"Entering 'jump_stage_1', ");
-  //g_x1++;
   dispLL(seq,crik,todd,NULL);
 
   knob* insCursr = todd->intrvlIns;
   knob* hlixCursr = crik->hlixInStru;
   int16_t tempLB;
   int16_t tempUB;
-//DEBUG
-//if(crik->interval) printf("DBG (%d, %d) BPF %d\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx, bundlePathFlag);
+
   // || MAKE JUMP INSIDE INTERVAL
   todd->intrvlIns->intrvlInsFormdFlag = 0;                              // ||
   todd->intrvlInsFormdFlag = 0;                                          // ||
@@ -757,30 +752,21 @@ behind = 0;
     todd->intrvlBeh->closeBrsInnIndx = tempUB;                         // ||
     if (todd->intrvlInsFormdFlag) {                                    // ||
       swap_ins_n_beh_intrvl(seq, crik, todd);
-behSwpCount++;
       dispLL(seq,crik,todd,0);
     } else {                                                           // ||
       insert_beh_intrvl_normally(seq, crik, todd);
-behNormCount++;
       dispLL(seq,crik,todd,0);
     } // end inner if 2                                                                         // ||
   } // end outer if                                                                           // \/
 
   while (crik->interval && crik->hlixInStru) {
     if (crik->hlixInStru->intrvlCntr == crik->interval->intrvlCntr)
-{
-js2c1++;
       jump_stage_2_fit_hlix(seq, crik, todd, FIRST_SESSION); // <----------RECURSION this way (1st session)
-}
     else
       break;
   }
-//behind = 1;
   while (crik->interval) // exhaust all intervals present in crik->interval (while session)
-{
-js2c2++;
     jump_stage_2_fit_hlix(seq, crik, todd, WHILE_SESSION); // <---------- RECURSION this way
-}
 
   dispLL(seq,crik,todd,NULL);
   return 0;
@@ -802,8 +788,8 @@ js2c2++;
 //          : l*p + k rule is applied here
 // Note     : for speed up purpose, this function is rather long
 //*****************************************************************************
-int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurRoute) {
-  //jst2Count++;
+int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurRoute)
+{
   disp(seq,DISP_ALL,"Enterng 'jump_stage_2', recur lv: %d->%d\n", crik->interval->lvlOfRecur, (crik->interval->lvlOfRecur + 1) ); disp(seq,DISP_ALL,"location source = %s\n", CALLER_FLAG_TO_STRING[recurRoute]);
   local* todd = NULL;
   todd = init_todd(crik);
@@ -817,13 +803,13 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
   int16_t flagUB = seq->numCovari + seq->numV1Pairng;
   int8_t V1FailFlag = 0;
 
-									   // || select interval-look-up table
   if (toddP) {
     disp(seq,DISP_ALL,"crik->interval = (%d,%d)\n", intrvlCursr->opnBrsInnIndx, intrvlCursr->closeBrsInnIndx);
     disp(seq,DISP_ALL,"intrvlLukUpTab = %d\n", seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][0]);
 
     todd->lukUpCmpntTypLB = seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][0];
-    todd->lukUpCmpntTypUB = seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][1];   } // end if
+    todd->lukUpCmpntTypUB = seq->intrvlLukUpTable[intrvlCursr->opnBrsInnIndx][intrvlCursr->closeBrsInnIndx][1];
+  } // end if
 
   if (intrvlCursr) {               // set todd intrvl upper and lower bound
     todd->intrvlLB = intrvlCursr->opnBrsInnIndx;
@@ -874,7 +860,6 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
       todd->cmpntLLCursr = cmpntCursr;
       dispLL(seq,crik,todd,toddP);
 
-      g_x2++;
       disp(seq,DISP_ALL,"cmpnt cadidate: {%2d-%-2d{    }%2d-%-2d}\n", cmpntCursr->opnBrsOutIndx, 
                                                                       cmpntCursr->opnBrsInnIndx, 
                                                                       cmpntCursr->closeBrsInnIndx, 
@@ -899,9 +884,6 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
               (hlixCursr->intrvlCntr == todd->intrvlCntr)) { 
             // REPLACE OLD HELIX BY NEW ONE : it takes three parameters to ensure that 
             // the present helix to be erased is indeed from the same level
-
-            g_x1++;
-
             int maxMismatches = 0;
             int numMismatches = 0;
             if (!cmpntCursr->bundleFlag) {
@@ -1004,16 +986,13 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
                                                                     todd->RSTO->closeBrsInnIndx);
               crik->interval = todd->RSTO;
               rstoFlag = 1;
-              rstoCount2++;
               disp(seq,DISP_ALL,"Interval restore todd on queue!\n");
             } // end outer if
 
             dispLL(seq,crik,todd,toddP);
 
-// || make sure there'r enough helices (equal or larger than the min requirement)// || make sure there'r enough hairpins (equal or larger than the min requirement)
             if ((crik->numHlix >= seq->minNumHlix) && (crik->numHP >= seq->minNumHP)) { 
               for (k = 0; k < flagUB; k++)
-// || make sure all the must pair nucleotides are paired, otherwise this structure isn't qualified, and nothing will happen
                 if (!crik->struMustPairFlag[k]) { 
                   V1FailFlag = 1;
                   break; // || no point to continue looping, since this structure is disqualified for sure
@@ -1022,7 +1001,6 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
               dispLL(seq,crik,todd,toddP);
 
               if (!V1FailFlag) { // make sure all V1 nucleotides are paired
-// if this point is reached, that means this structure contains enough helices and hairpins, and all the V1 pairs are paird
                 crik->numStru++; 
                 if (seq->bundle) { // count unbundled structures
                   countAndPrintStructures(seq, crik);
@@ -1037,21 +1015,18 @@ int jump_stage_2_fit_hlix(config* seq, global* crik, local* toddP, int8_t recurR
 
             todd->intrvlInsFormdFlag = 0;
 #ifdef _MPI
-            if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1) && !behind) {
+
+            if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1)){// && !behind) {
               int to = is_work_needed();
               if(to != -1) {
-if(crik->interval && crik->interval->jumpTreeNext) {
-  if(crik->interval->parentIntrvlCntr == crik->interval->jumpTreeNext->parentIntrvlCntr)
-  printf("top two intervals on stack are from same parent\n");
-}
                 send_work(crik, todd, to);
-//if(crik->interval) printf("DBG (%d, %d) SND 1\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx);
               } else jump_stage_1_set_intrvl(seq, crik, todd, 1);
             } else jump_stage_1_set_intrvl(seq, crik, todd, 1);
 #else
             jump_stage_1_set_intrvl(seq, crik, todd, 1); // regular path, w/o inside interval restoration
 #endif
-          } else {     // ADD A NEW HELIX, NO HELIX IS REMOVED
+          }
+          else {     // ADD A NEW HELIX, NO HELIX IS REMOVED
             cmpntCursr->intrvlCntr = todd->intrvlCntr;
             dispLL(seq,crik,todd,toddP);
 
@@ -1122,7 +1097,6 @@ if(crik->interval && crik->interval->jumpTreeNext) {
             } else if (skip) {
               crik->linkedmms = 0;
             } else {
-// || make sure there'r enough helices (equal or larger than the min requirement)// || make sure there'r enough hairpins (equal or larger than the min requirement)
               if ((crik->numHlix >= seq->minNumHlix) && (crik->numHP >= seq->minNumHP)) { 
                 for (k = 0; k < flagUB; k++)
                   if (!crik->struMustPairFlag[k])
@@ -1143,15 +1117,9 @@ if(crik->interval && crik->interval->jumpTreeNext) {
               todd->intrvlInsFormdFlag = 0;
 
 #ifdef _MPI
-              if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1) && !behind) {
+              if(numOfCalls % CHUNK_SIZE == (CHUNK_SIZE - 1)){// && !behind) {
                 int to = is_work_needed();
                 if(to != -1) {
-//printf("pe %d -> pe %d @ jump_tree.c:1128\n", rank, to);
-if(crik->interval && crik->interval->jumpTreeNext) {
-  if(crik->interval->parentIntrvlCntr == crik->interval->jumpTreeNext->parentIntrvlCntr)
-  printf("top two intervals on stack are from same parent\n");
-}
-//if(crik->interval) printf("DBG (%d, %d) SND 2\n", crik->interval->opnBrsInnIndx, crik->interval->closeBrsInnIndx);
                   send_work(crik, todd, to);
                 } else jump_stage_1_set_intrvl(seq, crik, todd, 2);
               } else jump_stage_1_set_intrvl(seq, crik, todd, 2); 
@@ -1202,7 +1170,8 @@ if(crik->interval && crik->interval->jumpTreeNext) {
 // Display  : none
 //*****************************************************************************
 int is_there_larger_dumi_2_replace_curr_candidate_cmpnt_with_concern_on_cmpnt_insert_behind(
-		global* crik, knob* cmpntCursr, int16_t iCmpntTyp, int16_t cmpntOcupidID) {
+		global* crik, knob* cmpntCursr, int16_t iCmpntTyp, int16_t cmpntOcupidID)
+{
   int16_t j;
   int16_t k = cmpntOcupidID;
 
@@ -1229,7 +1198,8 @@ int is_there_larger_dumi_2_replace_curr_candidate_cmpnt_with_concern_on_cmpnt_in
 // Display  : none
 //*****************************************************************************
 int is_there_larger_dumi_2_replace_curr_candidate_cmpnt_wo_concern_on_cmpnt_insert_behind(
-		config* seq, global* crik, knob* cmpntCursr, int16_t bundleSpan, int16_t iCmpntTyp) {
+		config* seq, global* crik, knob* cmpntCursr, int16_t bundleSpan, int16_t iCmpntTyp)
+{
 
   int16_t jUB = (iCmpntTyp + bundleSpan < seq->strLen) ? (iCmpntTyp + bundleSpan) : seq->strLen; // no worry, no component can insert behind, so just go ahead and expand 'j' to its allowed limit, which is the bundle span
   int16_t j;
@@ -1250,7 +1220,8 @@ int is_there_larger_dumi_2_replace_curr_candidate_cmpnt_wo_concern_on_cmpnt_inse
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int remove_intrvl(config* seq, global* crik, local* toddP, int8_t recurRoute) {
+int remove_intrvl(config* seq, global* crik, local* toddP, int8_t recurRoute)
+{
   disp(seq,DISP_ALL,"Enterng 'remove_intrvl'\n");
   knob* temp;
   knob* rstoCursr = toddP->RSTO;
@@ -1264,7 +1235,6 @@ int remove_intrvl(config* seq, global* crik, local* toddP, int8_t recurRoute) {
         rstoCursr = rstoCursr->jumpTreeNext; // || RESTORE!! scan to locate the tail of toddP->RSTO
       rstoCursr->jumpTreeNext = crik->interval; // || hook the whole crik->interval on!
       RSTOflag = 1;
-
     } else if (crik->interval) {                                       // ||
       toddP->RSTO = crik->interval; // || toddP->RSTO is empty, therefore no need for scan
       RSTOflag = 1;
@@ -1297,7 +1267,8 @@ int remove_intrvl(config* seq, global* crik, local* toddP, int8_t recurRoute) {
 // Return   : none
 // Display  : none
 //*****************************************************************************
-int search_4_largest_rep_of_this_bundle_group(global* crik, local* todd, int16_t cmpntOcupidID) {
+int search_4_largest_rep_of_this_bundle_group(global* crik, local* todd, int16_t cmpntOcupidID)
+{
   int16_t i = cmpntOcupidID;
 
   if(todd->cmpntLLCursr->closeBrsOutIndx >= crik->cmpntListOcupidTyp[crik->numCmpntTypOcupid - 1]) { // when if is true, it means there's no other component available to insert on the right of this current component referred by 'todd->cmpntLLCursr'
@@ -1349,28 +1320,6 @@ int swap_ins_n_beh_intrvl(config* seq __unused, global* crik, local* todd) {
 
   return 0;
 }  // end swap_ins_n_beh_intrvl
-
-//*****************************************************************************
-// Function : Take Bundle List - Shortcut
-// Caller   : make_jump_tree()
-// Purpose  : Seek structures from 'bundle list', so that a whole series of partial structures inside the same interval may be replaced by a dummy node
-// Input    : seq  
-//          : crik 
-//          : todd
-//          : hlixBranchngIndx1
-// Return   : none
-// Display  : none
-//*****************************************************************************
-//int take_bundle_list_shortcut(config* seq, global* crik, local* todd,
-//		int16_t hlixBranchngIndx1) {
-//  if(is_there_prev_dumi_2_replace_curr_candidate_dumi_recur_lv_0(seq, crik, todd, cmpntOcupidID)) return 0; // if there's other dummy large enough to cover this one, this one should be skipped // EDIT: no need for this since each bundle is independent
-//	search_4_largest_rep_of_this_bundle_group(crik, todd, cmpntOcupidID); // no need for this either
-//	hook_dumi_node_on_stru(crik, todd, hlixBranchngIndx1);
-//	eval_prog_n_prt_stru(seq, crik);
-//	jump_stage_1_set_intrvl(seq, crik, todd, 0);
-//	crik->numHlix--;
-//	return 0;
-//}  // end take_bundle_list_shortcut
 
 //*****************************************************************************
 // Function : Take Component List - Normal Path

@@ -66,23 +66,25 @@ int fill_in_intrvl_luk_up_table_row_i(config* seq, global* crik, int16_t rowI)
   int16_t emptySpaceUB = seq->minPairngDist + seq->minLenOfHlix * 2 - 3;
 
   seq->intrvlLukUpTable[rowI] = malloc(sizeof(int16_t**) * seq->strLen);  // set up all columns for the row i
-                                                                                            disp(seq,DISP_ALL,"<< #%-3d %c >>", rowI, seq->ltr[rowI]);
-                                                                                            disp(seq,DISP_LV3,"%-2d %c", rowI, seq->ltr[rowI]);
-											    //                                                                                            disp(seq,DISP_LV3,"   ");
+  disp(seq,DISP_ALL,"<< #%-3d %c >>", rowI, seq->ltr[rowI]);
+  disp(seq,DISP_LV3,"%-2d %c", rowI, seq->ltr[rowI]);
 
-  if(jLB >= seq->strLen){                                                                   disp(seq,DISP_ALL,"           -- interval too narrow\n");
-                                                                                            disp(seq,DISP_LV3,"\n");
+  if(jLB >= seq->strLen){
+    disp(seq,DISP_ALL,"           -- interval too narrow\n");
+    disp(seq,DISP_LV3,"\n");
     return 0;
   }  
-  for(i = 0 ; i < emptySpaceUB ; i++){                                                      disp(seq,DISP_LV3,"      ");
+  for(i = 0 ; i < emptySpaceUB ; i++){
+    disp(seq,DISP_LV3,"      ");
   }
-  for(i = 0 ; i < rowI ; i++){		                				    disp(seq,DISP_LV3,"      ");
+  for(i = 0 ; i < rowI ; i++){
+    disp(seq,DISP_LV3,"      ");
   }  // end for 1
 
   for(colJ = jLB ; colJ < seq->strLen ; colJ++){                                            // fill in the cell with array of intervals
     fill_in_intrvl_luk_up_table_cell_i_j(seq, crik, rowI, colJ);
   }  // end for 2
-                                                                                            disp(seq,DISP_LV3,"\n");
+  disp(seq,DISP_LV3,"\n");
   return 0;
 }  // end fill_in_parenthesis_look_up_table_row_i__mplut
 
@@ -103,22 +105,19 @@ int fill_in_intrvl_luk_up_table_cell_i_j(config* seq, global* crik, int16_t rowI
   init_i_j_cell(seq, rowI, colJ);
 
   for(ocupidTypIndx = 0 ; ocupidTypIndx < crik->numCmpntTypOcupid ; ocupidTypIndx++){
-                                                                                           disp(seq,DISP_ALL,"\n(i,j, ocupidTyp, MAX) = (%d,%d,%d,%d)\n",
-												rowI,
-												colJ,
-												ocupidTypIndx,
-												crik->numCmpntTypOcupid );
+    disp(seq,DISP_ALL,"\n(i,j, ocupidTyp, MAX) = (%d,%d,%d,%d)\n", rowI, colJ, ocupidTypIndx, crik->numCmpntTypOcupid );
+
     switch(lowerbound_fits_in(seq, crik, rowI, colJ, ocupidTypIndx)){                          // check LB
       case 0:                                                                              // 0: cmpnt lower bound larger than cursrUB
-	return 0;                                                                          
+	      return 0;                                                                          
       case 1:                                                                              // 1: cmpnt typ is too small (falls behind), keep looping and see how it goes
-	continue;                            
+	      continue;                            
       case 2:                                                                              // 2: cmpnt typ falls in the interval
-	break;                                                                        
+	      break;                                                                        
       case 3:                                                                              // 3: fittableTypUB is ideal as upper bound
         seq->intrvlLukUpTable[rowI][colJ][1] = crik->cmpntListOcupidTyp[fittableTypUB];
-	reach_end_of_loop(seq, crik, rowI, colJ, ocupidTypIndx);
-	return 0;
+	      reach_end_of_loop(seq, crik, rowI, colJ, ocupidTypIndx);
+	      return 0;
     }  // end switch
 
     if(upperbound_fits_in(seq, crik, rowI, colJ, ocupidTypIndx)){                              // check UB
@@ -126,13 +125,12 @@ int fill_in_intrvl_luk_up_table_cell_i_j(config* seq, global* crik, int16_t rowI
       cmpntTyp      = crik->cmpntListOcupidTyp[ocupidTypIndx];
 
       if(is_covarance_pair(seq, cmpntTyp)){                                                   // that means crik->cmpntListOcupidTyp[ocupidTypIndx] is on the covariance pair
-	mark_reading_end_of_this_cell(seq,rowI,colJ, cmpntTyp);                            // therefore, seq->intrvlLukUpTable[rowI][colJ][1] = crik->cmpntListOcupidTyp[ocupidTypIndx]
+	      mark_reading_end_of_this_cell(seq,rowI,colJ, cmpntTyp);                            // therefore, seq->intrvlLukUpTable[rowI][colJ][1] = crik->cmpntListOcupidTyp[ocupidTypIndx]
                                                                                            // so that during the jump tree process, it will not pick a particular component of next component type
                                                                                            // which will eliminate the present component with covariance pair on it
-	return 0;
+	      return 0;
       }  // end inner if
     }    // end outer if
- 
   }      // end for
 
   reach_end_of_loop(seq, crik, rowI, colJ, ocupidTypIndx);
@@ -156,11 +154,8 @@ int init_i_j_cell(config* seq, int16_t rowI, int16_t colJ)
                                                                                       // both initialized with -1 is to indicate that
                                                                                       // no useful information is in there yet
   
-                                                                                      disp(seq,DISP_ALL,"\n  (#%-2d, #%-2d) (%c, %c) ",
-											   rowI,
-											   colJ,
-											   seq->ltr[rowI],
-											   seq->ltr[colJ]  );
+  disp(seq,DISP_ALL,"\n  (#%-2d, #%-2d) (%c, %c) ", rowI, colJ, seq->ltr[rowI], seq->ltr[colJ]);
+
   return 0;
 }  // end init_i_j_cell
 
@@ -176,24 +171,26 @@ int lowerbound_fits_in(config* seq, global* crik, int16_t rowI, int16_t colJ, in
 {                                                                                   disp(seq,DISP_ALL,"entering lowerbound_fits_in'\n");
   int16_t cursrUB = colJ - seq->minPairngDist - seq->minLenOfHlix * 2 + 1;            
 
-  if(crik->cmpntListOcupidTyp[ocupidTypIndx] < rowI){                                disp(seq,DISP_ALL,"cmpntTyp %d not big enough\n",
-											 crik->cmpntListOcupidTyp[ocupidTypIndx]);
+  if(crik->cmpntListOcupidTyp[ocupidTypIndx] < rowI){
+    disp(seq,DISP_ALL,"cmpntTyp %d not big enough\n", crik->cmpntListOcupidTyp[ocupidTypIndx]);
     return 1;                                                                       // the cmpnt type must be rowI < cmpntTyp < colJ to fall into the ballpark
   }    // end if 1                                                                  // if not, then move on to check next larger one to see if it's large enough
 
-  if(crik->cmpntListOcupidTyp[ocupidTypIndx] > cursrUB){                             disp(seq,DISP_ALL,"cmpnt type %d too big\n",
-											 crik->cmpntListOcupidTyp[ocupidTypIndx]);
-    if(seq->intrvlLukUpTable[rowI][colJ][0] == -1){                                 disp(seq,DISP_ALL,"Searched thru the whole list and didn't find any pair\n");
-                                                                                    disp(seq,DISP_LV3,"      ");
+  if(crik->cmpntListOcupidTyp[ocupidTypIndx] > cursrUB){
+    disp(seq,DISP_ALL,"cmpnt type %d too big\n", crik->cmpntListOcupidTyp[ocupidTypIndx]);
+    if(seq->intrvlLukUpTable[rowI][colJ][0] == -1){
+      disp(seq,DISP_ALL,"Searched thru the whole list and didn't find any pair\n");
+      disp(seq,DISP_LV3,"      ");
       return 0;
     } else if (seq->intrvlLukUpTable[rowI][colJ][0] != -1){
       return 3;                                                                     // cursrUB reached, therefore there's no point to keep searching.
                                                                                     // so, fittableTypUB is to be used as ocupidTyp entry for cmpnt UB
-    } else {                                                                        disp(seq,DISP_LV1,"Exception happen in 'lowerbound_fits_in'");
+    } else {
+      disp(seq,DISP_LV1,"Exception happen in 'lowerbound_fits_in'");
     }  // end inner if
     return 0;                                                                       // the cmpnt type must be cmpntTyp < colJ
   }    // end if 2
-                                                                                    disp(seq,DISP_ALL,"LB fit in, exiting 'lowerbound_fits_in'\n");
+  disp(seq,DISP_ALL,"LB fit in, exiting 'lowerbound_fits_in'\n");
   return 2;                                                                         // return 1 means LB does fit into the interval
                                                                                     // now we'r gonna chk UB
 } // end lowerbound_fits_in
@@ -210,10 +207,12 @@ int upperbound_fits_in(config* seq, global* crik, int16_t rowI, int16_t colJ, in
 {                                                                                             disp(seq,DISP_ALL,"entering upperbound_fits_in'\n");
   if(crik->cmpntList[crik->cmpntListOcupidTyp[ocupidTypIndx]].knob->closeBrsOutIndx <= colJ){   // outer edge of helix is within the upper bound.
     if(seq->intrvlLukUpTable[rowI][colJ][0] == -1){                                           // read beginning value hasn't been assigned
-      seq->intrvlLukUpTable[rowI][colJ][0] = crik->cmpntListOcupidTyp[ocupidTypIndx];          disp(seq,DISP_ALL,"\nread beginning of (%d, %d) is found to be %d\n", rowI, colJ, crik->cmpntListOcupidTyp[ocupidTypIndx]);
+      seq->intrvlLukUpTable[rowI][colJ][0] = crik->cmpntListOcupidTyp[ocupidTypIndx];
+      disp(seq,DISP_ALL,"\nread beginning of (%d, %d) is found to be %d\n", rowI, colJ, crik->cmpntListOcupidTyp[ocupidTypIndx]);
     }  // end inner if
     return 1;
-  } else {                                                                                    disp(seq,DISP_ALL,"try next round, keep trying!\n");
+  } else {
+    disp(seq,DISP_ALL,"try next round, keep trying!\n");
     return 0;
   }    // end outer if
 }  // end upperbound_fits_in
@@ -249,9 +248,10 @@ int is_covarance_pair(config* seq, int16_t cmpntTyp)
 //*****************************************************************************
 int mark_reading_end_of_this_cell(config* seq, int16_t rowI, int16_t colJ, int16_t cmpntTyp)
 {                                                    disp(seq,DISP_ALL,"enterng 'mark_reading_end_of_this_cell'\n");
-  seq->intrvlLukUpTable[rowI][colJ][1] = cmpntTyp;   disp(seq,DISP_ALL,"read end of (%d,%d) is found to be, due to covari cut-off %d\n",  rowI, colJ, seq->intrvlLukUpTable[rowI][colJ][1]);
-						     disp(seq,DISP_ALL,"cmpnt type from %3d to %3d\n", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]);
-						     disp(seq,DISP_LV3," %2d-%-2d", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]);
+  seq->intrvlLukUpTable[rowI][colJ][1] = cmpntTyp;
+  disp(seq,DISP_ALL,"read end of (%d,%d) is found to be, due to covari cut-off %d\n",  rowI, colJ, seq->intrvlLukUpTable[rowI][colJ][1]);
+  disp(seq,DISP_ALL,"cmpnt type from %3d to %3d\n", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]);
+  disp(seq,DISP_LV3," %2d-%-2d", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]);
   return 0;
 }  // end mark_reading_end_of_this_cell
 
@@ -270,15 +270,18 @@ int mark_reading_end_of_this_cell(config* seq, int16_t rowI, int16_t colJ, int16
 int reach_end_of_loop(config* seq, global* crik, int16_t rowI, int16_t colJ, int16_t ocupidTypIndx)
 {                                                                                     disp(seq,DISP_ALL,"entering reach_end_of_loop'\n");
   if ( (seq->intrvlLukUpTable[rowI][colJ][0] != -1) &&
-       (seq->intrvlLukUpTable[rowI][colJ][1] == -1)    ){                             disp(seq,DISP_ALL,"read ending  of (%d, %d) is found to be %d\n",  rowI, colJ, crik->cmpntListOcupidTyp[ocupidTypIndx-1]);
+       (seq->intrvlLukUpTable[rowI][colJ][1] == -1)){
+    disp(seq,DISP_ALL,"read ending  of (%d, %d) is found to be %d\n",  rowI, colJ, crik->cmpntListOcupidTyp[ocupidTypIndx-1]);
     seq->intrvlLukUpTable[rowI][colJ][1] = crik->cmpntListOcupidTyp[ocupidTypIndx - 1];
-                                                                                      disp(seq,DISP_ALL,"cmpnt type from %3d to %3d\n", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]);
-                                                                                      disp(seq,DISP_LV3," %2d-%-2d", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]);
+    disp(seq,DISP_ALL,"cmpnt type from %3d to %3d\n", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]);
+    disp(seq,DISP_LV3," %2d-%-2d", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]);
   } else if ( (seq->intrvlLukUpTable[rowI][colJ][0] != -1) &&
-              (seq->intrvlLukUpTable[rowI][colJ][1] != -1)    ){                      disp(seq,DISP_ALL,"cmpnt type from %3d to %3d\n", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]  );
-                                                                                      disp(seq,DISP_LV3," %2d-%-2d", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]  );
-  } else {                                                                            disp(seq,DISP_ALL,"Searched thru the whole list and didn't find any pair\n");
-                                                                                      disp(seq,DISP_LV3,"      ");
+              (seq->intrvlLukUpTable[rowI][colJ][1] != -1)){
+    disp(seq,DISP_ALL,"cmpnt type from %3d to %3d\n", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]  );
+    disp(seq,DISP_LV3," %2d-%-2d", seq->intrvlLukUpTable[rowI][colJ][0], seq->intrvlLukUpTable[rowI][colJ][1]  );
+  } else {
+    disp(seq,DISP_ALL,"Searched thru the whole list and didn't find any pair\n");
+    disp(seq,DISP_LV3,"      ");
   }  // end if
 
   return 0;

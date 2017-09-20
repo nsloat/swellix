@@ -43,7 +43,7 @@ int initialize_commandline_argument_with_default_value(config* seq)
 {
   seq->algoMode          = MODE_STRU;                         // see main.h for this value definition                                                               
   seq->bundle            = FALSE;                             // by default, bundle feature isn't activated, which means SSRR (similar structure reduction referencing isn't activated)
-  seq->unbundle		 = FALSE;			      // by default, unbundling is off. Only activate when bundling is also activated and only for verifying that bundling is 
+  seq->unbundle		     = FALSE;			      // by default, unbundling is off. Only activate when bundling is also activated and only for verifying that bundling is 
 							      // accurately computing all relevant structures
   seq->motif             = FALSE;
   seq->motifCount        = 0;
@@ -112,7 +112,8 @@ int set_degree_of_detailed_disp(config* seq, int8_t arg, int argc, char** argv)
 // Return   : none
 // Display  : none
 //*****************************************************************************
-void set_statMode(config* seq, int8_t arg, int argc, char** argv) {
+void set_statMode(config* seq, int8_t arg, int argc, char** argv) 
+{
   if(++arg == argc)
     cmd_line_err(argv, arg);
   else if(!strcmp("1", argv[arg]))
@@ -129,7 +130,8 @@ void set_statMode(config* seq, int8_t arg, int argc, char** argv) {
   }
 }
 
-void set_motif(config* seq, int8_t arg, int argc, char** argv) {
+void set_motif(config* seq, int8_t arg, int argc, char** argv)
+{
   if(++arg == argc)
     cmd_line_err(argv, arg);
   else {
@@ -154,7 +156,7 @@ void set_motif(config* seq, int8_t arg, int argc, char** argv) {
       free(seq->motifStruc);
       fclose(seq->srcFile);
       free(seq);
-      exit(1);//      print_usage();
+      exit(1);
     }
     unsigned int len2 = strlen(tok);
     seq->motifSeq = calloc(len2+1, sizeof(char));

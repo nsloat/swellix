@@ -33,7 +33,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-
 long long g_x1;
 long long g_x2;
 
@@ -289,7 +288,6 @@ typedef struct { // Define: the parameter book-keeper of global nature (only one
   uint64_t       rstoCounter;
   uint64_t     rstoErrCounter;
   int16_t      skippedStru;         // debugging purposes				 : number of structures skipped during bundling
-//  int8_t       struLinked;          // boolean for whether or not the previous helix is linked to current helix
   int8_t       linkedmms;           // number of linked mismatches
   knob**       mpiCList;            // array-ified component list pointers for easier cross-PE communication
 } global;

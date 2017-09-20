@@ -80,16 +80,7 @@ int book_out(config* seq, global* crik)
   disp(seq,DISP_ALL,"Entering 'book_out'\n");
   dispCmpnt(seq, crik, 1);
   crik->cmpntListOcupidTyp = realloc(crik->cmpntListOcupidTyp, crik->numCmpntTypOcupid * sizeof(int16_t));
-/*  printf("crik->numCmpntTypOcupid = %d\n", crik->numCmpntTypOcupid);
-  printf("crik->cmpntListOcupidTyp\n[");
-	for( i = 0; i < crik->numCmpntTypOcupid; i++ ) {
-		printf("%d, ", crik->cmpntListOcupidTyp[i]);
-	}
- */
-#ifdef _MPI
-  extern int rank;
-  if(rank == 0)
-#endif
+
   if (DISP) {
       fprintf(seq->dispFile,"\nNumber of Components = %ld\n\n", crik->numCmpnt);
       printf("Occupied Compnent List:");
@@ -238,7 +229,6 @@ void display_components(config* seq, global* crik, int dispCmpltFlag)
   char* braceBound = choose_brace_display_format(seq);
 
   display_component_list(seq, crik, dispCmpltFlag, dispPrio, braceBound);
-
 }  // end display_components
 
 //*****************************************************************************
@@ -301,7 +291,9 @@ int initialize_mismatch(config* seq, knob* newNode)
 // Display  : 
 //*****************************************************************************
 int base_pair_NOT_formed(config* seq, global* crik)
-{ return !seq->parenLukUpTable[crik->opnParenIndx][crik->closeParenIndx]; }
+{ 
+  return !seq->parenLukUpTable[crik->opnParenIndx][crik->closeParenIndx];
+}
 
 //*****************************************************************************
 // Function : Is Brace Formed without Similar Helix Reduction
@@ -315,24 +307,15 @@ int brace_is_formed(config* seq, global* crik, knob* newNode, int16_t* mustPairF
 {                                                                              disp(seq,DISP_ALL,"Entering 'brace_is_formed'\n");
   int8_t noBrsFlag     = 0;
   int8_t cntOfMismatch = 0;
-  //  int8_t non_terminal_mismatch_formed_flag = 0;
-  //  int8_t terminal_mismatch_formed_flag = 0;
 
   crik->opnBrsCursr = 0;                                                       // open brace cursor : used to probe each nucleotide
   crik->closeBrsCursr = 0;                                                       // close  "      "   :        "        "        "
-//  crik->numBlg    = 0;
-//  crik->numMis    = 0;
 
   while(is_worth_exploring(crik, noBrsFlag)){
     crik->opnParenIndx = crik->opnBrsOutIndx + crik->opnBrsCursr;
     crik->closeParenIndx = crik->closeBrsOutIndx - crik->closeBrsCursr;
 								
     if(base_pair_NOT_formed(seq, crik)){                                    disp(seq,DISP_ALL,"(%d,%d): (%c,%c) pair not matched, bye...\n", crik->opnParenIndx, crik->closeParenIndx, seq->ltr[crik->opnParenIndx], seq->ltr[crik->closeParenIndx]);
-      //if(is_terminal_mismatch(crik)) return 0;
-      //      if(NOT_terminal_mismatch(seq, crik, cntOfMismatch)) non_terminal_mismatch_formed_flag++;
-      //      else                                                   terminal_mismatch_formed_flag++;
-      //      if(non_terminal_mismatch_formed_flag > 1) return 0;
-      //if(non_terminal_mismatch_formed_flag && !terminal_mismatch_formed_flag) return 0;
       if(mismatch_causes_lonely_pair(seq, crik, newNode, cntOfMismatch)) return 2;
       if(is_s1(seq, crik->opnParenIndx, crik->closeParenIndx)) return 0;
       if(mismatch_by_cheating(seq, crik->opnParenIndx, crik->closeParenIndx)) return 2;   // mismatch not allowed at either ends of a helix
@@ -523,7 +506,9 @@ int is_terminal_mismatch(global* crik)
 // Display  : 
 //*****************************************************************************
 int is_worth_exploring(global* crik, int8_t noBrsFlag)
-{ return (crik->opnBrsCursr < crik->opnBrsWidth) && (crik->closeBrsCursr < crik->closeBrsWidth) && (!noBrsFlag); }
+{
+  return (crik->opnBrsCursr < crik->opnBrsWidth) && (crik->closeBrsCursr < crik->closeBrsWidth) && (!noBrsFlag);
+}
 
 //*****************************************************************************
 // Function : Recursion Stage 1: Brace Locating
@@ -570,10 +555,6 @@ int recur_stage_2_brace_sizng(config* seq, global* crik)
     closeBrsWidthUB = assign_window_width(seq, crik, 2);
     for(crik->closeBrsWidth = closeBrsWidthLB; crik->closeBrsWidth <= closeBrsWidthUB ; crik->closeBrsWidth++){    // close brace sizing
       crik->closeBrsInnIndx = crik->closeBrsOutIndx - crik->closeBrsWidth + 1;                                 // location of close brace inner edge
-
-      // DEBUGGING PURPOSES
- //     printf("%d-%d | %d-%d\n", crik->opnBrsOutIndx, crik->opnBrsInnIndx, crik->closeBrsInnIndx, crik->closeBrsOutIndx);
-
 
       sizngBypassFlag = recur_stage_3_brace_processng(seq, crik);                                        disp(seq,DISP_ALL,"Test on : (%d~%d) (%d~%d)\n", crik->opnBrsOutIndx, crik->opnBrsInnIndx, crik->closeBrsInnIndx, crik->closeBrsOutIndx);
       if(sizngBypassFlag) return 0;                                                                      // skip all the rest of the check
