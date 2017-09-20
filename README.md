@@ -16,14 +16,16 @@ tar -xf ViennaRNA-2.2.5.tar
 
 You should now have a new directory called "ViennaRNA-2.2.5." The next step is to compile the ViennaRNA
 library:<br>
-    make vienna
+```
+make vienna
+```
 
 This should populate the viennabuild directory with the resources that Swellix will use during computation. Inside of this
-viennabuild directory, there will be an existing thermodynamic parameter file called "rna_turner2004.par." This file
+viennabuild directory, there will be an existing thermodynamic parameter file called `rna_turner2004.par`. This file
 informs the calculations that are performed at runtime to determine the free energy of a secondary structure. If you have
-a different or updated parameter file that you'd like to use then you can simply replace "rna_turner2004.par" with your
+a different or updated parameter file that you'd like to use then you can simply replace `rna_turner2004.par` with your
 file. For this file to be properly used, you must also make a change to the Swellix Makefile. In the Makefile, there is a
-variable "PARAMFILE." In this variable, you must change "rna_turner2004.par" to the name of the file you want to use.
+variable `PARAMFILE`. In this variable, you must change `rna_turner2004.par` to the name of the file you want to use.
 
 
 Second: Compiling Swellix
@@ -32,7 +34,9 @@ The Swellix Makefile has gathered multiple options for compilation. The ones of 
 
 SERIAL:
 Compilation using 
-    make serial
+```
+make serial
+```
 will provide the serial version of Swellix with the most basic needed output. The program
 will output the RNA sequence it was given, and the number of structures computed. You may provide Swellix the commandline
 flag -d with a value of 2 to print each structure out in dot & parenthesis format to the terminal as it is computed.
@@ -40,9 +44,11 @@ flag -d with a value of 2 to print each structure out in dot & parenthesis forma
 
 MPI:
 Using
-    make mpi
+```
+make mpi
+```
 will produce a result similar to "make serial" except the code will be compiled to run using the parallel
-version of the algorithm. Once compiled, you should be able to run Swellix with "mpirun" or the like.
+version of the algorithm. Once compiled, you should be able to run Swellix with `mpirun` or the like.
 
 ### NOTE
 The parallel code in Swellix was developed using OpenMPI, so problems could arise if using some other implementation of MPI.
@@ -50,10 +56,12 @@ The parallel code in Swellix was developed using OpenMPI, so problems could aris
 
 DISP (Display):
 Compiling with
-    make disp
+```
+make disp
+```
 instructs Swellix to provide various levels of more detailed output. These levels depend on the
 -d flag as detailed at the bottom of this file in the table of commandline options.
-Level 1 is the same as the default output from using "make serial" above except with more information relating to the data
+Level 1 is the same as the default output from using `make serial` above except with more information relating to the data
 structures that were used in the algorithm. This information is mainly the size of some lists. 
 Exceeding Level 2 results in output which is really only useful for debugging or further development. 
 
@@ -121,11 +129,15 @@ defined constraints. For the second case, we'll refer to that file as a configur
 with more information than just the sequence.
 
 In general, to use a plain input file you need the -i flag and the path to the file.
-	/path/to/swellix/exe--swellix -i sequence.txt [desired constraints]
+```
+/path/to/swellix/exe--swellix -i sequence.txt [desired constraints]
+```
 
 However, if you would like to provide a configuration file with certain folding constraints, you will also need to include
 the -k flag. You will still use the -i flag and the path to your config file.
-	/path/to/swellix/exe--swellix -k -i sequence.swlx [constraints not in config file]
+```
+/path/to/swellix/exe--swellix -k -i sequence.swlx [constraints not in config file]
+```
 
 ABOUT THE CONFIGURATION FILE:
 There are many constraints that can be imposed just by command line arguments. The advantage of providing input via a
