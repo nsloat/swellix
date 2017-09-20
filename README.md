@@ -7,7 +7,7 @@ First: Compiling Dependencies
 
 THE VIENNA PACKAGE:<br>
 Swellix uses some utilities provided in the ViennaRNA package for computing thermodynamics and RNA distance in structures.
-When you download Swellix, you should get a copy of Vienna: ViennaRNA-2.2.5.tar
+When you download Swellix, you should get a copy of Vienna: `ViennaRNA-2.2.5.tar`
 To configure Swellix in a simple way, you'll first need to decompress the ViennaRNA tarball in the same directory as
 the Swellix Makefile:<br>
 ```
@@ -39,7 +39,7 @@ make serial
 ```
 will provide the serial version of Swellix with the most basic needed output. The program
 will output the RNA sequence it was given, and the number of structures computed. You may provide Swellix the commandline
-flag -d with a value of 2 to print each structure out in dot & parenthesis format to the terminal as it is computed.
+flag `-d` with a value of 2 to print each structure out in dot & parenthesis format to the terminal as it is computed.
 
 
 MPI:
@@ -47,7 +47,7 @@ Using
 ```
 make mpi
 ```
-will produce a result similar to "make serial" except the code will be compiled to run using the parallel
+will produce a result similar to `make serial` except the code will be compiled to run using the parallel
 version of the algorithm. Once compiled, you should be able to run Swellix with `mpirun` or the like.
 
 ### NOTE
@@ -60,13 +60,13 @@ Compiling with
 make disp
 ```
 instructs Swellix to provide various levels of more detailed output. These levels depend on the
--d flag as detailed at the bottom of this file in the table of commandline options.
+`-d` flag as detailed at the bottom of this file in the table of commandline options.
 Level 1 is the same as the default output from using `make serial` above except with more information relating to the data
 structures that were used in the algorithm. This information is mainly the size of some lists. 
 Exceeding Level 2 results in output which is really only useful for debugging or further development. 
 
 ### NOTE 
-If you do choose to use the -d option for more detailed output, be wary of the size of your sequence and possible size of
+If you do choose to use the `-d` option for more detailed output, be wary of the size of your sequence and possible size of
 output. You can easily generate very large files from the output of structures alone. This is not to mention the debugging
 text if you have the display level set high enough. It all comes down to your imposed constraints.
 
@@ -83,8 +83,10 @@ that you shouldn't be typing your input and press `Enter` to go to a new line.
 
 e.g.
 Say you have some arbitrary sequence `GCUCUAAAAGAGAG`. A problematic way to input your sequence would be:
+```
 GCUCUAA
 AAGAGAG
+```
 This is because it contains a new line indicator after the first 7 nucleotides. Swellix can't tell if the two lines are
 meant to be the same sequence or if you're trying to give it some kind of multi-sequence input, which the program doesn't
 currently handle. The result of this input would be Swellix running with only the first line as its input.
@@ -132,13 +134,13 @@ with more information than just the sequence.
 
 In general, to use a plain input file you need the `-i` flag and the path to the file.
 ```
-/path/to/swellix/exe--swellix -i sequence.txt [desired constraints]
+/path/to/swellix/exe--swellix -i sequence.txt [optional command-line args]
 ```
 
 However, if you would like to provide a configuration file with certain folding constraints, you will also need to include
 the `-k` flag. You will still use the `-i` flag and the path to your config file.
 ```
-/path/to/swellix/exe--swellix -k -i sequence.swlx [constraints not in config file]
+/path/to/swellix/exe--swellix -k -i config.swlx [optional args/constraints not in config file]
 ```
 
 ABOUT THE CONFIGURATION FILE:
