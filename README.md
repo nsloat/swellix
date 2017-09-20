@@ -44,7 +44,7 @@ Using
 will produce a result similar to "make serial" except the code will be compiled to run using the parallel
 version of the algorithm. Once compiled, you should be able to run Swellix with "mpirun" or the like.
 
-## NOTE ##
+### NOTE
 The parallel code in Swellix was developed using OpenMPI, so problems could arise if using some other implementation of MPI.
 
 
@@ -57,7 +57,7 @@ Level 1 is the same as the default output from using "make serial" above except 
 structures that were used in the algorithm. This information is mainly the size of some lists. 
 Exceeding Level 2 results in output which is really only useful for debugging or further development. 
 
-## NOTE ## 
+### NOTE 
 If you do choose to use the -d option for more detailed output, be wary of the size of your sequence and possible size of
 output. You can easily generate very large files from the output of structures alone. This is not to mention the debugging
 text if you have the display level set high enough. It all comes down to your imposed constraints.
@@ -135,7 +135,7 @@ be in a strict format for the time being. The specific formatting rules and an e
 is provided. It is called 'configTutorial.swlx'. In this file, we use the same sequence as above but illustrate how to 
 specify constraints.
 
-## NOTE ##
+### NOTE
 If the case arises where you have provided input via both standard input and an input file, the sequence defined by the
 input file will override the sequence provided by standard input.
 
