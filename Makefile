@@ -2,8 +2,6 @@ SHELL := /bin/bash
 
 myCC=gcc
 
-EXECUTABLE=swellix
-
 EXECDIR = $(PWD)/
 LIBDIR = $(EXECDIR)viennabuild/lib
 INCLUDEDIR = $(EXECDIR)viennabuild/include/
@@ -28,9 +26,9 @@ RNAFLAGS=-L$(LIBDIR) -lRNA -lm -I$(INCLUDEDIR) -I$(INCLUDEDIR)ViennaRNA -D_PARAM
 .PHONY: serial ddisp cdisp disp mpi mpi-disp pre-build-mpi pre-build
 
 serial: pre-build
-serial: swellix
+serial: swellix.exe
 
-swellix: $(OBJS)
+swellix.exe: $(OBJS)
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
@@ -90,7 +88,7 @@ $(OBJDIR)/subopt.o: subopt.c subopt.h
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -c -o $@ $< $(CFLAGS) $(MPIFLAGS) $(RNAFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
-swellix-mpi: $(OBJS)
+swellix-mpi.exe: $(OBJS)
 	@echo myCC = $(shell which $(myCC))
 	$(myCC) -o $@ $^ $(CFLAGS) $(RNAFLAGS) $(MPIFLAGS) -D_EXECDIR='"$(EXECDIR)"' 
 
@@ -111,18 +109,18 @@ ddisp: disp
 disp: CFLAGS+=-D_display
 disp: myCC=cc
 disp: pre-build
-disp: swellix
+disp: swellix.exe
 
 mpi: myCC=mpicc
 mpi: MPIFLAGS+=-D_MPI
 mpi: pre-build-mpi
-mpi: swellix-mpi
+mpi: swellix-mpi.exe
 
 mpi-disp: myCC=mpicc
 mpi-disp: MPIFLAGS+=-D_MPI
 mpi-disp: CFLAGS+=-D_display
 mpi-disp: pre-build-mpi
-mpi-disp: swellix-mpi
+mpi-disp: swellix-mpi.exe
 
 vienna:
 	cd ViennaRNA-2.2.5; \
