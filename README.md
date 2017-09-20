@@ -77,12 +77,11 @@ Swellix RNA sequence input must be formatted properly before being run in the pr
 
 
 ### GUIDELINES/RULES:
-The first rule is the simplest, and we'll call it the 'One Line Rule'. Any input sequence should occupy only one line. This
-may not be obvious, but this rule doesn't place a restriction on the length of your input sequence. All this rule means is
-that you shouldn't be typing your input and press `Enter` to go to a new line. 
+The first rule is the simplest, and we'll call it the 'One Line Rule'. Any input sequence should occupy only one line.
 
 e.g.
-Say you have some arbitrary sequence `GCUCUAAAAGAGAG`. A problematic way to input your sequence would be:
+Say you have some arbitrary sequence `GCUCUAAAAGAGAG`. You shouldn't create an input file with your sequence formatted on 
+two lines like this:
 ```
 GCUCUAA
 AAGAGAG
