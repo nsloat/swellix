@@ -5,7 +5,7 @@ Here, we'll cover some of the basics of computing with Swellix.
 First: Compiling Dependencies
 ------------------------------------------------------------------------------------------
 
-THE VIENNA PACKAGE:<br>
+**THE VIENNA PACKAGE**:<br>
 Swellix uses some utilities provided in the ViennaRNA package for computing thermodynamics and RNA distance in structures.
 When you download Swellix, you should get a copy of Vienna: `ViennaRNA-2.2.5.tar`
 To configure Swellix in a simple way, you'll first need to decompress the ViennaRNA tarball in the same directory as
@@ -32,7 +32,7 @@ Second: Compiling Swellix
 ------------------------------------------------------------------------------------------
 The Swellix Makefile has gathered multiple options for compilation. The ones of most use are:
 
-SERIAL:
+**SERIAL**:
 Compilation using 
 ```
 make serial
@@ -42,7 +42,7 @@ will output the RNA sequence it was given, and the number of structures computed
 flag `-d` with a value of 2 to print each structure out in dot & parenthesis format to the terminal as it is computed.
 
 
-MPI:
+**MPI**:
 Using
 ```
 make mpi
@@ -54,7 +54,7 @@ version of the algorithm. Once compiled, you should be able to run Swellix with 
 The parallel code in Swellix was developed using OpenMPI, so problems could arise if using some other implementation of MPI.
 
 
-DISP (Display):
+**DISP** (Display):
 Compiling with
 ```
 make disp
@@ -76,7 +76,7 @@ Third: Input Format
 Swellix RNA sequence input must be formatted properly before being run in the program.
 
 
-GUIDELINES/RULES:
+**GUIDELINES/RULES**:
 The first rule is the simplest, and we'll call it the 'One Line Rule'. Any input sequence should occupy only one line. This
 may not be obvious, but this rule doesn't place a restriction on the length of your input sequence. All this rule means is
 that you shouldn't be typing your input and press `Enter` to go to a new line. 
@@ -118,7 +118,7 @@ Swellix can accept input in two ways: standard input, and an input file specifie
 specify most folding constraints via the commandline. For the others, you must provide them in you configuration file.
 
 
-STANDARD INPUT:
+**STANDARD INPUT**:
 To use standard input, simply pipe a sequence to Swellix like so:
 ```
 echo "GCUCUAAAAGAGAG" | /path/to/swellix/exe--swellix [desired constraints]
@@ -126,7 +126,7 @@ echo "GCUCUAAAAGAGAG" | /path/to/swellix/exe--swellix [desired constraints]
 where the desired constraints are some optional combination of the flags defined at the bottom of this file.
 
 
-FILE INPUT:
+**FILE INPUT**:
 There are two flavors of reading input from a file. In one, only the first line of the file, which should be the sequence,
 is read into the program. In the other, you can instruct Swellix to continue reading through the file to look for any
 defined constraints. For the second case, we'll refer to that file as a configuration file since it is providing Swellix
@@ -143,7 +143,7 @@ the `-k` flag. You will still use the `-i` flag and the path to your config file
 /path/to/swellix/exe--swellix -k -i config.swlx [optional args/constraints not in config file]
 ```
 
-ABOUT THE CONFIGURATION FILE:
+**ABOUT THE CONFIGURATION FILE**:
 There are many constraints that can be imposed just by command line arguments. The advantage of providing input via a
 config file is that you can specify constraints such as individual nucleotide pairing restrictions. For example, you can
 tell Swellix that any particular nucleotide absolutely must pair to form a valid structure. The constraints provided must
