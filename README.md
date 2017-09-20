@@ -121,7 +121,7 @@ specify most folding constraints via the commandline. For the others, you must p
 **STANDARD INPUT**:
 To use standard input, simply pipe a sequence to Swellix like so:
 ```
-echo "GCUCUAAAAGAGAG" | /path/to/swellix/exe--swellix [desired constraints]
+echo "GCUCUAAAAGAGAG" | /path/to/swellix/swellix.exe [desired constraints]
 ```
 where the desired constraints are some optional combination of the flags defined at the bottom of this file.
 
@@ -134,13 +134,13 @@ with more information than just the sequence.
 
 In general, to use a plain input file you need the `-i` flag and the path to the file.
 ```
-/path/to/swellix/exe--swellix -i sequence.txt [optional command-line args]
+/path/to/swellix/swellix.exe -i sequence.txt [optional command-line args]
 ```
 
 However, if you would like to provide a configuration file with certain folding constraints, you will also need to include
 the `-k` flag. You will still use the `-i` flag and the path to your config file.
 ```
-/path/to/swellix/exe--swellix -k -i config.swlx [optional args/constraints not in config file]
+/path/to/swellix/swellix.exe -k -i config.swlx [optional args/constraints not in config file]
 ```
 
 **ABOUT THE CONFIGURATION FILE**:
